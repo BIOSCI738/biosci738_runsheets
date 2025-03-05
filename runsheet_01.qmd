@@ -1,0 +1,148 @@
+---
+title: "BIOSCI 738 Advanced Biological Data Analysis"
+title-block-banner: "#c7dbe2"
+subtitle: "Seminar 01"
+date: "10 March 2025"
+author: Charlotte Jones-Todd
+institute: University of Auckland
+format: html
+toc: true
+toc-depth: 2
+bibliography: references.bib
+---
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+## Rough timeline
+
+### **09:05 am - 10:55 pm** 
+
+ + **09:05–10.25 am** Gorilla Gambit (@sec-gorilla)
+ + **10.25–10.55 am** Group Code of Conduct (@sec-coc)
+    - Classwide discussion (@sec-coc01)
+    - Group activity (@sec-coc02)
+ + **09:55–10:05 am** Break
+ 
+ + **10.05–10.15 am** Introduction to BIOSCI 738 (@sec-intro)
+ + **10.15–10.45 am** AI in the BOISCI 738 classroom (@sec-ai)
+    - Classwide discussion (@sec-ai01)
+    - Group activity (@sec-ai02)
++ **10.45–10.55 am** Q&A and peer-share (@sec-peershare)
+
+### Notes
+
+All BIOSCI 738 lectures require your **active involvement**! See the [course policies](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies) for further infomation.
+
+Throughout this runsheet you'll find a number of different callout boxes:
+
+::: {.callout-tip}
+## this box will contain the expected learning objectives and/or outcomes for the material
+:::
+
+::: {.callout-note}
+## this box will contain some useful information
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer within your randomly allocated group
+:::
+
+### First things first...
+
+Note the **randomly allocated group** mentioned above. Each lecture I'll have run the following `R` code that randomly allocates you into groups. **It's your responsibility to get into them, just look for the cows!**
+
+<center> [<img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200">](https://biosci738.github.io/cowstats/)</center>
+
+```{r}
+group_allocation <- function(names, seed, groups = 9 ){
+  set.seed(seed)
+  tmp <- sample(names, replace = FALSE)
+  split(tmp, cut(seq_along(tmp), groups, labels = paste("Group", 1:groups))) 
+}
+```
+
+
+::: {.callout-note}
+## Accessing activities
+Scan the QR code below, depending on the activity the site will update with what I want to share (e.g., this runsheet etc.)
+
+<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
+<img src="qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+:::
+
+## Gorilla Gambit {#sec-gorilla}
+
+Group activity roles include
+
+  + **A runner**, responsible for running (*or at least getting the next instruction from Charlotte*)
+  + **A coder**, responsible for implementing the code for the group this does **NOT** mean the sole coder, rather the person responsible for running any suggested code etc.
+  + **A timekeeper**, responsible for managing time for the group, making sure you stay on track
+  + **A facilitator**, responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute
+  
+In your groups **quickly** determine who is filling what role by order of next birthdays: the person with the next birthday will be the **runner**, the next birthday after that will be the **coder**, the third birthday will be **timekeeper**, and if your group has four members, the fourth member will be the **facilitator**.
+
+Once you have allocated group roles your **runner** should come to me to retrieve the first instruction.
+
+## Group Code of Conduct {#sec-coc}
+
+::: {.callout-tip}
+## A classwide agreed group working Code of Conduct
+Upon the completion of this activity I will summarise the main themes/suggestions from @sec-coc02 (*that I deem appropriate*). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.
+:::
+
+### Why I think this is important {#sec-coc01}
+
+### Write your own {#sec-coc02}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
+:::
+
+## Introduction to BIOSCI 738 {#sec-intro}
+
+## GenAI in the BIOSCI 738 classroom {#sec-ai}
+
+::: {.callout-tip}
+## Expectations of genAI use
+Upon the completion of this activity I will summarise the main themes/suggestions from @sec-ai02 (*that I deem appropriate*). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.
+:::
+
+### Who's heard of *bullshit*? {#sec-ai01}
+
+> *Recently, there has been considerable interest in large language models: machine learning systems which produce human-like text and dialogue. Applications of these systems have been plagued by persistent inaccuracies in their output; these are often called “AI hallucinations”. We argue that these falsehoods, and the overall activity of large language models, is better understood as bullshit in the sense explored by Frankfurt (On Bullshit, Princeton, 2005): the models are in an important way indifferent to the truth of their outputs* 
+
+This is an excerpt from the abstract of @bullshit.
+
+> *If a student is confused about a concept, they can sit with ChatGPT and it will talk to them for hours about that particular concept.*
+
+> *It is a really great tool to create code but also a really great tool to prevent yourself from learning.*
+
+> *It’s teachers’ responsibility to motivate them and make such a problem that [students] are keen to solve and in a way that they actually would like to learn something and realize that they need these skills also in the future.*
+
+> *...there have always been so many ways of cheating, but I don’t think I’ve ever been aware of such an obvious, cheap, and easy way of cheating. Students can get [an AI tool] to answer any question I can ask them at the moment and therefore I have lost my ability to confidently assess any work that students hand in.*
+
+> *I think we need different kinds of professionals with different understandings of computing. Some need to be very deeply involved with how our programming languages work ... others might only need some kind of overall understanding. They are not programmers by themselves, but they still should understand how software is produced.*
+
+All the above are quotes garnered in @instructor.
+
+Remember back to last week when I asked you to complete a *pre-course* quiz or two? Below are a summary of your responses to the genAI related questions. These questions were, by design, worded int he same way those in @robots (see Figure 3 of that paper for a summary of their findings). 
+
+### Share and discuss {#sec-ai02}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss in your group how much you agree/disagree with the opinions and summaries presented above. 
+
+If you are comfortable doing so you may wish to share some of your personal experiences. Feel free to expand on the answers you gave in the *pre-course* quiz. 
+:::
+
+
+## Q&A and peer-share {#sec-peershare}
+
+
+### References
+
+::: {#refs}
+:::
+
+
