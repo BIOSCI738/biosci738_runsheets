@@ -9,7 +9,7 @@
 <meta name="author" content="Charlotte Jones-Todd">
 <meta name="dcterms.date" content="2025-03-10">
 
-<title>BIOSCI 738 Advanced Biological Data Analysis</title>
+<title>Advanced Biological Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -107,16 +107,16 @@ div.csl-indent {
 </style>
 
 
-<script src="runsheet_01_files/libs/clipboard/clipboard.min.js"></script>
-<script src="runsheet_01_files/libs/quarto-html/quarto.js"></script>
-<script src="runsheet_01_files/libs/quarto-html/popper.min.js"></script>
-<script src="runsheet_01_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="runsheet_01_files/libs/quarto-html/anchor.min.js"></script>
-<link href="runsheet_01_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="runsheet_01_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="runsheet_01_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="runsheet_01_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="runsheet_01_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="index_files/libs/quarto-html/quarto.js"></script>
+<script src="index_files/libs/quarto-html/popper.min.js"></script>
+<script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="index_files/libs/quarto-html/anchor.min.js"></script>
+<link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <style>
     .quarto-title-block .quarto-title-banner {
       background: #c7dbe2;
@@ -131,8 +131,8 @@ div.csl-indent {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">BIOSCI 738 Advanced Biological Data Analysis</h1>
-            <p class="subtitle lead">Seminar 01</p>
+      <h1 class="title">Advanced Biological Data Analysis</h1>
+            <p class="subtitle lead">BIOSCI 738</p>
                       </div>
   </div>
     
@@ -257,11 +257,43 @@ this box will contain some useful information
 <a href="https://biosci738.github.io/cowstats/"><img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200"></a>
 </center>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>group_allocation <span class="ot">&lt;-</span> <span class="cf">function</span>(names, seed, <span class="at">groups =</span> <span class="dv">9</span> ){</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">sample</span>(names, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(tmp, <span class="fu">cut</span>(<span class="fu">seq_along</span>(tmp), groups, <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">"Group"</span>, <span class="dv">1</span><span class="sc">:</span>groups))) </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Emma Akeroyd"</span>, <span class="st">"Jianing Chen"</span>, <span class="st">"Sunny Chen"</span>, <span class="st">"Anqi Cheng"</span>, <span class="st">"Barnaby Clegg-Shaw"</span>, <span class="st">"Shoule Du"</span>, <span class="st">"Yi Han"</span>, <span class="st">"Shuxiang He"</span>, <span class="st">"Alex Johnson"</span>, <span class="st">"Karie Labidon"</span>, <span class="st">"He Li"</span>, <span class="st">"Zichang Li"</span>, <span class="st">"Happy Liang"</span>, <span class="st">"Jiaxin Liu"</span>, <span class="st">"Leyang Liu"</span>, <span class="st">"Angel Loh"</span>, <span class="st">"Yue Ma"</span>, <span class="st">"Congkai Meng"</span>, <span class="st">"Robert Mihok"</span>, <span class="st">"Laura Munck"</span>, <span class="st">"Lana Najar"</span>, <span class="st">"Bayu Pitandoyo"</span>, <span class="st">"Devon Robinson"</span>, <span class="st">"YOGAPRIYA S"</span>, <span class="st">"Antonia Schebek-Fuerstenberg"</span>, <span class="st">"Keyi Sun"</span>, <span class="st">"Charlotte Sutton"</span>, <span class="st">"Kellyanne Tai"</span>, <span class="st">"Julia Thain"</span>, <span class="st">"Yingyi Wang"</span>, <span class="st">"Yutong Wang"</span>, <span class="st">"Ziyi Wang"</span>, <span class="st">"Yutao Yang"</span>, <span class="st">"Tongzheng Yao"</span>, <span class="st">"Xinyue Zhang"</span>, <span class="st">"Zhixiao Zhang"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>group_allocation <span class="ot">&lt;-</span> <span class="cf">function</span>(names, seed, <span class="at">groups =</span> <span class="dv">9</span> ){</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">sample</span>(names, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(tmp, <span class="fu">cut</span>(<span class="fu">seq_along</span>(tmp), groups, <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">"Group"</span>, <span class="dv">1</span><span class="sc">:</span>groups))) </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">group_allocation</span>(names, <span class="at">seed =</span> <span class="dv">100325</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`Group 1`
+[1] "Ziyi Wang"    "Lana Najar"   "Emma Akeroyd" "Laura Munck" 
+
+$`Group 2`
+[1] "Alex Johnson" "Sunny Chen"   "Yutong Wang"  "Xinyue Zhang"
+
+$`Group 3`
+[1] "Zichang Li"         "Barnaby Clegg-Shaw" "YOGAPRIYA S"       
+[4] "Devon Robinson"    
+
+$`Group 4`
+[1] "Shoule Du"      "Anqi Cheng"     "Bayu Pitandoyo" "Kellyanne Tai" 
+
+$`Group 5`
+[1] "Yutao Yang"    "Congkai Meng"  "Jiaxin Liu"    "Zhixiao Zhang"
+
+$`Group 6`
+[1] "Tongzheng Yao"    "Jianing Chen"     "Yingyi Wang"      "Charlotte Sutton"
+
+$`Group 7`
+[1] "Robert Mihok" "Julia Thain"  "He Li"        "Keyi Sun"    
+
+$`Group 8`
+[1] "Karie Labidon" "Happy Liang"   "Angel Loh"     "Yue Ma"       
+
+$`Group 9`
+[1] "Leyang Liu"                   "Antonia Schebek-Fuerstenberg"
+[3] "Yi Han"                       "Shuxiang He"                 </code></pre>
+</div>
 </div>
 <div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
@@ -278,7 +310,7 @@ Accessing activities
 <p>
 <a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a>
 </p>
-<img src="qr_biosci738.svg" alt="dub.sh.biosci738">
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738">
 </center>
 </div>
 </div>
@@ -313,6 +345,14 @@ A classwide agreed group working Code of Conduct
 </div>
 <section id="sec-coc01" class="level3">
 <h3 class="anchored" data-anchor-id="sec-coc01">Why I think this is important</h3>
+<p>As a student of University of Auckland student, you are responsible for understanding and abiding by the requirements of the <a href="https://www.auckland.ac.nz/en/students/forms-policies-and-guidelines/student-policies-and-guidelines/student-charter.html">Student Charter</a>.</p>
+<p>In this activity we’re going to be talking about my and your expectation when working in a group during this class, see <a href="https://biosci738.github.io/BIOSCI738/key-information.html#participation">this section of the course guide for further details</a>.</p>
+<p>A Code of Conduct is not just a strange thing the university make you sign. They are a large part of many professional and research-focused bodies beyond university. The following lists just a few examples of societies or institutes you will likely come across during a biostats career in NZ.</p>
+<ul>
+<li><a href="https://newzealandecology.org/about/council-members/society-rules">The NZ Ecological Society CoC</a></li>
+<li><a href="https://www.stats.org.nz/code-of-conduct/">The NZ Statistical Association CoC</a></li>
+<li><a href="https://www.doc.govt.nz/about-us/our-policies-and-plans/code-of-ethical-conduct/">DoCs Code of Ethical Conduct</a></li>
+</ul>
 </section>
 <section id="sec-coc02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-coc02">Write your own</h3>
@@ -329,10 +369,26 @@ A classwide agreed group working Code of Conduct
 
 </div>
 </div>
+<p>In your groups head to <a href="https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing"><strong>this shared Google Doc</strong></a>.</p>
+<ol type="1">
+<li><p>Follow the instructions given around assigning group role.</p></li>
+<li><p>Your notetaker should then navigate to your groups’ section.</p></li>
+<li><p>As a group discuss and write down your expectations of yourself and each other during group work activities. You may want to think about</p>
+<ul>
+<li>how to ensure all members feel welcome,</li>
+<li>your expectations around being an active (<em>and equal</em>) contributor, and</li>
+<li>your expectations around use of technologies during activities.</li>
+</ul></li>
+</ol>
 </section>
 </section>
 <section id="sec-intro" class="level2">
 <h2 class="anchored" data-anchor-id="sec-intro">Introduction to BIOSCI 738</h2>
+<ul>
+<li>📢 Call for class rep! 📢</li>
+<li>The <a href="https://biosci738.github.io/BIOSCI738/">course guide</a>, how it works</li>
+<li><a href="https://biosci738.github.io/BIOSCI738/key-information.html#assessment-summary">Assessments in BIOSCI 738</a></li>
+</ul>
 </section>
 <section id="sec-ai" class="level2">
 <h2 class="anchored" data-anchor-id="sec-ai">GenAI in the BIOSCI 738 classroom</h2>
@@ -371,7 +427,127 @@ Expectations of genAI use
 <p><em>I think we need different kinds of professionals with different understandings of computing. Some need to be very deeply involved with how our programming languages work … others might only need some kind of overall understanding. They are not programmers by themselves, but they still should understand how software is produced.</em></p>
 </blockquote>
 <p>All the above are quotes garnered in <span class="citation" data-cites="instructor">Sheard et al. (<a href="#ref-instructor" role="doc-biblioref">2024</a>)</span>.</p>
-<p>Remember back to last week when I asked you to complete a <em>pre-course</em> quiz or two? Below are a summary of your responses to the genAI related questions. These questions were, by design, worded int he same way those in <span class="citation" data-cites="robots">Prather et al. (<a href="#ref-robots" role="doc-biblioref">2023</a>)</span> (see Figure 3 of that paper for a summary of their findings).</p>
+<p>Remember back to last week when I asked you to complete a <em>pre-course</em> quiz or two? Below are a summary of your responses to the genAI related questions. These questions were, by design, worded in the same way those in <span class="citation" data-cites="robots">Prather et al. (<a href="#ref-robots" role="doc-biblioref">2023</a>)</span> (see Figure 3 of that paper for a summary of their findings).</p>
+<section id="a-summary-of-your-responses" class="level4">
+<h4 class="anchored" data-anchor-id="a-summary-of-your-responses">A summary of your responses</h4>
+<div class="cell">
+
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
+</div>
+</div>
+<div class="cell-output-display">
+<table class="table">
+<caption>For programming assignments, I believe GenAI should be…</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Answer</th>
+<th style="text-align: right;">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Allowed/Disallowed</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Always allowed</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Always disallowed</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="1440"></p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell-output-display">
+<table class="table">
+<colgroup>
+<col style="width: 3%">
+<col style="width: 96%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Abbr</th>
+<th style="text-align: left;">Question</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A 6</td>
+<td style="text-align: left;">It is unethical to auto-generate a solution for a given problem (or a large portion of it) and submit it without understanding it.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A 7</td>
+<td style="text-align: left;">It is unethical to auto-generate a solution for a given problem (or a large portion of it) and submit it after reading it and completely understanding it.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A 8</td>
+<td style="text-align: left;">It is unethical to provide code to GenAI tools and ask them to help fix a bug.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A 9</td>
+<td style="text-align: left;">It is unethical to ask GenAI tools to comment, tidy and improve the style of the code.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A 10</td>
+<td style="text-align: left;">It is unethical to auto-generate a solution even for small parts of the assignment.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A 11</td>
+<td style="text-align: left;">It is unethical to use GenAI tools to explain to you (step-by-step) how to solve a given problem.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A 12</td>
+<td style="text-align: left;">It is unethical to reuse large portions of code verbatim from any source (e.g., the course guide, another course, a peer, online help forums etc.).</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">A 13</td>
+<td style="text-align: left;">It is unethical to reuse code verbatim from any source (e.g., the course guide, another course, a peer, online help forums etc.).</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Do you have anything else that you’d to mention about your experiences with GenAI tools?</strong> (<em>the theme of your responses</em>)</p>
+<p>[TODO]</p>
+<p><strong>Some specific answers I particularly liked or wanted to discuss</strong></p>
+<blockquote class="blockquote">
+<p>In my opinion, the controversy behind LLMs and other AIs is rather blown out of proportion, if people use it to do all their assignments for them it should be EASILY detectable for any marker/instructor…</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>I’m getting increasingly concerned by assignments at uni with the basic premise of “get chatgpt to generate this, then do [whatever is relevant for the assignment which is almost never critiquing the output]”…</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>I don’t enjoy the increasing prevalence and reliance on AI in academic settings and in day to day life due the large environmental impacts and blurry ethics…</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>GenAI’s kinda like a double-edged sword for jobs…AI’s the shortcut, but my brain’s still the GPS!</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>I have been using Grammarly (to my understanding, it’s also a generative AI),…</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>I’m worried that non-native English speakers using translation tools might be identified as AI…</p>
+</blockquote>
+</section>
 </section>
 <section id="sec-ai02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-ai02">Share and discuss</h3>
@@ -388,10 +564,31 @@ Expectations of genAI use
 <p>If you are comfortable doing so you may wish to share some of your personal experiences. Feel free to expand on the answers you gave in the <em>pre-course</em> quiz.</p>
 </div>
 </div>
+<p>Again in your groups head to <a href="https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing"><strong>the shared Google Doc</strong></a>.</p>
+<ol type="1">
+<li><p>As a group discuss and write down your expectations of yourself and each other with regards to use of GenAI for classroom activities, and assignment activities. You may want to think about</p>
+<ul>
+<li>how to ensure GenAI tools are use for the benefit of everyone’s learning, or</li>
+<li>what your expectations are of your peers who use gen AI are.</li>
+</ul></li>
+</ol>
 </section>
 </section>
 <section id="sec-peershare" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare">Q&amp;A and peer-share</h2>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Each of you who submitted a script for the diagnostic coding task should have now seen my solution to it! This is not the only solution! Please share your approach with others, especially if you got stuck in a few places! Sharing and talking things through will make things clearer. Trust me! 😉</p>
+</div>
+</div>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">

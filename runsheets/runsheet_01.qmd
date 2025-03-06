@@ -1,0 +1,319 @@
+
+## Rough timeline
+
+### **09:05 am - 10:55 pm** 
+
+ + **09:05–10.25 am** Gorilla Gambit (@sec-gorilla)
+ + **10.25–10.55 am** Group Code of Conduct (@sec-coc)
+    - Classwide discussion (@sec-coc01)
+    - Group activity (@sec-coc02)
+ + **09:55–10:05 am** Break
+ 
+ + **10.05–10.15 am** Introduction to BIOSCI 738 (@sec-intro)
+ + **10.15–10.45 am** AI in the BOISCI 738 classroom (@sec-ai)
+    - Classwide discussion (@sec-ai01)
+    - Group activity (@sec-ai02)
++ **10.45–10.55 am** Q&A and peer-share (@sec-peershare)
+
+### Notes
+
+All BIOSCI 738 lectures require your **active involvement**! See the [course policies](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies) for further infomation.
+
+Throughout this runsheet you'll find a number of different callout boxes:
+
+::: {.callout-tip}
+## this box will contain the expected learning objectives and/or outcomes for the material
+:::
+
+::: {.callout-note}
+## this box will contain some useful information
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer within your randomly allocated group
+:::
+
+### First things first...
+
+Note the **randomly allocated group** mentioned above. Each lecture I'll have run the following `R` code that randomly allocates you into groups. **It's your responsibility to get into them, just look for the cows!**
+
+<center> [<img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200">](https://biosci738.github.io/cowstats/)</center>
+
+```{r}
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "Devon Robinson", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Kellyanne Tai", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+group_allocation <- function(names, seed, groups = 9 ){
+  set.seed(seed)
+  tmp <- sample(names, replace = FALSE)
+  split(tmp, cut(seq_along(tmp), groups, labels = paste("Group", 1:groups))) 
+}
+group_allocation(names, seed = 100325)
+```
+
+
+::: {.callout-note}
+## Accessing activities
+Scan the QR code below, depending on the activity the site will update with what I want to share (e.g., this runsheet etc.)
+
+<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+:::
+
+## Gorilla Gambit {#sec-gorilla}
+
+Group activity roles include
+
+  + **A runner**, responsible for running (*or at least getting the next instruction from Charlotte*)
+  + **A coder**, responsible for implementing the code for the group this does **NOT** mean the sole coder, rather the person responsible for running any suggested code etc.
+  + **A timekeeper**, responsible for managing time for the group, making sure you stay on track
+  + **A facilitator**, responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute
+  
+In your groups **quickly** determine who is filling what role by order of next birthdays: the person with the next birthday will be the **runner**, the next birthday after that will be the **coder**, the third birthday will be **timekeeper**, and if your group has four members, the fourth member will be the **facilitator**.
+
+Once you have allocated group roles your **runner** should come to me to retrieve the first instruction.
+
+## Group Code of Conduct {#sec-coc}
+
+::: {.callout-tip}
+## A classwide agreed group working Code of Conduct
+Upon the completion of this activity I will summarise the main themes/suggestions from @sec-coc02 (*that I deem appropriate*). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.
+:::
+
+### Why I think this is important {#sec-coc01}
+
+As a student of University of Auckland student, you are responsible for understanding and abiding by the requirements of the [Student Charter](https://www.auckland.ac.nz/en/students/forms-policies-and-guidelines/student-policies-and-guidelines/student-charter.html).
+
+
+In this activity we're going to be talking about my and your expectation when working in a group during this class, see [this section of the course guide for further details](https://biosci738.github.io/BIOSCI738/key-information.html#participation).
+
+A Code of Conduct is not just a strange thing the university make you sign. They are a large part of many professional and research-focused bodies beyond university. The following lists just a few examples of societies or institutes you will likely come across during a biostats career in NZ.
+
+ + [The NZ Ecological Society CoC](https://newzealandecology.org/about/council-members/society-rules)
+ + [The NZ Statistical Association CoC](https://www.stats.org.nz/code-of-conduct/)
+ + [DoCs Code of Ethical Conduct](https://www.doc.govt.nz/about-us/our-policies-and-plans/code-of-ethical-conduct/)
+
+### Write your own {#sec-coc02}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
+:::
+
+In your groups head to [**this shared Google Doc**](https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing).
+
+ 1. Follow the instructions given around assigning group role.
+ 2. Your notetaker should then navigate to your groups' section.
+ 3. As a group discuss and write down your expectations of yourself and each other during group work activities. You may want to think about
+    
+    + how to ensure all members feel welcome,
+    + your expectations around being an active (*and equal*) contributor, and
+    + your expectations around use of technologies during activities.
+
+## Introduction to BIOSCI 738 {#sec-intro}
+
+ + 📢 Call for class rep! 📢 
+ + The [course guide](https://biosci738.github.io/BIOSCI738/), how it works
+ + [Assessments in BIOSCI 738](https://biosci738.github.io/BIOSCI738/key-information.html#assessment-summary)
+
+## GenAI in the BIOSCI 738 classroom {#sec-ai}
+
+::: {.callout-tip}
+## Expectations of genAI use
+Upon the completion of this activity I will summarise the main themes/suggestions from @sec-ai02 (*that I deem appropriate*). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.
+:::
+
+### Who's heard of *bullshit*? {#sec-ai01}
+
+> *Recently, there has been considerable interest in large language models: machine learning systems which produce human-like text and dialogue. Applications of these systems have been plagued by persistent inaccuracies in their output; these are often called “AI hallucinations”. We argue that these falsehoods, and the overall activity of large language models, is better understood as bullshit in the sense explored by Frankfurt (On Bullshit, Princeton, 2005): the models are in an important way indifferent to the truth of their outputs* 
+
+This is an excerpt from the abstract of @bullshit.
+
+> *If a student is confused about a concept, they can sit with ChatGPT and it will talk to them for hours about that particular concept.*
+
+> *It is a really great tool to create code but also a really great tool to prevent yourself from learning.*
+
+> *It’s teachers’ responsibility to motivate them and make such a problem that [students] are keen to solve and in a way that they actually would like to learn something and realize that they need these skills also in the future.*
+
+> *...there have always been so many ways of cheating, but I don’t think I’ve ever been aware of such an obvious, cheap, and easy way of cheating. Students can get [an AI tool] to answer any question I can ask them at the moment and therefore I have lost my ability to confidently assess any work that students hand in.*
+
+> *I think we need different kinds of professionals with different understandings of computing. Some need to be very deeply involved with how our programming languages work ... others might only need some kind of overall understanding. They are not programmers by themselves, but they still should understand how software is produced.*
+
+All the above are quotes garnered in @instructor.
+
+Remember back to last week when I asked you to complete a *pre-course* quiz or two? Below are a summary of your responses to the genAI related questions. These questions were, by design, worded in the same way those in @robots (see Figure 3 of that paper for a summary of their findings). 
+
+#### A summary of your responses
+
+```{r, echo = FALSE, eval = TRUE}
+question <- c(
+  "To what extent do you believe that your peers are using \nGenAI tools in ways that you would not approve of?",
+  "To what extent do you think your peers are using GenAI \ntools in ways that your lecturers would not approve of?",
+  "I regularly use GenAI tools when working with text \n(e.g. writing emails, reports, summaries).",
+  "I regularly use GenAI tools when working with code \n (e.g. generating code or explanations, debugging).",
+  "For programming assignments, I believe GenAI should be...",
+  "It is unethical to auto-generate a solution for a given \nproblem (or a large portion of it) and submit it without understanding it.",
+  "It is unethical to auto-generate a solution for a given \nproblem (or a large portion of it) and submit it after reading it and completely understanding it.",
+  "It is unethical to provide code to GenAI tools \nand ask them to help fix a bug.",
+  "It is unethical to ask GenAI tools to comment, \ntidy and improve the style of the code.",
+  "It is unethical to auto-generate a solution even for \nsmall parts of the assignment.",
+  "It is unethical to use GenAI tools to explain to you \n(step-by-step) how to solve a given problem.",
+  "It is unethical to reuse large portions of code verbatim \nfrom any source (e.g., the course guide, another course, a peer, online help forums etc.).",
+  "It is unethical to reuse code verbatim from any source \n(e.g., the course guide, another course, a peer, online help forums etc.)."
+)
+intro <- read.csv("runsheets/ai_qs.csv")
+names(intro)[1] <- "ai"
+intro[,1] <- stringr::str_replace(intro[,1],stringr::fixed(",Allowed in some assignments\\, disallowed in others (based on the assignment type\\, course level\\, etc.),"), ",Allowed/Disallowed,")
+intro <- intro[-13,]
+```
+
+```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width=12}
+library(tidyr)
+ans <- intro |>
+separate_wider_delim(ai, delim = ",", names = paste("A", 1:13))
+library(tidyverse)
+require(patchwork)
+ans$`A 1` <- fct_relevel(ans$`A 1`, "None", "Some", "A Few", "Many")
+ans$`A 2` <- fct_relevel(ans$`A 2`, "None", "Some", "A Few", "Many")
+p1 <- ggplot(ans, aes(x = `A 1`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[1]) +
+    xlab("") + ylim(c(0, 16))
+p2 <- ggplot(ans, aes(x = `A 2`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[2]) +
+    xlab("") + ylim(c(0, 16))
+p1 + p2
+
+```
+
+
+```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width=12}
+levels(ans$`A 3`) <- c("Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
+ans$`A 3` <- fct_relevel(ans$`A 3`, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
+ans$`A 4` <- fct_relevel(ans$`A 4`, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
+p1 <- ggplot(ans, aes(x = `A 3`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[3]) +
+    xlab("") + ylim(c(0, 15)) +
+    scale_x_discrete(drop = FALSE)
+p2 <- ggplot(ans, aes(x = `A 4`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[4]) +
+    xlab("")  + ylim(c(0, 15))
+p1 + p2
+
+```
+
+\captionsetup[table]{labelformat=empty}
+
+```{r, echo = FALSE, results='asis'}
+knitr::kable(table(ans[,5]), caption = question[5], col.names = c("Answer", "Freq"))
+```
+
+```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width=15, fig.height = 25}
+## 6:13
+for (i in 6:13){
+    nm <- names(ans)[i]
+    levels(ans[[nm]]) <- c("Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
+    ans[[nm]] <- fct_relevel(ans[[nm]], "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
+}
+p1 <- ggplot(ans, aes(x = `A 6`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[6]) +
+    xlab("") + ylim(c(0, 20)) +
+    scale_x_discrete(drop = FALSE)
+p2 <- ggplot(ans, aes(x = `A 7`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[7]) +
+    xlab("")  + ylim(c(0, 20)) +
+    scale_x_discrete(drop = FALSE)
+p3 <- ggplot(ans, aes(x = `A 8`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[8]) +
+    xlab("") + ylim(c(0, 20)) +
+    scale_x_discrete(drop = FALSE)
+p4 <- ggplot(ans, aes(x = `A 9`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[9]) +
+    xlab("")  + ylim(c(0, 20)) +
+    scale_x_discrete(drop = FALSE)
+p5 <- ggplot(ans, aes(x = `A 10`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[10]) +
+    xlab("") + ylim(c(0, 20)) +
+    scale_x_discrete(drop = FALSE)
+p6 <- ggplot(ans, aes(x = `A 11`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[11]) +
+    xlab("")  + ylim(c(0, 20)) +
+    scale_x_discrete(drop = FALSE)
+p7 <- ggplot(ans, aes(x = `A 12`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[12]) +
+    xlab("") + ylim(c(0, 20)) +
+    scale_x_discrete(drop = FALSE)
+p8 <- ggplot(ans, aes(x = `A 13`)) +
+    geom_bar() + theme_bw() + ylab("") + ggtitle(question[13]) +
+    xlab("")  + ylim(c(0, 20))  +
+    scale_x_discrete(drop = FALSE)
+
+(p1 + p2 + p3 + p4)/(p5 + p6 + p7 + p8)
+```
+
+
+```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
+### cor
+tmp <- ans
+for (i in 6:13){
+    nm <- names(tmp)[i]
+    tmp[[nm]] <-  ifelse(ans[[nm]] ==  "Strongly Disagree", 1, ifelse(ans[[nm]] ==  "Disagree", 2,
+                                                               ifelse(ans[[nm]] ==  "Neutral", 3, 
+                                                               ifelse(ans[[nm]] ==  "Agree", 4, 5))))
+   
+}
+
+M <- cor(tmp[, 6:13])
+require(corrplot)
+corrplot(M, method = 'ellipse',type = 'upper',  col = COL2('PiYG'))
+```
+
+```{r, echo = FALSE, results='asis'}
+knitr::kable(data.frame(Abbr = paste("A ", 6:13, sep = ""), Question = stringr::str_replace(question[6:13], "\n", "")))
+```
+
+**Do you have anything else that you'd to mention about your experiences with GenAI tools?** (*the theme of your responses*)
+
+[TODO]
+
+
+**Some specific answers I particularly liked or wanted to discuss**
+
+> In my opinion, the controversy behind LLMs and other AIs is rather blown out of proportion, if people use it to do all their assignments for them it should be EASILY detectable for any marker/instructor...
+
+> I'm getting increasingly concerned by assignments at uni with the basic premise of "get chatgpt to generate this, then do [whatever is relevant for the assignment which is almost never critiquing the output]"...
+
+> I don't enjoy the increasing prevalence and reliance on AI in academic settings and in day to day life due the large environmental impacts and blurry ethics...
+
+> GenAI’s kinda like a double-edged sword for jobs...AI’s the shortcut, but my brain’s still the GPS!
+
+> I have been using Grammarly (to my understanding, it's also a generative AI),...
+
+> I'm worried that non-native English speakers using translation tools might be identified as AI...
+
+### Share and discuss {#sec-ai02}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss in your group how much you agree/disagree with the opinions and summaries presented above. 
+
+If you are comfortable doing so you may wish to share some of your personal experiences. Feel free to expand on the answers you gave in the *pre-course* quiz. 
+:::
+
+
+Again in your groups head to [**the shared Google Doc**](https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing).
+
+ 1. As a group discuss and write down your expectations of yourself and each other with regards to use of GenAI for classroom activities, and assignment activities. You may want to think about
+    
+    + how to ensure GenAI tools are use for the benefit of everyone's learning, or
+    + what your expectations are of your peers who use gen AI are.
+
+## Q&A and peer-share {#sec-peershare}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
+
+Each of you who submitted a script for the diagnostic coding task should have now seen my solution to it! This is not the only solution! Please share your approach with others, especially if you got stuck in a few places! Sharing and talking things through will make things clearer. Trust me! 😉
+:::
+
+### References
+
+::: {#refs}
+:::
+
+
