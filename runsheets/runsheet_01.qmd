@@ -10,10 +10,10 @@
  + **09:55–10:05 am** Break
  
  + **10.05–10.15 am** Introduction to BIOSCI 738 (@sec-intro)
- + **10.15–10.45 am** AI in the BOISCI 738 classroom (@sec-ai)
+ + **10.15–10.40 am** AI in the BOISCI 738 classroom (@sec-ai)
     - Classwide discussion (@sec-ai01)
     - Group activity (@sec-ai02)
-+ **10.45–10.55 am** Q&A and peer-share (@sec-peershare)
++ **10.40–10.55 am** Q&A and peer-share (@sec-peershare)
 
 ### Notes
 
@@ -40,7 +40,7 @@ Note the **randomly allocated group** mentioned above. Each lecture I'll have ru
 <center> [<img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200">](https://biosci738.github.io/cowstats/)</center>
 
 ```{r}
-names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "Devon Robinson", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Kellyanne Tai", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
 group_allocation <- function(names, seed, groups = 9 ){
   set.seed(seed)
   tmp <- sample(names, replace = FALSE)
@@ -109,7 +109,7 @@ In your groups head to [**this shared Google Doc**](https://docs.google.com/docu
 
 ## Introduction to BIOSCI 738 {#sec-intro}
 
- + 📢 Call for class rep! 📢 
+ + 📢 Call for class rep! 📢  First meeting **25 March, 1-2pm**
  + The [course guide](https://biosci738.github.io/BIOSCI738/), how it works
  + [Assessments in BIOSCI 738](https://biosci738.github.io/BIOSCI738/key-information.html#assessment-summary)
 
