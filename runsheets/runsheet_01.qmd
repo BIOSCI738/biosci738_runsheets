@@ -40,7 +40,7 @@ Note the **randomly allocated group** mentioned above. Each lecture I'll have ru
 <center> [<img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200">](https://biosci738.github.io/cowstats/)</center>
 
 ```{r}
-names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "Pikitangarangi Ratapu", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
 group_allocation <- function(names, seed, groups = 9 ){
   set.seed(seed)
   tmp <- sample(names, replace = FALSE)
@@ -161,7 +161,6 @@ question <- c(
 intro <- read.csv("runsheets/ai_qs.csv")
 names(intro)[1] <- "ai"
 intro[,1] <- stringr::str_replace(intro[,1],stringr::fixed(",Allowed in some assignments\\, disallowed in others (based on the assignment type\\, course level\\, etc.),"), ",Allowed/Disallowed,")
-intro <- intro[-13,]
 ```
 
 ```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width=12}
@@ -174,10 +173,10 @@ ans$`A 1` <- fct_relevel(ans$`A 1`, "None", "Some", "A Few", "Many")
 ans$`A 2` <- fct_relevel(ans$`A 2`, "None", "Some", "A Few", "Many")
 p1 <- ggplot(ans, aes(x = `A 1`)) +
     geom_bar() + theme_bw() + ylab("") + ggtitle(question[1]) +
-    xlab("") + ylim(c(0, 16))
+    xlab("") + ylim(c(0, 25))
 p2 <- ggplot(ans, aes(x = `A 2`)) +
     geom_bar() + theme_bw() + ylab("") + ggtitle(question[2]) +
-    xlab("") + ylim(c(0, 16))
+    xlab("") + ylim(c(0, 25))
 p1 + p2
 
 ```
@@ -189,11 +188,11 @@ ans$`A 3` <- fct_relevel(ans$`A 3`, "Strongly Disagree", "Disagree", "Neutral", 
 ans$`A 4` <- fct_relevel(ans$`A 4`, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
 p1 <- ggplot(ans, aes(x = `A 3`)) +
     geom_bar() + theme_bw() + ylab("") + ggtitle(question[3]) +
-    xlab("") + ylim(c(0, 15)) +
+    xlab("") + ylim(c(0, 20)) +
     scale_x_discrete(drop = FALSE)
 p2 <- ggplot(ans, aes(x = `A 4`)) +
     geom_bar() + theme_bw() + ylab("") + ggtitle(question[4]) +
-    xlab("")  + ylim(c(0, 15))
+    xlab("")  + ylim(c(0, 20))
 p1 + p2
 
 ```
@@ -268,9 +267,9 @@ corrplot(M, method = 'ellipse',type = 'upper',  col = COL2('PiYG'))
 knitr::kable(data.frame(Abbr = paste("A ", 6:13, sep = ""), Question = stringr::str_replace(question[6:13], "\n", "")))
 ```
 
-**Do you have anything else that you'd to mention about your experiences with GenAI tools?** (*the theme of your responses*)
 
-[TODO]
+![*The theme of your responses*](runsheets/ai_wordcloud.png)
+
 
 
 **Some specific answers I particularly liked or wanted to discuss**
@@ -286,6 +285,9 @@ knitr::kable(data.frame(Abbr = paste("A ", 6:13, sep = ""), Question = stringr::
 > I have been using Grammarly (to my understanding, it's also a generative AI),...
 
 > I'm worried that non-native English speakers using translation tools might be identified as AI...
+
+
+**Do you have anything else that you'd to mention about your experiences with GenAI tools?**
 
 ### Share and discuss {#sec-ai02}
 
@@ -308,8 +310,50 @@ Again in your groups head to [**the shared Google Doc**](https://docs.google.com
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
 
-Each of you who submitted a script for the diagnostic coding task should have now seen my solution to it! This is not the only solution! Please share your approach with others, especially if you got stuck in a few places! Sharing and talking things through will make things clearer. Trust me! 😉
+Below is my solution to the diagnostic coding task. This is not the only solution! In your groups run through my approach and share your approach (especially if you got stuck in a few places)! Sharing and talking things through will make things clearer. Trust me! 😉
 :::
+
+```{r, eval = TRUE, echo = TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dicots_proportions.csv"
+data <- read_csv(url)
+data %>%
+    select(starts_with(c("Calluna", "Treat"))) %>%
+    ## select only heather & treatment cols
+    group_by(`Treat!`) %>%
+    ## group by treatment so calcs are done by group
+    summarise_all(list(mean = mean, sd = sd)) %>%
+    ## cal mean and sd of each group
+    pivot_longer(!`Treat!`) %>%
+    ## flip the data frame to "long" format
+    separate(name, c(NA, "year", "calc")) %>%
+    ## extract and separate info from name column
+    mutate(year = as.numeric(str_remove(year, "vulgaris"))) %>%
+    ## keep numeric year info only
+    pivot_wider(names_from = "calc", values_from = "value") %>%
+    ## data into wider format based on mean & sd
+    mutate(`Treat!` = str_replace(`Treat!`, "HB", "BH")) %>%
+    ## change treatment label HB to BH
+    mutate(`Treat!` = fct_relevel(`Treat!`,c("C", "B", "H", "BH"))) %>%
+    ## relevel treatment to help with legend ordering later on
+    ggplot(., aes(x = year, y = mean, group = `Treat!`)) + ## set up plot
+    geom_point(aes(pch = `Treat!`)) + geom_line(aes(linetype = `Treat!`)) +
+    ## add mean points & lines
+    ylab("Percentage cover") + xlab("Year") + ## axis labels
+    geom_errorbar(aes(ymin = mean - sd/sqrt(6),
+                      ymax = mean + sd/sqrt(6)), width = .05) +
+    ## add error-bars note we need the standard error of the mean of the proportion
+    scale_x_continuous(breaks = seq(8, 12, 1),
+                       labels = seq(2008, 2012, 1),
+                       expand = expansion(0.01),
+                       limits = c(08, 12)) + ## match x-axis labels and limits
+    scale_y_continuous(breaks = seq(0, 1, 0.1), labels = seq(0, 100, 10),
+                       expand = expansion(0.01),
+                       limits = c(0, 0.7)) + ## match y-axis labels and limits
+    theme_classic() + ## closest in-built ggplot theme I could find
+    theme(legend.title = element_blank()) ## remove legend title
+
+```
 
 ### References
 

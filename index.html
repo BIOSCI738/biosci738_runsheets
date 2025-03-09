@@ -231,7 +231,7 @@ this box will contain some useful information
 <a href="https://biosci738.github.io/cowstats/"><img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200"></a>
 </center>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Emma Akeroyd"</span>, <span class="st">"Jianing Chen"</span>, <span class="st">"Sunny Chen"</span>, <span class="st">"Anqi Cheng"</span>, <span class="st">"Barnaby Clegg-Shaw"</span>, <span class="st">"Shoule Du"</span>, <span class="st">"Yi Han"</span>, <span class="st">"Shuxiang He"</span>, <span class="st">"Alex Johnson"</span>, <span class="st">"Karie Labidon"</span>, <span class="st">"He Li"</span>, <span class="st">"Zichang Li"</span>, <span class="st">"Happy Liang"</span>, <span class="st">"Jiaxin Liu"</span>, <span class="st">"Leyang Liu"</span>, <span class="st">"Angel Loh"</span>, <span class="st">"Yue Ma"</span>, <span class="st">"Congkai Meng"</span>, <span class="st">"Robert Mihok"</span>, <span class="st">"Laura Munck"</span>, <span class="st">"Lana Najar"</span>, <span class="st">"Bayu Pitandoyo"</span>, <span class="st">"YOGAPRIYA S"</span>, <span class="st">"Antonia Schebek-Fuerstenberg"</span>, <span class="st">"Keyi Sun"</span>, <span class="st">"Charlotte Sutton"</span>, <span class="st">"Julia Thain"</span>, <span class="st">"Yingyi Wang"</span>, <span class="st">"Yutong Wang"</span>, <span class="st">"Ziyi Wang"</span>, <span class="st">"Yutao Yang"</span>, <span class="st">"Tongzheng Yao"</span>, <span class="st">"Xinyue Zhang"</span>, <span class="st">"Zhixiao Zhang"</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Emma Akeroyd"</span>, <span class="st">"Jianing Chen"</span>, <span class="st">"Sunny Chen"</span>, <span class="st">"Anqi Cheng"</span>, <span class="st">"Barnaby Clegg-Shaw"</span>, <span class="st">"Shoule Du"</span>, <span class="st">"Yi Han"</span>, <span class="st">"Shuxiang He"</span>, <span class="st">"Alex Johnson"</span>, <span class="st">"Karie Labidon"</span>, <span class="st">"He Li"</span>, <span class="st">"Zichang Li"</span>, <span class="st">"Happy Liang"</span>, <span class="st">"Jiaxin Liu"</span>, <span class="st">"Leyang Liu"</span>, <span class="st">"Angel Loh"</span>, <span class="st">"Yue Ma"</span>, <span class="st">"Congkai Meng"</span>, <span class="st">"Robert Mihok"</span>, <span class="st">"Laura Munck"</span>, <span class="st">"Lana Najar"</span>, <span class="st">"Bayu Pitandoyo"</span>, <span class="st">"Pikitangarangi Ratapu"</span>, <span class="st">"YOGAPRIYA S"</span>, <span class="st">"Antonia Schebek-Fuerstenberg"</span>, <span class="st">"Keyi Sun"</span>, <span class="st">"Charlotte Sutton"</span>, <span class="st">"Julia Thain"</span>, <span class="st">"Yingyi Wang"</span>, <span class="st">"Yutong Wang"</span>, <span class="st">"Ziyi Wang"</span>, <span class="st">"Yutao Yang"</span>, <span class="st">"Tongzheng Yao"</span>, <span class="st">"Xinyue Zhang"</span>, <span class="st">"Zhixiao Zhang"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>group_allocation <span class="ot">&lt;-</span> <span class="cf">function</span>(names, seed, <span class="at">groups =</span> <span class="dv">9</span> ){</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">sample</span>(names, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
@@ -240,32 +240,33 @@ this box will contain some useful information
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">group_allocation</span>(names, <span class="at">seed =</span> <span class="dv">100325</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`Group 1`
-[1] "Tongzheng Yao" "Lana Najar"    "Jiaxin Liu"    "Emma Akeroyd" 
+[1] "Yutao Yang"   "Lana Najar"   "Emma Akeroyd" "Shoule Du"   
 
 $`Group 2`
-[1] "Shoule Du"    "Robert Mihok" "Laura Munck"  "Alex Johnson"
+[1] "Robert Mihok" "Laura Munck"  "Alex Johnson" "Sunny Chen"  
 
 $`Group 3`
-[1] "Sunny Chen"       "Charlotte Sutton" "Xinyue Zhang"     "Zichang Li"      
+[1] "Julia Thain"        "Xinyue Zhang"       "Zichang Li"        
+[4] "Barnaby Clegg-Shaw"
 
 $`Group 4`
-[1] "Barnaby Clegg-Shaw" "Ziyi Wang"          "Anqi Cheng"        
+[1] "Pikitangarangi Ratapu"        "Zhixiao Zhang"               
+[3] "Anqi Cheng"                   "Antonia Schebek-Fuerstenberg"
 
 $`Group 5`
-[1] "YOGAPRIYA S"   "Congkai Meng"  "Zhixiao Zhang" "Julia Thain"  
+[1] "Congkai Meng" "Jiaxin Liu"   "Yingyi Wang" 
 
 $`Group 6`
-[1] "Yutao Yang"     "Jianing Chen"   "Keyi Sun"       "Bayu Pitandoyo"
+[1] "Tongzheng Yao"    "Jianing Chen"     "Charlotte Sutton" "YOGAPRIYA S"     
 
 $`Group 7`
-[1] "Happy Liang"   "He Li"         "Karie Labidon"
+[1] "Ziyi Wang"      "Yutong Wang"    "He Li"          "Bayu Pitandoyo"
 
 $`Group 8`
-[1] "Antonia Schebek-Fuerstenberg" "Angel Loh"                   
-[3] "Yutong Wang"                  "Leyang Liu"                  
+[1] "Karie Labidon" "Happy Liang"   "Angel Loh"     "Yue Ma"       
 
 $`Group 9`
-[1] "Shuxiang He" "Yue Ma"      "Yi Han"      "Yingyi Wang"</code></pre>
+[1] "Leyang Liu"  "Keyi Sun"    "Yi Han"      "Shuxiang He"</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -432,7 +433,7 @@ Expectations of genAI use
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Allowed/Disallowed</td>
-<td style="text-align: right;">28</td>
+<td style="text-align: right;">37</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Always allowed</td>
@@ -440,7 +441,7 @@ Expectations of genAI use
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Always disallowed</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
 </tr>
 </tbody>
 </table>
@@ -508,8 +509,12 @@ Expectations of genAI use
 </tr>
 </tbody>
 </table>
-<p><strong>Do you have anything else that you’d to mention about your experiences with GenAI tools?</strong> (<em>the theme of your responses</em>)</p>
-<p>[TODO]</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="runsheets/ai_wordcloud.png" class="img-fluid figure-img"></p>
+<figcaption><em>The theme of your responses</em></figcaption>
+</figure>
+</div>
 <p><strong>Some specific answers I particularly liked or wanted to discuss</strong></p>
 <blockquote class="blockquote">
 <p>In my opinion, the controversy behind LLMs and other AIs is rather blown out of proportion, if people use it to do all their assignments for them it should be EASILY detectable for any marker/instructor…</p>
@@ -529,6 +534,7 @@ Expectations of genAI use
 <blockquote class="blockquote">
 <p>I’m worried that non-native English speakers using translation tools might be identified as AI…</p>
 </blockquote>
+<p><strong>Do you have anything else that you’d to mention about your experiences with GenAI tools?</strong></p>
 </section>
 </section>
 <section id="sec-ai02" class="level3">
@@ -568,7 +574,54 @@ Expectations of genAI use
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Each of you who submitted a script for the diagnostic coding task should have now seen my solution to it! This is not the only solution! Please share your approach with others, especially if you got stuck in a few places! Sharing and talking things through will make things clearer. Trust me! 😉</p>
+<p>Below is my solution to the diagnostic coding task. This is not the only solution! In your groups run through my approach and share your approach (especially if you got stuck in a few places)! Sharing and talking things through will make things clearer. Trust me! 😉</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dicots_proportions.csv"</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"Calluna"</span>, <span class="st">"Treat"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="do">## select only heather &amp; treatment cols</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="do">## group by treatment so calcs are done by group</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="do">## cal mean and sd of each group</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="do">## flip the data frame to "long" format</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(name, <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">"year"</span>, <span class="st">"calc"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="do">## extract and separate info from name column</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">str_remove</span>(year, <span class="st">"vulgaris"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="do">## keep numeric year info only</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"calc"</span>, <span class="at">values_from =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="do">## data into wider format based on mean &amp; sd</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">str_replace</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>, <span class="st">"HB"</span>, <span class="st">"BH"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="do">## change treatment label HB to BH</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">fct_relevel</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>,<span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"H"</span>, <span class="st">"BH"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="do">## relevel treatment to help with legend ordering later on</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean, <span class="at">group =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span> <span class="do">## set up plot</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">pch =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="do">## add mean points &amp; lines</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Percentage cover"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span> <span class="do">## axis labels</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>),</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>)), <span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="do">## add error-bars note we need the standard error of the mean of the proportion</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">1</span>),</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">2008</span>, <span class="dv">2012</span>, <span class="dv">1</span>),</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                       <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fl">0.01</span>),</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">08</span>, <span class="dv">12</span>)) <span class="sc">+</span> <span class="do">## match x-axis labels and limits</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>),</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fl">0.01</span>),</span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.7</span>)) <span class="sc">+</span> <span class="do">## match y-axis labels and limits</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="do">## closest in-built ggplot theme I could find</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="do">## remove legend title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <section id="references" class="level3">
