@@ -1,0 +1,107 @@
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **09:05–10.15 am** Activity & AI expectations (@sec-01)
+ + **10.15–10.55 am** Data visualization (@sec-02)
+    - What *makes* a plot? (@sec-0201)
+    - Roast my plots (@sec-0202)
+    
+ + **09:55–10:05 am** Break
+ 
+ + **10.05–10.30 am** Good programming practice (@sec-03)
+    - Classwide discussion (@sec-0301)
+    - Group activity (@sec-0302)
+ + **10.30–10.50 am** Reproducible / retracted analysis (@sec-04)
+
++ **10.50–10.55 am** Q&A and peer-share (@sec-peershare)
+
+### Notes
+
+All BIOSCI 738 lectures require your **active involvement**! See the [course policies](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies) for further infomation.
+
+Throughout this runsheet you'll find a number of different callout boxes:
+
+::: {.callout-tip}
+## this box will contain the expected learning objectives and/or outcomes for the material
+:::
+
+::: {.callout-note}
+## this box will contain some useful information
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer within your randomly allocated group
+:::
+
+### Randomly allocated groups
+
+**It's your responsibility to get into these, just look for the cows!**
+
+<center> [<img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200">](https://biosci738.github.io/cowstats/)</center>
+
+```{r}
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "Pikitangarangi Ratapu", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+group_allocation <- function(names, seed, groups = 9 ){
+  set.seed(seed)
+  tmp <- sample(names, replace = FALSE)
+  split(tmp, cut(seq_along(tmp), groups, labels = paste("Group", 1:groups))) 
+}
+group_allocation(names, seed = 100325)
+```
+
+
+::: {.callout-note}
+## Accessing activities
+
+Scan the QR code below, depending on the activity the site will update with what I want to share (e.g., this runsheet etc.)
+
+<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+:::
+
+## Activity & AI expectations {#sec-01}
+
+::: {.callout-tip}
+## A classwide agreed group working Code of Conduct
+:::
+
+## Data visualization (#sec-02)
+
+
+### What *makes* a plot? (#sec-0201)
+
+::: {.callout-note}
+Scan the QR code below and based on *vibes* alone choose your favourite until in tell you to stop
+
+<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+:::
+
+### Roast my plots (#sec-0202)
+
+In your groups head to [**this shared Google Doc**](https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing) and as a group, **roast** (yes you can be as mean as you like, honestly) a plot from **one** of the following publications^[Note I have intentionally only used published plots that I made, I consent to the roasting!]
+
+ + [*Discrete-space continuous-time models of marine mammal exposure to Navy sonar*](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/eap.2475) (@whales)
+ + [`stelfi`: *An `R` package for fitting Hawkes and log-Gaussian Cox point process models*](https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.11005) (@stelfi)
+ + [Identifying prognostic structural features in tissue sections of colon cancer patients using point pattern analysis](https://eprints.gla.ac.uk/193326/7/193326.pdf) (@cancer)
+
+## Reproducible / retracted analysis {#sec-04}
+
+Today we're going to be using [data]() collected as part of [this study](https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-
+fraud) and 
+
+> The data comes from a study that claims to show that people are less likely to act dishonestly when they sign an honesty pledge at the top of a form rather than at the bottom of a form. Participants received a worksheet with 20 math puzzles and were offered $1 for each puzzle they (reported to have) solved correctly within 5 minutes. After the 5 minutes passed, participants were asked to count how many puzzles they solved correctly and then throw away their worksheets. The goal was to mislead participants into thinking that the experimenter could not observe their true performance, when in fact they could because each worksheet had a unique identifier. Thus, participants could cheat (and earn more money) without fear of being caught, while the researchers could observe how much each participant had cheated. Participants then completed a “tax” form reporting how much money they had earned, and also how much time and money they spent coming to the lab. The experimenters partially compensated participants for those costs.
+
+> The paper reported very large effects. Signing at the top vs. the bottom lowered the share of people over-reporting their math puzzle performance from 79% to 37% (p = .0013), and lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p < .00001). Similarly, it nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014).
+
+
+
+
+### References
+
+::: {#refs}
+:::
+
+

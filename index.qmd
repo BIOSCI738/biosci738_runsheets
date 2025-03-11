@@ -2,7 +2,7 @@
 title: "Advanced Biological Data Analysis"
 title-block-banner: "#c7dbe2"
 subtitle: "BIOSCI 738"
-date: "March 10 2025"
+date: "March 14 2025"
 author: Charlotte Jones-Todd
 institute: University of Auckland
 format: html
@@ -13,4 +13,4 @@ bibliography: runsheets/references.bib
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-{{< include runsheets/runsheet_01.qmd >}}
+{{< include runsheets/runsheet_02.qmd >}}

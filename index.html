@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Charlotte Jones-Todd">
-<meta name="dcterms.date" content="2025-03-10">
+<meta name="dcterms.date" content="2025-03-14">
 
 <title>Advanced Biological Data Analysis</title>
 <style>
@@ -129,7 +129,7 @@ div.csl-indent {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 10, 2025</p>
+        <p class="date">March 14, 2025</p>
       </div>
     </div>
     
@@ -144,11 +144,9 @@ div.csl-indent {
    
   <ul class="collapse">
   <li><a href="#rough-timeline" id="toc-rough-timeline" class="nav-link active" data-scroll-target="#rough-timeline">Rough timeline</a></li>
-  <li><a href="#sec-gorilla" id="toc-sec-gorilla" class="nav-link" data-scroll-target="#sec-gorilla">Gorilla Gambit</a></li>
-  <li><a href="#sec-coc" id="toc-sec-coc" class="nav-link" data-scroll-target="#sec-coc">Group Code of Conduct</a></li>
-  <li><a href="#sec-intro" id="toc-sec-intro" class="nav-link" data-scroll-target="#sec-intro">Introduction to BIOSCI 738</a></li>
-  <li><a href="#sec-ai" id="toc-sec-ai" class="nav-link" data-scroll-target="#sec-ai">GenAI in the BIOSCI 738 classroom</a></li>
-  <li><a href="#sec-peershare" id="toc-sec-peershare" class="nav-link" data-scroll-target="#sec-peershare">Q&amp;A and peer-share</a></li>
+  <li><a href="#sec-01" id="toc-sec-01" class="nav-link" data-scroll-target="#sec-01">Activity &amp; AI expectations</a></li>
+  <li><a href="#data-visualization-sec-02" id="toc-data-visualization-sec-02" class="nav-link" data-scroll-target="#data-visualization-sec-02">Data visualization (#sec-02)</a></li>
+  <li><a href="#sec-04" id="toc-sec-04" class="nav-link" data-scroll-target="#sec-04">Reproducible / retracted analysis</a></li>
   </ul>
 </nav>
 </div>
@@ -161,23 +159,23 @@ div.csl-indent {
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></p>
 <section id="rough-timeline" class="level2">
 <h2 class="anchored" data-anchor-id="rough-timeline">Rough timeline</h2>
-<section id="am---1055-am" class="level3">
-<h3 class="anchored" data-anchor-id="am---1055-am"><strong>09:05 am - 10:55 am</strong></h3>
+<section id="pm---0355-pm" class="level3">
+<h3 class="anchored" data-anchor-id="pm---0355-pm"><strong>02:05 pm - 03:55 pm</strong></h3>
 <ul>
-<li><p><strong>09:05–10.25 am</strong> Gorilla Gambit (<a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2</a>)</p></li>
-<li><p><strong>10.25–10.55 am</strong> Group Code of Conduct (<a href="#sec-coc" class="quarto-xref">Section&nbsp;3</a>)</p>
+<li><p><strong>09:05–10.15 am</strong> Activity &amp; AI expectations (<a href="#sec-01" class="quarto-xref">Section&nbsp;2</a>)</p></li>
+<li><p><strong>10.15–10.55 am</strong> Data visualization (<strong>?@sec-02</strong>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-coc01" class="quarto-xref">Section&nbsp;3.1</a>)</li>
-<li>Group activity (<a href="#sec-coc02" class="quarto-xref">Section&nbsp;3.2</a>)</li>
+<li>What <em>makes</em> a plot? (<strong>?@sec-0201</strong>)</li>
+<li>Roast my plots (<strong>?@sec-0202</strong>)</li>
 </ul></li>
 <li><p><strong>09:55–10:05 am</strong> Break</p></li>
-<li><p><strong>10.05–10.15 am</strong> Introduction to BIOSCI 738 (<a href="#sec-intro" class="quarto-xref">Section&nbsp;4</a>)</p></li>
-<li><p><strong>10.15–10.40 am</strong> AI in the BOISCI 738 classroom (<a href="#sec-ai" class="quarto-xref">Section&nbsp;5</a>)</p>
+<li><p><strong>10.05–10.30 am</strong> Good programming practice (<strong>?@sec-03</strong>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-ai01" class="quarto-xref">Section&nbsp;5.1</a>)</li>
-<li>Group activity (<a href="#sec-ai02" class="quarto-xref">Section&nbsp;5.2</a>)</li>
+<li>Classwide discussion (<strong>?@sec-0301</strong>)</li>
+<li>Group activity (<strong>?@sec-0302</strong>)</li>
 </ul></li>
-<li><p><strong>10.40–10.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare" class="quarto-xref">Section&nbsp;6</a>)</p></li>
+<li><p><strong>10.30–10.50 am</strong> Reproducible / retracted analysis (<a href="#sec-04" class="quarto-xref">Section&nbsp;4</a>)</p></li>
+<li><p><strong>10.50–10.55 am</strong> Q&amp;A and peer-share (<strong>?@sec-peershare</strong>)</p></li>
 </ul>
 </section>
 <section id="notes" class="level3">
@@ -224,14 +222,14 @@ this box will contain some useful information
 </div>
 </div>
 </section>
-<section id="first-things-first" class="level3">
-<h3 class="anchored" data-anchor-id="first-things-first">First things first…</h3>
-<p>Note the <strong>randomly allocated group</strong> mentioned above. Each lecture I’ll have run the following <code>R</code> code that randomly allocates you into groups. <strong>It’s your responsibility to get into them, just look for the cows!</strong></p>
+<section id="randomly-allocated-groups" class="level3">
+<h3 class="anchored" data-anchor-id="randomly-allocated-groups">Randomly allocated groups</h3>
+<p><strong>It’s your responsibility to get into these, just look for the cows!</strong></p>
 <center>
 <a href="https://biosci738.github.io/cowstats/"><img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200"></a>
 </center>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Emma Akeroyd"</span>, <span class="st">"Jianing Chen"</span>, <span class="st">"Sunny Chen"</span>, <span class="st">"Anqi Cheng"</span>, <span class="st">"Barnaby Clegg-Shaw"</span>, <span class="st">"Shoule Du"</span>, <span class="st">"Yi Han"</span>, <span class="st">"Shuxiang He"</span>, <span class="st">"Alex Johnson"</span>, <span class="st">"Karie Labidon"</span>, <span class="st">"He Li"</span>, <span class="st">"Zichang Li"</span>, <span class="st">"Happy Liang"</span>, <span class="st">"Jiaxin Liu"</span>, <span class="st">"Leyang Liu"</span>, <span class="st">"Angel Loh"</span>, <span class="st">"Yue Ma"</span>, <span class="st">"Congkai Meng"</span>, <span class="st">"Robert Mihok"</span>, <span class="st">"Laura Munck"</span>, <span class="st">"Lana Najar"</span>, <span class="st">"Bayu Pitandoyo"</span>, <span class="st">"Pikitangarangi Ratapu"</span>, <span class="st">"YOGAPRIYA S"</span>, <span class="st">"Antonia Schebek-Fuerstenberg"</span>, <span class="st">"Keyi Sun"</span>, <span class="st">"Charlotte Sutton"</span>, <span class="st">"Julia Thain"</span>, <span class="st">"Yingyi Wang"</span>, <span class="st">"Yutong Wang"</span>, <span class="st">"Ziyi Wang"</span>, <span class="st">"Yutao Yang"</span>, <span class="st">"Tongzheng Yao"</span>, <span class="st">"Xinyue Zhang"</span>, <span class="st">"Zhixiao Zhang"</span>)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Emma Akeroyd"</span>, <span class="st">"Jianing Chen"</span>, <span class="st">"Sunny Chen"</span>, <span class="st">"Anqi Cheng"</span>, <span class="st">"Barnaby Clegg-Shaw"</span>, <span class="st">"Francesca Domanska"</span>, <span class="st">"Shoule Du"</span>, <span class="st">"Yi Han"</span>, <span class="st">"Shuxiang He"</span>, <span class="st">"Alex Johnson"</span>, <span class="st">"Karie Labidon"</span>, <span class="st">"He Li"</span>, <span class="st">"Zichang Li"</span>, <span class="st">"Happy Liang"</span>, <span class="st">"Jiaxin Liu"</span>, <span class="st">"Leyang Liu"</span>, <span class="st">"Angel Loh"</span>, <span class="st">"Yue Ma"</span>, <span class="st">"Congkai Meng"</span>, <span class="st">"Robert Mihok"</span>, <span class="st">"Laura Munck"</span>, <span class="st">"Lana Najar"</span>, <span class="st">"Bayu Pitandoyo"</span>, <span class="st">"Pikitangarangi Ratapu"</span>, <span class="st">"YOGAPRIYA S"</span>, <span class="st">"Antonia Schebek-Fuerstenberg"</span>, <span class="st">"Keyi Sun"</span>, <span class="st">"Charlotte Sutton"</span>, <span class="st">"Julia Thain"</span>, <span class="st">"Yingyi Wang"</span>, <span class="st">"Yutong Wang"</span>, <span class="st">"Ziyi Wang"</span>, <span class="st">"Yutao Yang"</span>, <span class="st">"Tongzheng Yao"</span>, <span class="st">"Xinyue Zhang"</span>, <span class="st">"Zhixiao Zhang"</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>group_allocation <span class="ot">&lt;-</span> <span class="cf">function</span>(names, seed, <span class="at">groups =</span> <span class="dv">9</span> ){</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  tmp <span class="ot">&lt;-</span> <span class="fu">sample</span>(names, <span class="at">replace =</span> <span class="cn">FALSE</span>)</span>
@@ -240,33 +238,34 @@ this box will contain some useful information
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">group_allocation</span>(names, <span class="at">seed =</span> <span class="dv">100325</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>$`Group 1`
-[1] "Yutao Yang"   "Lana Najar"   "Emma Akeroyd" "Shoule Du"   
+[1] "Ziyi Wang"    "Laura Munck"  "Emma Akeroyd" "Robert Mihok"
 
 $`Group 2`
-[1] "Robert Mihok" "Laura Munck"  "Alex Johnson" "Sunny Chen"  
+[1] "Shuxiang He"  "Sunny Chen"   "Yutong Wang"  "Xinyue Zhang"
 
 $`Group 3`
-[1] "Julia Thain"        "Xinyue Zhang"       "Zichang Li"        
-[4] "Barnaby Clegg-Shaw"
+[1] "He Li"                 "Barnaby Clegg-Shaw"    "Pikitangarangi Ratapu"
+[4] "Bayu Pitandoyo"       
 
 $`Group 4`
-[1] "Pikitangarangi Ratapu"        "Zhixiao Zhang"               
-[3] "Anqi Cheng"                   "Antonia Schebek-Fuerstenberg"
+[1] "Francesca Domanska" "Anqi Cheng"         "Lana Najar"        
+[4] "Charlotte Sutton"  
 
 $`Group 5`
-[1] "Congkai Meng" "Jiaxin Liu"   "Yingyi Wang" 
+[1] "Yutao Yang"    "Yue Ma"        "Happy Liang"   "Zhixiao Zhang"
 
 $`Group 6`
-[1] "Tongzheng Yao"    "Jianing Chen"     "Charlotte Sutton" "YOGAPRIYA S"     
+[1] "Tongzheng Yao" "Jianing Chen"  "Yingyi Wang"   "Keyi Sun"     
 
 $`Group 7`
-[1] "Ziyi Wang"      "Yutong Wang"    "He Li"          "Bayu Pitandoyo"
+[1] "Congkai Meng"                 "Julia Thain"                 
+[3] "Karie Labidon"                "Antonia Schebek-Fuerstenberg"
 
 $`Group 8`
-[1] "Karie Labidon" "Happy Liang"   "Angel Loh"     "Yue Ma"       
+[1] "Alex Johnson" "Zichang Li"   "Leyang Liu"   "Angel Loh"   
 
 $`Group 9`
-[1] "Leyang Liu"  "Keyi Sun"    "Yi Han"      "Shuxiang He"</code></pre>
+[1] "Jiaxin Liu"  "YOGAPRIYA S" "Shoule Du"   "Yi Han"     </code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -290,20 +289,8 @@ Accessing activities
 </div>
 </section>
 </section>
-<section id="sec-gorilla" class="level2">
-<h2 class="anchored" data-anchor-id="sec-gorilla">Gorilla Gambit</h2>
-<p>Group activity roles include</p>
-<ul>
-<li><strong>A runner</strong>, responsible for running (<em>or at least getting the next instruction from Charlotte</em>)</li>
-<li><strong>A coder</strong>, responsible for implementing the code for the group this does <strong>NOT</strong> mean the sole coder, rather the person responsible for running any suggested code etc.</li>
-<li><strong>A timekeeper</strong>, responsible for managing time for the group, making sure you stay on track</li>
-<li><strong>A facilitator</strong>, responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute</li>
-</ul>
-<p>In your groups <strong>quickly</strong> determine who is filling what role by order of next birthdays: the person with the next birthday will be the <strong>runner</strong>, the next birthday after that will be the <strong>coder</strong>, the third birthday will be <strong>timekeeper</strong>, and if your group has four members, the fourth member will be the <strong>facilitator</strong>.</p>
-<p>Once you have allocated group roles your <strong>runner</strong> should come to me to retrieve the first instruction.</p>
-</section>
-<section id="sec-coc" class="level2">
-<h2 class="anchored" data-anchor-id="sec-coc">Group Code of Conduct</h2>
+<section id="sec-01" class="level2">
+<h2 class="anchored" data-anchor-id="sec-01">Activity &amp; AI expectations</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -314,333 +301,76 @@ A classwide agreed group working Code of Conduct
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02" class="quarto-xref">Section&nbsp;3.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
-</div>
-</div>
-<section id="sec-coc01" class="level3">
-<h3 class="anchored" data-anchor-id="sec-coc01">Why I think this is important</h3>
-<p>As a student of University of Auckland student, you are responsible for understanding and abiding by the requirements of the <a href="https://www.auckland.ac.nz/en/students/forms-policies-and-guidelines/student-policies-and-guidelines/student-charter.html">Student Charter</a>.</p>
-<p>In this activity we’re going to be talking about my and your expectation when working in a group during this class, see <a href="https://biosci738.github.io/BIOSCI738/key-information.html#participation">this section of the course guide for further details</a>.</p>
-<p>A Code of Conduct is not just a strange thing the university make you sign. They are a large part of many professional and research-focused bodies beyond university. The following lists just a few examples of societies or institutes you will likely come across during a biostats career in NZ.</p>
-<ul>
-<li><a href="https://newzealandecology.org/about/council-members/society-rules">The NZ Ecological Society CoC</a></li>
-<li><a href="https://www.stats.org.nz/code-of-conduct/">The NZ Statistical Association CoC</a></li>
-<li><a href="https://www.doc.govt.nz/about-us/our-policies-and-plans/code-of-ethical-conduct/">DoCs Code of Ethical Conduct</a></li>
-</ul>
-</section>
-<section id="sec-coc02" class="level3">
-<h3 class="anchored" data-anchor-id="sec-coc02">Write your own</h3>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
-</div>
-</div>
-<div class="callout-body-container callout-body">
 
 </div>
 </div>
-<p>In your groups head to <a href="https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing"><strong>this shared Google Doc</strong></a>.</p>
-<ol type="1">
-<li><p>Follow the instructions given around assigning group role.</p></li>
-<li><p>Your notetaker should then navigate to your groups’ section.</p></li>
-<li><p>As a group discuss and write down your expectations of yourself and each other during group work activities. You may want to think about</p>
-<ul>
-<li>how to ensure all members feel welcome,</li>
-<li>your expectations around being an active (<em>and equal</em>) contributor, and</li>
-<li>your expectations around use of technologies during activities.</li>
-</ul></li>
-</ol>
 </section>
-</section>
-<section id="sec-intro" class="level2">
-<h2 class="anchored" data-anchor-id="sec-intro">Introduction to BIOSCI 738</h2>
-<ul>
-<li>📢 Call for class rep! 📢 First meeting <strong>25 March, 1-2pm</strong></li>
-<li>The <a href="https://biosci738.github.io/BIOSCI738/">course guide</a>, how it works</li>
-<li><a href="https://biosci738.github.io/BIOSCI738/key-information.html#assessment-summary">Assessments in BIOSCI 738</a></li>
-</ul>
-</section>
-<section id="sec-ai" class="level2">
-<h2 class="anchored" data-anchor-id="sec-ai">GenAI in the BIOSCI 738 classroom</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<section id="data-visualization-sec-02" class="level2">
+<h2 class="anchored" data-anchor-id="data-visualization-sec-02">Data visualization (#sec-02)</h2>
+<section id="what-makes-a-plot-sec-0201" class="level3">
+<h3 class="anchored" data-anchor-id="what-makes-a-plot-sec-0201">What <em>makes</em> a plot? (#sec-0201)</h3>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Expectations of genAI use
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-ai02" class="quarto-xref">Section&nbsp;5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+<p>Scan the QR code below and based on <em>vibes</em> alone choose your favourite until in tell you to stop</p>
+<center>
+<p>
+<a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a>
+</p>
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738">
+</center>
 </div>
 </div>
-<section id="sec-ai01" class="level3">
-<h3 class="anchored" data-anchor-id="sec-ai01">Who’s heard of <em>bullshit</em>?</h3>
-<blockquote class="blockquote">
-<p><em>Recently, there has been considerable interest in large language models: machine learning systems which produce human-like text and dialogue. Applications of these systems have been plagued by persistent inaccuracies in their output; these are often called “AI hallucinations”. We argue that these falsehoods, and the overall activity of large language models, is better understood as bullshit in the sense explored by Frankfurt (On Bullshit, Princeton, 2005): the models are in an important way indifferent to the truth of their outputs</em></p>
-</blockquote>
-<p>This is an excerpt from the abstract of <span class="citation" data-cites="bullshit">Hicks, Humphries, and Slater (<a href="#ref-bullshit" role="doc-biblioref">2024</a>)</span>.</p>
-<blockquote class="blockquote">
-<p><em>If a student is confused about a concept, they can sit with ChatGPT and it will talk to them for hours about that particular concept.</em></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><em>It is a really great tool to create code but also a really great tool to prevent yourself from learning.</em></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><em>It’s teachers’ responsibility to motivate them and make such a problem that [students] are keen to solve and in a way that they actually would like to learn something and realize that they need these skills also in the future.</em></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><em>…there have always been so many ways of cheating, but I don’t think I’ve ever been aware of such an obvious, cheap, and easy way of cheating. Students can get [an AI tool] to answer any question I can ask them at the moment and therefore I have lost my ability to confidently assess any work that students hand in.</em></p>
-</blockquote>
-<blockquote class="blockquote">
-<p><em>I think we need different kinds of professionals with different understandings of computing. Some need to be very deeply involved with how our programming languages work … others might only need some kind of overall understanding. They are not programmers by themselves, but they still should understand how software is produced.</em></p>
-</blockquote>
-<p>All the above are quotes garnered in <span class="citation" data-cites="instructor">Sheard et al. (<a href="#ref-instructor" role="doc-biblioref">2024</a>)</span>.</p>
-<p>Remember back to last week when I asked you to complete a <em>pre-course</em> quiz or two? Below are a summary of your responses to the genAI related questions. These questions were, by design, worded in the same way those in <span class="citation" data-cites="robots">Prather et al. (<a href="#ref-robots" role="doc-biblioref">2023</a>)</span> (see Figure 3 of that paper for a summary of their findings).</p>
-<section id="a-summary-of-your-responses" class="level4">
-<h4 class="anchored" data-anchor-id="a-summary-of-your-responses">A summary of your responses</h4>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
-</div>
-</div>
-</div>
-<table class="caption-top table">
-<caption>For programming assignments, I believe GenAI should be…</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Answer</th>
-<th style="text-align: right;">Freq</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Allowed/Disallowed</td>
-<td style="text-align: right;">37</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Always allowed</td>
-<td style="text-align: right;">3</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Always disallowed</td>
-<td style="text-align: right;">3</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="1440"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 3%">
-<col style="width: 96%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Abbr</th>
-<th style="text-align: left;">Question</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">A 6</td>
-<td style="text-align: left;">It is unethical to auto-generate a solution for a given problem (or a large portion of it) and submit it without understanding it.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A 7</td>
-<td style="text-align: left;">It is unethical to auto-generate a solution for a given problem (or a large portion of it) and submit it after reading it and completely understanding it.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">A 8</td>
-<td style="text-align: left;">It is unethical to provide code to GenAI tools and ask them to help fix a bug.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A 9</td>
-<td style="text-align: left;">It is unethical to ask GenAI tools to comment, tidy and improve the style of the code.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">A 10</td>
-<td style="text-align: left;">It is unethical to auto-generate a solution even for small parts of the assignment.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A 11</td>
-<td style="text-align: left;">It is unethical to use GenAI tools to explain to you (step-by-step) how to solve a given problem.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">A 12</td>
-<td style="text-align: left;">It is unethical to reuse large portions of code verbatim from any source (e.g., the course guide, another course, a peer, online help forums etc.).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">A 13</td>
-<td style="text-align: left;">It is unethical to reuse code verbatim from any source (e.g., the course guide, another course, a peer, online help forums etc.).</td>
-</tr>
-</tbody>
-</table>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="runsheets/ai_wordcloud.png" class="img-fluid figure-img"></p>
-<figcaption><em>The theme of your responses</em></figcaption>
-</figure>
-</div>
-<p><strong>Some specific answers I particularly liked or wanted to discuss</strong></p>
-<blockquote class="blockquote">
-<p>In my opinion, the controversy behind LLMs and other AIs is rather blown out of proportion, if people use it to do all their assignments for them it should be EASILY detectable for any marker/instructor…</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I’m getting increasingly concerned by assignments at uni with the basic premise of “get chatgpt to generate this, then do [whatever is relevant for the assignment which is almost never critiquing the output]”…</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I don’t enjoy the increasing prevalence and reliance on AI in academic settings and in day to day life due the large environmental impacts and blurry ethics…</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>GenAI’s kinda like a double-edged sword for jobs…AI’s the shortcut, but my brain’s still the GPS!</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I have been using Grammarly (to my understanding, it’s also a generative AI),…</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I’m worried that non-native English speakers using translation tools might be identified as AI…</p>
-</blockquote>
-<p><strong>Do you have anything else that you’d to mention about your experiences with GenAI tools?</strong></p>
 </section>
-</section>
-<section id="sec-ai02" class="level3">
-<h3 class="anchored" data-anchor-id="sec-ai02">Share and discuss</h3>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss in your group how much you agree/disagree with the opinions and summaries presented above.
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If you are comfortable doing so you may wish to share some of your personal experiences. Feel free to expand on the answers you gave in the <em>pre-course</em> quiz.</p>
-</div>
-</div>
-<p>Again in your groups head to <a href="https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing"><strong>the shared Google Doc</strong></a>.</p>
-<ol type="1">
-<li><p>As a group discuss and write down your expectations of yourself and each other with regards to use of GenAI for classroom activities, and assignment activities. You may want to think about</p>
+<section id="roast-my-plots-sec-0202" class="level3">
+<h3 class="anchored" data-anchor-id="roast-my-plots-sec-0202">Roast my plots (#sec-0202)</h3>
+<p>In your groups head to <a href="https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing"><strong>this shared Google Doc</strong></a> and as a group, <strong>roast</strong> (yes you can be as mean as you like, honestly) a plot from <strong>one</strong> of the following publications<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <ul>
-<li>how to ensure GenAI tools are use for the benefit of everyone’s learning, or</li>
-<li>what your expectations are of your peers who use gen AI are.</li>
-</ul></li>
-</ol>
+<li><a href="https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/eap.2475"><em>Discrete-space continuous-time models of marine mammal exposure to Navy sonar</em></a> (<span class="citation" data-cites="whales">Jones-Todd, Pirotta, et al. (<a href="#ref-whales" role="doc-biblioref">n.d.</a>)</span>)</li>
+<li><a href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.11005"><code>stelfi</code>: <em>An <code>R</code> package for fitting Hawkes and log-Gaussian Cox point process models</em></a> (<span class="citation" data-cites="stelfi">Jones-Todd and Helsdingen (<a href="#ref-stelfi" role="doc-biblioref">n.d.</a>)</span>)</li>
+<li><a href="https://eprints.gla.ac.uk/193326/7/193326.pdf">Identifying prognostic structural features in tissue sections of colon cancer patients using point pattern analysis</a> (<span class="citation" data-cites="cancer">Jones-Todd, Caie, et al. (<a href="#ref-cancer" role="doc-biblioref">n.d.</a>)</span>)</li>
+</ul>
 </section>
 </section>
-<section id="sec-peershare" class="level2">
-<h2 class="anchored" data-anchor-id="sec-peershare">Q&amp;A and peer-share</h2>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Below is my solution to the diagnostic coding task. This is not the only solution! In your groups run through my approach and share your approach (especially if you got stuck in a few places)! Sharing and talking things through will make things clearer. Trust me! 😉</p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dicots_proportions.csv"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"Calluna"</span>, <span class="st">"Treat"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="do">## select only heather &amp; treatment cols</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="do">## group by treatment so calcs are done by group</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="do">## cal mean and sd of each group</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="do">## flip the data frame to "long" format</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(name, <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">"year"</span>, <span class="st">"calc"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="do">## extract and separate info from name column</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">str_remove</span>(year, <span class="st">"vulgaris"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="do">## keep numeric year info only</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"calc"</span>, <span class="at">values_from =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="do">## data into wider format based on mean &amp; sd</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">str_replace</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>, <span class="st">"HB"</span>, <span class="st">"BH"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="do">## change treatment label HB to BH</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">fct_relevel</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>,<span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"H"</span>, <span class="st">"BH"</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="do">## relevel treatment to help with legend ordering later on</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean, <span class="at">group =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span> <span class="do">## set up plot</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">pch =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="do">## add mean points &amp; lines</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Percentage cover"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span> <span class="do">## axis labels</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>),</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>)), <span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="do">## add error-bars note we need the standard error of the mean of the proportion</span></span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">1</span>),</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">2008</span>, <span class="dv">2012</span>, <span class="dv">1</span>),</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                       <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fl">0.01</span>),</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">08</span>, <span class="dv">12</span>)) <span class="sc">+</span> <span class="do">## match x-axis labels and limits</span></span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>),</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fl">0.01</span>),</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.7</span>)) <span class="sc">+</span> <span class="do">## match y-axis labels and limits</span></span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="do">## closest in-built ggplot theme I could find</span></span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="do">## remove legend title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="sec-04" class="level2">
+<h2 class="anchored" data-anchor-id="sec-04">Reproducible / retracted analysis</h2>
+<p>Today we’re going to be using <a href="">data</a> collected as part of <a href="https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-%20fraud">this study</a> and</p>
+<blockquote class="blockquote">
+<p>The data comes from a study that claims to show that people are less likely to act dishonestly when they sign an honesty pledge at the top of a form rather than at the bottom of a form. Participants received a worksheet with 20 math puzzles and were offered $1 for each puzzle they (reported to have) solved correctly within 5 minutes. After the 5 minutes passed, participants were asked to count how many puzzles they solved correctly and then throw away their worksheets. The goal was to mislead participants into thinking that the experimenter could not observe their true performance, when in fact they could because each worksheet had a unique identifier. Thus, participants could cheat (and earn more money) without fear of being caught, while the researchers could observe how much each participant had cheated. Participants then completed a “tax” form reporting how much money they had earned, and also how much time and money they spent coming to the lab. The experimenters partially compensated participants for those costs.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>The paper reported very large effects. Signing at the top vs.&nbsp;the bottom lowered the share of people over-reporting their math puzzle performance from 79% to 37% (p = .0013), and lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001). Similarly, it nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014).</p>
+</blockquote>
 <section id="references" class="level3">
 <h3 class="anchored" data-anchor-id="references">References</h3>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-bullshit" class="csl-entry" role="listitem">
-Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.”</span> <em>Ethics and Information Technology</em> 26 (38). <a href="https://doi.org/10.1007/s10676-024-09775-5">https://doi.org/10.1007/s10676-024-09775-5</a>.
+<div id="ref-cancer" class="csl-entry" role="listitem">
+Jones-Todd, Charlotte M., Peter Caie, Janine B. Illian, Ben C. Stevenson, Anne Savage, David J. Harrison, and James L. Bown. n.d. <span>“Identifying Prognostic Structural Features in Tissue Sections of Colon Cancer Patients Using Point Pattern Analysis.”</span> <em>Statistics in Medicine</em> 38 (8): 1421–41. https://doi.org/<a href="https://doi.org/10.1002/sim.8046">https://doi.org/10.1002/sim.8046</a>.
 </div>
-<div id="ref-robots" class="csl-entry" role="listitem">
-Prather, James, Paul Denny, Juho Leinonen, Brett A. Becker, Ibrahim Albluwi, Michelle Craig, Hieke Keuning, et al. 2023. <span>“The Robots Are Here: Navigating the Generative AI Revolution in Computing Education.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3623762.3633499">https://doi.org/10.1145/3623762.3633499</a>.
+<div id="ref-stelfi" class="csl-entry" role="listitem">
+Jones-Todd, Charlotte M., and Alec B. M. van Helsdingen. n.d. <span>“Stelfi: An r Package for Fitting Hawkes and Log-Gaussian Cox Point Process Models.”</span> <em>Ecology and Evolution</em> 14 (2): e11005. https://doi.org/<a href="https://doi.org/10.1002/ece3.11005">https://doi.org/10.1002/ece3.11005</a>.
 </div>
-<div id="ref-instructor" class="csl-entry" role="listitem">
-Sheard, Judy, Paul Denny, Arto Hellas, Juho Leinonen, Lauri Malmi, and Simon. 2024. <span>“Instructor Perceptions of AI Code Generation Tools - a Multi-Institutional Interview Study.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3626252.3630880">https://doi.org/10.1145/3626252.3630880</a>.
+<div id="ref-whales" class="csl-entry" role="listitem">
+Jones-Todd, Charlotte M., Enrico Pirotta, John W. Durban, Diane E. Claridge, Robin W. Baird, Erin A. Falcone, Gregory S. Schorr, Stephanie Watwood, and Len Thomas. n.d. <span>“Discrete-Space Continuous-Time Models of Marine Mammal Exposure to Navy Sonar.”</span> <em>Ecological Applications</em> 32 (1): e02475. https://doi.org/<a href="https://doi.org/10.1002/eap.2475">https://doi.org/10.1002/eap.2475</a>.
 </div>
 </div>
 </section>
 </section>
 
-</main>
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Note I have intentionally only used published plots that I made, I consent to the roasting!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
