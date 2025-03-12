@@ -1,107 +1,234 @@
+# March 14th
 
 ## Rough timeline
 
 ### **02:05 pm - 03:55 pm** 
 
- + **09:05–10.15 am** Activity & AI expectations (@sec-01)
- + **10.15–10.55 am** Data visualization (@sec-02)
-    - What *makes* a plot? (@sec-0201)
-    - Roast my plots (@sec-0202)
+ + **02:05–02.20 pm** Activity & AI expectations (@sec-coccompleted)
+ + **02.20–02.45 pm** Data visualization (@sec-viz)
+    - What *makes* a plot? (@sec-vibes)
+    - Roast my plots (@sec-roast)
     
- + **09:55–10:05 am** Break
+ + **02:45–02:55 pm** Break
  
- + **10.05–10.30 am** Good programming practice (@sec-03)
-    - Classwide discussion (@sec-0301)
-    - Group activity (@sec-0302)
- + **10.30–10.50 am** Reproducible / retracted analysis (@sec-04)
+ + **02.55–03.15 pm** Good programming practice (@sec-prog_practice)
+    - Classwide discussion (@sec-prog_practice01)
+    - Group activity (@sec-prog_practice02)
+ + **03.15–03.45 pm** Reproducible / retracted analysis (@sec-honesty)
 
-+ **10.50–10.55 am** Q&A and peer-share (@sec-peershare)
++ **03.45–03.55 pm** Q&A and peer-share (@sec-peershare02)
 
-### Notes
-
-All BIOSCI 738 lectures require your **active involvement**! See the [course policies](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies) for further infomation.
-
-Throughout this runsheet you'll find a number of different callout boxes:
-
-::: {.callout-tip}
-## this box will contain the expected learning objectives and/or outcomes for the material
-:::
-
-::: {.callout-note}
-## this box will contain some useful information
-:::
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer within your randomly allocated group
-:::
 
 ### Randomly allocated groups
 
 **It's your responsibility to get into these, just look for the cows!**
 
-<center> [<img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/coxhex.png" alt="BIOSCI738 hex" width="200" height="200">](https://biosci738.github.io/cowstats/)</center>
-
-```{r}
+```{r, echo = 2}
 names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "Pikitangarangi Ratapu", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
-group_allocation <- function(names, seed, groups = 9 ){
-  set.seed(seed)
-  tmp <- sample(names, replace = FALSE)
-  split(tmp, cut(seq_along(tmp), groups, labels = paste("Group", 1:groups))) 
-}
-group_allocation(names, seed = 100325)
+group_allocation(names, seed = 1312)
 ```
 
 
-::: {.callout-note}
-## Accessing activities
+## Activity & AI expectations {#sec-coccompleted}
 
-Scan the QR code below, depending on the activity the site will update with what I want to share (e.g., this runsheet etc.)
-
-<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
-<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+:::{.callout-warning icon=false}
+## <i class="fa fa-users" aria-hidden="true"></i> Class rep!!
+BIOSCI 738 needs a class rep!
 :::
-
-## Activity & AI expectations {#sec-01}
 
 ::: {.callout-tip}
-## A classwide agreed group working Code of Conduct
+## A classwide agreed group working Code of Conduct 
+As decided by you in last lecture's activity @sec-coc. I have [updated the course guide accordingly](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies)!
 :::
 
-## Data visualization (#sec-02)
+**Some points of note**
+
+ + One thing that I think gets overlooked around the use of genAI (over and above preserving "academic integrity") is that it's often not the use of these tools that endangers academic integrity, more that the output generated (more often than not) does not answer the question posed.
+ + Whilst using genAI tools to help your writing is fine for the most part, I would be particularly careful around overusing them (particularly for more technical content like stats inference). This is as often subtle differences in sentence structure changes the statistical meaning, which can make the inference incorrect.
+ + Quite a few papers exist (up yo you to decide if these are reputable or not) stating that large language models have teaching and grading capabilities. This is true, however, typically these papers discuss how instructors use LLM capabilities to provide students with personalized learning opportunities. This requires expertly "training" specific models to ensure that specific learning objectives etc. are being met and given in the style specific to a particular course's assessment. Personally, I would be very wary using genAI tools yourself to validate your learning, especially in regards to more complex material where common misconceptions infect the internet!
+ + IMO genAI is just as overly verbose and often complicated in terms of generating code as it is renowned for in generating writing. For example, think back to the diagnostic coding task. I saw many submissions that included this syntax `"\\d{2}$"`. This is correct syntax (based on what it was used for) but I'd be keen for anyone who used it to explain what it's doing!
+ 
+
+## Data visualization {#sec-viz}
+
+::: {.callout-tip}
+## Interpret, critique and communicate using visualization! 
+:::
 
 
-### What *makes* a plot? (#sec-0201)
+### What *makes* a plot? {#sec-vibes}
 
 ::: {.callout-note}
-Scan the QR code below and based on *vibes* alone choose your favourite until in tell you to stop
+## Scan the QR code below and based on *vibes* alone choose your favourite until I tell you to stop
 
 <center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
 <img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
 :::
 
-### Roast my plots (#sec-0202)
+### Roast my plots {#sec-roast}
 
-In your groups head to [**this shared Google Doc**](https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing) and as a group, **roast** (yes you can be as mean as you like, honestly) a plot from **one** of the following publications^[Note I have intentionally only used published plots that I made, I consent to the roasting!]
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> 
+
+In your groups head to [**this shared Google Doc**](https://docs.google.com/document/d/1VVVii7_TQ4J1Yqu_aJ8yWe1i2DAyl6rtAH5AebA5XFQ/edit?usp=sharing) and as a group, **roast** (yes you can be as mean as you like, honestly) or admire a plot from **one** of the following publications^[Note I have intentionally only used published plots that I made, I consent to the roasting!]
 
  + [*Discrete-space continuous-time models of marine mammal exposure to Navy sonar*](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/eap.2475) (@whales)
  + [`stelfi`: *An `R` package for fitting Hawkes and log-Gaussian Cox point process models*](https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.11005) (@stelfi)
  + [Identifying prognostic structural features in tissue sections of colon cancer patients using point pattern analysis](https://eprints.gla.ac.uk/193326/7/193326.pdf) (@cancer)
 
-## Reproducible / retracted analysis {#sec-04}
+:::
 
-Today we're going to be using [data]() collected as part of [this study](https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-
-fraud) and 
+## Good programming practice {#sec-prog_practice}
+
+::: {.callout-tip}
+## Abide by good programming practices to avoid future heartaches!
+:::
+
+
+### IMO {#sec-prog_practice01}
+
+Following [this section of the course guide](https://biosci738.github.io/BIOSCI738/accuracy-and-honesty.html#good-coding-practice) let's talk about what good programming practice looks like in this course. For a more in-depth and general discussion I recommend @goodprogramming.
+
+#### You should always start with a **clean work space**. 
+
+Honestly, I think the default RStudio behaviour of restoring `.RData` files etc. just makes everyone lazy...
+
+#### Devise a workflow
+
+Remember the pre-course tasks? I mentioned the following
+
+> During this course, very likely in other courses you'll be taking this semester and in your future careers you will have to deal with many different datasets, wrangle "dirty" data and deal with data from different sources (at the very least). The key thing is to ensure that ANY ANALYSIS YOU CARRY OUT is TRANSPARENT and FULLY REPRODICIBLE (either for your peers or future you). This is where setting good foundations and devising a well-thought-out workflow is imperative!
+
+
+```{r, echo = FALSE, message = FALSE}
+work <- read_csv("runsheets/workflow.csv")
+work <- work |> separate_wider_delim(workflow, delim = ",", names_sep = "", too_few = "align_start") |> c() |> unlist()
+knitr::kable(sort(table(work)), caption = "A summary of your responses", col.names = c("Answer", "Freq"))
+```
+
+#### It's not all about length
+
+::: {.callout-note}
+## Lines of code written is NOT a measure of skill! 
+
+Some people thing that a writing a large number of lines of code demonstrates prowess. It does not. Surely we've all added nonsense to essays to "fill up" the word count! 
+
+On the over hand some people strive for carrying out operations in the fewest number of lines possible. This typically makes their work impossible to follow!
+
+:::
+
+I recommend finding a spot you're comfortable in between the following code snippets.^[The former example is a solution posed on [this StackOverflow post](https://stackoverflow.com/questions/19341554/regular-expression-in-base-r-regex-to-identify-email-address) asking about email address validation. The latter snippet is my attempt at a long winded (and far less stable) approach.] Most importantly keep your style readable & consistent! 
+
+```{r}
+grepl("^[[:alnum:]._-]+@[[:alnum:].-]+[:alnum:]+$", c("larry@gmail.com", "larry-sally@sally.com", "larry@sally.larry.com", "test@test.com.", "charlottejones-todd"))
+```
+
+or
+
+```{r}
+email_addresses <- c("larry@gmail.com", "larry-sally@sally.com", "larry@sally.larry.com", "test@test.com.", "charlottejones-todd")
+contain_at <- function(x){
+  grep("@", x)
+}
+idx <- contain_at(email_addresses)
+correct_email <- email_addresses[idx]
+correct_email
+contain_notrailing <- function(x){
+  grep("^[:alnum:]+", x)
+}
+idx01 <- contain_notrailing(correct_email)
+final_correct_email <- correct_email[idx01]
+final_correct_email
+```
+
+
+
+#### Keep the *inside* thoughts *inside* 
+
+::: {.callout-note}
+## An `R` script (or equivalent) is a roadmap to your work. 
+
+You should present the cleanest most direct route you can!
+
+:::
+
+I recommend the latter approach to the second task in @sec-gorilla (if you were going to pass on your solution that is). It's not that each step shouldn't be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.
+
+```{r, eval = FALSE}
+## read in data
+data <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv")
+## printing data
+print(data)
+View(data) ##view opens up new window
+data$bmi
+## Create new data object
+BMIdata <- data$bmi
+BMIdata
+## plot data
+plot(BMIdata)
+## calculate mean
+mean <- mean(BMIdata)
+print(mean)
+## round
+round(mean(BMIdata))
+```
+
+vs
+
+```{r, eval = FALSE}
+data <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv")
+round(mean(data$bmi))
+```
+
+#### Make it EASY for me to give you marks
+  
+  + **Think** about your audience!
+  + Ensure your code is **reproducible**!
+  + **Do not include any irrelevant or overly verbose output**; this makes it difficult to find and therefore award the relevant components!
+  + Keep your code **tidy** and your plots **neat** and **professional**. For example, it’s very useful for the reader if you use informative, readable axis labels rather than allowing the default behaviour of printing the R object name.  
+
+### Your own experience {#sec-prog_practice02}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> 
+
+Again, head to [**this shared Google Doc**](https://docs.google.com/document/d/1VVVii7_TQ4J1Yqu_aJ8yWe1i2DAyl6rtAH5AebA5XFQ/edit?usp=sharing) and based on personal experience (or otherwise) detail a scenario where you have *dug yourself into a hole* (i.e., faced avoidable issues) as you've not fully abided by best programming practices. Also outline how you plan to avoid this in future.
+:::
+
+## *Reproducible* analysis {#sec-honesty}
+
+::: {.callout-tip}
+## Exploring data
+Building on @sec-gorilla here you'll be carrying out some basic EDA and interpreting hypothesis tests.
+:::
+
+
+In this task you're going to be using [these data](https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854) collected as part of a (now retracted) study (@retracted)^[See [this Guardian article](https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud) about the debacle].
 
 > The data comes from a study that claims to show that people are less likely to act dishonestly when they sign an honesty pledge at the top of a form rather than at the bottom of a form. Participants received a worksheet with 20 math puzzles and were offered $1 for each puzzle they (reported to have) solved correctly within 5 minutes. After the 5 minutes passed, participants were asked to count how many puzzles they solved correctly and then throw away their worksheets. The goal was to mislead participants into thinking that the experimenter could not observe their true performance, when in fact they could because each worksheet had a unique identifier. Thus, participants could cheat (and earn more money) without fear of being caught, while the researchers could observe how much each participant had cheated. Participants then completed a “tax” form reporting how much money they had earned, and also how much time and money they spent coming to the lab. The experimenters partially compensated participants for those costs.
 
 > The paper reported very large effects. Signing at the top vs. the bottom lowered the share of people over-reporting their math puzzle performance from 79% to 37% (p = .0013), and lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p < .00001). Similarly, it nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014).
 
 
+**Variables of interest**
+
+  + `Cond`: `= 0`, No signature; `= 1`, Signed at the top; and `= 2`, Signed at the bottom.
+  + `CheatedOnMatrixTax`: `= 0`, participants didn't *cheat*/over-report their maths puzzle performance; and `= 1`, participants did *cheat*/over-report their maths puzzle performance.
+  + `OverReport`: the amount of puzzles solved participants over-reported by.
+  + `SumDeduction`: the amount of claimed commuting expenses $US (corrected for the *true* amount).
+ 
+As a group:
+
+ 1. Discuss what to the presented results indicate/claim? 
+ 
+ 2. Use the variables listed above and reproduce the results quoted above using the appropriate statistical analysis/test. How easy was it to replicate these results given the way the results were presented? How might you improve the way the results were presented?
+ 
+ 3. There is an additional column of interest `flag`; this is a binary variable that indicates if the observations were considered dodgy (i.e., fraudulent) or not. Create a visualization/carry out some analysis that *could* be used as evidence for/against this belief.
 
 
-### References
+## Q&A and peer-share {#sec-peershare02}
 
-::: {#refs}
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> If you've not already got RStudio open, open it up. Show your workspace to your neighbour and justify its contents! Share any tips you have about ensuring an efficient workflow.
 :::
-
 

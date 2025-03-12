@@ -1,0 +1,33 @@
+# Activity solutions
+
+::: {.callout-note}
+## Suggested `R` code solutions
+
+This section will be update with my suggested solutions to the class wide activities after their conclusion. I **strongly** recommend that you review these outside of class if only to familiarise yourself with a different approach.
+:::
+
+
+## Suggested solution to @sec-gorilla
+
+```{r, eval = FALSE}
+require(tidyverse)
+## read in data
+data <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv")
+data
+## Mean BMI
+data %>%
+    summarise(mean(bmi)) %>%
+    round()
+## Max BMI males
+data %>%
+    filter(gender == "male") %>%
+    filter(bmi == max(bmi))
+## t-test BMI males vs females
+t.test(bmi ~ gender, data = data)
+## t-test steps males vs females
+t.test(steps ~ gender, data = data) 
+
+## plotting. ALWAYS PLOT YOUR DATA!
+ggplot(data, aes(x = steps, y = bmi, col = gender)) +
+    geom_point()
+```
