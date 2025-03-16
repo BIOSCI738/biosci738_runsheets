@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.262">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -48,48 +49,20 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -103,8 +76,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -118,10 +90,11 @@ div.csl-indent {
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <style>
-    .quarto-title-block .quarto-title-banner {
-      background: #c7dbe2;
-    }
-    </style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #c7dbe2;
+      }
+</style>
 
 
 </head>
@@ -141,14 +114,14 @@ div.csl-indent {
     <div class="quarto-title-meta-heading">Affiliation</div>
     
       <div class="quarto-title-meta-contents">
-      Charlotte Jones-Todd 
+      <p class="author">Charlotte Jones-Todd </p>
     </div>
-      <div class="quarto-title-meta-contents">
+    <div class="quarto-title-meta-contents">
           <p class="affiliation">
               University of Auckland
             </p>
         </div>
-      </div>
+    </div>
 
   <div class="quarto-title-meta">
 
@@ -189,9 +162,11 @@ div.csl-indent {
   <li><a href="#sec-honesty" id="toc-sec-honesty" class="nav-link" data-scroll-target="#sec-honesty"><em>Reproducible</em> analysis</a></li>
   <li><a href="#sec-peershare02" id="toc-sec-peershare02" class="nav-link" data-scroll-target="#sec-peershare02">Q&amp;A and peer-share</a></li>
   </ul></li>
+  <li><a href="#march-17th" id="toc-march-17th" class="nav-link" data-scroll-target="#march-17th">March 17th</a></li>
   <li><a href="#activity-solutions" id="toc-activity-solutions" class="nav-link" data-scroll-target="#activity-solutions">Activity solutions</a>
   <ul class="collapse">
   <li><a href="#suggested-solution-to-sec-gorilla" id="toc-suggested-solution-to-sec-gorilla" class="nav-link" data-scroll-target="#suggested-solution-to-sec-gorilla">Suggested solution to Section&nbsp;2.2</a></li>
+  <li><a href="#suggested-solution-to-sec-honesty" id="toc-suggested-solution-to-sec-honesty" class="nav-link" data-scroll-target="#suggested-solution-to-sec-honesty">Suggested solution to Section&nbsp;3.5</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -202,17 +177,18 @@ div.csl-indent {
 
 
 
+
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></p>
 <section id="notes" class="level1">
 <h1>Notes</h1>
 <p>All BIOSCI 738 lectures require your <strong>active involvement</strong>! See the <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">course policies</a> for further infomation.</p>
 <p>Throughout this runsheet you’ll find a number of different callout boxes:</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 this box will contain the expected learning objectives and/or outcomes for the material
 </div>
 </div>
@@ -220,12 +196,12 @@ this box will contain the expected learning objectives and/or outcomes for the m
 
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 this box will contain some useful information
 </div>
 </div>
@@ -233,12 +209,12 @@ this box will contain some useful information
 
 </div>
 </div>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer within your randomly allocated group
 </div>
 </div>
@@ -259,12 +235,12 @@ this box will contain some useful information
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(tmp, <span class="fu">cut</span>(<span class="fu">seq_along</span>(tmp), groups, <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">"Group"</span>, <span class="dv">1</span><span class="sc">:</span>groups))) </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Accessing activities
 </div>
 </div>
@@ -287,20 +263,20 @@ Accessing activities
 <section id="am---1055-am" class="level3">
 <h3 class="anchored" data-anchor-id="am---1055-am"><strong>09:05 am - 10:55 am</strong></h3>
 <ul>
-<li><p><strong>09:05–10.25 am</strong> Gorilla Gambit (<a href="#sec-gorilla">Section&nbsp;2.2</a>)</p></li>
-<li><p><strong>10.25–10.55 am</strong> Group Code of Conduct (<a href="#sec-coc">Section&nbsp;2.3</a>)</p>
+<li><p><strong>09:05–10.25 am</strong> Gorilla Gambit (<a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a>)</p></li>
+<li><p><strong>10.25–10.55 am</strong> Group Code of Conduct (<a href="#sec-coc" class="quarto-xref">Section&nbsp;2.3</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-coc01">Section&nbsp;2.3.1</a>)</li>
-<li>Group activity (<a href="#sec-coc02">Section&nbsp;2.3.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-coc01" class="quarto-xref">Section&nbsp;2.3.1</a>)</li>
+<li>Group activity (<a href="#sec-coc02" class="quarto-xref">Section&nbsp;2.3.2</a>)</li>
 </ul></li>
 <li><p><strong>09:55–10:05 am</strong> Break</p></li>
-<li><p><strong>10.05–10.15 am</strong> Introduction to BIOSCI 738 (<a href="#sec-intro">Section&nbsp;2.4</a>)</p></li>
-<li><p><strong>10.15–10.40 am</strong> AI in the BOISCI 738 classroom (<a href="#sec-ai">Section&nbsp;2.5</a>)</p>
+<li><p><strong>10.05–10.15 am</strong> Introduction to BIOSCI 738 (<a href="#sec-intro" class="quarto-xref">Section&nbsp;2.4</a>)</p></li>
+<li><p><strong>10.15–10.40 am</strong> AI in the BOISCI 738 classroom (<a href="#sec-ai" class="quarto-xref">Section&nbsp;2.5</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-ai01">Section&nbsp;2.5.1</a>)</li>
-<li>Group activity (<a href="#sec-ai02">Section&nbsp;2.5.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-ai01" class="quarto-xref">Section&nbsp;2.5.1</a>)</li>
+<li>Group activity (<a href="#sec-ai02" class="quarto-xref">Section&nbsp;2.5.2</a>)</li>
 </ul></li>
-<li><p><strong>10.40–10.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare01">Section&nbsp;2.6</a>)</p></li>
+<li><p><strong>10.40–10.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare01" class="quarto-xref">Section&nbsp;2.6</a>)</p></li>
 </ul>
 </section>
 <section id="randomly-allocated-groups" class="level3">
@@ -355,17 +331,17 @@ $`Group 9`
 </section>
 <section id="sec-coc" class="level2">
 <h2 class="anchored" data-anchor-id="sec-coc">Group Code of Conduct</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 A classwide agreed group working Code of Conduct
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02">Section&nbsp;2.3.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02" class="quarto-xref">Section&nbsp;2.3.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
 </div>
 </div>
 <section id="sec-coc01" class="level3">
@@ -381,12 +357,12 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-coc02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-coc02">Write your own</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
 </div>
 </div>
@@ -417,17 +393,17 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-ai" class="level2">
 <h2 class="anchored" data-anchor-id="sec-ai">GenAI in the BIOSCI 738 classroom</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Expectations of genAI use
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-ai02">Section&nbsp;2.5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-ai02" class="quarto-xref">Section&nbsp;2.5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
 </div>
 </div>
 <section id="sec-ai01" class="level3">
@@ -456,20 +432,24 @@ Expectations of genAI use
 <section id="a-summary-of-your-responses" class="level4">
 <h4 class="anchored" data-anchor-id="a-summary-of-your-responses">A summary of your responses</h4>
 <div class="cell">
-
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1152"></p>
 </div>
-</div>
-<div class="cell-output-display">
-<table class="table">
+<table class="caption-top table">
 <caption>For programming assignments, I believe GenAI should be…</caption>
 <thead>
 <tr class="header">
@@ -492,19 +472,25 @@ Expectations of genAI use
 </tr>
 </tbody>
 </table>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1440"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1440"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
-</div>
-<div class="cell-output-display">
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 3%">
 <col style="width: 96%">
@@ -550,11 +536,10 @@ Expectations of genAI use
 </tr>
 </tbody>
 </table>
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="runsheets/ai_wordcloud.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption"><em>The theme of your responses</em></figcaption><p></p>
+<figcaption><em>The theme of your responses</em></figcaption>
 </figure>
 </div>
 <p><strong>Some specific answers I particularly liked or wanted to discuss</strong></p>
@@ -581,12 +566,12 @@ Expectations of genAI use
 </section>
 <section id="sec-ai02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-ai02">Share and discuss</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss in your group how much you agree/disagree with the opinions and summaries presented above.
 </div>
 </div>
@@ -606,12 +591,12 @@ Expectations of genAI use
 </section>
 <section id="sec-peershare01" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare01">Q&amp;A and peer-share</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
 </div>
 </div>
@@ -659,7 +644,11 @@ Expectations of genAI use
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="do">## closest in-built ggplot theme I could find</span></span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="do">## remove legend title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -671,20 +660,20 @@ Expectations of genAI use
 <section id="pm---0355-pm" class="level3">
 <h3 class="anchored" data-anchor-id="pm---0355-pm"><strong>02:05 pm - 03:55 pm</strong></h3>
 <ul>
-<li><p><strong>02:05–02.20 pm</strong> Activity &amp; AI expectations (<a href="#sec-coccompleted">Section&nbsp;3.2</a>)</p></li>
-<li><p><strong>02.20–02.45 pm</strong> Data visualization (<a href="#sec-viz">Section&nbsp;3.3</a>)</p>
+<li><p><strong>02:05–02.20 pm</strong> Activity &amp; AI expectations (<a href="#sec-coccompleted" class="quarto-xref">Section&nbsp;3.2</a>)</p></li>
+<li><p><strong>02.20–02.45 pm</strong> Data visualization (<a href="#sec-viz" class="quarto-xref">Section&nbsp;3.3</a>)</p>
 <ul>
-<li>What <em>makes</em> a plot? (<a href="#sec-vibes">Section&nbsp;3.3.1</a>)</li>
-<li>Roast my plots (<a href="#sec-roast">Section&nbsp;3.3.2</a>)</li>
+<li>What <em>makes</em> a plot? (<a href="#sec-vibes" class="quarto-xref">Section&nbsp;3.3.1</a>)</li>
+<li>Roast my plots (<a href="#sec-roast" class="quarto-xref">Section&nbsp;3.3.2</a>)</li>
 </ul></li>
 <li><p><strong>02:45–02:55 pm</strong> Break</p></li>
-<li><p><strong>02.55–03.15 pm</strong> Good programming practice (<a href="#sec-prog_practice">Section&nbsp;3.4</a>)</p>
+<li><p><strong>02.55–03.15 pm</strong> Good programming practice (<a href="#sec-prog_practice" class="quarto-xref">Section&nbsp;3.4</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-prog_practice01">Section&nbsp;3.4.1</a>)</li>
-<li>Group activity (<a href="#sec-prog_practice02">Section&nbsp;3.4.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-prog_practice01" class="quarto-xref">Section&nbsp;3.4.1</a>)</li>
+<li>Group activity (<a href="#sec-prog_practice02" class="quarto-xref">Section&nbsp;3.4.2</a>)</li>
 </ul></li>
-<li><p><strong>03.15–03.45 pm</strong> Reproducible / retracted analysis (<a href="#sec-honesty">Section&nbsp;3.5</a>)</p></li>
-<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare02">Section&nbsp;3.6</a>)</p></li>
+<li><p><strong>03.15–03.45 pm</strong> Reproducible / retracted analysis (<a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a>)</p></li>
+<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare02" class="quarto-xref">Section&nbsp;3.6</a>)</p></li>
 </ul>
 </section>
 <section id="randomly-allocated-groups-1" class="level3">
@@ -733,12 +722,12 @@ $`Group 10`
 </section>
 <section id="sec-coccompleted" class="level2">
 <h2 class="anchored" data-anchor-id="sec-coccompleted">Activity &amp; AI expectations</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-users" aria-hidden="true"></i> Class rep!!
 </div>
 </div>
@@ -746,17 +735,17 @@ $`Group 10`
 <p>BIOSCI 738 needs a class rep!</p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 A classwide agreed group working Code of Conduct
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>As decided by you in last lecture’s activity <a href="#sec-coc">Section&nbsp;2.3</a>. I have <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">updated the course guide accordingly</a>!</p>
+<p>As decided by you in last lecture’s activity <a href="#sec-coc" class="quarto-xref">Section&nbsp;2.3</a>. I have <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">updated the course guide accordingly</a>!</p>
 </div>
 </div>
 <p><strong>Some points of note</strong></p>
@@ -770,12 +759,12 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-viz" class="level2">
 <h2 class="anchored" data-anchor-id="sec-viz">Data visualization</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Interpret, critique and communicate using visualization!
 </div>
 </div>
@@ -785,12 +774,12 @@ Interpret, critique and communicate using visualization!
 </div>
 <section id="sec-vibes" class="level3">
 <h3 class="anchored" data-anchor-id="sec-vibes">What <em>makes</em> a plot?</h3>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Scan the QR code below and based on <em>vibes</em> alone choose your favourite until I tell you to stop
 </div>
 </div>
@@ -806,12 +795,12 @@ Scan the QR code below and based on <em>vibes</em> alone choose your favourite u
 </section>
 <section id="sec-roast" class="level3">
 <h3 class="anchored" data-anchor-id="sec-roast">Roast my plots</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
 </div>
 </div>
@@ -828,12 +817,12 @@ Scan the QR code below and based on <em>vibes</em> alone choose your favourite u
 </section>
 <section id="sec-prog_practice" class="level2">
 <h2 class="anchored" data-anchor-id="sec-prog_practice">Good programming practice</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Abide by good programming practices to avoid future heartaches!
 </div>
 </div>
@@ -856,7 +845,7 @@ Abide by good programming practices to avoid future heartaches!
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>A summary of your responses</caption>
 <colgroup>
 <col style="width: 96%">
@@ -912,12 +901,12 @@ Abide by good programming practices to avoid future heartaches!
 </section>
 <section id="its-not-all-about-length" class="level4">
 <h4 class="anchored" data-anchor-id="its-not-all-about-length">It’s not all about length</h4>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Lines of code written is NOT a measure of skill!
 </div>
 </div>
@@ -959,12 +948,12 @@ Lines of code written is NOT a measure of skill!
 </section>
 <section id="keep-the-inside-thoughts-inside" class="level4">
 <h4 class="anchored" data-anchor-id="keep-the-inside-thoughts-inside">Keep the <em>inside</em> thoughts <em>inside</em></h4>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 An <code>R</code> script (or equivalent) is a roadmap to your work.
 </div>
 </div>
@@ -972,7 +961,7 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 <p>You should present the cleanest most direct route you can!</p>
 </div>
 </div>
-<p>I recommend the latter approach to the second task in <a href="#sec-gorilla">Section&nbsp;2.2</a> (if you were going to pass on your solution that is). It’s not that each step shouldn’t be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.</p>
+<p>I recommend the latter approach to the second task in <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a> (if you were going to pass on your solution that is). It’s not that each step shouldn’t be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
@@ -1009,12 +998,12 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 </section>
 <section id="sec-prog_practice02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-prog_practice02">Your own experience</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
 </div>
 </div>
@@ -1026,17 +1015,17 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 </section>
 <section id="sec-honesty" class="level2">
 <h2 class="anchored" data-anchor-id="sec-honesty"><em>Reproducible</em> analysis</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exploring data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Building on <a href="#sec-gorilla">Section&nbsp;2.2</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
+<p>Building on <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
 </div>
 </div>
 <p>In this task you’re going to be using <a href="https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854">these data</a> collected as part of a (now retracted) study (<span class="citation" data-cites="retracted">Shu et al. (<a href="#ref-retracted" role="doc-biblioref">2012</a>)</span>)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
@@ -1062,12 +1051,12 @@ Exploring data
 </section>
 <section id="sec-peershare02" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare02">Q&amp;A and peer-share</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> If you’ve not already got RStudio open, open it up. Show your workspace to your neighbour and justify its contents! Share any tips you have about ensuring an efficient workflow.
 </div>
 </div>
@@ -1077,14 +1066,59 @@ Exploring data
 </div>
 </section>
 </section>
+<section id="march-17th" class="level1">
+<h1>March 17th</h1>
+<section id="randomly-allocated-groups-2" class="level3">
+<h3 class="anchored" data-anchor-id="randomly-allocated-groups-2">Randomly allocated groups</h3>
+<p><strong>It’s your responsibility to get into these, just look for the cows!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_allocation</span>(names, <span class="at">seed =</span> <span class="dv">0604</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`Group 1`
+[1] "YOGAPRIYA S"        "Francesca Domanska" "Yutao Yang"        
+[4] "Lana Najar"        
+
+$`Group 2`
+[1] "Julia Thain"                  "Zhixiao Zhang"               
+[3] "Antonia Schebek-Fuerstenberg" "Anqi Cheng"                  
+
+$`Group 3`
+[1] "Sunny Chen"         "Barnaby Clegg-Shaw" "Yi Han"            
+[4] "Leyang Liu"        
+
+$`Group 4`
+[1] "Bayu Pitandoyo"        "Yingyi Wang"           "Pikitangarangi Ratapu"
+[4] "Keyi Sun"             
+
+$`Group 5`
+[1] "Ziyi Wang"        "Robert Mihok"     "Charlotte Sutton" "Zichang Li"      
+
+$`Group 6`
+[1] "Jiaxin Liu"            "Daneshajeya Jeyavalan" "Tongzheng Yao"        
+
+$`Group 7`
+[1] "Happy Liang"  "Emma Akeroyd" "Xinyue Zhang" "Laura Munck" 
+
+$`Group 8`
+[1] "Vivian Qian"  "Alex Johnson" "Yutong Wang"  "Shuxiang He" 
+
+$`Group 9`
+[1] "He Li"        "Jianing Chen" "Shoule Du"    "Congkai Meng"
+
+$`Group 10`
+[1] "Yue Ma"        "Hnin Lwin"     "Angel Loh"     "Karie Labidon"</code></pre>
+</div>
+</div>
+</section>
+</section>
 <section id="activity-solutions" class="level1">
 <h1>Activity solutions</h1>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Suggested <code>R</code> code solutions
 </div>
 </div>
@@ -1093,56 +1127,103 @@ Suggested <code>R</code> code solutions
 </div>
 </div>
 <section id="suggested-solution-to-sec-gorilla" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla">Section&nbsp;2.2</a></h2>
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="suggested-solution-to-sec-honesty" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-honesty">Suggested solution to <a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"retracted-honesty-study_week-02.csv"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">## set up descriptive treatments</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span> (<span class="at">treatment =</span> <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No signature"</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Sign-Top"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">2</span>, <span class="st">"Sign-Bottom"</span> , <span class="cn">NA</span>))))</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">## remove control condition (here we're only interested in comparing sign-top and sign-bottom)</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., Cond <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MATCH PAPER</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="do">## with "chi sq test p(0.0013)"</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment), <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment) <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>()</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001)"</span></span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OverReport <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="do">## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a><span class="do">## DATA DETECTIVING</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb18-21"><a href="#cb18-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb18-22"><a href="#cb18-22" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>() <span class="do">## matches t-test above (is the same thing)</span></span>
+<span id="cb18-23"><a href="#cb18-23" aria-hidden="true" tabindex="-1"></a><span class="do">## plot makes sense</span></span>
+<span id="cb18-24"><a href="#cb18-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb18-25"><a href="#cb18-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
+<span id="cb18-26"><a href="#cb18-26" aria-hidden="true" tabindex="-1"></a><span class="do">## mapping flagged observations to colour</span></span>
+<span id="cb18-27"><a href="#cb18-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb18-28"><a href="#cb18-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag)))</span>
+<span id="cb18-29"><a href="#cb18-29" aria-hidden="true" tabindex="-1"></a><span class="do">## residuals</span></span>
+<span id="cb18-30"><a href="#cb18-30" aria-hidden="true" tabindex="-1"></a>data_sub<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod)</span>
+<span id="cb18-31"><a href="#cb18-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
+<span id="cb18-32"><a href="#cb18-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag))) <span class="sc">+</span></span>
+<span id="cb18-33"><a href="#cb18-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb18-34"><a href="#cb18-34" aria-hidden="true" tabindex="-1"></a><span class="do">## now removing flagged observations</span></span>
+<span id="cb18-35"><a href="#cb18-35" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb18-36"><a href="#cb18-36" aria-hidden="true" tabindex="-1"></a>data_sub <span class="sc">%&gt;%</span></span>
+<span id="cb18-37"><a href="#cb18-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., flag <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb18-38"><a href="#cb18-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> .)</span>
+<span id="cb18-39"><a href="#cb18-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-40"><a href="#cb18-40" aria-hidden="true" tabindex="-1"></a><span class="do">## see https://datacolada.org/109</span></span>
+<span id="cb18-41"><a href="#cb18-41" aria-hidden="true" tabindex="-1"></a><span class="do">## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud</span></span>
+<span id="cb18-42"><a href="#cb18-42" aria-hidden="true" tabindex="-1"></a><span class="do">## for the story</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-bullshit" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bullshit" class="csl-entry" role="listitem">
 Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.”</span> <em>Ethics and Information Technology</em> 26 (38). <a href="https://doi.org/10.1007/s10676-024-09775-5">https://doi.org/10.1007/s10676-024-09775-5</a>.
 </div>
-<div id="ref-cancer" class="csl-entry" role="doc-biblioentry">
+<div id="ref-cancer" class="csl-entry" role="listitem">
 Jones-Todd, Charlotte M., Peter Caie, Janine B. Illian, Ben C. Stevenson, Anne Savage, David J. Harrison, and James L. Bown. 2018. <span>“Identifying Prognostic Structural Features in Tissue Sections of Colon Cancer Patients Using Point Pattern Analysis.”</span> <em>Statistics in Medicine</em> 38 (8): 1421–41. https://doi.org/<a href="https://doi.org/10.1002/sim.8046">https://doi.org/10.1002/sim.8046</a>.
 </div>
-<div id="ref-stelfi" class="csl-entry" role="doc-biblioentry">
+<div id="ref-stelfi" class="csl-entry" role="listitem">
 Jones-Todd, Charlotte M., and Alec B. M. van Helsdingen. 2024. <span>“Stelfi: An r Package for Fitting Hawkes and Log-Gaussian Cox Point Process Models.”</span> <em>Ecology and Evolution</em> 14 (2): e11005. https://doi.org/<a href="https://doi.org/10.1002/ece3.11005">https://doi.org/10.1002/ece3.11005</a>.
 </div>
-<div id="ref-whales" class="csl-entry" role="doc-biblioentry">
+<div id="ref-whales" class="csl-entry" role="listitem">
 Jones-Todd, Charlotte M., Enrico Pirotta, John W. Durban, Diane E. Claridge, Robin W. Baird, Erin A. Falcone, Gregory S. Schorr, Stephanie Watwood, and Len Thomas. 2021. <span>“Discrete-Space Continuous-Time Models of Marine Mammal Exposure to Navy Sonar.”</span> <em>Ecological Applications</em> 32 (1): e02475. https://doi.org/<a href="https://doi.org/10.1002/eap.2475">https://doi.org/10.1002/eap.2475</a>.
 </div>
-<div id="ref-robots" class="csl-entry" role="doc-biblioentry">
+<div id="ref-robots" class="csl-entry" role="listitem">
 Prather, James, Paul Denny, Juho Leinonen, Brett A. Becker, Ibrahim Albluwi, Michelle Craig, Hieke Keuning, et al. 2023. <span>“The Robots Are Here: Navigating the Generative AI Revolution in Computing Education.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3623762.3633499">https://doi.org/10.1145/3623762.3633499</a>.
 </div>
-<div id="ref-instructor" class="csl-entry" role="doc-biblioentry">
+<div id="ref-instructor" class="csl-entry" role="listitem">
 Sheard, Judy, Paul Denny, Arto Hellas, Juho Leinonen, Lauri Malmi, and Simon. 2024. <span>“Instructor Perceptions of AI Code Generation Tools - a Multi-Institutional Interview Study.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3626252.3630880">https://doi.org/10.1145/3626252.3630880</a>.
 </div>
-<div id="ref-retracted" class="csl-entry" role="doc-biblioentry">
+<div id="ref-retracted" class="csl-entry" role="listitem">
 Shu, Lisa L., Nina Mazar, Francesca Gino, Dan Ariely, and Max H. Bazerman. 2012. <span>“RETRACTED: Signing at the Beginning Makes Ethics Salient and Decreases Dishonest Self-Reports in Comparison to Signing at the End.”</span> <em>Proceedings of the National Academy of Sciences</em> 109 (38): 15197–200. <a href="https://doi.org/10.1073/pnas.1209746109">https://doi.org/10.1073/pnas.1209746109</a>.
 </div>
-<div id="ref-goodprogramming" class="csl-entry" role="doc-biblioentry">
+<div id="ref-goodprogramming" class="csl-entry" role="listitem">
 Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K. Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (6): e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
 </div>
 </div>
@@ -1185,12 +1266,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1222,11 +1306,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1236,8 +1359,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1249,9 +1381,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1292,6 +1660,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 

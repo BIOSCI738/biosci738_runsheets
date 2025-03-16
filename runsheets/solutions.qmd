@@ -31,3 +31,52 @@ t.test(steps ~ gender, data = data)
 ggplot(data, aes(x = steps, y = bmi, col = gender)) +
     geom_point()
 ```
+
+## Suggested solution to @sec-honesty
+
+```{r, eval = FALSE}
+library(tidyverse)
+data <- read_csv("retracted-honesty-study_week-02.csv")
+## set up descriptive treatments
+data <- data %>% mutate (treatment = ifelse(Cond==0, "No signature",
+                                     ifelse(Cond==1, "Sign-Top",
+                                     ifelse(Cond==2, "Sign-Bottom" , NA))))
+## remove control condition (here we're only interested in comparing sign-top and sign-bottom)
+data_sub <- data %>% filter(., Cond != 0)
+## MATCH PAPER
+## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"
+## with "chi sq test p(0.0013)"
+prop.table(table(data_sub$CheatedOnMatrixTax, data_sub$treatment), margin = 2)
+table(data_sub$CheatedOnMatrixTax, data_sub$treatment) |> chisq.test()
+## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p < .00001)"
+t.test(OverReport ~ treatment, data = data_sub)
+## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"
+t.test(SumDeduction ~ treatment, data = data_sub)
+
+## DATA DETECTIVING
+## lm
+mod <- lm(SumDeduction ~ treatment, data = data_sub)
+mod |> summary() ## matches t-test above (is the same thing)
+## plot makes sense
+ggplot(data_sub, aes(x = treatment, y = SumDeduction)) +
+    geom_violin() + geom_jitter()
+## mapping flagged observations to colour
+ggplot(data_sub, aes(x = treatment, y = SumDeduction)) +
+    geom_violin() + geom_jitter(aes(col = as.factor(flag)))
+## residuals
+data_sub$residuals <- residuals(mod)
+ggplot(data_sub, aes(x = treatment, y = residuals)) +
+    geom_point(aes(col = as.factor(flag))) +
+    geom_hline(yintercept = 0, col = "grey", linewidth = 2, linetype = 2)
+## now removing flagged observations
+## lm
+data_sub %>%
+    filter(., flag == 0) %>%
+    t.test(SumDeduction ~ treatment, data = .)
+
+## see https://datacolada.org/109
+## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud
+## for the story
+
+
+```
