@@ -1,4 +1,4 @@
-# Activity solutions
+# Activity solutions {#sec-solutions}
 
 ::: {.callout-note}
 ## Suggested `R` code solutions

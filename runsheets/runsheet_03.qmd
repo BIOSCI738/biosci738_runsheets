@@ -11,14 +11,14 @@
 
 ## Rough timeline
 
-+ **09:05–09:20 AM** Introduction (see @sec-slidesliza)
-+ **09:20–09:55 AM** Your ethical experiences and codes of conduct @sec-coc2liza
++ **09:05–09:20 am** Introduction (see @sec-slidesliza)
++ **09:20–09:55 am** Your ethical experiences and codes of conduct (@sec-coc2liza)
     - Group discussion
     - Class discussion
     - Start on ethical data practices and introduction to the case studies (see slides) if time
  + **09:55–10:05 am** Break
  + **10.05–10.20 am** Ethical data practices and introduction to the case studies (see slides)
- + **10.15–10.45 am** Case studies
+ + **10.15–10.45 am** Case studies (@sec-caseliza)
     - Groups work through the case studies
     - Class discussion
 + **10.45–10.55 am** Wrap-up (and Code of Conduct meme-off if anyone has enough time to make them)
@@ -66,9 +66,9 @@ OR
 
 ![](runsheets/img/nonmaleficence.jpg)
 
-## Case studies
+## Case studies {#sec-caseliza}
 
-For each of the following case studies, discuss the situation and identify potential ethical issues. For some, you may need to run the associated code in R.
+For each of the following case studies, discuss the situation and identify potential ethical issues. For some, you may need to run the associated code in `R`.
 
 ### Case 1
 

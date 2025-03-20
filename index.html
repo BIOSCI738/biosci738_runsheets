@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.2.262">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,12 +19,11 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -35,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -49,20 +48,48 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
+    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-/* CSS for citations */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
-.hanging-indent div.csl-entry {
+.hanging div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -76,7 +103,8 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}</style>
+}
+</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -90,13 +118,13 @@ div.csl-indent {
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <style>
-
-      .quarto-title-block .quarto-title-banner {
-        background: #c7dbe2;
-      }
-</style>
+    .quarto-title-block .quarto-title-banner {
+      background: #c7dbe2;
+    }
+    </style>
 <script src="index_files/libs/fitvids-2.1.1/fitvids.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -115,14 +143,14 @@ div.csl-indent {
     <div class="quarto-title-meta-heading">Affiliation</div>
     
       <div class="quarto-title-meta-contents">
-      <p class="author">Charlotte Jones-Todd </p>
+      Charlotte Jones-Todd 
     </div>
-    <div class="quarto-title-meta-contents">
+      <div class="quarto-title-meta-contents">
           <p class="affiliation">
               University of Auckland
             </p>
         </div>
-    </div>
+      </div>
 
   <div class="quarto-title-meta">
 
@@ -167,10 +195,18 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#rough-timeline-2" id="toc-rough-timeline-2" class="nav-link" data-scroll-target="#rough-timeline-2">Rough timeline</a></li>
   <li><a href="#sec-slidesliza" id="toc-sec-slidesliza" class="nav-link" data-scroll-target="#sec-slidesliza">Slides</a></li>
-  <li><a href="#case-studies" id="toc-case-studies" class="nav-link" data-scroll-target="#case-studies">Case studies</a></li>
+  <li><a href="#sec-caseliza" id="toc-sec-caseliza" class="nav-link" data-scroll-target="#sec-caseliza">Case studies</a></li>
   <li><a href="#finished-early" id="toc-finished-early" class="nav-link" data-scroll-target="#finished-early">Finished early?</a></li>
   </ul></li>
-  <li><a href="#activity-solutions" id="toc-activity-solutions" class="nav-link" data-scroll-target="#activity-solutions">Activity solutions</a>
+  <li><a href="#march-21st" id="toc-march-21st" class="nav-link" data-scroll-target="#march-21st">March 21st</a>
+  <ul class="collapse">
+  <li><a href="#rough-timeline-3" id="toc-rough-timeline-3" class="nav-link" data-scroll-target="#rough-timeline-3">Rough timeline</a></li>
+  <li><a href="#sec-significance" id="toc-sec-significance" class="nav-link" data-scroll-target="#sec-significance"><em>Significance</em></a></li>
+  <li><a href="#sec-resampling" id="toc-sec-resampling" class="nav-link" data-scroll-target="#sec-resampling">Hypothesis testing via resampling</a></li>
+  <li><a href="#sec-bootstrap" id="toc-sec-bootstrap" class="nav-link" data-scroll-target="#sec-bootstrap">Bootstrapping</a></li>
+  <li><a href="#sec-peershare04" id="toc-sec-peershare04" class="nav-link" data-scroll-target="#sec-peershare04">Q&amp;A/peer-share/Task 03</a></li>
+  </ul></li>
+  <li><a href="#sec-solutions" id="toc-sec-solutions" class="nav-link" data-scroll-target="#sec-solutions">Activity solutions</a>
   <ul class="collapse">
   <li><a href="#suggested-solution-to-sec-gorilla" id="toc-suggested-solution-to-sec-gorilla" class="nav-link" data-scroll-target="#suggested-solution-to-sec-gorilla">Suggested solution to Section&nbsp;2.2</a></li>
   <li><a href="#suggested-solution-to-sec-honesty" id="toc-suggested-solution-to-sec-honesty" class="nav-link" data-scroll-target="#suggested-solution-to-sec-honesty">Suggested solution to Section&nbsp;3.5</a></li>
@@ -184,18 +220,17 @@ div.csl-indent {
 
 
 
-
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></p>
 <section id="notes" class="level1">
 <h1>Notes</h1>
 <p>All BIOSCI 738 lectures require your <strong>active involvement</strong>! See the <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">course policies</a> for further infomation.</p>
 <p>Throughout this runsheet you’ll find a number of different callout boxes:</p>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 this box will contain the expected learning objectives and/or outcomes for the material
 </div>
 </div>
@@ -203,12 +238,12 @@ this box will contain the expected learning objectives and/or outcomes for the m
 
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 this box will contain some useful information
 </div>
 </div>
@@ -216,12 +251,12 @@ this box will contain some useful information
 
 </div>
 </div>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer within your randomly allocated group
 </div>
 </div>
@@ -242,12 +277,12 @@ this box will contain some useful information
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(tmp, <span class="fu">cut</span>(<span class="fu">seq_along</span>(tmp), groups, <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">"Group"</span>, <span class="dv">1</span><span class="sc">:</span>groups))) </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Accessing activities
 </div>
 </div>
@@ -270,20 +305,20 @@ Accessing activities
 <section id="am---1055-am" class="level3">
 <h3 class="anchored" data-anchor-id="am---1055-am"><strong>09:05 am - 10:55 am</strong></h3>
 <ul>
-<li><p><strong>09:05–10.25 am</strong> Gorilla Gambit (<a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a>)</p></li>
-<li><p><strong>10.25–10.55 am</strong> Group Code of Conduct (<a href="#sec-coc" class="quarto-xref">Section&nbsp;2.3</a>)</p>
+<li><p><strong>09:05–10.25 am</strong> Gorilla Gambit (<a href="#sec-gorilla">Section&nbsp;2.2</a>)</p></li>
+<li><p><strong>10.25–10.55 am</strong> Group Code of Conduct (<a href="#sec-coc">Section&nbsp;2.3</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-coc01" class="quarto-xref">Section&nbsp;2.3.1</a>)</li>
-<li>Group activity (<a href="#sec-coc02" class="quarto-xref">Section&nbsp;2.3.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-coc01">Section&nbsp;2.3.1</a>)</li>
+<li>Group activity (<a href="#sec-coc02">Section&nbsp;2.3.2</a>)</li>
 </ul></li>
 <li><p><strong>09:55–10:05 am</strong> Break</p></li>
-<li><p><strong>10.05–10.15 am</strong> Introduction to BIOSCI 738 (<a href="#sec-intro" class="quarto-xref">Section&nbsp;2.4</a>)</p></li>
-<li><p><strong>10.15–10.40 am</strong> AI in the BOISCI 738 classroom (<a href="#sec-ai" class="quarto-xref">Section&nbsp;2.5</a>)</p>
+<li><p><strong>10.05–10.15 am</strong> Introduction to BIOSCI 738 (<a href="#sec-intro">Section&nbsp;2.4</a>)</p></li>
+<li><p><strong>10.15–10.40 am</strong> AI in the BOISCI 738 classroom (<a href="#sec-ai">Section&nbsp;2.5</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-ai01" class="quarto-xref">Section&nbsp;2.5.1</a>)</li>
-<li>Group activity (<a href="#sec-ai02" class="quarto-xref">Section&nbsp;2.5.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-ai01">Section&nbsp;2.5.1</a>)</li>
+<li>Group activity (<a href="#sec-ai02">Section&nbsp;2.5.2</a>)</li>
 </ul></li>
-<li><p><strong>10.40–10.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare01" class="quarto-xref">Section&nbsp;2.6</a>)</p></li>
+<li><p><strong>10.40–10.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare01">Section&nbsp;2.6</a>)</p></li>
 </ul>
 </section>
 <section id="randomly-allocated-groups" class="level3">
@@ -338,17 +373,17 @@ $`Group 9`
 </section>
 <section id="sec-coc" class="level2">
 <h2 class="anchored" data-anchor-id="sec-coc">Group Code of Conduct</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 A classwide agreed group working Code of Conduct
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02" class="quarto-xref">Section&nbsp;2.3.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02">Section&nbsp;2.3.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
 </div>
 </div>
 <section id="sec-coc01" class="level3">
@@ -364,12 +399,12 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-coc02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-coc02">Write your own</h3>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
 </div>
 </div>
@@ -400,17 +435,17 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-ai" class="level2">
 <h2 class="anchored" data-anchor-id="sec-ai">GenAI in the BIOSCI 738 classroom</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Expectations of genAI use
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-ai02" class="quarto-xref">Section&nbsp;2.5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-ai02">Section&nbsp;2.5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
 </div>
 </div>
 <section id="sec-ai01" class="level3">
@@ -439,24 +474,20 @@ Expectations of genAI use
 <section id="a-summary-of-your-responses" class="level4">
 <h4 class="anchored" data-anchor-id="a-summary-of-your-responses">A summary of your responses</h4>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
+
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1152"></p>
-</figure>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1152"></p>
 </div>
 </div>
-</div>
-<table class="caption-top table">
+<div class="cell-output-display">
+<table class="table">
 <caption>For programming assignments, I believe GenAI should be…</caption>
 <thead>
 <tr class="header">
@@ -479,25 +510,19 @@ Expectations of genAI use
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1440"></p>
-</figure>
-</div>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1440"></p>
 </div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-</div>
-<table class="caption-top table">
+<div class="cell-output-display">
+<table class="table">
 <colgroup>
 <col style="width: 3%">
 <col style="width: 96%">
@@ -543,10 +568,11 @@ Expectations of genAI use
 </tr>
 </tbody>
 </table>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="runsheets/ai_wordcloud.png" class="img-fluid figure-img"></p>
-<figcaption><em>The theme of your responses</em></figcaption>
+<p></p><figcaption class="figure-caption"><em>The theme of your responses</em></figcaption><p></p>
 </figure>
 </div>
 <p><strong>Some specific answers I particularly liked or wanted to discuss</strong></p>
@@ -573,12 +599,12 @@ Expectations of genAI use
 </section>
 <section id="sec-ai02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-ai02">Share and discuss</h3>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss in your group how much you agree/disagree with the opinions and summaries presented above.
 </div>
 </div>
@@ -598,12 +624,12 @@ Expectations of genAI use
 </section>
 <section id="sec-peershare01" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare01">Q&amp;A and peer-share</h2>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
 </div>
 </div>
@@ -651,11 +677,7 @@ Expectations of genAI use
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="do">## closest in-built ggplot theme I could find</span></span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="do">## remove legend title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>
@@ -667,20 +689,20 @@ Expectations of genAI use
 <section id="pm---0355-pm" class="level3">
 <h3 class="anchored" data-anchor-id="pm---0355-pm"><strong>02:05 pm - 03:55 pm</strong></h3>
 <ul>
-<li><p><strong>02:05–02.20 pm</strong> Activity &amp; AI expectations (<a href="#sec-coccompleted" class="quarto-xref">Section&nbsp;3.2</a>)</p></li>
-<li><p><strong>02.20–02.45 pm</strong> Data visualization (<a href="#sec-viz" class="quarto-xref">Section&nbsp;3.3</a>)</p>
+<li><p><strong>02:05–02.20 pm</strong> Activity &amp; AI expectations (<a href="#sec-coccompleted">Section&nbsp;3.2</a>)</p></li>
+<li><p><strong>02.20–02.45 pm</strong> Data visualization (<a href="#sec-viz">Section&nbsp;3.3</a>)</p>
 <ul>
-<li>What <em>makes</em> a plot? (<a href="#sec-vibes" class="quarto-xref">Section&nbsp;3.3.1</a>)</li>
-<li>Roast my plots (<a href="#sec-roast" class="quarto-xref">Section&nbsp;3.3.2</a>)</li>
+<li>What <em>makes</em> a plot? (<a href="#sec-vibes">Section&nbsp;3.3.1</a>)</li>
+<li>Roast my plots (<a href="#sec-roast">Section&nbsp;3.3.2</a>)</li>
 </ul></li>
 <li><p><strong>02:45–02:55 pm</strong> Break</p></li>
-<li><p><strong>02.55–03.15 pm</strong> Good programming practice (<a href="#sec-prog_practice" class="quarto-xref">Section&nbsp;3.4</a>)</p>
+<li><p><strong>02.55–03.15 pm</strong> Good programming practice (<a href="#sec-prog_practice">Section&nbsp;3.4</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-prog_practice01" class="quarto-xref">Section&nbsp;3.4.1</a>)</li>
-<li>Group activity (<a href="#sec-prog_practice02" class="quarto-xref">Section&nbsp;3.4.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-prog_practice01">Section&nbsp;3.4.1</a>)</li>
+<li>Group activity (<a href="#sec-prog_practice02">Section&nbsp;3.4.2</a>)</li>
 </ul></li>
-<li><p><strong>03.15–03.45 pm</strong> Reproducible / retracted analysis (<a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a>)</p></li>
-<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare02" class="quarto-xref">Section&nbsp;3.6</a>)</p></li>
+<li><p><strong>03.15–03.45 pm</strong> Reproducible / retracted analysis (<a href="#sec-honesty">Section&nbsp;3.5</a>)</p></li>
+<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare02">Section&nbsp;3.6</a>)</p></li>
 </ul>
 </section>
 <section id="randomly-allocated-groups-1" class="level3">
@@ -729,12 +751,12 @@ $`Group 10`
 </section>
 <section id="sec-coccompleted" class="level2">
 <h2 class="anchored" data-anchor-id="sec-coccompleted">Activity &amp; AI expectations</h2>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-users" aria-hidden="true"></i> Class rep!!
 </div>
 </div>
@@ -742,17 +764,17 @@ $`Group 10`
 <p>BIOSCI 738 needs a class rep!</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 A classwide agreed group working Code of Conduct
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>As decided by you in last lecture’s activity <a href="#sec-coc" class="quarto-xref">Section&nbsp;2.3</a>. I have <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">updated the course guide accordingly</a>!</p>
+<p>As decided by you in last lecture’s activity <a href="#sec-coc">Section&nbsp;2.3</a>. I have <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">updated the course guide accordingly</a>!</p>
 </div>
 </div>
 <p><strong>Some points of note</strong></p>
@@ -766,12 +788,12 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-viz" class="level2">
 <h2 class="anchored" data-anchor-id="sec-viz">Data visualization</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Interpret, critique and communicate using visualization!
 </div>
 </div>
@@ -781,12 +803,12 @@ Interpret, critique and communicate using visualization!
 </div>
 <section id="sec-vibes" class="level3">
 <h3 class="anchored" data-anchor-id="sec-vibes">What <em>makes</em> a plot?</h3>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Scan the QR code below and based on <em>vibes</em> alone choose your favourite until I tell you to stop
 </div>
 </div>
@@ -802,12 +824,12 @@ Scan the QR code below and based on <em>vibes</em> alone choose your favourite u
 </section>
 <section id="sec-roast" class="level3">
 <h3 class="anchored" data-anchor-id="sec-roast">Roast my plots</h3>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
 </div>
 </div>
@@ -824,12 +846,12 @@ Scan the QR code below and based on <em>vibes</em> alone choose your favourite u
 </section>
 <section id="sec-prog_practice" class="level2">
 <h2 class="anchored" data-anchor-id="sec-prog_practice">Good programming practice</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Abide by good programming practices to avoid future heartaches!
 </div>
 </div>
@@ -852,7 +874,7 @@ Abide by good programming practices to avoid future heartaches!
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<table class="caption-top table table-sm table-striped small">
+<table class="table table-sm table-striped">
 <caption>A summary of your responses</caption>
 <colgroup>
 <col style="width: 96%">
@@ -908,12 +930,12 @@ Abide by good programming practices to avoid future heartaches!
 </section>
 <section id="its-not-all-about-length" class="level4">
 <h4 class="anchored" data-anchor-id="its-not-all-about-length">It’s not all about length</h4>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Lines of code written is NOT a measure of skill!
 </div>
 </div>
@@ -955,12 +977,12 @@ Lines of code written is NOT a measure of skill!
 </section>
 <section id="keep-the-inside-thoughts-inside" class="level4">
 <h4 class="anchored" data-anchor-id="keep-the-inside-thoughts-inside">Keep the <em>inside</em> thoughts <em>inside</em></h4>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 An <code>R</code> script (or equivalent) is a roadmap to your work.
 </div>
 </div>
@@ -968,7 +990,7 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 <p>You should present the cleanest most direct route you can!</p>
 </div>
 </div>
-<p>I recommend the latter approach to the second task in <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a> (if you were going to pass on your solution that is). It’s not that each step shouldn’t be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.</p>
+<p>I recommend the latter approach to the second task in <a href="#sec-gorilla">Section&nbsp;2.2</a> (if you were going to pass on your solution that is). It’s not that each step shouldn’t be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
@@ -1005,12 +1027,12 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 </section>
 <section id="sec-prog_practice02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-prog_practice02">Your own experience</h3>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
 </div>
 </div>
@@ -1022,17 +1044,17 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 </section>
 <section id="sec-honesty" class="level2">
 <h2 class="anchored" data-anchor-id="sec-honesty"><em>Reproducible</em> analysis</h2>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Exploring data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Building on <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
+<p>Building on <a href="#sec-gorilla">Section&nbsp;2.2</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
 </div>
 </div>
 <p>In this task you’re going to be using <a href="https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854">these data</a> collected as part of a (now retracted) study (<span class="citation" data-cites="retracted">Shu et al. (<a href="#ref-retracted" role="doc-biblioref">2012</a>)</span>)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
@@ -1058,12 +1080,12 @@ Exploring data
 </section>
 <section id="sec-peershare02" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare02">Q&amp;A and peer-share</h2>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> If you’ve not already got RStudio open, open it up. Show your workspace to your neighbour and justify its contents! Share any tips you have about ensuring an efficient workflow.
 </div>
 </div>
@@ -1075,12 +1097,12 @@ Exploring data
 </section>
 <section id="march-17th---guest-lecturer-dr.-liza-bolton" class="level1">
 <h1>March 17th - Guest Lecturer Dr.&nbsp;Liza Bolton!</h1>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 By the end of today’s seminar, you will be able to:
 </div>
 </div>
@@ -1096,8 +1118,8 @@ By the end of today’s seminar, you will be able to:
 <section id="rough-timeline-2" class="level2">
 <h2 class="anchored" data-anchor-id="rough-timeline-2">Rough timeline</h2>
 <ul>
-<li><strong>09:05–09:20 AM</strong> Introduction (see <a href="#sec-slidesliza" class="quarto-xref">Section&nbsp;4.2</a>)</li>
-<li><strong>09:20–09:55 AM</strong> Your ethical experiences and codes of conduct <a href="#sec-coc2liza" class="quarto-xref">Section&nbsp;4.2.1</a>
+<li><strong>09:05–09:20 am</strong> Introduction (see <a href="#sec-slidesliza">Section&nbsp;4.2</a>)</li>
+<li><strong>09:20–09:55 am</strong> Your ethical experiences and codes of conduct (<a href="#sec-coc2liza">Section&nbsp;4.2.1</a>)
 <ul>
 <li>Group discussion</li>
 <li>Class discussion</li>
@@ -1105,7 +1127,7 @@ By the end of today’s seminar, you will be able to:
 </ul></li>
 <li><strong>09:55–10:05 am</strong> Break</li>
 <li><strong>10.05–10.20 am</strong> Ethical data practices and introduction to the case studies (see slides)</li>
-<li><strong>10.15–10.45 am</strong> Case studies
+<li><strong>10.15–10.45 am</strong> Case studies (<a href="#sec-caseliza">Section&nbsp;4.3</a>)
 <ul>
 <li>Groups work through the case studies</li>
 <li>Class discussion</li>
@@ -1189,9 +1211,9 @@ $`Group 10`
 <p><img src="runsheets/img/nonmaleficence.jpg" class="img-fluid"></p>
 </section>
 </section>
-<section id="case-studies" class="level2">
-<h2 class="anchored" data-anchor-id="case-studies">Case studies</h2>
-<p>For each of the following case studies, discuss the situation and identify potential ethical issues. For some, you may need to run the associated code in R.</p>
+<section id="sec-caseliza" class="level2">
+<h2 class="anchored" data-anchor-id="sec-caseliza">Case studies</h2>
+<p>For each of the following case studies, discuss the situation and identify potential ethical issues. For some, you may need to run the associated code in <code>R</code>.</p>
 <section id="case-1" class="level3">
 <h3 class="anchored" data-anchor-id="case-1">Case 1</h3>
 <p><img src="runsheets/img/frog.jpg" class="img-fluid"></p>
@@ -1210,12 +1232,12 @@ $`Group 10`
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># One sample t-test</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(frog_weights, <span class="at">mu =</span> <span class="fl">6.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-note callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 Look up R documentation
 </div>
 </div>
@@ -1223,12 +1245,12 @@ Look up R documentation
 <p>You can run <code>?t.test</code> in your R console to see the documentation for the basic t-test used above.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1237,12 +1259,12 @@ Look up R documentation
 </div>
 </div>
 <p>A mine executive is very relieved by your results and interprets them as indicating that the frogs are doing very well as they are even larger and healthier than they were before.</p>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1260,12 +1282,12 @@ Look up R documentation
 <p>You finish up the work and your clients are very happy with it, especially complimentary about the data visualisation showing the common locations the kiwi visits by longitude and latitude.</p>
 <p>You are preparing an update to your CV to apply for a job, and you notice that transperancy and open data practices are key values of the research institute you are applying to. You write a blog post for your website outlining your findings from the kiwi research, clearly explaining the data collection processes, analytical choices, and limitations. You create a public GitHub repository that provides all the code and data to create the location heat maps.</p>
 <p>You’re about to press publish so you can link to it in your application, but a little voice in your head stops you…</p>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1280,12 +1302,12 @@ Look up R documentation
 <p>Image attribution: Te Ara https://teara.govt.nz/en/grasslands</p>
 <p>Concerns have been raised that an off-roading adventure course has caused vegetation loss and increased the risk of wind erosion due to exposed soil. The area where the course has been developed is a large, flat tussock grassland in the South Island. The grassland is fairly similar throughout, and has not been disturbed other than the dirt track for the off-road vehicles to travel on — this track area is not included in the coverage measures, but estimates are taken next to it.</p>
 <p>High resolution drone photography of the area has been used to estimate vegetation coverage both close to the course and further away in the undisturbed grassland. To gather the data, 100 meter lines parallel to the course, spaced every 5 meters, are drawn on the aerial imagery. Five one meter square areas are randomly chosen along each line and the vegetation coverage estimated using an appropriate machine learning tool.</p>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1345,14 +1367,434 @@ Look up R documentation
 <p>Work on the <a href="@sec-bonus">bonus activity</a>.</p>
 </section>
 </section>
-<section id="activity-solutions" class="level1">
-<h1>Activity solutions</h1>
-<div class="callout callout-style-default callout-note callout-titled">
+<section id="march-21st" class="level1">
+<h1>March 21st</h1>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-title-container flex-fill">
+<div class="callout-caption-container flex-fill">
+By the end of today’s seminar, you should be able to
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Carry out, interpret, and communicate the result of
+<ul>
+<li>a randomization hypothesis test,</li>
+<li>a permutation test, and</li>
+<li>a bootstrap.</li>
+</ul></li>
+<li>Identify which of, and when, the above resampling procedures are appropriate to use</li>
+<li>Interpret <em>p-values</em> correctly!</li>
+</ul>
+</div>
+</div>
+<section id="rough-timeline-3" class="level2">
+<h2 class="anchored" data-anchor-id="rough-timeline-3">Rough timeline</h2>
+<section id="pm---0355-pm-1" class="level3">
+<h3 class="anchored" data-anchor-id="pm---0355-pm-1"><strong>02:05 pm - 03:55 pm</strong></h3>
+<ul>
+<li><p><strong>02:05–02.25 pm</strong> <em>Significance</em> (<a href="#sec-significance">Section&nbsp;5.2</a>)</p></li>
+<li><p><strong>02.25–02.55 pm</strong> Hypothesis testing via resampling (<a href="#sec-resampling">Section&nbsp;5.3</a>)</p>
+<ul>
+<li>Permutation (<em>exact</em>) tests (<a href="#sec-perm">Section&nbsp;5.3.1</a>)</li>
+<li>Randomization tests (<a href="#sec-random">Section&nbsp;5.3.2</a>)</li>
+</ul></li>
+<li><p><strong>02:55–03:05 pm</strong> Break</p></li>
+<li><p><strong>03.05–03.45 pm</strong> Bootstrapping (<a href="#sec-bootstrap">Section&nbsp;5.4</a>)</p>
+<ul>
+<li>Case study (<a href="#sec-boot01">Section&nbsp;5.4.1</a>)</li>
+</ul></li>
+<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare04">Section&nbsp;5.5</a>)</p></li>
+</ul>
+</section>
+<section id="randomly-allocated-groups-3" class="level3">
+<h3 class="anchored" data-anchor-id="randomly-allocated-groups-3">Randomly allocated groups</h3>
+<p><strong>It’s your responsibility to get into these, just look for the cows!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_allocation</span>(names, <span class="at">seed =</span> <span class="dv">1131</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`Group 1`
+[1] "Pikitangarangi Ratapu" "YOGAPRIYA S"           "Yue Ma"               
+[4] "Daneshajeya Jeyavalan"
+
+$`Group 2`
+[1] "Robert Mihok" "Jianing Chen" "Vivian Qian"  "Happy Liang" 
+
+$`Group 3`
+[1] "Zichang Li"                   "Antonia Schebek-Fuerstenberg"
+[3] "Anqi Cheng"                   "Shoule Du"                   
+
+$`Group 4`
+[1] "Alex Johnson" "Jiaxin Liu"   "Yutao Yang"  
+
+$`Group 5`
+[1] "Tongzheng Yao" "Keyi Sun"      "Ziyi Wang"     "Yingyi Wang"  
+
+$`Group 6`
+[1] "Zhixiao Zhang"      "Charlotte Sutton"   "Barnaby Clegg-Shaw"
+[4] "Lana Najar"        
+
+$`Group 7`
+[1] "He Li"        "Laura Munck"  "Congkai Meng"
+
+$`Group 8`
+[1] "Hnin Lwin"     "Xinyue Zhang"  "Leyang Liu"    "Karie Labidon"
+
+$`Group 9`
+[1] "Angel Loh"          "Sunny Chen"         "Emma Akeroyd"      
+[4] "Francesca Domanska"
+
+$`Group 10`
+[1] "Shuxiang He" "Yutong Wang" "Julia Thain" "Yi Han"     </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-significance" class="level2">
+<h2 class="anchored" data-anchor-id="sec-significance"><em>Significance</em></h2>
+<section id="how-good-are-you-at-assessing-significance-test-yourself." class="level4">
+<h4 class="anchored" data-anchor-id="how-good-are-you-at-assessing-significance-test-yourself.">How good are you at assessing <em>significance</em>? <a href="https://statbiscuit.github.io/mini_games/shady/index.html">Test yourself</a>.</h4>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Rerun the analysis discussed in <a href="#sec-honesty">Section&nbsp;3.5</a> (see <a href="#sec-solutions">Section&nbsp;6</a> for relevant <code>R</code> code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?</p>
+</div>
+</div>
+<p><strong>5% is NOT some magic threshold</strong>! Below is an excerpt taken from <span class="citation" data-cites="fisher">Fisher (<a href="#ref-fisher" role="doc-biblioref">1926</a>)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<blockquote class="blockquote">
+<p>If one in twenty does not seem high enough odds, we may, if we prefer it, draw the line at one in fifty (the 2 per cent. point), or one in a hundred (the 1 per cent. point). Personally, the writer prefers to set a low standard of significance at the 5 per cent. point, and ignore entirely all results which fail to reach this level. A scientific fact should be regarded as experimentally established only if a properly designed experiment <em>rarely fails</em> to give this level of significance. The very high odds sometimes claimed for experimental results should usually be discounted, for inaccurate methods of estimating error have far more influence than has the particular standard of significance chosen. – Page 504, <span class="citation" data-cites="fisher">Fisher (<a href="#ref-fisher" role="doc-biblioref">1926</a>)</span>.</p>
+</blockquote>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Write out a inferential statement that includes the magical word <em>significance</em> (as well as quoting the appropriate quantities)! It can be from the analysis we’ve covered in this course, or from a paper, or from your other classes.</p>
+</div>
+</div>
+<p>Remember back to <a href="#sec-caseliza">Section&nbsp;4.3</a> where you faced some potential ethical issues in the given case studies? These ranged from data availability to drawing &amp; reporting conclusions. Your obligations in being an responsible (<em>ethical</em>) also applies to your use of language when reporting.</p>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Re-write out your inferential statements from above that switching out the magical word <em>significance</em> to something you believe is more likely to be immediately understood/is less obscure, yet is still concise and meaningful.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-resampling" class="level2">
+<h2 class="anchored" data-anchor-id="sec-resampling">Hypothesis testing via resampling</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"BIOSCI220"</span>, <span class="st">"BIOSCI738"</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Value =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="fl">1.5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="fl">9.5</span>,<span class="dv">3</span>))</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">means =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Value), <span class="dv">3</span>))</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Group) <span class="sc">%&gt;%</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">vars =</span> <span class="fu">round</span>(<span class="fu">var</span>(Value), <span class="dv">3</span>))</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Group, <span class="at">y =</span> Value, <span class="at">col =</span> Group)) <span class="sc">+</span> <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> Group), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">"Group"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Value"</span>) <span class="sc">+</span> <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> means<span class="sc">$</span>Group, <span class="at">y =</span> means<span class="sc">$</span>means, <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"mu == "</span>, means<span class="sc">$</span>means), <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>), <span class="at">size =</span> <span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> vars<span class="sc">$</span>Group, <span class="at">y =</span> (means<span class="sc">$</span>means) <span class="sc">-</span> <span class="fl">0.75</span>, <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"sigma^2 == "</span>, vars<span class="sc">$</span>vars), <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>), <span class="at">size =</span> <span class="dv">6</span>)  <span class="sc">+</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p><strong>Q</strong> Do you think the means of each group are <em>significantly</em> different from each other? Why or why not?</p>
+<p><strong>Q</strong> Do you think the variances of each group are <em>significantly</em> different from each other? Why or why not?</p>
+<section id="sec-perm" class="level3">
+<h3 class="anchored" data-anchor-id="sec-perm">Permutation (<em>exact</em>) tests</h3>
+<p>How many times can you rearrange 8 values into two groups, each of size 4? Remember <span class="math inline">\(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)</span> the binomial coefficient! In our case, <span class="math inline">\(\binom{8}{4}\)</span>. Luckily <code>R</code> has the function <code>choose(8,4)</code>!</p>
+<p>Using a permutation test (i.e., one that considers all possible re-combinations of our data) we test the following hypothesis</p>
+<p>NULL <span class="math inline">\(H_0: \mu_\text{BIOSCI738} = \mu_\text{BIOSCI220}\)</span> vs alternative <span class="math inline">\(H_1: \mu_\text{BIOSCI738} \neq \mu_\text{BIOSCI220}\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>mean_diff <span class="ot">&lt;-</span> means <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">diff =</span> <span class="fu">diff</span>(means)) <span class="sc">%&gt;%</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>mean_diff</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.25</code></pre>
+</div>
+</div>
+<p>The observed statistic in our case is <span class="math inline">\(\mu_\text{BIOSCI738} - \mu_\text{BIOSCI220} =\)</span> 1.25. Below we carry out a permutation test.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>combinations <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="dv">8</span>,<span class="dv">4</span>) <span class="do">## 70 in total</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>permtest_combinations <span class="ot">&lt;-</span> <span class="fu">apply</span>(combinations, <span class="dv">2</span>, <span class="cf">function</span>(x)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(data<span class="sc">$</span>Value[x]) <span class="sc">-</span> <span class="fu">mean</span>(data<span class="sc">$</span>Value[<span class="sc">-</span>x]))</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="fu">length</span>(permtest_combinations[<span class="fu">abs</span>(permtest_combinations) <span class="sc">&gt;=</span> mean_diff]) <span class="sc">/</span> <span class="fu">choose</span>(<span class="dv">8</span>,<span class="dv">4</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>p_val</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5714286</code></pre>
+</div>
+</div>
+<p>TBH all we’ve really done is carried out a t-test without the associated assumptions, compare this to the output from <code>t.test()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Value <span class="sc">~</span> Group, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Welch Two Sample t-test
+
+data:  Value by Group
+t = -0.68573, df = 5.9245, p-value = 0.5188
+alternative hypothesis: true difference in means between group BIOSCI220 and group BIOSCI738 is not equal to 0
+95 percent confidence interval:
+ -5.72425  3.22425
+sample estimates:
+mean in group BIOSCI220 mean in group BIOSCI738 
+                  4.625                   5.875 </code></pre>
+</div>
+</div>
+<p><strong>BUT</strong> what if it wasn’t just a vanilla stat we were interested in?</p>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Carry out…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>a permutation test that compares the variances of the groups.</p>
+</div>
+</div>
+</section>
+<section id="sec-random" class="level3">
+<h3 class="anchored" data-anchor-id="sec-random">Randomization tests</h3>
+<p>A randomization test is really just a incomplete permutation test (i.e., one where we can’t be bothered to compute all possible combinations). For a randomization test we reshuffle randomly and hope that we do this enough times to construct a sampling distribution of our test statistic under the NULL hypothesis.</p>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>``Read” <a href="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/randomisation.png">this cheatsheet</a> and summarize the procedure explained.</li>
+<li>Given the data below, carry out
+<ol type="a">
+<li>A permutation test that compares the <strong>medians</strong> of the groups</li>
+<li>A randomization test for the same statistic (<a href="https://biosci738.github.io/BIOSCI738/permutation-and-randomisation-tests.html#a-randomisation-test-p%C4%81ua-shell-length">Module 2 of the courseguide give some pretty strong hints</a>)</li>
+</ol>
+<ul>
+<li>think about how many times you want to resample</li>
+<li>create a plot of your sampling distribution of the test statistic</li>
+<li>what do you infer?</li>
+</ul></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">weight =</span> <span class="fu">c</span>(<span class="fl">7.1</span>, <span class="fl">5.2</span>, <span class="fl">6.3</span>, <span class="fl">6.7</span>, <span class="fl">7.4</span>, </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">5.9</span>, <span class="fl">5.3</span>, <span class="fl">6.1</span>, <span class="fl">2.1</span>, <span class="fl">4.9</span>,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">4.8</span>, <span class="fl">5.4</span>, <span class="fl">3.6</span>, <span class="fl">4.1</span>, <span class="fl">4.4</span>, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>                              <span class="fl">4.8</span>, <span class="fl">3.4</span>, <span class="fl">5.1</span>, <span class="fl">5.3</span>, <span class="fl">5.2</span>),</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>                   <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Group_1"</span>,<span class="st">"Group_2"</span>), <span class="at">each =</span> <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-bootstrap" class="level2">
+<h2 class="anchored" data-anchor-id="sec-bootstrap">Bootstrapping</h2>
+<p>A bootstrap is a procedure for finding the (approximate) sampling distribution of a <strong>statistic/parameter of interest</strong> from a single data sample. We assume that,</p>
+<ol type="1">
+<li>the original sample represents the distribution of the population from which it was drawn, therefore</li>
+<li>resamples, taken with replacement from the original sample are representative of what we would get from drawing many samples from the population (<em>the distribution of the statistics calculated from each resample is known as the bootstrap distribution of the statistic</em>), so</li>
+<li>the bootstrap distribution of a statistic represents that statistic’s sampling distribution.</li>
+</ol>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Gead to the <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>“Read” <a href="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png">this cheatsheet</a> and summarize the procedure explained. What are the key differences to the resampling procedures in <a href="#sec-resampling">Section&nbsp;5.3</a></p>
+</div>
+</div>
+<section id="sec-boot01" class="level3">
+<h3 class="anchored" data-anchor-id="sec-boot01">Case study</h3>
+<center>
+<p>
+Some of my 2022 pumpkin haul
+</p>
+<img src="runsheets/img/pumpkins.jpg" alt="Some of my 2022 pumpkin haul" height="400px">
+</center>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Run through the <code>R</code> code below
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Discuss/answer each question posed in the comments. Figure out what each line of code does and replace the comments with your own.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## data about the weight, height, and width of some of my homegrown 2022 pumpkins</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pumpkins.csv"</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">#####################</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">## pairsplot</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>(data)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">## change to kg</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">weight_kg =</span> weight_g<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Pairwise relationships between the three</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions all appear approximately linear,</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="do">## with a high correlation</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="do">## linear model</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Fitted model.</span></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight_kg <span class="sc">~</span> height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> data)</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>fit <span class="sc">|&gt;</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a><span class="do">## fitted values</span></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a><span class="fu">fitted</span>(fit) <span class="do">## notice anything strange?</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a><span class="do">## estimated error variance</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="do">## standard errors for the estimated coefficients</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[, <span class="dv">2</span>]</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="do">## New pumpkins</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 1, height_mm 150, width_mm 240</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 2, height_mm 100, width_mm 160</span></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">height_mm =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">100</span>), <span class="at">width_mm =</span> <span class="fu">c</span>(<span class="dv">240</span>, <span class="dv">160</span>))</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 1 (~) 60% bigger than pumpkin 2</span></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y  =</span> height_mm , <span class="at">x =</span> width_mm)) <span class="sc">+</span></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data =</span> new, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a><span class="do">## point predictions</span></span>
+<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> new)</span>
+<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a><span class="do">## confidence intervals</span></span>
+<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">"confidence"</span>)[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a><span class="do">## prediction intervals</span></span>
+<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">"prediction"</span>)[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 1 is 60% larger than pumpkin 2 in terms of height and width. If</span></span>
+<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin growth is isometric, then pumpkin 1's expected weight will be 60% larger than</span></span>
+<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 2s (ratio 1.6). If the ratio is less than 60% (1.6), then we have negative allometric growth</span></span>
+<span id="cb29-43"><a href="#cb29-43" aria-hidden="true" tabindex="-1"></a><span class="do">## (pumpkins get less heavy , relative to the other dimensions), otherwise we have</span></span>
+<span id="cb29-44"><a href="#cb29-44" aria-hidden="true" tabindex="-1"></a><span class="do">## positive allometric growth (&gt; 1/6) (pumpkins tend to get heavier as they grow, relative</span></span>
+<span id="cb29-45"><a href="#cb29-45" aria-hidden="true" tabindex="-1"></a><span class="do">## to the other dimensions).</span></span>
+<span id="cb29-46"><a href="#cb29-46" aria-hidden="true" tabindex="-1"></a><span class="do">## under model above what is the estimated ratio of pumpkin 1 weight (kg) to pumpkin 2 weight (kg)</span></span>
+<span id="cb29-47"><a href="#cb29-47" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata =</span> new)</span>
+<span id="cb29-48"><a href="#cb29-48" aria-hidden="true" tabindex="-1"></a>mu[<span class="dv">1</span>]<span class="sc">/</span>mu[<span class="dv">2</span>]</span>
+<span id="cb29-49"><a href="#cb29-49" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute a confidence interval for this ratio using 1) a parametric and 2)a  non-parametric bootstrap.</span></span>
+<span id="cb29-50"><a href="#cb29-50" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb29-51"><a href="#cb29-51" aria-hidden="true" tabindex="-1"></a><span class="do">## Parametric (resample from assumed response distribution)</span></span>
+<span id="cb29-52"><a href="#cb29-52" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb29-53"><a href="#cb29-53" aria-hidden="true" tabindex="-1"></a><span class="do">## seed</span></span>
+<span id="cb29-54"><a href="#cb29-54" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1567</span>)</span>
+<span id="cb29-55"><a href="#cb29-55" aria-hidden="true" tabindex="-1"></a><span class="do">## number of bootstrap iterations</span></span>
+<span id="cb29-56"><a href="#cb29-56" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb29-57"><a href="#cb29-57" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb29-58"><a href="#cb29-58" aria-hidden="true" tabindex="-1"></a>bootstrap_ratios <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  bootstrap iterations.</span></span>
+<span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Simulating new response data assuming Normal response</span></span>
+<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>boot <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(data), <span class="fu">fitted</span>(fit), <span class="fu">summary</span>(fit)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Fitting the model to the bootstrapped response</span></span>
+<span id="cb29-64"><a href="#cb29-64" aria-hidden="true" tabindex="-1"></a>    fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(boot <span class="sc">~</span>  height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> data)</span>
+<span id="cb29-65"><a href="#cb29-65" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Calculating the estimated expectations for new pumpkins</span></span>
+<span id="cb29-66"><a href="#cb29-66" aria-hidden="true" tabindex="-1"></a>    mu_new <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_boot, <span class="at">newdata =</span> new)</span>
+<span id="cb29-67"><a href="#cb29-67" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Saving the estimated ratio from the bootstrap model fit.</span></span>
+<span id="cb29-68"><a href="#cb29-68" aria-hidden="true" tabindex="-1"></a>    bootstrap_ratios[i] <span class="ot">&lt;-</span> mu_new[<span class="dv">1</span>]<span class="sc">/</span>mu_new[<span class="dv">2</span>]</span>
+<span id="cb29-69"><a href="#cb29-69" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-70"><a href="#cb29-70" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bootstrap_ratios)</span>
+<span id="cb29-71"><a href="#cb29-71" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu[<span class="dv">1</span>]<span class="sc">/</span>mu[<span class="dv">2</span>], <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb29-72"><a href="#cb29-72" aria-hidden="true" tabindex="-1"></a><span class="do">## CI</span></span>
+<span id="cb29-73"><a href="#cb29-73" aria-hidden="true" tabindex="-1"></a>CI_parametric <span class="ot">&lt;-</span> <span class="fu">quantile</span>(bootstrap_ratios, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb29-74"><a href="#cb29-74" aria-hidden="true" tabindex="-1"></a>CI_parametric</span>
+<span id="cb29-75"><a href="#cb29-75" aria-hidden="true" tabindex="-1"></a><span class="do">## The confidence interval from the parametric bootstrap does not contain 1.25. We</span></span>
+<span id="cb29-76"><a href="#cb29-76" aria-hidden="true" tabindex="-1"></a><span class="do">## therefore have evidence in favour of positive allometric growth.</span></span>
+<span id="cb29-77"><a href="#cb29-77" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb29-78"><a href="#cb29-78" aria-hidden="true" tabindex="-1"></a><span class="do">## Non-parametric (resample from observed data)</span></span>
+<span id="cb29-79"><a href="#cb29-79" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb29-80"><a href="#cb29-80" aria-hidden="true" tabindex="-1"></a><span class="do">## seed</span></span>
+<span id="cb29-81"><a href="#cb29-81" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7651</span>)</span>
+<span id="cb29-82"><a href="#cb29-82" aria-hidden="true" tabindex="-1"></a><span class="do">## number of bootstrap iterations</span></span>
+<span id="cb29-83"><a href="#cb29-83" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb29-84"><a href="#cb29-84" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb29-85"><a href="#cb29-85" aria-hidden="true" tabindex="-1"></a>bootstrap_ratios <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb29-86"><a href="#cb29-86" aria-hidden="true" tabindex="-1"></a><span class="do">##  bootstrap iterations.</span></span>
+<span id="cb29-87"><a href="#cb29-87" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb29-88"><a href="#cb29-88" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Bootstrap resample</span></span>
+<span id="cb29-89"><a href="#cb29-89" aria-hidden="true" tabindex="-1"></a>    boot.df <span class="ot">&lt;-</span> data[<span class="fu">sample</span>(<span class="fu">nrow</span>(data), <span class="at">replace =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb29-90"><a href="#cb29-90" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Fitting the model to the bootstrapped response</span></span>
+<span id="cb29-91"><a href="#cb29-91" aria-hidden="true" tabindex="-1"></a>    fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(boot <span class="sc">~</span>  height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> boot.df)</span>
+<span id="cb29-92"><a href="#cb29-92" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Calculating the estimated expectations for new pumpkins</span></span>
+<span id="cb29-93"><a href="#cb29-93" aria-hidden="true" tabindex="-1"></a>    mu_new <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_boot, <span class="at">newdata =</span> new)</span>
+<span id="cb29-94"><a href="#cb29-94" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Saving the estimated ratio from the bootstrap model fit.</span></span>
+<span id="cb29-95"><a href="#cb29-95" aria-hidden="true" tabindex="-1"></a>    bootstrap_ratios[i] <span class="ot">&lt;-</span> mu_new[<span class="dv">1</span>]<span class="sc">/</span>mu_new[<span class="dv">2</span>]</span>
+<span id="cb29-96"><a href="#cb29-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-97"><a href="#cb29-97" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bootstrap_ratios)</span>
+<span id="cb29-98"><a href="#cb29-98" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu[<span class="dv">1</span>]<span class="sc">/</span>mu[<span class="dv">2</span>], <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb29-99"><a href="#cb29-99" aria-hidden="true" tabindex="-1"></a><span class="do">## CI</span></span>
+<span id="cb29-100"><a href="#cb29-100" aria-hidden="true" tabindex="-1"></a>CI_non_parametric <span class="ot">&lt;-</span> <span class="fu">quantile</span>(bootstrap_ratios, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb29-101"><a href="#cb29-101" aria-hidden="true" tabindex="-1"></a>CI_non_parametric</span>
+<span id="cb29-102"><a href="#cb29-102" aria-hidden="true" tabindex="-1"></a><span class="do">## again, evidence in favour of positive allometric growth (i.e., pumpkins get rounder the</span></span>
+<span id="cb29-103"><a href="#cb29-103" aria-hidden="true" tabindex="-1"></a><span class="do">## bigger they get)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="sec-peershare04" class="level2">
+<h2 class="anchored" data-anchor-id="sec-peershare04">Q&amp;A/peer-share/Task 03</h2>
+<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go over an activity from the class again or spend some time on Task 03, due today!</p>
+</div>
+</div>
+<!--{{< include runsheets/runsheet_05.qmd >}}-->
+</section>
+</section>
+<section id="sec-solutions" class="level1">
+<h1>Activity solutions</h1>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
 Suggested <code>R</code> code solutions
 </div>
 </div>
@@ -1361,103 +1803,106 @@ Suggested <code>R</code> code solutions
 </div>
 </div>
 <section id="suggested-solution-to-sec-gorilla" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a></h2>
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla">Section&nbsp;2.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-honesty" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-honesty">Suggested solution to <a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a></h2>
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-honesty">Suggested solution to <a href="#sec-honesty">Section&nbsp;3.5</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"retracted-honesty-study_week-02.csv"</span>)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="do">## set up descriptive treatments</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span> (<span class="at">treatment =</span> <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No signature"</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Sign-Top"</span>,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">2</span>, <span class="st">"Sign-Bottom"</span> , <span class="cn">NA</span>))))</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="do">## remove control condition (here we're only interested in comparing sign-top and sign-bottom)</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., Cond <span class="sc">!=</span> <span class="dv">0</span>)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MATCH PAPER</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"</span></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="do">## with "chi sq test p(0.0013)"</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment), <span class="at">margin =</span> <span class="dv">2</span>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment) <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>()</span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001)"</span></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OverReport <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="do">## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a><span class="do">## DATA DETECTIVING</span></span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>() <span class="do">## matches t-test above (is the same thing)</span></span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a><span class="do">## plot makes sense</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a><span class="do">## mapping flagged observations to colour</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag)))</span>
-<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="do">## residuals</span></span>
-<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>data_sub<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod)</span>
-<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
-<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag))) <span class="sc">+</span></span>
-<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span>
-<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a><span class="do">## now removing flagged observations</span></span>
-<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
-<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>data_sub <span class="sc">%&gt;%</span></span>
-<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., flag <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> .)</span>
-<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a><span class="do">## see https://datacolada.org/109</span></span>
-<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a><span class="do">## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud</span></span>
-<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a><span class="do">## for the story</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"retracted-honesty-study_week-02.csv"</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="do">## set up descriptive treatments</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span> (<span class="at">treatment =</span> <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No signature"</span>,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Sign-Top"</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">2</span>, <span class="st">"Sign-Bottom"</span> , <span class="cn">NA</span>))))</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="do">## remove control condition (here we're only interested in comparing sign-top and sign-bottom)</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., Cond <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MATCH PAPER</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="do">## with "chi sq test p(0.0013)"</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment), <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment) <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>()</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001)"</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OverReport <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="do">## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="do">## DATA DETECTIVING</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>() <span class="do">## matches t-test above (is the same thing)</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a><span class="do">## plot makes sense</span></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="do">## mapping flagged observations to colour</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag)))</span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a><span class="do">## residuals</span></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a>data_sub<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod)</span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag))) <span class="sc">+</span></span>
+<span id="cb31-33"><a href="#cb31-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb31-34"><a href="#cb31-34" aria-hidden="true" tabindex="-1"></a><span class="do">## now removing flagged observations</span></span>
+<span id="cb31-35"><a href="#cb31-35" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb31-36"><a href="#cb31-36" aria-hidden="true" tabindex="-1"></a>data_sub <span class="sc">%&gt;%</span></span>
+<span id="cb31-37"><a href="#cb31-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., flag <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb31-38"><a href="#cb31-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> .)</span>
+<span id="cb31-39"><a href="#cb31-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-40"><a href="#cb31-40" aria-hidden="true" tabindex="-1"></a><span class="do">## see https://datacolada.org/109</span></span>
+<span id="cb31-41"><a href="#cb31-41" aria-hidden="true" tabindex="-1"></a><span class="do">## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud</span></span>
+<span id="cb31-42"><a href="#cb31-42" aria-hidden="true" tabindex="-1"></a><span class="do">## for the story</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-bullshit" class="csl-entry" role="listitem">
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="ref-fisher" class="csl-entry" role="doc-biblioentry">
+Fisher, Ronald Aylmer. 1926. <span>“The Arrangement of Field Experiments.”</span> <em>Journal of the Ministry of Agriculture</em> 33: 505–15. <a href="https://doi.org/doi.org/10.23637/rothamsted.8v61q">https://doi.org/doi.org/10.23637/rothamsted.8v61q</a>.
+</div>
+<div id="ref-bullshit" class="csl-entry" role="doc-biblioentry">
 Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.”</span> <em>Ethics and Information Technology</em> 26 (38). <a href="https://doi.org/10.1007/s10676-024-09775-5">https://doi.org/10.1007/s10676-024-09775-5</a>.
 </div>
-<div id="ref-cancer" class="csl-entry" role="listitem">
+<div id="ref-cancer" class="csl-entry" role="doc-biblioentry">
 Jones-Todd, Charlotte M., Peter Caie, Janine B. Illian, Ben C. Stevenson, Anne Savage, David J. Harrison, and James L. Bown. 2018. <span>“Identifying Prognostic Structural Features in Tissue Sections of Colon Cancer Patients Using Point Pattern Analysis.”</span> <em>Statistics in Medicine</em> 38 (8): 1421–41. https://doi.org/<a href="https://doi.org/10.1002/sim.8046">https://doi.org/10.1002/sim.8046</a>.
 </div>
-<div id="ref-stelfi" class="csl-entry" role="listitem">
+<div id="ref-stelfi" class="csl-entry" role="doc-biblioentry">
 Jones-Todd, Charlotte M., and Alec B. M. van Helsdingen. 2024. <span>“Stelfi: An r Package for Fitting Hawkes and Log-Gaussian Cox Point Process Models.”</span> <em>Ecology and Evolution</em> 14 (2): e11005. https://doi.org/<a href="https://doi.org/10.1002/ece3.11005">https://doi.org/10.1002/ece3.11005</a>.
 </div>
-<div id="ref-whales" class="csl-entry" role="listitem">
+<div id="ref-whales" class="csl-entry" role="doc-biblioentry">
 Jones-Todd, Charlotte M., Enrico Pirotta, John W. Durban, Diane E. Claridge, Robin W. Baird, Erin A. Falcone, Gregory S. Schorr, Stephanie Watwood, and Len Thomas. 2021. <span>“Discrete-Space Continuous-Time Models of Marine Mammal Exposure to Navy Sonar.”</span> <em>Ecological Applications</em> 32 (1): e02475. https://doi.org/<a href="https://doi.org/10.1002/eap.2475">https://doi.org/10.1002/eap.2475</a>.
 </div>
-<div id="ref-robots" class="csl-entry" role="listitem">
+<div id="ref-robots" class="csl-entry" role="doc-biblioentry">
 Prather, James, Paul Denny, Juho Leinonen, Brett A. Becker, Ibrahim Albluwi, Michelle Craig, Hieke Keuning, et al. 2023. <span>“The Robots Are Here: Navigating the Generative AI Revolution in Computing Education.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3623762.3633499">https://doi.org/10.1145/3623762.3633499</a>.
 </div>
-<div id="ref-instructor" class="csl-entry" role="listitem">
+<div id="ref-instructor" class="csl-entry" role="doc-biblioentry">
 Sheard, Judy, Paul Denny, Arto Hellas, Juho Leinonen, Lauri Malmi, and Simon. 2024. <span>“Instructor Perceptions of AI Code Generation Tools - a Multi-Institutional Interview Study.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3626252.3630880">https://doi.org/10.1145/3626252.3630880</a>.
 </div>
-<div id="ref-retracted" class="csl-entry" role="listitem">
+<div id="ref-retracted" class="csl-entry" role="doc-biblioentry">
 Shu, Lisa L., Nina Mazar, Francesca Gino, Dan Ariely, and Max H. Bazerman. 2012. <span>“RETRACTED: Signing at the Beginning Makes Ethics Salient and Decreases Dishonest Self-Reports in Comparison to Signing at the End.”</span> <em>Proceedings of the National Academy of Sciences</em> 109 (38): 15197–200. <a href="https://doi.org/10.1073/pnas.1209746109">https://doi.org/10.1073/pnas.1209746109</a>.
 </div>
-<div id="ref-goodprogramming" class="csl-entry" role="listitem">
+<div id="ref-goodprogramming" class="csl-entry" role="doc-biblioentry">
 Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K. Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (6): e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
 </div>
 </div>
@@ -1470,6 +1915,7 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
 <li id="fn1"><p>Note I have intentionally only used published plots that I made, I consent to the roasting!<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>The former example is a solution posed on <a href="https://stackoverflow.com/questions/19341554/regular-expression-in-base-r-regex-to-identify-email-address">this StackOverflow post</a> asking about email address validation. The latter snippet is my attempt at a long winded (and far less stable) approach.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>See <a href="https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud">this Guardian article</a> about the debacle<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p><a href="https://en.wikipedia.org/wiki/Ronald_Fisher">R. A. Fisher’s</a> work in the area of experimental design is, perhaps, the most well known in the field. The principles he devised we still abide by today. Note, however, to give a balanced view of the celebrated mathematician many of his views (on eugenics and race in particular) are considered unethical by many. I would urge you to read up on <a href="https://www.nature.com/articles/s41437-020-00394-6">his work in this area and come to your own conclusions</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
@@ -1500,15 +1946,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1540,50 +1983,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1593,17 +1997,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1615,245 +2010,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -1894,7 +2053,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 

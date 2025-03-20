@@ -1,0 +1,296 @@
+# March 21st
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+
+ - Carry out, interpret, and communicate the result of
+   + a randomization hypothesis test,
+   + a permutation test, and
+   + a bootstrap.
+ 
+ - Identify which of, and when, the above resampling procedures are appropriate to use
+ - Interpret *p-values* correctly!
+:::
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.25 pm** *Significance* (@sec-significance)
+ + **02.25–02.55 pm** Hypothesis testing via resampling (@sec-resampling)
+    - Permutation (*exact*) tests (@sec-perm)
+    - Randomization tests (@sec-random)
+    
+ + **02:55–03:05 pm** Break
+ 
+ + **03.05–03.45 pm** Bootstrapping (@sec-bootstrap)
+    - Case study (@sec-boot01) 
+ + **03.45–03.55 pm** Q&A and peer-share (@sec-peershare04)
+
+
+### Randomly allocated groups
+
+**It's your responsibility to get into these, just look for the cows!**
+
+```{r, echo = 2}
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Daneshajeya Jeyavalan", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Hnin Lwin", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Vivian Qian", "Pikitangarangi Ratapu", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+group_allocation(names, seed = 1131, 10)
+```
+
+## *Significance* {#sec-significance}
+
+
+#### How good are you at assessing *significance*? [Test yourself](https://statbiscuit.github.io/mini_games/shady/index.html).
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
+Rerun the analysis discussed in @sec-honesty (see @sec-solutions for relevant `R` code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?
+:::
+
+**5% is NOT some magic threshold**! Below is an excerpt taken from @fisher.^[[R. A. Fisher’s](https://en.wikipedia.org/wiki/Ronald_Fisher) work in the area of experimental design is, perhaps, the most well known in the field. The principles he devised we still abide by today. Note, however, to give a balanced view of the celebrated mathematician many of his views (on eugenics and race in particular) are considered unethical by many. I would urge you to read up on [his work in this area and come to your own conclusions](https://www.nature.com/articles/s41437-020-00394-6).]
+
+> If one in twenty does not seem high enough odds, we may, if we prefer it, draw the line at one in fifty (the 2 per cent. point), or one in a hundred (the 1 per cent. point). Personally, the writer prefers to set a low standard of significance at the 5 per cent. point, and ignore entirely all results which fail to reach this level. A scientific fact should be regarded as experimentally established only if a properly designed experiment *rarely fails* to give this level of significance. The very high odds sometimes claimed for experimental results should usually be discounted, for inaccurate methods of estimating error have far more influence than has the particular standard of significance chosen. -- Page 504, @fisher.
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
+Write out a inferential statement that includes the magical word *significance* (as well as quoting the appropriate quantities)! It can be from the analysis we've covered in this course, or from a paper, or from your other classes. 
+:::
+
+Remember back to @sec-caseliza where you faced some potential ethical issues in the given case studies? These ranged from data availability to drawing & reporting conclusions. Your obligations in being an responsible (*ethical*) also applies to your use of language when reporting. 
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
+Re-write out your inferential statements from above that switching out the magical word *significance* to something you believe is more likely to be immediately understood/is less obscure, yet is still concise and meaningful.
+:::
+
+
+## Hypothesis testing via resampling {#sec-resampling}
+
+```{r}
+require(tidyverse)
+data <- data.frame(Group = rep(c("BIOSCI220", "BIOSCI738"), each = 4),
+                   Value = c(7,6,4,1.5,5,6,9.5,3))
+means <- data %>%
+	group_by(Group) %>%
+	summarise(means = round(mean(Value), 3))
+vars <- data %>%
+	group_by(Group) %>%
+	summarise(vars = round(var(Value), 3))
+ggplot(data, aes(x = Group, y = Value, col = Group)) + geom_violin() + geom_jitter(aes(col = Group), size = 3) +
+	xlab("Group") + ylab("Value") + theme_light() +
+	annotate(geom = "text", x = means$Group, y = means$means, label = paste("mu == ", means$means), parse = TRUE, col = c("#80CFF0", "#DFC0D0"), size = 6) +
+	annotate(geom = "text", x = vars$Group, y = (means$means) - 0.75, label = paste("sigma^2 == ", vars$vars), parse = TRUE, col = c("#80CFF0", "#DFC0D0"), size = 6)  +
+  scale_color_manual(values = c("#80CFF0", "#DFC0D0"))
+```
+
+**Q** Do you think the means of each group are *significantly* different from each other? Why or why not?
+
+**Q** Do you think the variances of each group are *significantly* different from each other? Why or why not?
+
+
+### Permutation (*exact*) tests {#sec-perm}
+
+How many times can you rearrange 8 values into two groups, each of size 4? Remember $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ the binomial coefficient! In our case, $\binom{8}{4}$. Luckily `R` has the function `choose(8,4)`!
+
+Using a permutation test (i.e., one that considers all possible re-combinations of our data) we test the following hypothesis
+
+NULL $H_0: \mu_\text{BIOSCI738} = \mu_\text{BIOSCI220}$  vs alternative $H_1: \mu_\text{BIOSCI738} \neq \mu_\text{BIOSCI220}$.
+
+
+```{r}
+mean_diff <- means %>% 
+  summarise(diff = diff(means)) %>%
+  as.numeric()
+mean_diff
+```
+
+The observed statistic in our case is $\mu_\text{BIOSCI738} - \mu_\text{BIOSCI220} =$ `r mean_diff`. Below we carry out a permutation test.
+
+```{r}
+combinations <- combn(8,4) ## 70 in total
+permtest_combinations <- apply(combinations, 2, function(x)
+  mean(data$Value[x]) - mean(data$Value[-x]))
+p_val <- length(permtest_combinations[abs(permtest_combinations) >= mean_diff]) / choose(8,4)
+p_val
+```
+TBH all we've really done is carried out a t-test without the associated assumptions, compare this to the output from `t.test()`.
+
+```{r}
+t.test(Value ~ Group, data = data)
+```
+
+**BUT** what if it wasn't just a vanilla stat we were interested in?
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Carry out...
+a permutation test that compares the variances of the groups.
+:::
+
+### Randomization tests {#sec-random}
+
+A randomization test is really just a incomplete permutation test (i.e., one where we can't be bothered to compute all possible combinations). For a randomization test we reshuffle randomly and hope that we do this enough times to construct a sampling distribution of our test statistic under the NULL hypothesis.
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
+
+ 1. ``Read" [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/randomisation.png) and summarize the procedure explained.
+ 2. Given the data below, carry out
+    a. A permutation test that compares the **medians** of the groups
+    b. A randomization test for the same statistic ([Module 2 of the courseguide give some pretty strong hints](https://biosci738.github.io/BIOSCI738/permutation-and-randomisation-tests.html#a-randomisation-test-p%C4%81ua-shell-length))
+      + think about how many times you want to resample
+      + create a plot of your sampling distribution of the test statistic
+      + what do you infer?
+
+```{r, message = FALSE}
+data <- data.frame(weight = c(7.1, 5.2, 6.3, 6.7, 7.4, 
+                              5.9, 5.3, 6.1, 2.1, 4.9,
+                              4.8, 5.4, 3.6, 4.1, 4.4, 
+                              4.8, 3.4, 5.1, 5.3, 5.2),
+                   group = rep(c("Group_1","Group_2"), each = 10))
+```
+:::
+
+## Bootstrapping {#sec-bootstrap}
+
+A bootstrap is a procedure for finding the (approximate) sampling distribution of a **statistic/parameter of interest** from a single data sample. We assume that, 
+
+   1. the original sample represents the distribution of the population from which it was drawn, therefore
+   2. resamples, taken with replacement from the original sample are representative of what we would get from drawing many samples from the population (*the distribution of the statistics calculated from each resample is known as the bootstrap distribution of the statistic*), so
+   3. the bootstrap distribution of a statistic represents that statistic’s sampling distribution.
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Gead to the [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
+"Read" [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png) and summarize the procedure explained. What are the key differences to the resampling procedures in @sec-resampling
+:::
+
+
+### Case study {#sec-boot01}
+
+
+<center><p>Some of my 2022 pumpkin haul</p>
+<img src="runsheets/img/pumpkins.jpg" alt="Some of my 2022 pumpkin haul" height="400px"></center>
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Run through the `R` code below 
+Discuss/answer each question posed in the comments. Figure out what each line of code does and replace the comments with your own.
+:::
+
+```{r, eval = FALSE}
+library(tidyverse)
+## data about the weight, height, and width of some of my homegrown 2022 pumpkins
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pumpkins.csv")
+#####################
+## pairsplot
+GGally::ggpairs(data)
+## change to kg
+data <- data %>%
+    mutate(weight_kg = weight_g/1000)
+## Pairwise relationships between the three
+## dimensions all appear approximately linear,
+## with a high correlation
+######################
+## linear model
+## Fitted model.
+fit <- lm(weight_kg ~ height_mm + width_mm, data = data)
+fit |>
+summary()
+## fitted values
+fitted(fit) ## notice anything strange?
+## estimated error variance
+summary(fit)$sigma^2
+## standard errors for the estimated coefficients
+summary(fit)$coefficients[, 2]
+## New pumpkins
+## pumpkin 1, height_mm 150, width_mm 240
+## pumpkin 2, height_mm 100, width_mm 160
+new <- data.frame(height_mm = c(150, 100), width_mm = c(240, 160))
+## pumpkin 1 (~) 60% bigger than pumpkin 2
+data %>%
+    ggplot(., aes(y  = height_mm , x = width_mm)) +
+    geom_point() + geom_smooth(method = "lm") +
+    geom_point(data = new, col = "red")
+## point predictions
+predict(fit, newdata = new)
+## confidence intervals
+predict(fit, newdata = new, interval = "confidence")[, 2:3]
+## prediction intervals
+predict(fit, newdata = new, interval = "prediction")[, 2:3]
+## pumpkin 1 is 60% larger than pumpkin 2 in terms of height and width. If
+## pumpkin growth is isometric, then pumpkin 1's expected weight will be 60% larger than
+## pumpkin 2s (ratio 1.6). If the ratio is less than 60% (1.6), then we have negative allometric growth
+## (pumpkins get less heavy , relative to the other dimensions), otherwise we have
+## positive allometric growth (> 1/6) (pumpkins tend to get heavier as they grow, relative
+## to the other dimensions).
+## under model above what is the estimated ratio of pumpkin 1 weight (kg) to pumpkin 2 weight (kg)
+mu <- predict(fit, newdata = new)
+mu[1]/mu[2]
+## Compute a confidence interval for this ratio using 1) a parametric and 2)a  non-parametric bootstrap.
+###########################################################
+## Parametric (resample from assumed response distribution)
+###########################################################
+## seed
+set.seed(1567)
+## number of bootstrap iterations
+nreps <- 1000
+## initialize empty array to hold results
+bootstrap_ratios <- numeric(nreps)
+##  bootstrap iterations.
+for (i in 1:nreps){
+    ## Simulating new response data assuming Normal response
+    data$boot <- rnorm(nrow(data), fitted(fit), summary(fit)$sigma^2)
+    ## Fitting the model to the bootstrapped response
+    fit_boot <- lm(boot ~  height_mm + width_mm, data = data)
+    ## Calculating the estimated expectations for new pumpkins
+    mu_new <- predict(fit_boot, newdata = new)
+    ## Saving the estimated ratio from the bootstrap model fit.
+    bootstrap_ratios[i] <- mu_new[1]/mu_new[2]
+}
+hist(bootstrap_ratios)
+abline(v = mu[1]/mu[2], lwd = 2, col = "red")
+## CI
+CI_parametric <- quantile(bootstrap_ratios, c(0.025, 0.975))
+CI_parametric
+## The confidence interval from the parametric bootstrap does not contain 1.25. We
+## therefore have evidence in favour of positive allometric growth.
+###########################################################
+## Non-parametric (resample from observed data)
+###########################################################
+## seed
+set.seed(7651)
+## number of bootstrap iterations
+nreps <- 1000
+## initialize empty array to hold results
+bootstrap_ratios <- numeric(nreps)
+##  bootstrap iterations.
+for (i in 1:nreps){
+    ## Bootstrap resample
+    boot.df <- data[sample(nrow(data), replace = TRUE), ]
+    ## Fitting the model to the bootstrapped response
+    fit_boot <- lm(boot ~  height_mm + width_mm, data = boot.df)
+    ## Calculating the estimated expectations for new pumpkins
+    mu_new <- predict(fit_boot, newdata = new)
+    ## Saving the estimated ratio from the bootstrap model fit.
+    bootstrap_ratios[i] <- mu_new[1]/mu_new[2]
+}
+hist(bootstrap_ratios)
+abline(v = mu[1]/mu[2], lwd = 2, col = "red")
+## CI
+CI_non_parametric <- quantile(bootstrap_ratios, c(0.025, 0.975))
+CI_non_parametric
+## again, evidence in favour of positive allometric growth (i.e., pumpkins get rounder the
+## bigger they get)
+
+```
+
+
+
+## Q&A/peer-share/Task 03 {#sec-peershare04}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+Go over an activity from the class again or spend some time on Task 03, due today!
+:::
+
