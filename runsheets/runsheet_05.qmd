@@ -3,6 +3,10 @@
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
 
++ Include polynomial terms in a linear model
++ Critically evaluate linear model fit
++ Communicate & discuss data structure
+
 :::
 
 
@@ -32,7 +36,7 @@ group_allocation(names, seed = 1458, 10)
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> As a group
 
-[Here is a handout](https://canvas.auckland.ac.nz/courses/120054/files/14903576?module_item_id=2564916) with nothing but data summaries and linear model summary output given. Draw the models and upload your pictures to  this [Google Doc](https://docs.google.com/document/d/1QCAqp8EIxCZwh4PImcpVz9LzGGaO29Q3ET3EszV8kWg/edit?usp=sharing).
+[Here is a handout](https://canvas.auckland.ac.nz/courses/120054/files/14903576?module_item_id=2564916) with nothing but data summaries and linear model summary output given. On the whiteboards sketch the model fit (including uncertainty), for each case.
 
 :::
 
@@ -57,6 +61,9 @@ Otherwise known as *least squares* regression, by default `lm()` seeks to minimi
 
 ### Fry time {#sec-fry}
 
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> 
+
 <center>
 <img src="https://ars.els-cdn.com/content/image/1-s2.0-S1658077X17302655-gr1.jpg" alt="Figure 1 from  article doi.org/10.1016/j.jssas.2018.01.002" >
 <p>Figure 1 from @fries</p>
@@ -71,6 +78,8 @@ fries <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker
 
  1. Choose and then plot your best-fitting model. How did you decide on your "best" model?
  2. The function `dredge` is from the `R` package `MuMIn`; it is very useful for model selection. `dredge()` generates a model selection table of models with combinations of fixed effect terms in the given global (full) model. By default `dredge()` uses AICc as its model comparison metric. Supplying your "best" model from 1) write out the top two selected models as chosen by dredge (including the estimated coefficients). From all the considered models which would you select? Justify your answer. Note, you should use residual plots in your justification. (p.s. you may need to set  `na.action = na.fail` in your `lm()` call for `dregde()` to work)
+
+:::
  
 ## Polynomial regression {#sec-poly}
 
@@ -89,14 +98,14 @@ In our very first lecture (@sec-intro) we discussed the [assessment structure of
 <img src="https://biosci738.github.io/BIOSCI738/img/assessment_overview.png" alt="assessment structure of BIOSCI738" height="400px"></center>
 
 
-## Discuss your chosen paper {#sec-project}
+## Data discussion {#sec-project}
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Consultant and Client
 
 In turn, take on the following roles: **Consultant** and **Client**.
 
-As the **Client** answer the following questions about your chosen paper for your [written report](https://canvas.auckland.ac.nz/courses/120054/assignments/436873).
+As the **Client** answer the following questions about your chosen paper for your [written report](https://canvas.auckland.ac.nz/courses/120054/assignments/436873) (*or if you've not decided yet then use the heather data that you plotted in your diagnostic task (@sec-peershare01)*).
 
  + What are the primary objectives of the/your project/analysis?
  + What specific questions or problems are you trying to address with your analysis?
