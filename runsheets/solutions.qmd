@@ -36,7 +36,7 @@ ggplot(data, aes(x = steps, y = bmi, col = gender)) +
 
 ```{r, eval = FALSE}
 library(tidyverse)
-data <- read_csv("retracted-honesty-study_week-02.csv")
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/retracted-honesty-study_week-02.csv")
 ## set up descriptive treatments
 data <- data %>% mutate (treatment = ifelse(Cond==0, "No signature",
                                      ifelse(Cond==1, "Sign-Top",
@@ -77,6 +77,168 @@ data_sub %>%
 ## see https://datacolada.org/109
 ## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud
 ## for the story
+
+
+```
+
+## Suggested solution to @sec-draw
+
+```{r, eval = FALSE}
+## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588
+library(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv") %>%
+	mutate(critics_score = as.numeric(str_replace_all(`critics % score`, "%", ""))) %>%
+	mutate(budget_recovered = as.numeric(str_replace_all(`% budget recovered`, "%", "")))
+##### ##### ##### ###
+##### Model 1 #######
+##### ##### ##### ###
+data %>%
+	lm(budget_recovered ~ critics_score, data = .) |>
+	summary()
+## Ans
+data %>%
+	ggplot(., aes(y = budget_recovered, x = critics_score)) +
+	geom_smooth(method = "lm", se = FALSE) + ylab(" Estimated budget_recovered")
+## w. data
+data %>%
+	ggplot(., aes(y = budget_recovered, x = critics_score)) +
+	geom_smooth(method = "lm", se = FALSE) + geom_point()
+##### ##### ##### ###
+##### Model 2 #######
+##### ##### ##### ###
+names(table(data$category))
+mod <- data %>%
+	lm(budget_recovered ~  category, data = .) 
+mod |>
+	summary()
+## Ans
+data$pred_vals <- predict(mod)
+## plot
+data %>%
+	ggplot(aes(y = pred_vals, x = category)) +
+    geom_point(size = 15, pch = "-") + ylab(" Estimated budget_recovered")
+
+##### ##### ##### ###
+##### Model 3 #######
+##### ##### ##### ###
+mod <- data %>%
+	lm(budget_recovered ~ critics_score + category, data = .) 
+mod |>
+	summary()
+## Ans
+data$pred_vals <- predict(mod)
+## plot
+data %>%
+	ggplot(aes(y = pred_vals, x = critics_score, color = category)) +
+	geom_line() + ylab(" Estimated budget_recovered")
+
+##### ##### ##### ###
+##### Model 4 #######
+##### ##### ##### ###
+mod <- data %>%
+	lm(budget_recovered ~ critics_score*category, data = .) 
+mod |>
+	summary()
+## Ans
+data$pred_vals <- predict(mod)
+## plot
+data %>%
+	ggplot(aes(y = pred_vals, x = critics_score, color = category)) +
+	geom_line() + ylab(" Estimated budget_recovered")
+
+##### ##### ##### ###
+##### Model 5 #######
+##### ##### ##### ###
+data <- data %>%
+	rename(., "worldwide" = `worldwide gross ($m)`, "domestic" = `domestic gross ($m)`,
+				 "international" = `international gross ($m)`)
+mod <- lm(worldwide ~ 0 + domestic + international, data = data) 
+mod |> summary()
+## Ans
+## plot
+require(rsm) ## install if not available
+persp(mod, form =  ~ 0 + domestic + international)
+image(mod, form =  ~ 0 + domestic + international)
+##### ##### ##### ###
+##### Model 6 #######
+##### ##### ##### ###
+mod <- lm(worldwide ~ budget*critics_score, data = data) 
+mod |>	summary()
+## Ans
+## plot
+persp(mod, form =  ~ budget*critics_score)
+image(mod, form =  ~ budget*critics_score)
+
+
+```
+
+## Suggested solution to @sec-fry
+
+```{r, eval = FALSE}
+## paper https://www.sciencedirect.com/science/article/pii/S1658077X17302655?via%3Dihub#t0005
+## Figure 1 data 'extracted' by https://automeris.io/WebPlotDigitizer/
+
+library(tidyverse)
+fries <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/fries.csv")
+
+ggplot(fries, aes(x = frying_time_s, y = frying_temp_c, col = method)) +
+    geom_line() + geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+ggplot(fries, aes(x = frying_time_s, y = frying_temp_c, col = method)) +
+    geom_line() + geom_point() + stat_smooth(method = "lm",formula = y~poly(x, 2, raw=TRUE), se = FALSE)
+
+ggplot(fries, aes(x = frying_time_s, y = frying_temp_c, col = method)) +
+    geom_line() + geom_point() + stat_smooth(method = "lm",formula = y~poly(x, 3, raw=TRUE), se = FALSE)
+
+## first degree
+lm(frying_temp_c ~ frying_time_s + method, data = fries) |>
+    gglm::gglm()
+ggplot(fries, aes(x = frying_time_s, y = frying_temp_c, col = method)) +
+    geom_line() + geom_point() + geom_smooth(method = "lm", se = FALSE)
+## second degree
+lm(frying_temp_c ~ I(frying_time_s^2) + method, data = fries) |>
+gglm::gglm()
+ggplot(fries, aes(x = frying_time_s, y = frying_temp_c, col = method)) +
+    geom_line() + geom_point() + stat_smooth(method = "lm",formula = y~poly(x, 2, raw=TRUE), se = FALSE)
+## third degree
+mod <- lm(frying_temp_c ~ I(frying_time_s^1) +  I(frying_time_s^2) +  I(frying_time_s^3) + method,
+          data = fries, na.action = "na.fail")
+mod |> summary()
+mod |>
+   gglm::gglm()
+mod <- lm(frying_temp_c ~ poly(frying_time_s, 3, raw = TRUE) + method, data = fries) ## but these are correlated
+mod |>
+summary()
+ggplot(fries, aes(x = frying_time_s, y = frying_temp_c, col = method)) +
+    geom_line() + geom_point() + stat_smooth(method = "lm",formula = y~poly(x, 3, raw=TRUE), se = FALSE)
+mod |>  gglm::gglm()
+## orthogonal model
+mod <- lm(frying_temp_c ~ poly(frying_time_s, 3) + method, data = fries, na.action = "na.fail") ## see https://stackoverflow.com/questions/29999900/poly-in-lm-difference-between-raw-vs-orthogonal
+mod |>
+summary()
+mod |>  gglm::gglm()
+## remove the 180 obvs as these are not 'data' they are determined
+data <- fries %>%
+    filter(frying_temp_c != 180)
+data %>%
+    ggplot(., aes(x = sqrt(frying_time_s), y = frying_temp_c, col = method)) +
+    geom_line(alpha = 0.5) + geom_point() 
+mod <- lm(frying_temp_c ~ poly(log(frying_time_s), 3) + method, data = data) 
+mod |>
+summary()
+mod |>  gglm::gglm()
+data %>%
+    mutate(preds = predict(mod)) %>%
+    ggplot(., aes(x = sqrt(frying_time_s), y = frying_temp_c, col = method)) +
+    geom_line(alpha = 0.1) + geom_point() +  geom_line(aes(y = preds))
+
+## Model diagnostics not looking "great" still. But how can we choose the "best" possible?
+## We could manually compare pairs of models using ANOVA/AIC etc. or...
+require(MuMIn) ## remembering which letters are capatalised is a pain
+## stands for Multi Model Inference
+mod <- lm(frying_temp_c ~ poly(log(frying_time_s), 3) + method, data = data, na.action = na.fail)
+## na.action = na.fail is so MuMIn dredge works
+MuMIn::dredge(mod)
 
 
 ```
