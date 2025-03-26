@@ -253,7 +253,7 @@ abline(v = mu[1]/mu[2], lwd = 2, col = "red")
 ## CI
 CI_parametric <- quantile(bootstrap_ratios, c(0.025, 0.975))
 CI_parametric
-## The confidence interval from the parametric bootstrap does not contain 1.25. We
+## The confidence interval from the parametric bootstrap does not contain 1.6. We
 ## therefore have evidence in favour of positive allometric growth.
 ###########################################################
 ## Non-parametric (resample from observed data)

@@ -12,14 +12,12 @@
 
 ## Rough timeline
 
- + **09:05–09:25 am** Reverse engineer (@sec-draw)
- + **09:25–09:55 am** Linear model diagnostics
-   - Recap residual plots {@sec-qq}
+ + **09:05–09:45 am** Reverse engineer (@sec-draw)
+ + **09:45–10:55 am** Break
+ + **09:55–10:30 am** Linear model diagnostics
+   - Recap residual plots (@sec-qq)
    - Fry time (@sec-fry)
-   
- + **09:55–10:05 am** Break
- + **10.05–10.20 am** Polynomials (@sec-poly)
- + **10.20–10.55 am** Communicating statistics (@sec-comm)
+ + **10.30–10.55 am** Communicating statistics (@sec-comm)
    - Project paper choice (@sec-project)
    - Consulting a statistician (@sec-ioa)
    
@@ -81,15 +79,6 @@ fries <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker
 
 :::
  
-## Polynomial regression {#sec-poly}
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1QCAqp8EIxCZwh4PImcpVz9LzGGaO29Q3ET3EszV8kWg/edit?usp=sharing)...
-
-Discuss this cheatsheet below, what do you think it is attempting to show/compare?
-
-![](runsheets/img/poly_vs_I.png)
-:::
 
 ## Communicating statistics {#sec-comm}
 

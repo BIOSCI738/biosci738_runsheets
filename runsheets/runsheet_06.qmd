@@ -1,0 +1,55 @@
+# March 28th
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+
+
+:::
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.20 pm** Polynomials (@sec-poly)
+ + **02.20–02.45 pm** Fry time revisited (@sec-fry02)
+ + **02:45–02:55 pm** Break
+ + **02.55–03.30 pm** Revisiting @sec-comm
+ + **03.30–03.55 pm** Q&A and Task 04 (@sec-peershare06)
+
+
+### Randomly allocated groups
+
+**It's your responsibility to get into these, just look for the cows!**
+
+```{r, echo = 2}
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Daneshajeya Jeyavalan", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Hnin Lwin", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Vivian Qian", "Pikitangarangi Ratapu", "Yogapriya", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+group_allocation(names, seed = 0833, 10)
+```
+
+## Polynomials {#sec-poly}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1QCAqp8EIxCZwh4PImcpVz9LzGGaO29Q3ET3EszV8kWg/edit?usp=sharing)...
+
+Discuss this cheatsheet below, what do you think it is attempting to show/compare?
+
+![](runsheets/img/poly_vs_I.png)
+:::
+
+
+## Polynomial regression  {#sec-fry02}
+
+Individually, or as a group, revisit @sec-fry alongside the suggested solution given in @sec-solutions. Discuss and summarise each fitted model and modelling choice made. Chose and justify your choice of preferred/"best" model?
+
+## Revisiting @sec-comm
+
+## Q&A and Task 04 {#sec-peershare06}
+
+[**Task 04**](https://canvas.auckland.ac.nz/courses/120054/assignments/436860)
+
+> Git is a version control system that manages the evolution of a set of files, called a repository (repo), in a structured way (*think of Word's Track Changes*). 
+
+> GitHub is a hosting service that provides a hgme for your git-based projects on the internet (*think of Dropbox*).
+
+The template repo you've been invited to in [Task 04](https://canvas.auckland.ac.nz/courses/120054/assignments/436860) is set up as a `RStudio` Project. It contains the basics for you to get started on the analysis for your assessed project! For this [Task 04](https://canvas.auckland.ac.nz/courses/120054/assignments/436860) all I'd like you to do is 1) connect to the repo assignment you've been invited to, 2) make a change locally in the repo, 3) then commit and push this change to the remote repo. **We'll do this in class if you've not yet already.**
+
