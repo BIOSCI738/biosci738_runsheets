@@ -24,7 +24,7 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_05.qmd >}}
 
-<!-- {{< include runsheets/runsheet_06.qmd >}} -->
+{{< include runsheets/runsheet_06.qmd >}}
 
 <!-- {{< include runsheets/runsheet_07.qmd >}} -->
 

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.262">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,11 +19,12 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -48,48 +49,20 @@ pre.numberSource code > span > a:first-child::before
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
     padding: 0 4px; width: 4em;
-    color: #aaaaaa;
   }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
 div.sourceCode
   {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+/* CSS for citations */
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
-.hanging div.csl-entry {
+.hanging-indent div.csl-entry {
   margin-left:2em;
   text-indent:-2em;
 }
@@ -103,8 +76,7 @@ div.csl-right-inline {
 }
 div.csl-indent {
   margin-left: 2em;
-}
-</style>
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -118,13 +90,42 @@ div.csl-indent {
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <style>
-    .quarto-title-block .quarto-title-banner {
-      background: #c7dbe2;
-    }
-    </style>
+
+      .quarto-title-block .quarto-title-banner {
+        background: #c7dbe2;
+      }
+</style>
 <script src="index_files/libs/fitvids-2.1.1/fitvids.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -143,14 +144,14 @@ div.csl-indent {
     <div class="quarto-title-meta-heading">Affiliation</div>
     
       <div class="quarto-title-meta-contents">
-      Charlotte Jones-Todd 
+      <p class="author">Charlotte Jones-Todd </p>
     </div>
-      <div class="quarto-title-meta-contents">
+    <div class="quarto-title-meta-contents">
           <p class="affiliation">
               University of Auckland
             </p>
         </div>
-      </div>
+    </div>
 
   <div class="quarto-title-meta">
 
@@ -216,6 +217,14 @@ div.csl-indent {
   <li><a href="#sec-project" id="toc-sec-project" class="nav-link" data-scroll-target="#sec-project">Data discussion</a></li>
   <li><a href="#sec-ioa" id="toc-sec-ioa" class="nav-link" data-scroll-target="#sec-ioa">Interactive Oral assessments (IOAs)</a></li>
   </ul></li>
+  <li><a href="#march-28th" id="toc-march-28th" class="nav-link" data-scroll-target="#march-28th">March 28th</a>
+  <ul class="collapse">
+  <li><a href="#rough-timeline-6" id="toc-rough-timeline-6" class="nav-link" data-scroll-target="#rough-timeline-6">Rough timeline</a></li>
+  <li><a href="#sec-poly" id="toc-sec-poly" class="nav-link" data-scroll-target="#sec-poly">Polynomials</a></li>
+  <li><a href="#sec-fry02" id="toc-sec-fry02" class="nav-link" data-scroll-target="#sec-fry02">Polynomial regression</a></li>
+  <li><a href="#revisiting-sec-comm" id="toc-revisiting-sec-comm" class="nav-link" data-scroll-target="#revisiting-sec-comm">Revisiting Section&nbsp;6.5</a></li>
+  <li><a href="#sec-peershare06" id="toc-sec-peershare06" class="nav-link" data-scroll-target="#sec-peershare06">Q&amp;A and Task 04</a></li>
+  </ul></li>
   <li><a href="#sec-solutions" id="toc-sec-solutions" class="nav-link" data-scroll-target="#sec-solutions">Activity solutions</a>
   <ul class="collapse">
   <li><a href="#suggested-solution-to-sec-gorilla" id="toc-suggested-solution-to-sec-gorilla" class="nav-link" data-scroll-target="#suggested-solution-to-sec-gorilla">Suggested solution to Section&nbsp;2.2</a></li>
@@ -232,17 +241,18 @@ div.csl-indent {
 
 
 
+
 <p><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></p>
 <section id="notes" class="level1">
 <h1>Notes</h1>
 <p>All BIOSCI 738 lectures require your <strong>active involvement</strong>! See the <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">course policies</a> for further infomation.</p>
 <p>Throughout this runsheet you’ll find a number of different callout boxes:</p>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 this box will contain the expected learning objectives and/or outcomes for the material
 </div>
 </div>
@@ -250,12 +260,12 @@ this box will contain the expected learning objectives and/or outcomes for the m
 
 </div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 this box will contain some useful information
 </div>
 </div>
@@ -263,12 +273,12 @@ this box will contain some useful information
 
 </div>
 </div>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer within your randomly allocated group
 </div>
 </div>
@@ -289,12 +299,12 @@ this box will contain some useful information
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">split</span>(tmp, <span class="fu">cut</span>(<span class="fu">seq_along</span>(tmp), groups, <span class="at">labels =</span> <span class="fu">paste</span>(<span class="st">"Group"</span>, <span class="dv">1</span><span class="sc">:</span>groups))) </span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Accessing activities
 </div>
 </div>
@@ -317,20 +327,20 @@ Accessing activities
 <section id="am---1055-am" class="level3">
 <h3 class="anchored" data-anchor-id="am---1055-am"><strong>09:05 am - 10:55 am</strong></h3>
 <ul>
-<li><p><strong>09:05–10.25 am</strong> Gorilla Gambit (<a href="#sec-gorilla">Section&nbsp;2.2</a>)</p></li>
-<li><p><strong>10.25–10.55 am</strong> Group Code of Conduct (<a href="#sec-coc">Section&nbsp;2.3</a>)</p>
+<li><p><strong>09:05–10.25 am</strong> Gorilla Gambit (<a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a>)</p></li>
+<li><p><strong>10.25–10.55 am</strong> Group Code of Conduct (<a href="#sec-coc" class="quarto-xref">Section&nbsp;2.3</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-coc01">Section&nbsp;2.3.1</a>)</li>
-<li>Group activity (<a href="#sec-coc02">Section&nbsp;2.3.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-coc01" class="quarto-xref">Section&nbsp;2.3.1</a>)</li>
+<li>Group activity (<a href="#sec-coc02" class="quarto-xref">Section&nbsp;2.3.2</a>)</li>
 </ul></li>
 <li><p><strong>09:55–10:05 am</strong> Break</p></li>
-<li><p><strong>10.05–10.15 am</strong> Introduction to BIOSCI 738 (<a href="#sec-intro">Section&nbsp;2.4</a>)</p></li>
-<li><p><strong>10.15–10.40 am</strong> AI in the BOISCI 738 classroom (<a href="#sec-ai">Section&nbsp;2.5</a>)</p>
+<li><p><strong>10.05–10.15 am</strong> Introduction to BIOSCI 738 (<a href="#sec-intro" class="quarto-xref">Section&nbsp;2.4</a>)</p></li>
+<li><p><strong>10.15–10.40 am</strong> AI in the BOISCI 738 classroom (<a href="#sec-ai" class="quarto-xref">Section&nbsp;2.5</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-ai01">Section&nbsp;2.5.1</a>)</li>
-<li>Group activity (<a href="#sec-ai02">Section&nbsp;2.5.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-ai01" class="quarto-xref">Section&nbsp;2.5.1</a>)</li>
+<li>Group activity (<a href="#sec-ai02" class="quarto-xref">Section&nbsp;2.5.2</a>)</li>
 </ul></li>
-<li><p><strong>10.40–10.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare01">Section&nbsp;2.6</a>)</p></li>
+<li><p><strong>10.40–10.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare01" class="quarto-xref">Section&nbsp;2.6</a>)</p></li>
 </ul>
 </section>
 <section id="randomly-allocated-groups" class="level3">
@@ -385,17 +395,17 @@ $`Group 9`
 </section>
 <section id="sec-coc" class="level2">
 <h2 class="anchored" data-anchor-id="sec-coc">Group Code of Conduct</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 A classwide agreed group working Code of Conduct
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02">Section&nbsp;2.3.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02" class="quarto-xref">Section&nbsp;2.3.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
 </div>
 </div>
 <section id="sec-coc01" class="level3">
@@ -411,12 +421,12 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-coc02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-coc02">Write your own</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
 </div>
 </div>
@@ -447,17 +457,17 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-ai" class="level2">
 <h2 class="anchored" data-anchor-id="sec-ai">GenAI in the BIOSCI 738 classroom</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Expectations of genAI use
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-ai02">Section&nbsp;2.5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-ai02" class="quarto-xref">Section&nbsp;2.5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
 </div>
 </div>
 <section id="sec-ai01" class="level3">
@@ -486,20 +496,24 @@ Expectations of genAI use
 <section id="a-summary-of-your-responses" class="level4">
 <h4 class="anchored" data-anchor-id="a-summary-of-your-responses">A summary of your responses</h4>
 <div class="cell">
-
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="1152"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="1152"></p>
 </div>
-</div>
-<div class="cell-output-display">
-<table class="table">
+<table class="caption-top table">
 <caption>For programming assignments, I believe GenAI should be…</caption>
 <thead>
 <tr class="header">
@@ -522,19 +536,25 @@ Expectations of genAI use
 </tr>
 </tbody>
 </table>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="1440"></p>
+</figure>
+</div>
+</div>
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="1440"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<div class="cell">
-<div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
-</div>
-<div class="cell-output-display">
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 3%">
 <col style="width: 96%">
@@ -580,11 +600,10 @@ Expectations of genAI use
 </tr>
 </tbody>
 </table>
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="runsheets/ai_wordcloud.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption"><em>The theme of your responses</em></figcaption><p></p>
+<figcaption><em>The theme of your responses</em></figcaption>
 </figure>
 </div>
 <p><strong>Some specific answers I particularly liked or wanted to discuss</strong></p>
@@ -611,12 +630,12 @@ Expectations of genAI use
 </section>
 <section id="sec-ai02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-ai02">Share and discuss</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss in your group how much you agree/disagree with the opinions and summaries presented above.
 </div>
 </div>
@@ -636,12 +655,12 @@ Expectations of genAI use
 </section>
 <section id="sec-peershare01" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare01">Q&amp;A and peer-share</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
 </div>
 </div>
@@ -689,7 +708,11 @@ Expectations of genAI use
 <span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="do">## closest in-built ggplot theme I could find</span></span>
 <span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="do">## remove legend title</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -701,20 +724,20 @@ Expectations of genAI use
 <section id="pm---0355-pm" class="level3">
 <h3 class="anchored" data-anchor-id="pm---0355-pm"><strong>02:05 pm - 03:55 pm</strong></h3>
 <ul>
-<li><p><strong>02:05–02.20 pm</strong> Activity &amp; AI expectations (<a href="#sec-coccompleted">Section&nbsp;3.2</a>)</p></li>
-<li><p><strong>02.20–02.45 pm</strong> Data visualization (<a href="#sec-viz">Section&nbsp;3.3</a>)</p>
+<li><p><strong>02:05–02.20 pm</strong> Activity &amp; AI expectations (<a href="#sec-coccompleted" class="quarto-xref">Section&nbsp;3.2</a>)</p></li>
+<li><p><strong>02.20–02.45 pm</strong> Data visualization (<a href="#sec-viz" class="quarto-xref">Section&nbsp;3.3</a>)</p>
 <ul>
-<li>What <em>makes</em> a plot? (<a href="#sec-vibes">Section&nbsp;3.3.1</a>)</li>
-<li>Roast my plots (<a href="#sec-roast">Section&nbsp;3.3.2</a>)</li>
+<li>What <em>makes</em> a plot? (<a href="#sec-vibes" class="quarto-xref">Section&nbsp;3.3.1</a>)</li>
+<li>Roast my plots (<a href="#sec-roast" class="quarto-xref">Section&nbsp;3.3.2</a>)</li>
 </ul></li>
 <li><p><strong>02:45–02:55 pm</strong> Break</p></li>
-<li><p><strong>02.55–03.15 pm</strong> Good programming practice (<a href="#sec-prog_practice">Section&nbsp;3.4</a>)</p>
+<li><p><strong>02.55–03.15 pm</strong> Good programming practice (<a href="#sec-prog_practice" class="quarto-xref">Section&nbsp;3.4</a>)</p>
 <ul>
-<li>Classwide discussion (<a href="#sec-prog_practice01">Section&nbsp;3.4.1</a>)</li>
-<li>Group activity (<a href="#sec-prog_practice02">Section&nbsp;3.4.2</a>)</li>
+<li>Classwide discussion (<a href="#sec-prog_practice01" class="quarto-xref">Section&nbsp;3.4.1</a>)</li>
+<li>Group activity (<a href="#sec-prog_practice02" class="quarto-xref">Section&nbsp;3.4.2</a>)</li>
 </ul></li>
-<li><p><strong>03.15–03.45 pm</strong> Reproducible / retracted analysis (<a href="#sec-honesty">Section&nbsp;3.5</a>)</p></li>
-<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare02">Section&nbsp;3.6</a>)</p></li>
+<li><p><strong>03.15–03.45 pm</strong> Reproducible / retracted analysis (<a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a>)</p></li>
+<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare02" class="quarto-xref">Section&nbsp;3.6</a>)</p></li>
 </ul>
 </section>
 <section id="randomly-allocated-groups-1" class="level3">
@@ -763,12 +786,12 @@ $`Group 10`
 </section>
 <section id="sec-coccompleted" class="level2">
 <h2 class="anchored" data-anchor-id="sec-coccompleted">Activity &amp; AI expectations</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-users" aria-hidden="true"></i> Class rep!!
 </div>
 </div>
@@ -776,17 +799,17 @@ $`Group 10`
 <p>BIOSCI 738 needs a class rep!</p>
 </div>
 </div>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 A classwide agreed group working Code of Conduct
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>As decided by you in last lecture’s activity <a href="#sec-coc">Section&nbsp;2.3</a>. I have <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">updated the course guide accordingly</a>!</p>
+<p>As decided by you in last lecture’s activity <a href="#sec-coc" class="quarto-xref">Section&nbsp;2.3</a>. I have <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">updated the course guide accordingly</a>!</p>
 </div>
 </div>
 <p><strong>Some points of note</strong></p>
@@ -800,12 +823,12 @@ A classwide agreed group working Code of Conduct
 </section>
 <section id="sec-viz" class="level2">
 <h2 class="anchored" data-anchor-id="sec-viz">Data visualization</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Interpret, critique and communicate using visualization!
 </div>
 </div>
@@ -815,12 +838,12 @@ Interpret, critique and communicate using visualization!
 </div>
 <section id="sec-vibes" class="level3">
 <h3 class="anchored" data-anchor-id="sec-vibes">What <em>makes</em> a plot?</h3>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Scan the QR code below and based on <em>vibes</em> alone choose your favourite until I tell you to stop
 </div>
 </div>
@@ -836,12 +859,12 @@ Scan the QR code below and based on <em>vibes</em> alone choose your favourite u
 </section>
 <section id="sec-roast" class="level3">
 <h3 class="anchored" data-anchor-id="sec-roast">Roast my plots</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
 </div>
 </div>
@@ -858,12 +881,12 @@ Scan the QR code below and based on <em>vibes</em> alone choose your favourite u
 </section>
 <section id="sec-prog_practice" class="level2">
 <h2 class="anchored" data-anchor-id="sec-prog_practice">Good programming practice</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Abide by good programming practices to avoid future heartaches!
 </div>
 </div>
@@ -886,7 +909,7 @@ Abide by good programming practices to avoid future heartaches!
 </blockquote>
 <div class="cell">
 <div class="cell-output-display">
-<table class="table table-sm table-striped">
+<table class="caption-top table table-sm table-striped small">
 <caption>A summary of your responses</caption>
 <colgroup>
 <col style="width: 96%">
@@ -942,12 +965,12 @@ Abide by good programming practices to avoid future heartaches!
 </section>
 <section id="its-not-all-about-length" class="level4">
 <h4 class="anchored" data-anchor-id="its-not-all-about-length">It’s not all about length</h4>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Lines of code written is NOT a measure of skill!
 </div>
 </div>
@@ -989,12 +1012,12 @@ Lines of code written is NOT a measure of skill!
 </section>
 <section id="keep-the-inside-thoughts-inside" class="level4">
 <h4 class="anchored" data-anchor-id="keep-the-inside-thoughts-inside">Keep the <em>inside</em> thoughts <em>inside</em></h4>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 An <code>R</code> script (or equivalent) is a roadmap to your work.
 </div>
 </div>
@@ -1002,7 +1025,7 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 <p>You should present the cleanest most direct route you can!</p>
 </div>
 </div>
-<p>I recommend the latter approach to the second task in <a href="#sec-gorilla">Section&nbsp;2.2</a> (if you were going to pass on your solution that is). It’s not that each step shouldn’t be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.</p>
+<p>I recommend the latter approach to the second task in <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a> (if you were going to pass on your solution that is). It’s not that each step shouldn’t be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
@@ -1039,12 +1062,12 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 </section>
 <section id="sec-prog_practice02" class="level3">
 <h3 class="anchored" data-anchor-id="sec-prog_practice02">Your own experience</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
 </div>
 </div>
@@ -1056,17 +1079,17 @@ An <code>R</code> script (or equivalent) is a roadmap to your work.
 </section>
 <section id="sec-honesty" class="level2">
 <h2 class="anchored" data-anchor-id="sec-honesty"><em>Reproducible</em> analysis</h2>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Exploring data
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Building on <a href="#sec-gorilla">Section&nbsp;2.2</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
+<p>Building on <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
 </div>
 </div>
 <p>In this task you’re going to be using <a href="https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854">these data</a> collected as part of a (now retracted) study (<span class="citation" data-cites="retracted">Shu et al. (<a href="#ref-retracted" role="doc-biblioref">2012</a>)</span>)<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
@@ -1092,12 +1115,12 @@ Exploring data
 </section>
 <section id="sec-peershare02" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare02">Q&amp;A and peer-share</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> If you’ve not already got RStudio open, open it up. Show your workspace to your neighbour and justify its contents! Share any tips you have about ensuring an efficient workflow.
 </div>
 </div>
@@ -1109,12 +1132,12 @@ Exploring data
 </section>
 <section id="march-17th---guest-lecturer-dr.-liza-bolton" class="level1">
 <h1>March 17th - Guest Lecturer Dr.&nbsp;Liza Bolton!</h1>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 By the end of today’s seminar, you will be able to:
 </div>
 </div>
@@ -1130,8 +1153,8 @@ By the end of today’s seminar, you will be able to:
 <section id="rough-timeline-2" class="level2">
 <h2 class="anchored" data-anchor-id="rough-timeline-2">Rough timeline</h2>
 <ul>
-<li><strong>09:05–09:20 am</strong> Introduction (see <a href="#sec-slidesliza">Section&nbsp;4.2</a>)</li>
-<li><strong>09:20–09:55 am</strong> Your ethical experiences and codes of conduct (<a href="#sec-coc2liza">Section&nbsp;4.2.1</a>)
+<li><strong>09:05–09:20 am</strong> Introduction (see <a href="#sec-slidesliza" class="quarto-xref">Section&nbsp;4.2</a>)</li>
+<li><strong>09:20–09:55 am</strong> Your ethical experiences and codes of conduct (<a href="#sec-coc2liza" class="quarto-xref">Section&nbsp;4.2.1</a>)
 <ul>
 <li>Group discussion</li>
 <li>Class discussion</li>
@@ -1139,7 +1162,7 @@ By the end of today’s seminar, you will be able to:
 </ul></li>
 <li><strong>09:55–10:05 am</strong> Break</li>
 <li><strong>10.05–10.20 am</strong> Ethical data practices and introduction to the case studies (see slides)</li>
-<li><strong>10.15–10.45 am</strong> Case studies (<a href="#sec-caseliza">Section&nbsp;4.3</a>)
+<li><strong>10.15–10.45 am</strong> Case studies (<a href="#sec-caseliza" class="quarto-xref">Section&nbsp;4.3</a>)
 <ul>
 <li>Groups work through the case studies</li>
 <li>Class discussion</li>
@@ -1244,12 +1267,12 @@ $`Group 10`
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co"># One sample t-test</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(frog_weights, <span class="at">mu =</span> <span class="fl">6.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Look up R documentation
 </div>
 </div>
@@ -1257,12 +1280,12 @@ Look up R documentation
 <p>You can run <code>?t.test</code> in your R console to see the documentation for the basic t-test used above.</p>
 </div>
 </div>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1271,12 +1294,12 @@ Look up R documentation
 </div>
 </div>
 <p>A mine executive is very relieved by your results and interprets them as indicating that the frogs are doing very well as they are even larger and healthier than they were before.</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1294,12 +1317,12 @@ Look up R documentation
 <p>You finish up the work and your clients are very happy with it, especially complimentary about the data visualisation showing the common locations the kiwi visits by longitude and latitude.</p>
 <p>You are preparing an update to your CV to apply for a job, and you notice that transperancy and open data practices are key values of the research institute you are applying to. You write a blog post for your website outlining your findings from the kiwi research, clearly explaining the data collection processes, analytical choices, and limitations. You create a public GitHub repository that provides all the code and data to create the location heat maps.</p>
 <p>You’re about to press publish so you can link to it in your application, but a little voice in your head stops you…</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1314,12 +1337,12 @@ Look up R documentation
 <p>Image attribution: Te Ara https://teara.govt.nz/en/grasslands</p>
 <p>Concerns have been raised that an off-roading adventure course has caused vegetation loss and increased the risk of wind erosion due to exposed soil. The area where the course has been developed is a large, flat tussock grassland in the South Island. The grassland is fairly similar throughout, and has not been disturbed other than the dirt track for the off-road vehicles to travel on — this track area is not included in the coverage measures, but estimates are taken next to it.</p>
 <p>High resolution drone photography of the area has been used to estimate vegetation coverage both close to the course and further away in the undisturbed grassland. To gather the data, 100 meter lines parallel to the course, spaced every 5 meters, are drawn on the aerial imagery. Five one meter square areas are randomly chosen along each line and the vegetation coverage estimated using an appropriate machine learning tool.</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In the <a href="https://docs.google.com/document/d/1QC44oQvFROL-UI1yZu9xvhP8OnG1TFbWBYFmGVJMZSM/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1381,12 +1404,12 @@ Look up R documentation
 </section>
 <section id="march-21st" class="level1">
 <h1>March 21st</h1>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 By the end of today’s seminar, you should be able to
 </div>
 </div>
@@ -1408,18 +1431,18 @@ By the end of today’s seminar, you should be able to
 <section id="pm---0355-pm-1" class="level3">
 <h3 class="anchored" data-anchor-id="pm---0355-pm-1"><strong>02:05 pm - 03:55 pm</strong></h3>
 <ul>
-<li><p><strong>02:05–02.25 pm</strong> <em>Significance</em> (<a href="#sec-significance">Section&nbsp;5.2</a>)</p></li>
-<li><p><strong>02.25–02.55 pm</strong> Hypothesis testing via resampling (<a href="#sec-resampling">Section&nbsp;5.3</a>)</p>
+<li><p><strong>02:05–02.25 pm</strong> <em>Significance</em> (<a href="#sec-significance" class="quarto-xref">Section&nbsp;5.2</a>)</p></li>
+<li><p><strong>02.25–02.55 pm</strong> Hypothesis testing via resampling (<a href="#sec-resampling" class="quarto-xref">Section&nbsp;5.3</a>)</p>
 <ul>
-<li>Permutation (<em>exact</em>) tests (<a href="#sec-perm">Section&nbsp;5.3.1</a>)</li>
-<li>Randomization tests (<a href="#sec-random">Section&nbsp;5.3.2</a>)</li>
+<li>Permutation (<em>exact</em>) tests (<a href="#sec-perm" class="quarto-xref">Section&nbsp;5.3.1</a>)</li>
+<li>Randomization tests (<a href="#sec-random" class="quarto-xref">Section&nbsp;5.3.2</a>)</li>
 </ul></li>
 <li><p><strong>02:55–03:05 pm</strong> Break</p></li>
-<li><p><strong>03.05–03.45 pm</strong> Bootstrapping (<a href="#sec-bootstrap">Section&nbsp;5.4</a>)</p>
+<li><p><strong>03.05–03.45 pm</strong> Bootstrapping (<a href="#sec-bootstrap" class="quarto-xref">Section&nbsp;5.4</a>)</p>
 <ul>
-<li>Case study (<a href="#sec-boot01">Section&nbsp;5.4.1</a>)</li>
+<li>Case study (<a href="#sec-boot01" class="quarto-xref">Section&nbsp;5.4.1</a>)</li>
 </ul></li>
-<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare04">Section&nbsp;5.5</a>)</p></li>
+<li><p><strong>03.45–03.55 pm</strong> Q&amp;A and peer-share (<a href="#sec-peershare04" class="quarto-xref">Section&nbsp;5.5</a>)</p></li>
 </ul>
 </section>
 <section id="randomly-allocated-groups-3" class="level3">
@@ -1469,29 +1492,29 @@ $`Group 10`
 <h2 class="anchored" data-anchor-id="sec-significance"><em>Significance</em></h2>
 <section id="how-good-are-you-at-assessing-significance-test-yourself." class="level4">
 <h4 class="anchored" data-anchor-id="how-good-are-you-at-assessing-significance-test-yourself.">How good are you at assessing <em>significance</em>? <a href="https://statbiscuit.github.io/mini_games/shady/index.html">Test yourself</a>.</h4>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Rerun the analysis discussed in <a href="#sec-honesty">Section&nbsp;3.5</a> (see <a href="#sec-solutions">Section&nbsp;7</a> for relevant <code>R</code> code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?</p>
+<p>Rerun the analysis discussed in <a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a> (see <a href="#sec-solutions" class="quarto-xref">Section&nbsp;8</a> for relevant <code>R</code> code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?</p>
 </div>
 </div>
 <p><strong>5% is NOT some magic threshold</strong>! Below is an excerpt taken from <span class="citation" data-cites="fisher">Fisher (<a href="#ref-fisher" role="doc-biblioref">1926</a>)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <blockquote class="blockquote">
 <p>If one in twenty does not seem high enough odds, we may, if we prefer it, draw the line at one in fifty (the 2 per cent. point), or one in a hundred (the 1 per cent. point). Personally, the writer prefers to set a low standard of significance at the 5 per cent. point, and ignore entirely all results which fail to reach this level. A scientific fact should be regarded as experimentally established only if a properly designed experiment <em>rarely fails</em> to give this level of significance. The very high odds sometimes claimed for experimental results should usually be discounted, for inaccurate methods of estimating error have far more influence than has the particular standard of significance chosen. – Page 504, <span class="citation" data-cites="fisher">Fisher (<a href="#ref-fisher" role="doc-biblioref">1926</a>)</span>.</p>
 </blockquote>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1499,13 +1522,13 @@ $`Group 10`
 <p>Write out a inferential statement that includes the magical word <em>significance</em> (as well as quoting the appropriate quantities)! It can be from the analysis we’ve covered in this course, or from a paper, or from your other classes.</p>
 </div>
 </div>
-<p>Remember back to <a href="#sec-caseliza">Section&nbsp;4.3</a> where you faced some potential ethical issues in the given case studies? These ranged from data availability to drawing &amp; reporting conclusions. Your obligations in being an responsible (<em>ethical</em>) also applies to your use of language when reporting.</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<p>Remember back to <a href="#sec-caseliza" class="quarto-xref">Section&nbsp;4.3</a> where you faced some potential ethical issues in the given case studies? These ranged from data availability to drawing &amp; reporting conclusions. Your obligations in being an responsible (<em>ethical</em>) also applies to your use of language when reporting.</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1533,7 +1556,11 @@ $`Group 10`
 <span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> vars<span class="sc">$</span>Group, <span class="at">y =</span> (means<span class="sc">$</span>means) <span class="sc">-</span> <span class="fl">0.75</span>, <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"sigma^2 == "</span>, vars<span class="sc">$</span>vars), <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>), <span class="at">size =</span> <span class="dv">6</span>)  <span class="sc">+</span></span>
 <span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
 </div>
 </div>
 <p><strong>Q</strong> Do you think the means of each group are <em>significantly</em> different from each other? Why or why not?</p>
@@ -1581,12 +1608,12 @@ mean in group BIOSCI220 mean in group BIOSCI738
 </div>
 </div>
 <p><strong>BUT</strong> what if it wasn’t just a vanilla stat we were interested in?</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Carry out…
 </div>
 </div>
@@ -1598,12 +1625,12 @@ mean in group BIOSCI220 mean in group BIOSCI738
 <section id="sec-random" class="level3">
 <h3 class="anchored" data-anchor-id="sec-random">Randomization tests</h3>
 <p>A randomization test is really just a incomplete permutation test (i.e., one where we can’t be bothered to compute all possible combinations). For a randomization test we reshuffle randomly and hope that we do this enough times to construct a sampling distribution of our test statistic under the NULL hypothesis.</p>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -1640,17 +1667,17 @@ mean in group BIOSCI220 mean in group BIOSCI738
 <li>resamples, taken with replacement from the original sample are representative of what we would get from drawing many samples from the population (<em>the distribution of the statistics calculated from each resample is known as the bootstrap distribution of the statistic</em>), so</li>
 <li>the bootstrap distribution of a statistic represents that statistic’s sampling distribution.</li>
 </ol>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Gead to the <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>“Read” <a href="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png">this cheatsheet</a> and summarize the procedure explained. What are the key differences to the resampling procedures in <a href="#sec-resampling">Section&nbsp;5.3</a></p>
+<p>“Read” <a href="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png">this cheatsheet</a> and summarize the procedure explained. What are the key differences to the resampling procedures in <a href="#sec-resampling" class="quarto-xref">Section&nbsp;5.3</a></p>
 </div>
 </div>
 <section id="sec-boot01" class="level3">
@@ -1661,12 +1688,12 @@ Some of my 2022 pumpkin haul
 </p>
 <img src="runsheets/img/pumpkins.jpg" alt="Some of my 2022 pumpkin haul" height="400px">
 </center>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Run through the <code>R</code> code below
 </div>
 </div>
@@ -1783,12 +1810,12 @@ Some of my 2022 pumpkin haul
 </section>
 <section id="sec-peershare04" class="level2">
 <h2 class="anchored" data-anchor-id="sec-peershare04">Q&amp;A/peer-share/Task 03</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
 </div>
 </div>
@@ -1800,12 +1827,12 @@ Some of my 2022 pumpkin haul
 </section>
 <section id="march-24th" class="level1">
 <h1>March 24th</h1>
-<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 By the end of today’s seminar, you should be able to
 </div>
 </div>
@@ -1820,17 +1847,17 @@ By the end of today’s seminar, you should be able to
 <section id="rough-timeline-4" class="level2">
 <h2 class="anchored" data-anchor-id="rough-timeline-4">Rough timeline</h2>
 <ul>
-<li><strong>09:05–09:45 am</strong> Reverse engineer (<a href="#sec-draw">Section&nbsp;6.3</a>)</li>
+<li><strong>09:05–09:45 am</strong> Reverse engineer (<a href="#sec-draw" class="quarto-xref">Section&nbsp;6.3</a>)</li>
 <li><strong>09:45–10:55 am</strong> Break</li>
 <li><strong>09:55–10:30 am</strong> Linear model diagnostics
 <ul>
-<li>Recap residual plots (<a href="#sec-qq">Section&nbsp;6.4.1</a>)</li>
-<li>Fry time (<a href="#sec-fry">Section&nbsp;6.4.2</a>)</li>
+<li>Recap residual plots (<a href="#sec-qq" class="quarto-xref">Section&nbsp;6.4.1</a>)</li>
+<li>Fry time (<a href="#sec-fry" class="quarto-xref">Section&nbsp;6.4.2</a>)</li>
 </ul></li>
-<li><strong>10.30–10.55 am</strong> Communicating statistics (<a href="#sec-comm">Section&nbsp;6.5</a>)
+<li><strong>10.30–10.55 am</strong> Communicating statistics (<a href="#sec-comm" class="quarto-xref">Section&nbsp;6.5</a>)
 <ul>
-<li>Project paper choice (<a href="#sec-project">Section&nbsp;6.6</a>)</li>
-<li>Consulting a statistician (<a href="#sec-ioa">Section&nbsp;6.7</a>)</li>
+<li>Project paper choice (<a href="#sec-project" class="quarto-xref">Section&nbsp;6.6</a>)</li>
+<li>Consulting a statistician (<a href="#sec-ioa" class="quarto-xref">Section&nbsp;6.7</a>)</li>
 </ul></li>
 </ul>
 <section id="randomly-allocated-groups-4" class="level3">
@@ -1885,17 +1912,17 @@ $`Group 10`
 <section id="rough-timeline-5" class="level2">
 <h2 class="anchored" data-anchor-id="rough-timeline-5">Rough timeline</h2>
 <ul>
-<li><strong>09:05–09:45 am</strong> Reverse engineer (<a href="#sec-draw">Section&nbsp;6.3</a>)</li>
+<li><strong>09:05–09:45 am</strong> Reverse engineer (<a href="#sec-draw" class="quarto-xref">Section&nbsp;6.3</a>)</li>
 <li><strong>09:45–10:55 am</strong> Break</li>
 <li><strong>09:55–10:30 am</strong> Linear model diagnostics
 <ul>
-<li>Recap residual plots (<a href="#sec-qq">Section&nbsp;6.4.1</a>)</li>
-<li>Fry time (<a href="#sec-fry">Section&nbsp;6.4.2</a>)</li>
+<li>Recap residual plots (<a href="#sec-qq" class="quarto-xref">Section&nbsp;6.4.1</a>)</li>
+<li>Fry time (<a href="#sec-fry" class="quarto-xref">Section&nbsp;6.4.2</a>)</li>
 </ul></li>
-<li><strong>10.30–10.55 am</strong> Communicating statistics (<a href="#sec-comm">Section&nbsp;6.5</a>)
+<li><strong>10.30–10.55 am</strong> Communicating statistics (<a href="#sec-comm" class="quarto-xref">Section&nbsp;6.5</a>)
 <ul>
-<li>Project paper choice (<a href="#sec-project">Section&nbsp;6.6</a>)</li>
-<li>Consulting a statistician (<a href="#sec-ioa">Section&nbsp;6.7</a>)</li>
+<li>Project paper choice (<a href="#sec-project" class="quarto-xref">Section&nbsp;6.6</a>)</li>
+<li>Consulting a statistician (<a href="#sec-ioa" class="quarto-xref">Section&nbsp;6.7</a>)</li>
 </ul></li>
 </ul>
 <section id="randomly-allocated-groups-5" class="level3">
@@ -1944,12 +1971,12 @@ $`Group 10`
 </section>
 <section id="sec-draw" class="level2">
 <h2 class="anchored" data-anchor-id="sec-draw">From numbers to plots</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> As a group
 </div>
 </div>
@@ -1969,12 +1996,12 @@ $`Group 10`
 <center>
 <img src="runsheets/img/blank_diagnostic.png" height="700px" alt="blank lm diagnostic plots">
 </center>
-<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 Diagnostic cheatsheets
 </div>
 </div>
@@ -1987,12 +2014,12 @@ Diagnostic cheatsheets
 </section>
 <section id="sec-fry" class="level3">
 <h3 class="anchored" data-anchor-id="sec-fry">Fry time</h3>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
 </div>
 </div>
@@ -2017,24 +2044,24 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 </section>
 <section id="sec-comm" class="level2">
 <h2 class="anchored" data-anchor-id="sec-comm">Communicating statistics</h2>
-<p>In our very first lecture (<a href="#sec-intro">Section&nbsp;2.4</a>) we discussed the <a href="https://biosci738.github.io/BIOSCI738/key-information.html#assessment-summary">assessment structure of BIOSCI 738</a> and we saw that communication-focused activities/assessment made up 50% of the total assessments:</p>
+<p>In our very first lecture (<a href="#sec-intro" class="quarto-xref">Section&nbsp;2.4</a>) we discussed the <a href="https://biosci738.github.io/BIOSCI738/key-information.html#assessment-summary">assessment structure of BIOSCI 738</a> and we saw that communication-focused activities/assessment made up 50% of the total assessments:</p>
 <img src="https://biosci738.github.io/BIOSCI738/img/assessment_overview.png" alt="assessment structure of BIOSCI738" height="400px">
 
 </section>
 <section id="sec-project" class="level2">
 <h2 class="anchored" data-anchor-id="sec-project">Data discussion</h2>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Consultant and Client
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>In turn, take on the following roles: <strong>Consultant</strong> and <strong>Client</strong>.</p>
-<p>As the <strong>Client</strong> answer the following questions about your chosen paper for your <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436873">written report</a> (<em>or if you’ve not decided yet then use the heather data that you plotted in your diagnostic task (<a href="#sec-peershare01">Section&nbsp;2.6</a>)</em>).</p>
+<p>As the <strong>Client</strong> answer the following questions about your chosen paper for your <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436873">written report</a> (<em>or if you’ve not decided yet then use the heather data that you plotted in your diagnostic task (<a href="#sec-peershare01" class="quarto-xref">Section&nbsp;2.6</a>)</em>).</p>
 <ul>
 <li>What are the primary objectives of the/your project/analysis?</li>
 <li>What specific questions or problems are you trying to address with your analysis?</li>
@@ -2047,13 +2074,13 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 </section>
 <section id="sec-ioa" class="level2">
 <h2 class="anchored" data-anchor-id="sec-ioa">Interactive Oral assessments (IOAs)</h2>
-<p>Don’t worry too much if you’ve not completely delved into/chosen your <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436873">project data</a>. However, the activity from above (<a href="#sec-project">Section&nbsp;6.6</a>) will basically be mirrored in your <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436870">Interactive 01 assessment</a>.</p>
-<div class="callout-note callout callout-style-default callout-captioned">
+<p>Don’t worry too much if you’ve not completely delved into/chosen your <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436873">project data</a>. However, the activity from above (<a href="#sec-project" class="quarto-xref">Section&nbsp;6.6</a>) will basically be mirrored in your <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436870">Interactive 01 assessment</a>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 What is an IOA
 </div>
 </div>
@@ -2068,12 +2095,12 @@ What is an IOA
 </section>
 <section id="role-play-ioa-02" class="level4">
 <h4 class="anchored" data-anchor-id="role-play-ioa-02"><a href="https://auckland.au.panopto.com/Panopto/Pages/Viewer.aspx?id=c90b7f74-cf30-4483-a26e-b29e003a14d7">Role play IOA 02</a></h4>
-<div class="callout-warning callout callout-style-default no-icon callout-captioned">
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
 <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head over to this <a href="https://docs.google.com/document/d/1QCAqp8EIxCZwh4PImcpVz9LzGGaO29Q3ET3EszV8kWg/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
@@ -2085,19 +2112,127 @@ What is an IOA
 </ol>
 </div>
 </div>
-<!-- {{< include runsheets/runsheet_06.qmd >}} -->
-<!-- {{< include runsheets/runsheet_07.qmd >}} -->
 </section>
 </section>
 </section>
-<section id="sec-solutions" class="level1">
-<h1>Activity solutions</h1>
-<div class="callout-note callout callout-style-default callout-captioned">
+<section id="march-28th" class="level1">
+<h1>March 28th</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<div class="callout-caption-container flex-fill">
+<div class="callout-title-container flex-fill">
+By the end of today’s seminar, you should be able to
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Fit, draw inference from and critique polynomial regression models</li>
+</ul>
+</div>
+</div>
+<section id="rough-timeline-6" class="level2">
+<h2 class="anchored" data-anchor-id="rough-timeline-6">Rough timeline</h2>
+<section id="pm---0355-pm-2" class="level3">
+<h3 class="anchored" data-anchor-id="pm---0355-pm-2"><strong>02:05 pm - 03:55 pm</strong></h3>
+<ul>
+<li><strong>02:05–02.20 pm</strong> Polynomials (<a href="#sec-poly" class="quarto-xref">Section&nbsp;7.2</a>)</li>
+<li><strong>02.20–02.45 pm</strong> Fry time revisited (<a href="#sec-fry02" class="quarto-xref">Section&nbsp;7.3</a>)</li>
+<li><strong>02:45–02:55 pm</strong> Break</li>
+<li><strong>02.55–03.30 pm</strong> Revisiting <a href="#sec-comm" class="quarto-xref">Section&nbsp;6.5</a></li>
+<li><strong>03.30–03.55 pm</strong> Q&amp;A and Task 04 (<a href="#sec-peershare06" class="quarto-xref">Section&nbsp;7.5</a>)</li>
+</ul>
+</section>
+<section id="randomly-allocated-groups-6" class="level3">
+<h3 class="anchored" data-anchor-id="randomly-allocated-groups-6">Randomly allocated groups</h3>
+<p><strong>It’s your responsibility to get into these, just look for the cows!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_allocation</span>(names, <span class="at">seed =</span> <span class="dv">0833</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`Group 1`
+[1] "Leyang Liu"   "Congkai Meng" "Yutao Yang"   "Zichang Li"  
+
+$`Group 2`
+[1] "Robert Mihok"                 "Emma Akeroyd"                
+[3] "Antonia Schebek-Fuerstenberg" "Xinyue Zhang"                
+
+$`Group 3`
+[1] "He Li"            "Shoule Du"        "Charlotte Sutton" "Yi Han"          
+
+$`Group 4`
+[1] "Anqi Cheng"  "Laura Munck" "Angel Loh"  
+
+$`Group 5`
+[1] "Yogapriya"          "Zhixiao Zhang"      "Keyi Sun"          
+[4] "Barnaby Clegg-Shaw"
+
+$`Group 6`
+[1] "Jianing Chen"  "Tongzheng Yao" "Yutong Wang"   "Happy Liang"  
+
+$`Group 7`
+[1] "Karie Labidon" "Hnin Lwin"     "Ziyi Wang"    
+
+$`Group 8`
+[1] "Daneshajeya Jeyavalan" "Lana Najar"            "Jiaxin Liu"           
+[4] "Vivian Qian"          
+
+$`Group 9`
+[1] "Yingyi Wang"           "Sunny Chen"            "Pikitangarangi Ratapu"
+[4] "Alex Johnson"         
+
+$`Group 10`
+[1] "Julia Thain"        "Francesca Domanska" "Shuxiang He"       
+[4] "Yue Ma"            </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-poly" class="level2">
+<h2 class="anchored" data-anchor-id="sec-poly">Polynomials</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this <a href="https://docs.google.com/document/d/1QCAqp8EIxCZwh4PImcpVz9LzGGaO29Q3ET3EszV8kWg/edit?usp=sharing">Google Doc</a>…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Discuss this cheatsheet below, what do you think it is attempting to show/compare?</p>
+<p><img src="runsheets/img/poly_vs_I.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="sec-fry02" class="level2">
+<h2 class="anchored" data-anchor-id="sec-fry02">Polynomial regression</h2>
+<p>Individually, or as a group, revisit <a href="#sec-fry" class="quarto-xref">Section&nbsp;6.4.2</a> alongside the suggested solution given in <a href="#sec-solutions" class="quarto-xref">Section&nbsp;8</a>. Discuss and summarise each fitted model and modelling choice made. Chose and justify your choice of preferred/“best” model?</p>
+</section>
+<section id="revisiting-sec-comm" class="level2">
+<h2 class="anchored" data-anchor-id="revisiting-sec-comm">Revisiting <a href="#sec-comm" class="quarto-xref">Section&nbsp;6.5</a></h2>
+</section>
+<section id="sec-peershare06" class="level2">
+<h2 class="anchored" data-anchor-id="sec-peershare06">Q&amp;A and Task 04</h2>
+<p><a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436860"><strong>Task 04</strong></a></p>
+<blockquote class="blockquote">
+<p>Git is a version control system that manages the evolution of a set of files, called a repository (repo), in a structured way (<em>think of Word’s Track Changes</em>).</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>GitHub is a hosting service that provides a hgme for your git-based projects on the internet (<em>think of Dropbox</em>).</p>
+</blockquote>
+<p>The template repo you’ve been invited to in <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436860">Task 04</a> is set up as a <code>RStudio</code> Project. It contains the basics for you to get started on the analysis for your assessed project! For this <a href="https://canvas.auckland.ac.nz/courses/120054/assignments/436860">Task 04</a> all I’d like you to do is 1) connect to the repo assignment you’ve been invited to, 2) make a change locally in the repo, 3) then commit and push this change to the remote repo. <strong>We’ll do this in class if you’ve not yet already.</strong></p>
+<!-- {{< include runsheets/runsheet_07.qmd >}} -->
+</section>
+</section>
+<section id="sec-solutions" class="level1">
+<h1>Activity solutions</h1>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
 Suggested <code>R</code> code solutions
 </div>
 </div>
@@ -2106,270 +2241,270 @@ Suggested <code>R</code> code solutions
 </div>
 </div>
 <section id="suggested-solution-to-sec-gorilla" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla">Section&nbsp;2.2</a></h2>
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-honesty" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-honesty">Suggested solution to <a href="#sec-honesty">Section&nbsp;3.5</a></h2>
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-honesty">Suggested solution to <a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/retracted-honesty-study_week-02.csv"</span>)</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="do">## set up descriptive treatments</span></span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span> (<span class="at">treatment =</span> <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No signature"</span>,</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Sign-Top"</span>,</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">2</span>, <span class="st">"Sign-Bottom"</span> , <span class="cn">NA</span>))))</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="do">## remove control condition (here we're only interested in comparing sign-top and sign-bottom)</span></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., Cond <span class="sc">!=</span> <span class="dv">0</span>)</span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MATCH PAPER</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="do">## with "chi sq test p(0.0013)"</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment), <span class="at">margin =</span> <span class="dv">2</span>)</span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment) <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>()</span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001)"</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OverReport <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a><span class="do">## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"</span></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a><span class="do">## DATA DETECTIVING</span></span>
-<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
-<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>() <span class="do">## matches t-test above (is the same thing)</span></span>
-<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a><span class="do">## plot makes sense</span></span>
-<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
-<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
-<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="do">## mapping flagged observations to colour</span></span>
-<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
-<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag)))</span>
-<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="do">## residuals</span></span>
-<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>data_sub<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod)</span>
-<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
-<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag))) <span class="sc">+</span></span>
-<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span>
-<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a><span class="do">## now removing flagged observations</span></span>
-<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
-<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>data_sub <span class="sc">%&gt;%</span></span>
-<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., flag <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> .)</span>
-<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a><span class="do">## see https://datacolada.org/109</span></span>
-<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a><span class="do">## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud</span></span>
-<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a><span class="do">## for the story</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/retracted-honesty-study_week-02.csv"</span>)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="do">## set up descriptive treatments</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span> (<span class="at">treatment =</span> <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No signature"</span>,</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Sign-Top"</span>,</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">2</span>, <span class="st">"Sign-Bottom"</span> , <span class="cn">NA</span>))))</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="do">## remove control condition (here we're only interested in comparing sign-top and sign-bottom)</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., Cond <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MATCH PAPER</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="do">## with "chi sq test p(0.0013)"</span></span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment), <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment) <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>()</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001)"</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OverReport <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="do">## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="do">## DATA DETECTIVING</span></span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>() <span class="do">## matches t-test above (is the same thing)</span></span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a><span class="do">## plot makes sense</span></span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="do">## mapping flagged observations to colour</span></span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag)))</span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a><span class="do">## residuals</span></span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>data_sub<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod)</span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag))) <span class="sc">+</span></span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a><span class="do">## now removing flagged observations</span></span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>data_sub <span class="sc">%&gt;%</span></span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., flag <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> .)</span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a><span class="do">## see https://datacolada.org/109</span></span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a><span class="do">## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud</span></span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a><span class="do">## for the story</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-draw" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-draw">Suggested solution to <a href="#sec-draw">Section&nbsp;6.3</a></h2>
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-draw">Suggested solution to <a href="#sec-draw" class="quarto-xref">Section&nbsp;6.3</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-23"><a href="#cb37-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
-<span id="cb37-24"><a href="#cb37-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb37-25"><a href="#cb37-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
-<span id="cb37-26"><a href="#cb37-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb37-27"><a href="#cb37-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb37-28"><a href="#cb37-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb37-29"><a href="#cb37-29" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb37-30"><a href="#cb37-30" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb37-31"><a href="#cb37-31" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-32"><a href="#cb37-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
-<span id="cb37-33"><a href="#cb37-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb37-34"><a href="#cb37-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-35"><a href="#cb37-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-36"><a href="#cb37-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
-<span id="cb37-37"><a href="#cb37-37" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-38"><a href="#cb37-38" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb37-39"><a href="#cb37-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
-<span id="cb37-40"><a href="#cb37-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb37-41"><a href="#cb37-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb37-42"><a href="#cb37-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb37-43"><a href="#cb37-43" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb37-44"><a href="#cb37-44" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb37-45"><a href="#cb37-45" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-46"><a href="#cb37-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb37-47"><a href="#cb37-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb37-48"><a href="#cb37-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-49"><a href="#cb37-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-50"><a href="#cb37-50" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
-<span id="cb37-51"><a href="#cb37-51" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-52"><a href="#cb37-52" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb37-53"><a href="#cb37-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score<span class="sc">*</span>category, <span class="at">data =</span> .) </span>
-<span id="cb37-54"><a href="#cb37-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb37-55"><a href="#cb37-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb37-56"><a href="#cb37-56" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb37-57"><a href="#cb37-57" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb37-58"><a href="#cb37-58" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb37-59"><a href="#cb37-59" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-60"><a href="#cb37-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb37-61"><a href="#cb37-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb37-62"><a href="#cb37-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-63"><a href="#cb37-63" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-64"><a href="#cb37-64" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
-<span id="cb37-65"><a href="#cb37-65" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-66"><a href="#cb37-66" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb37-67"><a href="#cb37-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
-<span id="cb37-68"><a href="#cb37-68" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
-<span id="cb37-69"><a href="#cb37-69" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
-<span id="cb37-70"><a href="#cb37-70" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb37-71"><a href="#cb37-71" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb37-72"><a href="#cb37-72" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb37-73"><a href="#cb37-73" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
-<span id="cb37-74"><a href="#cb37-74" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb37-75"><a href="#cb37-75" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb37-76"><a href="#cb37-76" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-77"><a href="#cb37-77" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 6 #######</span></span>
-<span id="cb37-78"><a href="#cb37-78" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb37-79"><a href="#cb37-79" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
-<span id="cb37-80"><a href="#cb37-80" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb37-81"><a href="#cb37-81" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb37-82"><a href="#cb37-82" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb37-83"><a href="#cb37-83" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
-<span id="cb37-84"><a href="#cb37-84" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-21"><a href="#cb39-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
+<span id="cb39-22"><a href="#cb39-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-23"><a href="#cb39-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
+<span id="cb39-24"><a href="#cb39-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb39-25"><a href="#cb39-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
+<span id="cb39-26"><a href="#cb39-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb39-27"><a href="#cb39-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb39-28"><a href="#cb39-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb39-29"><a href="#cb39-29" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb39-30"><a href="#cb39-30" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb39-31"><a href="#cb39-31" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb39-32"><a href="#cb39-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
+<span id="cb39-33"><a href="#cb39-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb39-34"><a href="#cb39-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-35"><a href="#cb39-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-36"><a href="#cb39-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
+<span id="cb39-37"><a href="#cb39-37" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-38"><a href="#cb39-38" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb39-39"><a href="#cb39-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
+<span id="cb39-40"><a href="#cb39-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb39-41"><a href="#cb39-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb39-42"><a href="#cb39-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb39-43"><a href="#cb39-43" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb39-44"><a href="#cb39-44" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb39-45"><a href="#cb39-45" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb39-46"><a href="#cb39-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb39-47"><a href="#cb39-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb39-48"><a href="#cb39-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-49"><a href="#cb39-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-50"><a href="#cb39-50" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
+<span id="cb39-51"><a href="#cb39-51" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-52"><a href="#cb39-52" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb39-53"><a href="#cb39-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score<span class="sc">*</span>category, <span class="at">data =</span> .) </span>
+<span id="cb39-54"><a href="#cb39-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb39-55"><a href="#cb39-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb39-56"><a href="#cb39-56" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb39-57"><a href="#cb39-57" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb39-58"><a href="#cb39-58" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb39-59"><a href="#cb39-59" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb39-60"><a href="#cb39-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb39-61"><a href="#cb39-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb39-62"><a href="#cb39-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-63"><a href="#cb39-63" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-64"><a href="#cb39-64" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
+<span id="cb39-65"><a href="#cb39-65" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-66"><a href="#cb39-66" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb39-67"><a href="#cb39-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
+<span id="cb39-68"><a href="#cb39-68" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
+<span id="cb39-69"><a href="#cb39-69" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
+<span id="cb39-70"><a href="#cb39-70" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb39-71"><a href="#cb39-71" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb39-72"><a href="#cb39-72" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb39-73"><a href="#cb39-73" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
+<span id="cb39-74"><a href="#cb39-74" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb39-75"><a href="#cb39-75" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb39-76"><a href="#cb39-76" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-77"><a href="#cb39-77" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 6 #######</span></span>
+<span id="cb39-78"><a href="#cb39-78" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb39-79"><a href="#cb39-79" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
+<span id="cb39-80"><a href="#cb39-80" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb39-81"><a href="#cb39-81" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb39-82"><a href="#cb39-82" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb39-83"><a href="#cb39-83" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
+<span id="cb39-84"><a href="#cb39-84" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-fry" class="level2">
-<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-fry">Suggested solution to <a href="#sec-fry">Section&nbsp;6.4.2</a></h2>
+<h2 class="anchored" data-anchor-id="suggested-solution-to-sec-fry">Suggested solution to <a href="#sec-fry" class="quarto-xref">Section&nbsp;6.4.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">## paper https://www.sciencedirect.com/science/article/pii/S1658077X17302655?via%3Dihub#t0005</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Figure 1 data 'extracted' by https://automeris.io/WebPlotDigitizer/</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>fries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/fries.csv"</span>)</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="do">## first degree</span></span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> frying_time_s <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="do">## second degree</span></span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a><span class="do">## third degree</span></span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">1</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> method,</span>
-<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span>
-<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>   gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="do">## but these are correlated</span></span>
-<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
-<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a><span class="do">## orthogonal model</span></span>
-<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>) <span class="do">## see https://stackoverflow.com/questions/29999900/poly-in-lm-difference-between-raw-vs-orthogonal</span></span>
-<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
-<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a><span class="do">## remove the 180 obvs as these are not 'data' they are determined</span></span>
-<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> fries <span class="sc">%&gt;%</span></span>
-<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(frying_temp_c <span class="sc">!=</span> <span class="dv">180</span>)</span>
-<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() </span>
-<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data) </span>
-<span id="cb38-50"><a href="#cb38-50" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
-<span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb38-53"><a href="#cb38-53" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">preds =</span> <span class="fu">predict</span>(mod)) <span class="sc">%&gt;%</span></span>
-<span id="cb38-55"><a href="#cb38-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb38-56"><a href="#cb38-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds))</span>
-<span id="cb38-57"><a href="#cb38-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-58"><a href="#cb38-58" aria-hidden="true" tabindex="-1"></a><span class="do">## Model diagnostics not looking "great" still. But how can we choose the "best" possible?</span></span>
-<span id="cb38-59"><a href="#cb38-59" aria-hidden="true" tabindex="-1"></a><span class="do">## We could manually compare pairs of models using ANOVA/AIC etc. or...</span></span>
-<span id="cb38-60"><a href="#cb38-60" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(MuMIn) <span class="do">## remembering which letters are capatalised is a pain</span></span>
-<span id="cb38-61"><a href="#cb38-61" aria-hidden="true" tabindex="-1"></a><span class="do">## stands for Multi Model Inference</span></span>
-<span id="cb38-62"><a href="#cb38-62" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data, <span class="at">na.action =</span> na.fail)</span>
-<span id="cb38-63"><a href="#cb38-63" aria-hidden="true" tabindex="-1"></a><span class="do">## na.action = na.fail is so MuMIn dredge works</span></span>
-<span id="cb38-64"><a href="#cb38-64" aria-hidden="true" tabindex="-1"></a>MuMIn<span class="sc">::</span><span class="fu">dredge</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">## paper https://www.sciencedirect.com/science/article/pii/S1658077X17302655?via%3Dihub#t0005</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Figure 1 data 'extracted' by https://automeris.io/WebPlotDigitizer/</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>fries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/fries.csv"</span>)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## first degree</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> frying_time_s <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a><span class="do">## second degree</span></span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="do">## third degree</span></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">1</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> method,</span>
+<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span>
+<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>   gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="do">## but these are correlated</span></span>
+<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb40-38"><a href="#cb40-38" aria-hidden="true" tabindex="-1"></a><span class="do">## orthogonal model</span></span>
+<span id="cb40-39"><a href="#cb40-39" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>) <span class="do">## see https://stackoverflow.com/questions/29999900/poly-in-lm-difference-between-raw-vs-orthogonal</span></span>
+<span id="cb40-40"><a href="#cb40-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb40-41"><a href="#cb40-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb40-42"><a href="#cb40-42" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb40-43"><a href="#cb40-43" aria-hidden="true" tabindex="-1"></a><span class="do">## remove the 180 obvs as these are not 'data' they are determined</span></span>
+<span id="cb40-44"><a href="#cb40-44" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> fries <span class="sc">%&gt;%</span></span>
+<span id="cb40-45"><a href="#cb40-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(frying_temp_c <span class="sc">!=</span> <span class="dv">180</span>)</span>
+<span id="cb40-46"><a href="#cb40-46" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb40-47"><a href="#cb40-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-48"><a href="#cb40-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() </span>
+<span id="cb40-49"><a href="#cb40-49" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data) </span>
+<span id="cb40-50"><a href="#cb40-50" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb40-51"><a href="#cb40-51" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb40-52"><a href="#cb40-52" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb40-53"><a href="#cb40-53" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb40-54"><a href="#cb40-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">preds =</span> <span class="fu">predict</span>(mod)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-55"><a href="#cb40-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb40-56"><a href="#cb40-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds))</span>
+<span id="cb40-57"><a href="#cb40-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-58"><a href="#cb40-58" aria-hidden="true" tabindex="-1"></a><span class="do">## Model diagnostics not looking "great" still. But how can we choose the "best" possible?</span></span>
+<span id="cb40-59"><a href="#cb40-59" aria-hidden="true" tabindex="-1"></a><span class="do">## We could manually compare pairs of models using ANOVA/AIC etc. or...</span></span>
+<span id="cb40-60"><a href="#cb40-60" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(MuMIn) <span class="do">## remembering which letters are capatalised is a pain</span></span>
+<span id="cb40-61"><a href="#cb40-61" aria-hidden="true" tabindex="-1"></a><span class="do">## stands for Multi Model Inference</span></span>
+<span id="cb40-62"><a href="#cb40-62" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data, <span class="at">na.action =</span> na.fail)</span>
+<span id="cb40-63"><a href="#cb40-63" aria-hidden="true" tabindex="-1"></a><span class="do">## na.action = na.fail is so MuMIn dredge works</span></span>
+<span id="cb40-64"><a href="#cb40-64" aria-hidden="true" tabindex="-1"></a>MuMIn<span class="sc">::</span><span class="fu">dredge</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
-<div id="ref-fries" class="csl-entry" role="doc-biblioentry">
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-fries" class="csl-entry" role="listitem">
 Abdul Hamid, N., S. Omar, and M. Sanny. 2019. <span>“Effect of Thawing Conditions and Corresponding Frying Temperature Profiles on the Formation of Acrylamide in French Fries.”</span> <em>Journal of the Saudi Society of Agricultural Sciences</em> 18 (4): 396–400. https://doi.org/<a href="https://doi.org/10.1016/j.jssas.2018.01.002">https://doi.org/10.1016/j.jssas.2018.01.002</a>.
 </div>
-<div id="ref-fisher" class="csl-entry" role="doc-biblioentry">
+<div id="ref-fisher" class="csl-entry" role="listitem">
 Fisher, Ronald Aylmer. 1926. <span>“The Arrangement of Field Experiments.”</span> <em>Journal of the Ministry of Agriculture</em> 33: 505–15. <a href="https://doi.org/doi.org/10.23637/rothamsted.8v61q">https://doi.org/doi.org/10.23637/rothamsted.8v61q</a>.
 </div>
-<div id="ref-bullshit" class="csl-entry" role="doc-biblioentry">
+<div id="ref-bullshit" class="csl-entry" role="listitem">
 Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.”</span> <em>Ethics and Information Technology</em> 26 (38). <a href="https://doi.org/10.1007/s10676-024-09775-5">https://doi.org/10.1007/s10676-024-09775-5</a>.
 </div>
-<div id="ref-cancer" class="csl-entry" role="doc-biblioentry">
+<div id="ref-cancer" class="csl-entry" role="listitem">
 Jones-Todd, Charlotte M., Peter Caie, Janine B. Illian, Ben C. Stevenson, Anne Savage, David J. Harrison, and James L. Bown. 2018. <span>“Identifying Prognostic Structural Features in Tissue Sections of Colon Cancer Patients Using Point Pattern Analysis.”</span> <em>Statistics in Medicine</em> 38 (8): 1421–41. https://doi.org/<a href="https://doi.org/10.1002/sim.8046">https://doi.org/10.1002/sim.8046</a>.
 </div>
-<div id="ref-stelfi" class="csl-entry" role="doc-biblioentry">
+<div id="ref-stelfi" class="csl-entry" role="listitem">
 Jones-Todd, Charlotte M., and Alec B. M. van Helsdingen. 2024. <span>“Stelfi: An r Package for Fitting Hawkes and Log-Gaussian Cox Point Process Models.”</span> <em>Ecology and Evolution</em> 14 (2): e11005. https://doi.org/<a href="https://doi.org/10.1002/ece3.11005">https://doi.org/10.1002/ece3.11005</a>.
 </div>
-<div id="ref-whales" class="csl-entry" role="doc-biblioentry">
+<div id="ref-whales" class="csl-entry" role="listitem">
 Jones-Todd, Charlotte M., Enrico Pirotta, John W. Durban, Diane E. Claridge, Robin W. Baird, Erin A. Falcone, Gregory S. Schorr, Stephanie Watwood, and Len Thomas. 2021. <span>“Discrete-Space Continuous-Time Models of Marine Mammal Exposure to Navy Sonar.”</span> <em>Ecological Applications</em> 32 (1): e02475. https://doi.org/<a href="https://doi.org/10.1002/eap.2475">https://doi.org/10.1002/eap.2475</a>.
 </div>
-<div id="ref-robots" class="csl-entry" role="doc-biblioentry">
+<div id="ref-robots" class="csl-entry" role="listitem">
 Prather, James, Paul Denny, Juho Leinonen, Brett A. Becker, Ibrahim Albluwi, Michelle Craig, Hieke Keuning, et al. 2023. <span>“The Robots Are Here: Navigating the Generative AI Revolution in Computing Education.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3623762.3633499">https://doi.org/10.1145/3623762.3633499</a>.
 </div>
-<div id="ref-instructor" class="csl-entry" role="doc-biblioentry">
+<div id="ref-instructor" class="csl-entry" role="listitem">
 Sheard, Judy, Paul Denny, Arto Hellas, Juho Leinonen, Lauri Malmi, and Simon. 2024. <span>“Instructor Perceptions of AI Code Generation Tools - a Multi-Institutional Interview Study.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3626252.3630880">https://doi.org/10.1145/3626252.3630880</a>.
 </div>
-<div id="ref-retracted" class="csl-entry" role="doc-biblioentry">
+<div id="ref-retracted" class="csl-entry" role="listitem">
 Shu, Lisa L., Nina Mazar, Francesca Gino, Dan Ariely, and Max H. Bazerman. 2012. <span>“RETRACTED: Signing at the Beginning Makes Ethics Salient and Decreases Dishonest Self-Reports in Comparison to Signing at the End.”</span> <em>Proceedings of the National Academy of Sciences</em> 109 (38): 15197–200. <a href="https://doi.org/10.1073/pnas.1209746109">https://doi.org/10.1073/pnas.1209746109</a>.
 </div>
-<div id="ref-ioa" class="csl-entry" role="doc-biblioentry">
+<div id="ref-ioa" class="csl-entry" role="listitem">
 Ward, Monica, Fiona O’Riordan, Danielle Logan-Fleming, Dervila Cooke, Tara Concannon-Gibney, Marina Efthymiou, and Niamh Watkins and. 2024. <span>“Interactive Oral Assessment Case Studies: An Innovative, Academically Rigorous, Authentic Assessment Approach.”</span> <em>Innovations in Education and Teaching International</em> 61 (5): 930–47. <a href="https://doi.org/10.1080/14703297.2023.2251967">https://doi.org/10.1080/14703297.2023.2251967</a>.
 </div>
-<div id="ref-goodprogramming" class="csl-entry" role="doc-biblioentry">
+<div id="ref-goodprogramming" class="csl-entry" role="listitem">
 Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K. Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (6): e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
 </div>
 </div>
@@ -2413,12 +2548,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
     }
-  });
-  clipboard.on('success', function(e) {
+    return false;
+  }
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2450,11 +2588,50 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2464,8 +2641,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2477,9 +2663,245 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
@@ -2520,6 +2942,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+
 
 
 
