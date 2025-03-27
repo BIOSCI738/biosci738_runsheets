@@ -2,8 +2,7 @@
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
-
-
+ + Fit, draw inference from and critique polynomial regression models
 :::
 
 ## Rough timeline

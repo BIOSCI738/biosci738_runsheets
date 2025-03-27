@@ -34,7 +34,7 @@ group_allocation(names, seed = 1992, groups = 10)
 
 ## Slides {#sec-slidesliza}
 
-```{r, echo=F}
+```{r, echo=FALSE}
 xaringanExtra::embed_xaringan(
   "https://lizabolton.github.io/2025-biosci738-ethics/#/title-slide",
   ratio = "16:9",

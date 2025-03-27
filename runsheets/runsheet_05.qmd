@@ -1,9 +1,35 @@
 # March 24th
 
+
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
 
 + Include polynomial terms in a linear model
++ Critically evaluate linear model fit
++ Communicate & discuss data structure
+
+:::
+
+
+## Rough timeline
+
+ + **09:05–09:45 am** Reverse engineer (@sec-draw)
+ + **09:45–10:55 am** Break
+ + **09:55–10:30 am** Linear model diagnostics
+   - Recap residual plots (@sec-qq)
+   - Fry time (@sec-fry)
+ + **10.30–10.55 am** Communicating statistics (@sec-comm)
+   - Project paper choice (@sec-project)
+   - Consulting a statistician (@sec-ioa)
+   
+### Randomly allocated groups
+
+**It's your responsibility to get into these, just look for the cows!**
+
+```{r}
+group_allocation(names, seed = 1458, 10)
+```
+
 + Critically evaluate linear model fit
 + Communicate & discuss data structure
 

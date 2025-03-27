@@ -1,0 +1,131 @@
+# March 31st
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+
+
+:::
+
+
+## Rough timeline
+
+ + **09:05–09:55 am** Modeller vs Designer (@sec-mods)
+   - Group activity (@sec-ss)
+   
+ + **09:55–11:05 am** Break
+ + **11:00–11:45 am** Multiple comparisons (@sec-multi)
+   - Class discussion 
+   - Group activity 
+ 
+ + **11.45–11.55 am** Q&A and peer-share (@sec-peershare07)
+
+   
+### Randomly allocated groups
+
+**It's your responsibility to get into these, just look for the cows!**
+
+```{r}
+group_allocation(names, seed = 1631, 10)
+```
+
+
+## Modeller vs Designer {#sec-mods}
+
+<p align="center">
+<iframe src="slides/05-01_modller-vs-designer.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
+</p>
+
+
+### Partitioning Variation
+
+![📷 [source](Adobe Stock)](runsheets/img/well.jpg)
+
+[**Partitioning Variation**](https://canvas.auckland.ac.nz/courses/120054/files/15015121?module_item_id=2581434) some examples.
+
+
+
+
+
+
+### Sums of Squares activity {#sec-ss}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1Hby1zVqv39pZSaXwBifZ7W_Mz9fmTWYP8LQ6U8BUQ54/edit?usp=sharing)...
+
+Together, work through the code snippets from [this section of the course guide Sums of squares (SS)](https://biosci738.github.io/BIOSCI738/modelling-experimental-data.html#sums-of-squares-ss), you may have to refer to previous sections (e.g., the [One-Way Analysis of Variance (ANOVA) section from Module 2](https://biosci738.github.io/BIOSCI738/parametric-hypothesis-testing.html#one-way-analysis-of-variance-anova)) if you are unfamiliar with some of the terminology, and discuss/answer the following
+
+ + What are sums of squares (SS)?
+ + What role do SS play in statistics?
+ + What is meant by the term sequential Sums of Squares? And what effect, if any, might this have on inference?
+ + Explain the reasoning/answers above for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience.
+
+You may find the pseudo code below useful.
+
+```{r, eval = FALSE}
+## template only, you will have to rename variables accordingly
+## run segments/lines one at a time to see the steps
+data %>% 
+    mutate(grand_mean = mean(response)) %>%
+   mutate(sstotal = (response - grand_mean) ^2 ) %>%
+    group_by(treatment) %>%
+   mutate(treatment_mean = mean(response),
+          sse = (response - treatment_mean)^2,
+          tmp = (treatment_mean - grand_mean)^2) %>%
+   summarise(ss_tot = sum(sstotal), ss_e = sum(sse), ss_treat = sum(tmp)) %>%
+   pull(ss_treat) %>% sum()
+```
+
+:::
+
+::: {.callout-note}
+## Bonus activity 
+If you have some spare time sketch a concept map or illustration about sequential Sums of Squares.
+:::
+
+
+## Multiple comparisons {#sec-multi}
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1Hby1zVqv39pZSaXwBifZ7W_Mz9fmTWYP8LQ6U8BUQ54/edit?usp=sharing)...
+
+In your groups discuss and answer the following points/questions, which relate the the snippet of code that follows.
+
+ 1. What is each line doing? 
+ 2. What is the relevance of 0.05  in the final line of the loop?
+ 3. What happens if you change this value?
+ 4. What happens if you change `n`, and why?
+ 5. What is this an example of? Why is this the case? Can you explain this reasoning for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience?
+
+Now, amend the code to ``test" the same thing using another statistical test of your choice.
+ 
+```{r, eval = FALSE}
+n <- 10000
+t1err <- 0
+for (i in 1:n){
+    set.seed(1432 + i)
+    x <- rnorm(100, 0, 1)
+   if (((t.test(x, mu = 0))$p.value)<=0.05) (t1err = t1err + 1)
+}
+cat("Type I error rate in percentage is", (t1err/n)*100,"%", "\n")
+
+```
+
+Finally, think back to @sec-significance. What are your thoughts on *significance*, have they changed?
+
+:::
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/05-02_multiple-comparisons.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
+</p>
+
+
+
+## Q&A and peer-share {#sec-peershare07}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!
+:::
