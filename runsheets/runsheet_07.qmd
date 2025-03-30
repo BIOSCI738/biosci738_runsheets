@@ -121,7 +121,15 @@ Finally, think back to @sec-significance. What are your thoughts on *significanc
 <iframe src="slides/05-02_multiple-comparisons.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
 </p>
 
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1Hby1zVqv39pZSaXwBifZ7W_Mz9fmTWYP8LQ6U8BUQ54/edit?usp=sharing)...
 
+1. Using any suitable data from the lectures or the course guide perform the pairwise comparisons of means using Fisher’s LSD with $\alpha = 0.05$ level of significance. 
+
+2. Summarise and present these results in a table with the following column names **Comparison**, **Calculated difference** (in means), **SED** (standard error of the difference), **LSDs**, **Lower 95\% CI** &  **Upper 95\% CI** (lower & upper 95\% confidence interval), **t-statistic**, **P-value**.
+
+3. Calculate the scale factor (i.e., critical value of the assumed distribution) using 1) Bonferroni's correction method and 2) Tukey's HSD method for any pairwise comparison 95\% CI from above. Discuss what effect the multipliers might have on inference.
+:::
 
 ## Q&A and peer-share {#sec-peershare07}
 
