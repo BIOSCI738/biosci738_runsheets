@@ -242,3 +242,58 @@ MuMIn::dredge(mod)
 
 
 ```
+
+## Code example to support @sec-mods / @sec-ss
+
+```{r, eval = FALSE}
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+factorial <- read.csv(paste(base_url, "factorial_expt.csv", sep = ""))
+factorial$Disease <- as.factor(factorial$Disease)
+factorial$Organ <- as.factor(factorial$Organ)
+unbalanced <- factorial[- c(1:3,10), ]
+## Null model.
+fit.null <- lm(logAUC ~ 1, data = unbalanced)
+summary(fit.null)
+## Only Factor Disease.
+fit.a <- lm(logAUC ~ Disease, data = unbalanced)
+summary(fit.a)
+## Factors Disease and Organ.
+fit.ab <- lm(logAUC ~ Disease + Organ, data = unbalanced)
+summary(fit.ab)
+## Factors Disease and Organ with interaction.
+fit.abi <- lm(logAUC ~ Disease*Organ, data = unbalanced)
+## ANOVA table
+anova(fit.abi)
+## First line.
+sum(residuals(fit.null)^2) - sum(residuals(fit.a)^2)
+## Second line.
+sum(residuals(fit.a)^2) - sum(residuals(fit.ab)^2)
+## Third line.
+sum(residuals(fit.ab)^2) - sum(residuals(fit.abi)^2)
+## Final line.
+sum(residuals(fit.abi)^2)
+## Type II sums of squares
+car::Anova(fit.abi, type = 2)
+```
+
+
+## Suggested solution to @sec-ss
+
+```{r, eval = FALSE}
+## using "gorilla" data from lecture 01
+## example only
+require(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv")
+data %>% 
+   mutate(grand_mean = mean(bmi)) %>%
+   mutate(sstotal = (bmi - grand_mean) ^2 ) %>%
+   group_by(gender) %>%
+   mutate(treatment_mean = mean(bmi),
+          sse = (bmi - treatment_mean)^2,
+          tmp = (treatment_mean - grand_mean)^2) %>%
+   summarise(ss_tot = sum(sstotal), ss_e = sum(sse), ss_treat = sum(tmp)) %>%
+   pull(ss_treat) %>% sum()
+## compare to SS value in
+aov(bmi ~ gender, data = data)
+```
+

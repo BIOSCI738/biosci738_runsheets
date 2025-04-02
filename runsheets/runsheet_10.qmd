@@ -1,0 +1,90 @@
+# April 11th
+
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+
+:::
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.55 pm** Distributions (@sec-distributions)
+ + **02:55–03:05 pm** Break
+ + **03.05–03.55 pm** Recap (@sec-recap)
+
+
+### Randomly allocated groups
+
+**It's your responsibility to get into these, just look for the cows!**
+
+```{r, echo = 2}
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Daneshajeya Jeyavalan", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Hnin Lwin", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Vivian Qian", "Pikitangarangi Ratapu", "Yogapriya", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+group_allocation(names, seed = 1317, 9)
+```
+
+## Distributions {#sec-distributions}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the [Google Doc](https://docs.google.com/document/d/1D50lbL0gYLSoJ9kC260e9enbWaOSUWdqJ-J7dBDgAAA/edit?usp=sharing)...
+
+``Read" [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/distributions.png) and summarize the following for each distribution:
+
+ + What is the assumed random variable (i.e., variable being measured/modelled)
+ + What form does this variable take (e.g., positive-only numbers, integer values etc.)
+ + What are the parameters of each distribution and how do they relate to the mean?
+ + Where does the encircled blue cow fall in terms of this herd's estimated population statistics?
+ 
+Your group reporter should make sure to be prepared to report!
+ 
+:::
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the [Google Doc](https://docs.google.com/document/d/1D50lbL0gYLSoJ9kC260e9enbWaOSUWdqJ-J7dBDgAAA/edit?usp=sharing)...
+
+Charlotte will soon allocate each group a distribution.
+
+Using any means you wish read up about that particular distribution and note the following 
+
+  1. Name of the distribution
+  2. Parameter(s) of the distribution
+  3. The mean and variance of the distribution in terms of the parameter(s)
+  4. Support/characteristics of the distribution
+  5. How parameter values change the distribution’s shape (hint use R to simulate the random variable using (a) parameter(s) of your choice and then plot this distribution)
+  6. When might this distribution be used
+  7. Answer the distribution-specific question(s)
+  
+**Your group reporter should make sure to be prepared to report to the class!**
+
+Note: You may find this [RShiny application useful](https://cmjt.shinyapps.io/probable/) as well as the following cheat sheet
+
+![The `p..()`, `d..()`, `q..()`, `r..()` functions in `R`](runsheets/img/pdqr.png)
+
+
+:::
+
+
+::: {.callout-note}
+## Bonus activity  
+
+I have 11 chickens. Here is a nice picture hanging out in an area between their coop and the feeder.
+
+![](runsheets/img/hens.JPG)
+
+Because I love stats (and chickens) I'm interested in modelling the number of chickens visible in this particular area at different times of the day. What distribution should I use?
+:::
+
+## Recap {#sec-recap}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
+1. Choose a topic from the content covered so far that you have struggled the most with (e.g., random effects, Bonferonni's correction, resampling etc.).
+2. Revisit the associated materials (e.g., code/courseguide section/cheatsheets/runsheets etc.).
+3. As a group design an activity/materials that explain/illustrate the topic/concept.
+
+
+**Be prepared to present your activity to me/the class** (all group members should expect to contribute).
+
+:::

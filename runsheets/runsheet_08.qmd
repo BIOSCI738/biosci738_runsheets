@@ -1,0 +1,139 @@
+# April 4th
+
+::: {.callout-note}
+## Remember to sign up for your [Interactive 01](https://canvas.auckland.ac.nz/courses/120054/assignments/436870) time slot! 
+:::
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + Apply and compare standard adjustment techniques (e.g., Tukey, Bonferroni and Fisher corrections) employed in multiple testing
+ + Discuss and compare definitions of fixed and random effects
+
+:::
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.40 pm** Multiple Comparisons (@sec-multi02)
+   + Group activities
+   
+ + **02.40–02.55 pm** Degrees of Freedom (@sec-df)
+ + **02:55–03:05 pm** Break
+ + **03.05–03.30 pm** Introducing Random Effects (@sec-randomeff)
+   + Class discussion
+   + Group activity
+   
+ + **03.45–03.55 pm** Q&A and Task 05 (@sec-peershare08)
+
+
+### Randomly allocated groups
+
+**It's your responsibility to get into these, just look for the cows!**
+
+```{r, echo = 2}
+names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Daneshajeya Jeyavalan", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Hnin Lwin", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Vivian Qian", "Pikitangarangi Ratapu", "Yogapriya", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
+group_allocation(names, seed = 1001, 10)
+```
+
+## Multiple Comparisons {#sec-multi02}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1j9b8n2NwN7C15oZjnveFbTnAaYdo1SvZNRqy-f5XZhs/edit?usp=sharing)...
+
+In your groups discuss and answer the following points/questions, which relate the the snippet of code that follows.
+
+ 1. What is each line doing? 
+ 2. What is the relevance of 0.05  in the final line of the loop?
+ 3. What happens if you change this value?
+ 4. What happens if you change `n`, and why?
+ 5. What is this an example of? Why is this the case? Can you explain this reasoning for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience?
+
+Now, amend the code to ``test" the same thing using another statistical test of your choice.
+ 
+```{r, eval = FALSE}
+n <- 10000
+t1err <- 0
+for (i in 1:n){
+    set.seed(1432 + i)
+    x <- rnorm(100, 0, 1)
+   if (((t.test(x, mu = 0))$p.value)<=0.05) (t1err = t1err + 1)
+}
+cat("Type I error rate in percentage is", (t1err/n)*100,"%", "\n")
+
+```
+
+Finally, think back to @sec-significance. What are your thoughts on *significance*, have they changed?
+
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1j9b8n2NwN7C15oZjnveFbTnAaYdo1SvZNRqy-f5XZhs/edit?usp=sharing)...
+
+[Note: you may find [this section of the course guide](https://biosci738.github.io/BIOSCI738/multiple-comparisons.html#adjustments-for-multiple-testing) useful for this activity]
+
+1. Using any suitable data from the lectures or the course guide perform the pairwise comparisons of means using Fisher’s LSD with $\alpha = 0.05$ level of significance. 
+
+2. Summarise and present these results in a table with the following column names **Comparison**, **Calculated difference** (in means), **SED** (standard error of the difference), **LSDs**, **Lower 95\% CI** &  **Upper 95\% CI** (lower & upper 95\% confidence interval), **t-statistic**, **P-value**.
+
+3. Calculate the scale factor (i.e., critical value of the assumed distribution) using 1) Bonferroni's correction method and 2) Tukey's HSD method for any pairwise comparison 95\% CI from above. Discuss what effect the multipliers might have on inference.
+:::
+
+
+## Degrees of Freedom {#sec-df}
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/05-03_degrees-of-freedom.pdf" height="400" width="700" title="Degrees of Freedom slides"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15062424?module_item_id=2585376)
+</p>
+
+
+## Introducing random effcets {#sec-randomeff}
+
+Below is a list collated by @gelman2005analysis (p. 20) who discuss fixed and random effects in the context of ANOVA-type analysis (Note that some use terminology we're yet to cover!).
+
+> 1. Fixed effects are constant across individuals, and random effects vary. For example, in a growth study, a model with random intercepts $\alpha_i$ and fixed slope $\beta$ corresponds to parallel lines for different individuals $i$, or the model $y_{it} = \alpha_i + \beta t$. Kreft and de Leeuw [(1998), page 12] thus distinguish between fixed and random coefficients.
+2. Effects are fixed if they are interesting in themselves or random if there is interest in the underlying population. Searle, Casella, and McCulloch [(1992), Section 1.4] explore this distinction in depth.
+3. When a sample exhausts the population, the corresponding variable is *fixed*; when the sample is a small (i.e., negligible) part of the population, the corresponding variable is *random* [Green and Tukey (1960)].
+4. If an effect is assumed to be a realized value of a random variable, it is called a random effect" [LaMotte (1983)].
+5. Fixed effects are estimated using least squares (or, more generally, maximum likelihood), and random effects are estimated with shrinkage ["linear unbiased prediction" in the terminology of Robinson (1991)]. This definition is standard in the multilevel modeling literature [see, e.g., Snijders and Bosker (1999), Section 4.2] and in econometrics. In the Bayesian framework, this definition implies that fixed effects $\beta_j^{(m)}$ are estimated conditional on $\sigma_m = \infty$, and random effects $\beta_j^{(m)}$ are estimated conditional on $\sigma_m$ from the posterior distribution.
+
+
+The author of @gelman2005analysis moves on to the following conclusion (see p. 21).
+
+> We prefer to sidestep the overloaded terms "fixed" and "random" with a cleaner distinction by simply renaming the terms in definition 1 above. We define effects (or coefficients) in a multilevel model as **constant** if they are identical for all groups in a population and **varying** if they are allowed to differ from group to group. For example, the model  $y_{ij} = \alpha + \beta x_{ij}$ (of units $i$ in groups $j$) has a constant slope and varying intercepts, and  $y_{ij} = \alpha_{j} + \beta_j x_{ij}$ has varying slopes and intercepts. In this terminology (which we would apply at any level of the hierarchy in a multilevel model), varying effects occur in batches, whether or not the effects are interesting in themselves (definition 2), and whether or not they are a sample from a larger set (definition 3). Definitions 4 and 5 do not arise for us since we estimate all batches of effects hierarchically, with the variance components $\sigma_m$ estimated from data.
+
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/05-04_fixed-vs-random.pdf" height="400" width="700" title="Fixed vs Random effects slides"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15062504?module_item_id=2585389)
+</p>
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1j9b8n2NwN7C15oZjnveFbTnAaYdo1SvZNRqy-f5XZhs/edit?usp=sharing)...
+
+[Note You may find [this blog](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/) offers some extra insights here^[Note that I do like the writing style of the blog but don't totally agree with the author's conclusions around repeated measurements; if you want to know why, ask me!] ]
+
+1. Translate each definition in the list above to lay-person language (i.e., non-technical).
+2. Make up a data example and allocate your fixed and random effects according to each definition.
+3. Discuss the similarities and dissimilarities between the definitions.
+4. Conclude with which definition *best* aligns with your current understanding of the distinction between fixed and random effects?
+
+:::
+
+
+
+## Q&A/peer-share/Task 05 {#sec-peershare08}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+Go over an activity from the class again or spend some time finishing off Task 05.
+:::

@@ -28,6 +28,13 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_07.qmd >}}
 
+<!-- {{< include runsheets/runsheet_08.qmd >}} -->
+
+<!-- {{< include runsheets/runsheet_09.qmd >}} -->
+
+<!-- {{< include runsheets/runsheet_10.qmd >}} -->
+
+
 {{< include runsheets/solutions.qmd >}}
 
 {{< include runsheets/references.qmd >}}

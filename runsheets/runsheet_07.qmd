@@ -2,8 +2,9 @@
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
-
-
+ + Discuss the role of Sums of Squares (SS) in variance decomposition
+ + "Manually" calculate within, between, and total SS
+ + Discuss the issues associated with multiple comparison techniques and the standard adjustment techniques employed to combat the issues
 :::
 
 
@@ -15,7 +16,6 @@
  + **09:55–11:05 am** Break
  + **11:00–11:45 am** Multiple comparisons (@sec-multi)
    - Class discussion 
-   - Group activity 
  
  + **11.45–11.55 am** Q&A and peer-share (@sec-peershare07)
 
@@ -33,6 +33,9 @@ group_allocation(names, seed = 1631, 10)
 
 <p align="center">
 <iframe src="slides/05-01_modller-vs-designer.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15042516?module_item_id=2582752)
 </p>
 
 
@@ -86,50 +89,15 @@ If you have some spare time sketch a concept map or illustration about sequentia
 ## Multiple comparisons {#sec-multi}
 
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1Hby1zVqv39pZSaXwBifZ7W_Mz9fmTWYP8LQ6U8BUQ54/edit?usp=sharing)...
-
-In your groups discuss and answer the following points/questions, which relate the the snippet of code that follows.
-
- 1. What is each line doing? 
- 2. What is the relevance of 0.05  in the final line of the loop?
- 3. What happens if you change this value?
- 4. What happens if you change `n`, and why?
- 5. What is this an example of? Why is this the case? Can you explain this reasoning for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience?
-
-Now, amend the code to ``test" the same thing using another statistical test of your choice.
- 
-```{r, eval = FALSE}
-n <- 10000
-t1err <- 0
-for (i in 1:n){
-    set.seed(1432 + i)
-    x <- rnorm(100, 0, 1)
-   if (((t.test(x, mu = 0))$p.value)<=0.05) (t1err = t1err + 1)
-}
-cat("Type I error rate in percentage is", (t1err/n)*100,"%", "\n")
-
-```
-
-Finally, think back to @sec-significance. What are your thoughts on *significance*, have they changed?
-
-:::
-
 **Slides**
 
 <p align="center">
 <iframe src="slides/05-02_multiple-comparisons.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
 </p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15042517?module_item_id=2582753)
+</p>
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1Hby1zVqv39pZSaXwBifZ7W_Mz9fmTWYP8LQ6U8BUQ54/edit?usp=sharing)...
-
-1. Using any suitable data from the lectures or the course guide perform the pairwise comparisons of means using Fisher’s LSD with $\alpha = 0.05$ level of significance. 
-
-2. Summarise and present these results in a table with the following column names **Comparison**, **Calculated difference** (in means), **SED** (standard error of the difference), **LSDs**, **Lower 95\% CI** &  **Upper 95\% CI** (lower & upper 95\% confidence interval), **t-statistic**, **P-value**.
-
-3. Calculate the scale factor (i.e., critical value of the assumed distribution) using 1) Bonferroni's correction method and 2) Tukey's HSD method for any pairwise comparison 95\% CI from above. Discuss what effect the multipliers might have on inference.
-:::
 
 ## Q&A and peer-share {#sec-peershare07}
 
