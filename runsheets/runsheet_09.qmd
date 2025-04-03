@@ -2,7 +2,8 @@
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
- 
+ + Fit and critique linear mixed effects models
+ + Create an experimental design 'recipe' using `R`
 :::
 
 
@@ -242,8 +243,8 @@ flowchart TB
 **Is a 'shared environment' an issue?** *In some experiments, while the treatments are independently applied to subjects, subsets of subjects from the same treatment group share the same environment (e.g., are housed together). Since these subjects share environmental conditions, the measurements made on them cannot be considered to be independent of one another^[Random effect models to the rescue!]*
 
 ::: {.callout-note}
-## Out of lecture activity - 
-
+## Out of lecture activity!
+Read and critique this blog! [Pseudoreplication: choose your data wisely](https://www.statisticsdonewrong.com/pseudoreplication.html)
 :::
 
 ## Using `R` to design an experiment
