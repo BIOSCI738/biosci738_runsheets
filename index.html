@@ -1809,7 +1809,7 @@ Some of my 2022 pumpkin haul
 <span id="cb29-88"><a href="#cb29-88" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Bootstrap resample</span></span>
 <span id="cb29-89"><a href="#cb29-89" aria-hidden="true" tabindex="-1"></a>    boot.df <span class="ot">&lt;-</span> data[<span class="fu">sample</span>(<span class="fu">nrow</span>(data), <span class="at">replace =</span> <span class="cn">TRUE</span>), ]</span>
 <span id="cb29-90"><a href="#cb29-90" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Fitting the model to the bootstrapped response</span></span>
-<span id="cb29-91"><a href="#cb29-91" aria-hidden="true" tabindex="-1"></a>    fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(boot <span class="sc">~</span>  height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> boot.df)</span>
+<span id="cb29-91"><a href="#cb29-91" aria-hidden="true" tabindex="-1"></a>    fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight_kg <span class="sc">~</span>  height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> boot.df)</span>
 <span id="cb29-92"><a href="#cb29-92" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Calculating the estimated expectations for new pumpkins</span></span>
 <span id="cb29-93"><a href="#cb29-93" aria-hidden="true" tabindex="-1"></a>    mu_new <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_boot, <span class="at">newdata =</span> new)</span>
 <span id="cb29-94"><a href="#cb29-94" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Saving the estimated ratio from the bootstrap model fit.</span></span>

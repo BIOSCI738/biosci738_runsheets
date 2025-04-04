@@ -269,7 +269,7 @@ for (i in 1:nreps){
     ## Bootstrap resample
     boot.df <- data[sample(nrow(data), replace = TRUE), ]
     ## Fitting the model to the bootstrapped response
-    fit_boot <- lm(boot ~  height_mm + width_mm, data = boot.df)
+    fit_boot <- lm(weight_kg ~  height_mm + width_mm, data = boot.df)
     ## Calculating the estimated expectations for new pumpkins
     mu_new <- predict(fit_boot, newdata = new)
     ## Saving the estimated ratio from the bootstrap model fit.
