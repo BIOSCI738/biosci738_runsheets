@@ -88,7 +88,7 @@ Finally, think back to @sec-significance. What are your thoughts on *significanc
 <iframe src="slides/05-03_degrees-of-freedom.pdf" height="400" width="700" title="Degrees of Freedom slides"></iframe>
 </p>
 <p align="center">
-[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15062424?module_item_id=2585376)
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15079931?module_item_id=2586885)
 </p>
 
 
