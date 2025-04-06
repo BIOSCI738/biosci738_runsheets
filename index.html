@@ -95,6 +95,9 @@ div.csl-indent {
         background: #c7dbe2;
       }
 </style>
+<script src="index_files/libs/quarto-diagram/mermaid.min.js"></script>
+<script src="index_files/libs/quarto-diagram/mermaid-init.js"></script>
+<link href="index_files/libs/quarto-diagram/mermaid.css" rel="stylesheet">
 <script src="index_files/libs/fitvids-2.1.1/fitvids.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -239,6 +242,14 @@ window.Quarto = {
   <li><a href="#sec-df" id="toc-sec-df" class="nav-link" data-scroll-target="#sec-df">Degrees of Freedom</a></li>
   <li><a href="#sec-randomeff" id="toc-sec-randomeff" class="nav-link" data-scroll-target="#sec-randomeff">Introducing random effcets</a></li>
   <li><a href="#sec-peershare08" id="toc-sec-peershare08" class="nav-link" data-scroll-target="#sec-peershare08">Q&amp;A/peer-share/Task 05</a></li>
+  </ul></li>
+  <li><a href="#april-7th" id="toc-april-7th" class="nav-link" data-scroll-target="#april-7th">April 7th</a>
+  <ul class="collapse">
+  <li><a href="#rough-timeline-9" id="toc-rough-timeline-9" class="nav-link" data-scroll-target="#rough-timeline-9">Rough timeline</a></li>
+  <li><a href="#sec-casestudies" id="toc-sec-casestudies" class="nav-link" data-scroll-target="#sec-casestudies">Case studies</a></li>
+  <li><a href="#sec-edterms" id="toc-sec-edterms" class="nav-link" data-scroll-target="#sec-edterms">The Terminology of Experimental Design</a></li>
+  <li><a href="#using-r-to-design-an-experiment" id="toc-using-r-to-design-an-experiment" class="nav-link" data-scroll-target="#using-r-to-design-an-experiment">Using <code>R</code> to design an experiment</a></li>
+  <li><a href="#sec-peershare09" id="toc-sec-peershare09" class="nav-link" data-scroll-target="#sec-peershare09">Q&amp;A and peer-share</a></li>
   </ul></li>
   <li><a href="#sec-solutions" id="toc-sec-solutions" class="nav-link" data-scroll-target="#sec-solutions">Activity solutions</a>
   <ul class="collapse">
@@ -1519,7 +1530,7 @@ $`Group 10`
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Rerun the analysis discussed in <a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a> (see <a href="#sec-solutions" class="quarto-xref">Section&nbsp;10</a> for relevant <code>R</code> code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?</p>
+<p>Rerun the analysis discussed in <a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a> (see <a href="#sec-solutions" class="quarto-xref">Section&nbsp;11</a> for relevant <code>R</code> code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?</p>
 </div>
 </div>
 <p><strong>5% is NOT some magic threshold</strong>! Below is an excerpt taken from <span class="citation" data-cites="fisher">Fisher (<a href="#ref-fisher" role="doc-biblioref">1926</a>)</span>.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
@@ -2224,7 +2235,7 @@ $`Group 10`
 </section>
 <section id="sec-fry02" class="level2">
 <h2 class="anchored" data-anchor-id="sec-fry02">Polynomial regression</h2>
-<p>Individually, or as a group, revisit <a href="#sec-fry" class="quarto-xref">Section&nbsp;6.4.2</a> alongside the suggested solution given in <a href="#sec-solutions" class="quarto-xref">Section&nbsp;10</a>. Discuss and summarise each fitted model and modelling choice made. Chose and justify your choice of preferred/“best” model?</p>
+<p>Individually, or as a group, revisit <a href="#sec-fry" class="quarto-xref">Section&nbsp;6.4.2</a> alongside the suggested solution given in <a href="#sec-solutions" class="quarto-xref">Section&nbsp;11</a>. Discuss and summarise each fitted model and modelling choice made. Chose and justify your choice of preferred/“best” model?</p>
 </section>
 <section id="revisiting-sec-comm" class="level2">
 <h2 class="anchored" data-anchor-id="revisiting-sec-comm">Revisiting <a href="#sec-comm" class="quarto-xref">Section&nbsp;6.5</a></h2>
@@ -2629,7 +2640,347 @@ $`Group 10`
 <p>Go over an activity from the class again or spend some time finishing off Task 05.</p>
 </div>
 </div>
-<!-- {{< include runsheets/runsheet_09.qmd >}} -->
+</section>
+</section>
+<section id="april-7th" class="level1">
+<h1>April 7th</h1>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+By the end of today’s seminar, you should be able to
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Fit and critique linear mixed effects models</li>
+<li>Create an experimental design ‘recipe’ using <code>R</code></li>
+</ul>
+</div>
+</div>
+<section id="rough-timeline-9" class="level2">
+<h2 class="anchored" data-anchor-id="rough-timeline-9">Rough timeline</h2>
+<ul>
+<li><strong>09:05–09:55 am</strong> Case studies (<a href="#sec-casestudies" class="quarto-xref">Section&nbsp;10.2</a>)</li>
+<li><strong>09:55–11:05 am</strong> Break</li>
+<li><strong>11:00–11:45 am</strong> The Terminology of Experimental Design (<a href="#sec-edterms" class="quarto-xref">Section&nbsp;10.3</a>)
+<ul>
+<li>Class discussion</li>
+<li>Group activity</li>
+</ul></li>
+<li><strong>11.45–11.55 am</strong> Q&amp;A and peer-share (<a href="#sec-peershare09" class="quarto-xref">Section&nbsp;10.5</a>)</li>
+</ul>
+<section id="randomly-allocated-groups-9" class="level3">
+<h3 class="anchored" data-anchor-id="randomly-allocated-groups-9">Randomly allocated groups</h3>
+<p><strong>It’s your responsibility to get into these, just look for the cows!</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_allocation</span>(names, <span class="at">seed =</span> <span class="dv">1121</span>, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$`Group 1`
+[1] "Emma Akeroyd" "He Li"        "Yingyi Wang"  "Robert Mihok"
+
+$`Group 2`
+[1] "Yutao Yang"    "Tongzheng Yao" "Karie Labidon" "Hnin Lwin"    
+
+$`Group 3`
+[1] "Antonia Schebek-Fuerstenberg" "Pikitangarangi Ratapu"       
+[3] "Xinyue Zhang"                 "Charlotte Sutton"            
+
+$`Group 4`
+[1] "Ziyi Wang"    "Yue Ma"       "Alex Johnson"
+
+$`Group 5`
+[1] "Happy Liang" "Shoule Du"   "Leyang Liu"  "Jiaxin Liu" 
+
+$`Group 6`
+[1] "Congkai Meng"       "Barnaby Clegg-Shaw" "Shuxiang He"       
+[4] "Vivian Qian"       
+
+$`Group 7`
+[1] "Yi Han"             "Francesca Domanska" "Yogapriya"         
+
+$`Group 8`
+[1] "Laura Munck" "Keyi Sun"    "Anqi Cheng"  "Yutong Wang"
+
+$`Group 9`
+[1] "Daneshajeya Jeyavalan" "Julia Thain"           "Jianing Chen"         
+[4] "Lana Najar"           
+
+$`Group 10`
+[1] "Zichang Li"    "Angel Loh"     "Zhixiao Zhang" "Sunny Chen"   </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-casestudies" class="level2">
+<h2 class="anchored" data-anchor-id="sec-casestudies">Case studies</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Work though each of the case studies given below answering/discussing the prompts as you go. You’ll notice a few extra packages and functions getting used; I suggest investigating! If you get stuck just grab me as I walk around!</p>
+</div>
+</div>
+<section id="case-study-01" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-01">Case study 01</h3>
+<p>Revisiting <a href="#sec-multi" class="quarto-xref">Section&nbsp;8.3</a> and <a href="#sec-multi02" class="quarto-xref">Section&nbsp;9.2</a> may be useful here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(predictmeans) <span class="do">## install using install.packages("predictmeans")</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/crd_rats_data.csv"</span>)</span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>rats <span class="ot">&lt;-</span> rats <span class="sc">%&gt;%</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Surgery =</span> <span class="fu">as.factor</span>(Surgery))</span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="do">## CRD analysis</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>rats_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Surgery, <span class="at">data =</span> rats)</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 1:  interpret the output from summary(rats_lm)$coef</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(rats_lm)<span class="sc">$</span>coef</span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 2: interpret the output from anova(rats_lm)</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(rats_lm)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 3, 4, and 5</span></span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a><span class="do">## what do the specified arguments to predictmeans() do? (HINT: use R help)</span></span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a><span class="do">## what are the elements returned in the object pm?</span></span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="do">## specify plot = TRUE in the predictmeans() call, how would you interpret the resulting plot?</span></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> predictmeans<span class="sc">::</span><span class="fu">predictmeans</span>(rats_lm , <span class="at">modelterm =</span> <span class="st">"Surgery"</span>, </span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>                                     <span class="at">pairwise =</span> <span class="cn">TRUE</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>pm <span class="do">## a lot of output</span></span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 6: what are the three lines of code doing after this prompt?</span></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"</span></span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">source_gist</span>(url, <span class="at">quiet =</span> <span class="cn">TRUE</span>) <span class="do">## install using install.packages("devtools")</span></span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="fu">comparisons</span>(pm)</span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 7: explain each element of the calculations going into creating the object HSD</span></span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>HSD <span class="ot">&lt;-</span> (<span class="fu">qtukey</span>(<span class="at">p =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.05</span>, <span class="at">nmeans =</span> <span class="dv">3</span>, <span class="at">df =</span> <span class="dv">12</span> <span class="sc">-</span> <span class="dv">3</span>)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">2</span>))<span class="sc">*</span><span class="fu">sqrt</span>(<span class="dv">2</span> <span class="sc">*</span> <span class="fu">anova</span>(rats_lm)[<span class="dv">2</span>,<span class="dv">3</span>] <span class="sc">/</span> <span class="dv">4</span>)</span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a><span class="fu">TukeyHSD</span>(<span class="fu">aov</span>(logAUC <span class="sc">~</span> Surgery, <span class="at">data =</span> rats))</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 8: Use all the relevant pieces of the script (hint what is the alpha.adj object below?) to calculate the pairwise comparison between Surgery C and S, using Fisher’s, Bonferonni’s, and Tukey’s correction methods respectively. You should state the difference, and 95% CI in each case. What do you notice about these three intervals? How are they similar/dissimilar? Show your workings.</span></span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>alpha.adj <span class="ot">&lt;-</span> <span class="fl">0.05</span><span class="sc">/</span><span class="fu">choose</span>(<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 9: Produce a plot that compares the three methods above</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="case-study-02" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-02">Case study 02</h3>
+<p>Revisiting <a href="#sec-mods" class="quarto-xref">Section&nbsp;8.2</a> may be useful here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/factorial_expt.csv"</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="do">## below we change the treatments to factors, simply because later on if we</span></span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="do">## use predictmeans it will have a tantrum if this isn't the case</span></span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Disease =</span> <span class="fu">as.factor</span>(Disease)) <span class="sc">%&gt;%</span></span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Organ =</span> <span class="fu">as.factor</span>(Organ))</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 1: what model has been fitted here and what does the output from the anova() call indicate?</span></span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease<span class="sc">*</span>Organ, <span class="at">data =</span> data)</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model)</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 2: what model has been fitted here and what does the output from the anova() call indicate?</span></span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>model_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Organ<span class="sc">*</span>Disease, <span class="at">data =</span> data)</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(model_2)</span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a><span class="do">#####################################</span></span>
+<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a><span class="do">##****making the data unbalanced***</span></span>
+<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data[<span class="sc">-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">10</span>),]</span>
+<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="do">#####################################</span></span>
+<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 3: what model has been fitted here and what does the output from the anova() call indicate?</span></span>
+<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease<span class="sc">*</span>Organ, <span class="at">data =</span> data_sub)</span>
+<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod)</span>
+<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 4: what model has been fitted here and what does the output from the anova() call indicate?</span></span>
+<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a>mod_2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Organ<span class="sc">*</span>Disease, <span class="at">data =</span> data_sub)</span>
+<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mod_2)</span>
+<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 5: run and interpret the output from the following code, what do you conclude?</span></span>
+<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>pm <span class="ot">&lt;-</span> predictmeans<span class="sc">::</span><span class="fu">predictmeans</span>(<span class="at">model =</span> mod ,<span class="at">modelterm =</span> <span class="st">"Disease:Organ"</span>, </span>
+<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">pairwise =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="case-study-03" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-03">Case study 03</h3>
+<p>Revisiting <a href="#sec-randomeff" class="quarto-xref">Section&nbsp;9.4</a> and <a href="#sec-ss" class="quarto-xref">Section&nbsp;8.2.2</a> may be useful here as well as <a href="https://biosci738.github.io/BIOSCI738/linear-mixed-effect-models-lmms.html">this section of the course guide</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(lme4)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(predictmeans)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>rcbd <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/rcbd.csv"</span>)</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="do">## turn appropriate variables into factors</span></span>
+<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a>rcbd <span class="ot">&lt;-</span> rcbd <span class="sc">%&gt;%</span></span>
+<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Run =</span> <span class="fu">as.factor</span>(Run)) <span class="sc">%&gt;%</span></span>
+<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Surgery =</span> <span class="fu">as.factor</span>(Surgery))</span>
+<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="do">## run as a fixed effect</span></span>
+<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(logAUC8 <span class="sc">~</span> Run <span class="sc">+</span> Surgery, <span class="at">data =</span> rcbd) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="do">## run as a random effect, what's the difference?</span></span>
+<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a>lmm <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(logAUC8 <span class="sc">~</span> Surgery <span class="sc">+</span> (<span class="dv">1</span><span class="sc">|</span>Run), <span class="at">data =</span> rcbd) </span>
+<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lmm)</span>
+<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="do">## diagnostics estimated variance partitioning and more...</span></span>
+<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="do">## these are really useful utility functions!</span></span>
+<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">residplot</span>(lmm)</span>
+<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">R2_glmm</span>(lmm)</span>
+<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">se_ranef</span>(lmm)</span>
+<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">varcomp</span>(lmm)</span>
+<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">permmodels</span>(lmm) <span class="do">## remember permutation tests, what are we using them for here? Compare to a summary() output</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="case-study-04" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-04">Case study 04</h3>
+<p>Now, we’re going to get a little more advanced and model some data from <span class="citation" data-cites="monkey">Bliss-Moreau and Baxter (<a href="#ref-monkey" role="doc-biblioref">2019</a>)</span> (data retrieved from <span class="citation" data-cites="monkeydata">Bliss-Moreau and Baxter (<a href="#ref-monkeydata" role="doc-biblioref">2020</a>)</span>). To do so we’re following along (somewhat) with the steps summarised in <span class="citation" data-cites="danblog">Dan (<a href="#ref-danblog" role="doc-biblioref">2022</a>)</span>. Revisiting <a href="#sec-randomeff" class="quarto-xref">Section&nbsp;9.4</a> may, again, be useful here.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">## wrangle as per Dan's blog</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/monkey.csv"</span>)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Activity)) <span class="sc">+</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() </span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of active intervals in the first two minutes (0-8)</span></span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>activity_2mins <span class="ot">&lt;-</span> data <span class="sc">|&gt;</span></span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(obs<span class="sc">&lt;</span><span class="dv">9</span>) <span class="sc">|&gt;</span> <span class="fu">group_by</span>(subj_id, Day) <span class="sc">|&gt;</span></span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total=</span><span class="fu">sum</span>(Activity), </span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>            <span class="at">active_bins =</span> <span class="fu">sum</span>(Activity <span class="sc">&gt;</span> <span class="dv">0</span>), </span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>            <span class="at">age =</span> <span class="fu">min</span>(age)) <span class="sc">|&gt;</span></span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">monkey =</span> subj_id, <span class="at">day =</span> Day) <span class="sc">|&gt;</span></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ungroup</span>()</span>
+<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">table</span>(activity_2mins<span class="sc">$</span>monkey))</span>
+<span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>activity_2mins <span class="sc">%&gt;%</span></span>
+<span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> total, <span class="at">col =</span> <span class="fu">as.factor</span>(monkey))) <span class="sc">+</span></span>
+<span id="cb48-18"><a href="#cb48-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>day) <span class="sc">+</span></span>
+<span id="cb48-19"><a href="#cb48-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span>
+<span id="cb48-20"><a href="#cb48-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Linear model...</span></span>
+<span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a>fit_lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(active_bins <span class="sc">~</span> age<span class="sc">*</span><span class="fu">factor</span>(day) <span class="sc">+</span> <span class="fu">factor</span>(monkey), <span class="at">data =</span> activity_2mins)</span>
+<span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>fit_lm <span class="sc">|&gt;</span></span>
+<span id="cb48-23"><a href="#cb48-23" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb48-24"><a href="#cb48-24" aria-hidden="true" tabindex="-1"></a><span class="do">## ignore monkeys</span></span>
+<span id="cb48-25"><a href="#cb48-25" aria-hidden="true" tabindex="-1"></a>fit_lm_pool <span class="ot">&lt;-</span> <span class="fu">lm</span>(active_bins <span class="sc">~</span> age<span class="sc">*</span><span class="fu">factor</span>(day), <span class="at">data =</span> activity_2mins)</span>
+<span id="cb48-26"><a href="#cb48-26" aria-hidden="true" tabindex="-1"></a>fit_lm_pool <span class="sc">|&gt;</span></span>
+<span id="cb48-27"><a href="#cb48-27" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb48-28"><a href="#cb48-28" aria-hidden="true" tabindex="-1"></a>fit_lm_pool <span class="sc">|&gt;</span> gglm<span class="sc">::</span><span class="fu">gglm</span>() <span class="do">## and what do we think here?</span></span>
+<span id="cb48-29"><a href="#cb48-29" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb48-30"><a href="#cb48-30" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(fit_lm_pool<span class="sc">$</span>fitted, fit_lm_pool<span class="sc">$</span>residuals)</span>
+<span id="cb48-31"><a href="#cb48-31" aria-hidden="true" tabindex="-1"></a><span class="do">## why scale?</span></span>
+<span id="cb48-32"><a href="#cb48-32" aria-hidden="true" tabindex="-1"></a>age_centre <span class="ot">&lt;-</span> <span class="fu">mean</span>(activity_2mins<span class="sc">$</span>age)</span>
+<span id="cb48-33"><a href="#cb48-33" aria-hidden="true" tabindex="-1"></a>age_scale <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">range</span>(activity_2mins<span class="sc">$</span>age))<span class="sc">/</span><span class="dv">2</span></span>
+<span id="cb48-34"><a href="#cb48-34" aria-hidden="true" tabindex="-1"></a>active_bins_centre <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb48-35"><a href="#cb48-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-36"><a href="#cb48-36" aria-hidden="true" tabindex="-1"></a>activity_2mins_scaled <span class="ot">&lt;-</span> activity_2mins <span class="sc">|&gt;</span></span>
+<span id="cb48-37"><a href="#cb48-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">monkey =</span> <span class="fu">factor</span>(monkey),</span>
+<span id="cb48-38"><a href="#cb48-38" aria-hidden="true" tabindex="-1"></a>         <span class="at">day =</span> <span class="fu">factor</span>(day),</span>
+<span id="cb48-39"><a href="#cb48-39" aria-hidden="true" tabindex="-1"></a>         <span class="at">age_centred =</span> (age <span class="sc">-</span> age_centre)<span class="sc">/</span>age_scale,</span>
+<span id="cb48-40"><a href="#cb48-40" aria-hidden="true" tabindex="-1"></a>         <span class="at">active_bins_scaled =</span> (active_bins <span class="sc">-</span> active_bins_centre)<span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb48-41"><a href="#cb48-41" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(activity_2mins_scaled)</span>
+<span id="cb48-42"><a href="#cb48-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-43"><a href="#cb48-43" aria-hidden="true" tabindex="-1"></a><span class="do">## Monkey as a random effect, why? Is this sensible?</span></span>
+<span id="cb48-44"><a href="#cb48-44" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(active_bins_scaled <span class="sc">~</span> age_centred<span class="sc">*</span>day <span class="sc">+</span> <span class="fu">Error</span>(monkey), <span class="at">data =</span> activity_2mins_scaled) <span class="sc">|&gt;</span></span>
+<span id="cb48-45"><a href="#cb48-45" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb48-46"><a href="#cb48-46" aria-hidden="true" tabindex="-1"></a><span class="do">## formula</span></span>
+<span id="cb48-47"><a href="#cb48-47" aria-hidden="true" tabindex="-1"></a>formula <span class="ot">&lt;-</span> active_bins_scaled <span class="sc">~</span> age_centred<span class="sc">*</span>day <span class="sc">+</span> (<span class="dv">1</span> <span class="sc">|</span> monkey)</span>
+<span id="cb48-48"><a href="#cb48-48" aria-hidden="true" tabindex="-1"></a><span class="do">## lme4</span></span>
+<span id="cb48-49"><a href="#cb48-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lme4)</span>
+<span id="cb48-50"><a href="#cb48-50" aria-hidden="true" tabindex="-1"></a>fit_lme4 <span class="ot">&lt;-</span> lme4<span class="sc">::</span><span class="fu">lmer</span>(formula, activity_2mins_scaled)</span>
+<span id="cb48-51"><a href="#cb48-51" aria-hidden="true" tabindex="-1"></a>fit_lme4 <span class="sc">|&gt;</span></span>
+<span id="cb48-52"><a href="#cb48-52" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb48-53"><a href="#cb48-53" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">predictmeans</span>(fit_lme4, <span class="st">"day"</span>)</span>
+<span id="cb48-54"><a href="#cb48-54" aria-hidden="true" tabindex="-1"></a><span class="do">## lmerTest, is this the same model as above</span></span>
+<span id="cb48-55"><a href="#cb48-55" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lmerTest)</span>
+<span id="cb48-56"><a href="#cb48-56" aria-hidden="true" tabindex="-1"></a>fit_lmerTest <span class="ot">&lt;-</span> lmerTest<span class="sc">::</span><span class="fu">lmer</span>(formula, activity_2mins_scaled)</span>
+<span id="cb48-57"><a href="#cb48-57" aria-hidden="true" tabindex="-1"></a>fit_lmerTest <span class="sc">|&gt;</span></span>
+<span id="cb48-58"><a href="#cb48-58" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb48-59"><a href="#cb48-59" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">predictmeans</span>(fit_lmerTest, <span class="st">"day"</span>)</span>
+<span id="cb48-60"><a href="#cb48-60" aria-hidden="true" tabindex="-1"></a><span class="do">## glmmTMB, is this the same model as above</span></span>
+<span id="cb48-61"><a href="#cb48-61" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(glmmTMB)</span>
+<span id="cb48-62"><a href="#cb48-62" aria-hidden="true" tabindex="-1"></a>fit_glmmtmb <span class="ot">&lt;-</span> glmmTMB<span class="sc">::</span><span class="fu">glmmTMB</span>(formula, activity_2mins_scaled)</span>
+<span id="cb48-63"><a href="#cb48-63" aria-hidden="true" tabindex="-1"></a>fit_glmmtmb <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb48-64"><a href="#cb48-64" aria-hidden="true" tabindex="-1"></a><span class="do">## and what does this show?</span></span>
+<span id="cb48-65"><a href="#cb48-65" aria-hidden="true" tabindex="-1"></a>emmeans<span class="sc">::</span><span class="fu">emmeans</span>(fit_glmmtmb, <span class="at">specs =</span> <span class="st">"day"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb48-66"><a href="#cb48-66" aria-hidden="true" tabindex="-1"></a> <span class="fu">plot</span>(<span class="at">pairwise =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="sec-edterms" class="level2">
+<h2 class="anchored" data-anchor-id="sec-edterms">The Terminology of Experimental Design</h2>
+<section id="the-grammar-of-experimental-designs" class="level3">
+<h3 class="anchored" data-anchor-id="the-grammar-of-experimental-designs">The Grammar of Experimental Designs<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></h3>
+<p>This section briefly summaries the terms and concepts discussed in <a href="https://biosci738.github.io/BIOSCI738/introduction-to-the-design-and-analysis-of-experiments.html">this section of the course guide</a> and <a href="https://emitanaka.org/edibble-book/">Emi Tanaka’s <code>edibble</code> ebook</a>. Refer tho these sources for more details definitions.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
+  A[Define Objectives] --&gt; B(Design Experiment)
+  B --&gt; C[Procedures for Collecting Data]
+  B --&gt; D[Model for Analysis of Data]
+  C --&gt; D
+  D --&gt; C
+  C --&gt; E[Analysis of Data \n Interpretation of Results]
+  D --&gt; E
+  E --&gt; F(Conclusions)
+</pre>
+</div>
+<p></p><figcaption> A typical sequence of events when carrying out an experiment<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<p><strong>Experimental design FAQs</strong></p>
+<p><strong>Why are specific objectives important?</strong> <em>Defining specific objectives direct you towards writing focused statements about the investigative questions you want your experiment to answer. The objective(s) are what it is you are aiming to accomplish in the experiment. The objective(s) should be written in terms of a specific verb that describes what you are doing (e.g., what you are hoping to measure/analyze/determine/test etc.).</em></p>
+<p><strong>What is the response variable?</strong> <em>The response (or dependent) variable is the focus of your experiment; it is the variable that you will measure to accomplish your objective. It should be meaningful (i.e., represent the objective) and measurable.</em></p>
+<p><strong>What is an experimental factor?</strong> <em>An experimental factor refers to a variable whose values that will be varied in the experiment with the goal of understanding how changes in the factor’s values explain difference in the responses in the measured variables.</em></p>
+<p><strong>Why list the experimental factors?</strong> <em>Listing the experimental factors (or treatments or independent variables) you will study in your experiment helps to organise variables and work out how they may help to explain observed changes in your measurable response(s). It is important that the experimental factor can be controlled during and between experimental runs. Variables that are thought to affect the response, but cannot be controlled<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a>, cannot be included as an experimental factor.</em></p>
+<p><strong>What is the experimental material?</strong> <em>Experimental material (or units) is the material upon which something will be changed. To identify this you should answer the following questions. 1) Who or what are the subjects of your experiment? 2) How will you apply the experimental treatments to them? and 3) How will they be managed for taking measurements on them?</em></p>
+<p><strong>Is a ‘shared environment’ an issue?</strong> <em>In some experiments, while the treatments are independently applied to subjects, subsets of subjects from the same treatment group share the same environment (e.g., are housed together). Since these subjects share environmental conditions, the measurements made on them cannot be considered to be independent of one another<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></em></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Out of lecture activity!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Read and critique this blog! <a href="https://www.statisticsdonewrong.com/pseudoreplication.html">Pseudoreplication: choose your data wisely</a></p>
+</div>
+</div>
+</section>
+</section>
+<section id="using-r-to-design-an-experiment" class="level2">
+<h2 class="anchored" data-anchor-id="using-r-to-design-an-experiment">Using <code>R</code> to design an experiment</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Choose one or more of the following <code>R</code> packages and use the functionality offered to structure/design the following experiment (i.e., figure out how to allocated treatments to units etc.).</p>
+<p>Some experimental design <code>R</code> package options (feel free to use any others you come across)</p>
+<ul>
+<li><code>edibble</code></li>
+<li><code>agricolae</code></li>
+<li><code>AlgDesign</code></li>
+</ul>
+<p>Description of experiment to create a design for (summary of the study from <span class="citation" data-cites="grass">Steinauer et al. (<a href="#ref-grass" role="doc-biblioref">2015</a>)</span>).</p>
+<p><img src="runsheets/img/experiment.png" class="img-fluid"></p>
+<p>[Note: you may find <a href="https://statbiscuit.shinyapps.io/doe_form/">this application useful</a> to structure your thoughts.]</p>
+</div>
+</div>
+</section>
+<section id="sec-peershare09" class="level2">
+<h2 class="anchored" data-anchor-id="sec-peershare09">Q&amp;A and peer-share</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!</p>
+</div>
+</div>
 <!-- {{< include runsheets/runsheet_10.qmd >}} -->
 </section>
 </section>
@@ -2651,284 +3002,284 @@ Suggested <code>R</code> code solutions
 <section id="suggested-solution-to-sec-gorilla" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;2.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
-<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
-<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
-<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
-<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
-<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
-<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
-<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb49-11"><a href="#cb49-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb49-12"><a href="#cb49-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
+<span id="cb49-13"><a href="#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
+<span id="cb49-14"><a href="#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
+<span id="cb49-15"><a href="#cb49-15" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
+<span id="cb49-16"><a href="#cb49-16" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
+<span id="cb49-17"><a href="#cb49-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb49-18"><a href="#cb49-18" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
+<span id="cb49-19"><a href="#cb49-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
+<span id="cb49-20"><a href="#cb49-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-honesty" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-honesty">Suggested solution to <a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.5</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/retracted-honesty-study_week-02.csv"</span>)</span>
-<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="do">## set up descriptive treatments</span></span>
-<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span> (<span class="at">treatment =</span> <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No signature"</span>,</span>
-<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Sign-Top"</span>,</span>
-<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">2</span>, <span class="st">"Sign-Bottom"</span> , <span class="cn">NA</span>))))</span>
-<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="do">## remove control condition (here we're only interested in comparing sign-top and sign-bottom)</span></span>
-<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., Cond <span class="sc">!=</span> <span class="dv">0</span>)</span>
-<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MATCH PAPER</span></span>
-<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"</span></span>
-<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a><span class="do">## with "chi sq test p(0.0013)"</span></span>
-<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment), <span class="at">margin =</span> <span class="dv">2</span>)</span>
-<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment) <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>()</span>
-<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001)"</span></span>
-<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OverReport <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a><span class="do">## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"</span></span>
-<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a><span class="do">## DATA DETECTIVING</span></span>
-<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
-<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
-<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>() <span class="do">## matches t-test above (is the same thing)</span></span>
-<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a><span class="do">## plot makes sense</span></span>
-<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
-<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
-<span id="cb44-26"><a href="#cb44-26" aria-hidden="true" tabindex="-1"></a><span class="do">## mapping flagged observations to colour</span></span>
-<span id="cb44-27"><a href="#cb44-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
-<span id="cb44-28"><a href="#cb44-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag)))</span>
-<span id="cb44-29"><a href="#cb44-29" aria-hidden="true" tabindex="-1"></a><span class="do">## residuals</span></span>
-<span id="cb44-30"><a href="#cb44-30" aria-hidden="true" tabindex="-1"></a>data_sub<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod)</span>
-<span id="cb44-31"><a href="#cb44-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
-<span id="cb44-32"><a href="#cb44-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag))) <span class="sc">+</span></span>
-<span id="cb44-33"><a href="#cb44-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span>
-<span id="cb44-34"><a href="#cb44-34" aria-hidden="true" tabindex="-1"></a><span class="do">## now removing flagged observations</span></span>
-<span id="cb44-35"><a href="#cb44-35" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
-<span id="cb44-36"><a href="#cb44-36" aria-hidden="true" tabindex="-1"></a>data_sub <span class="sc">%&gt;%</span></span>
-<span id="cb44-37"><a href="#cb44-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., flag <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb44-38"><a href="#cb44-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> .)</span>
-<span id="cb44-39"><a href="#cb44-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb44-40"><a href="#cb44-40" aria-hidden="true" tabindex="-1"></a><span class="do">## see https://datacolada.org/109</span></span>
-<span id="cb44-41"><a href="#cb44-41" aria-hidden="true" tabindex="-1"></a><span class="do">## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud</span></span>
-<span id="cb44-42"><a href="#cb44-42" aria-hidden="true" tabindex="-1"></a><span class="do">## for the story</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/retracted-honesty-study_week-02.csv"</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="do">## set up descriptive treatments</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">mutate</span> (<span class="at">treatment =</span> <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">0</span>, <span class="st">"No signature"</span>,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">1</span>, <span class="st">"Sign-Top"</span>,</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>                                     <span class="fu">ifelse</span>(Cond<span class="sc">==</span><span class="dv">2</span>, <span class="st">"Sign-Bottom"</span> , <span class="cn">NA</span>))))</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="do">## remove control condition (here we're only interested in comparing sign-top and sign-bottom)</span></span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>data_sub <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(., Cond <span class="sc">!=</span> <span class="dv">0</span>)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MATCH PAPER</span></span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the share of people over-reporting their math puzzle performance from 79% to 37%"</span></span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a><span class="do">## with "chi sq test p(0.0013)"</span></span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.table</span>(<span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment), <span class="at">margin =</span> <span class="dv">2</span>)</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(data_sub<span class="sc">$</span>CheatedOnMatrixTax, data_sub<span class="sc">$</span>treatment) <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>()</span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a><span class="do">## "lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001)"</span></span>
+<span id="cb50-15"><a href="#cb50-15" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(OverReport <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb50-16"><a href="#cb50-16" aria-hidden="true" tabindex="-1"></a><span class="do">## "nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014)"</span></span>
+<span id="cb50-17"><a href="#cb50-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb50-18"><a href="#cb50-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-19"><a href="#cb50-19" aria-hidden="true" tabindex="-1"></a><span class="do">## DATA DETECTIVING</span></span>
+<span id="cb50-20"><a href="#cb50-20" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb50-21"><a href="#cb50-21" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> data_sub)</span>
+<span id="cb50-22"><a href="#cb50-22" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>() <span class="do">## matches t-test above (is the same thing)</span></span>
+<span id="cb50-23"><a href="#cb50-23" aria-hidden="true" tabindex="-1"></a><span class="do">## plot makes sense</span></span>
+<span id="cb50-24"><a href="#cb50-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb50-25"><a href="#cb50-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>()</span>
+<span id="cb50-26"><a href="#cb50-26" aria-hidden="true" tabindex="-1"></a><span class="do">## mapping flagged observations to colour</span></span>
+<span id="cb50-27"><a href="#cb50-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> SumDeduction)) <span class="sc">+</span></span>
+<span id="cb50-28"><a href="#cb50-28" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag)))</span>
+<span id="cb50-29"><a href="#cb50-29" aria-hidden="true" tabindex="-1"></a><span class="do">## residuals</span></span>
+<span id="cb50-30"><a href="#cb50-30" aria-hidden="true" tabindex="-1"></a>data_sub<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(mod)</span>
+<span id="cb50-31"><a href="#cb50-31" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data_sub, <span class="fu">aes</span>(<span class="at">x =</span> treatment, <span class="at">y =</span> residuals)) <span class="sc">+</span></span>
+<span id="cb50-32"><a href="#cb50-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> <span class="fu">as.factor</span>(flag))) <span class="sc">+</span></span>
+<span id="cb50-33"><a href="#cb50-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"grey"</span>, <span class="at">linewidth =</span> <span class="dv">2</span>, <span class="at">linetype =</span> <span class="dv">2</span>)</span>
+<span id="cb50-34"><a href="#cb50-34" aria-hidden="true" tabindex="-1"></a><span class="do">## now removing flagged observations</span></span>
+<span id="cb50-35"><a href="#cb50-35" aria-hidden="true" tabindex="-1"></a><span class="do">## lm</span></span>
+<span id="cb50-36"><a href="#cb50-36" aria-hidden="true" tabindex="-1"></a>data_sub <span class="sc">%&gt;%</span></span>
+<span id="cb50-37"><a href="#cb50-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(., flag <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb50-38"><a href="#cb50-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">t.test</span>(SumDeduction <span class="sc">~</span> treatment, <span class="at">data =</span> .)</span>
+<span id="cb50-39"><a href="#cb50-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-40"><a href="#cb50-40" aria-hidden="true" tabindex="-1"></a><span class="do">## see https://datacolada.org/109</span></span>
+<span id="cb50-41"><a href="#cb50-41" aria-hidden="true" tabindex="-1"></a><span class="do">## and/or https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud</span></span>
+<span id="cb50-42"><a href="#cb50-42" aria-hidden="true" tabindex="-1"></a><span class="do">## for the story</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-draw" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-draw">Suggested solution to <a href="#sec-draw" class="quarto-xref">Section&nbsp;6.3</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
-<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
-<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
-<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb45-32"><a href="#cb45-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
-<span id="cb45-33"><a href="#cb45-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb45-34"><a href="#cb45-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-35"><a href="#cb45-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-36"><a href="#cb45-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
-<span id="cb45-37"><a href="#cb45-37" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-38"><a href="#cb45-38" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb45-39"><a href="#cb45-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
-<span id="cb45-40"><a href="#cb45-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb45-41"><a href="#cb45-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb45-42"><a href="#cb45-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb45-43"><a href="#cb45-43" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb45-44"><a href="#cb45-44" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb45-45"><a href="#cb45-45" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb45-46"><a href="#cb45-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb45-47"><a href="#cb45-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb45-48"><a href="#cb45-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-49"><a href="#cb45-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-50"><a href="#cb45-50" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
-<span id="cb45-51"><a href="#cb45-51" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-52"><a href="#cb45-52" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb45-53"><a href="#cb45-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score<span class="sc">*</span>category, <span class="at">data =</span> .) </span>
-<span id="cb45-54"><a href="#cb45-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb45-55"><a href="#cb45-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb45-56"><a href="#cb45-56" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb45-57"><a href="#cb45-57" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb45-58"><a href="#cb45-58" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb45-59"><a href="#cb45-59" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb45-60"><a href="#cb45-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb45-61"><a href="#cb45-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb45-62"><a href="#cb45-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-63"><a href="#cb45-63" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-64"><a href="#cb45-64" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
-<span id="cb45-65"><a href="#cb45-65" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-66"><a href="#cb45-66" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb45-67"><a href="#cb45-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
-<span id="cb45-68"><a href="#cb45-68" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
-<span id="cb45-69"><a href="#cb45-69" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
-<span id="cb45-70"><a href="#cb45-70" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb45-71"><a href="#cb45-71" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb45-72"><a href="#cb45-72" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb45-73"><a href="#cb45-73" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
-<span id="cb45-74"><a href="#cb45-74" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb45-75"><a href="#cb45-75" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb45-76"><a href="#cb45-76" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-77"><a href="#cb45-77" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 6 #######</span></span>
-<span id="cb45-78"><a href="#cb45-78" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb45-79"><a href="#cb45-79" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
-<span id="cb45-80"><a href="#cb45-80" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb45-81"><a href="#cb45-81" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb45-82"><a href="#cb45-82" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb45-83"><a href="#cb45-83" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
-<span id="cb45-84"><a href="#cb45-84" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb51-16"><a href="#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
+<span id="cb51-17"><a href="#cb51-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb51-18"><a href="#cb51-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb51-19"><a href="#cb51-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb51-20"><a href="#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-21"><a href="#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
+<span id="cb51-22"><a href="#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-23"><a href="#cb51-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
+<span id="cb51-24"><a href="#cb51-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb51-25"><a href="#cb51-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
+<span id="cb51-26"><a href="#cb51-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb51-27"><a href="#cb51-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb51-28"><a href="#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb51-29"><a href="#cb51-29" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb51-30"><a href="#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb51-31"><a href="#cb51-31" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb51-32"><a href="#cb51-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
+<span id="cb51-33"><a href="#cb51-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb51-34"><a href="#cb51-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-35"><a href="#cb51-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-36"><a href="#cb51-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
+<span id="cb51-37"><a href="#cb51-37" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-38"><a href="#cb51-38" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb51-39"><a href="#cb51-39" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
+<span id="cb51-40"><a href="#cb51-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb51-41"><a href="#cb51-41" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb51-42"><a href="#cb51-42" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb51-43"><a href="#cb51-43" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb51-44"><a href="#cb51-44" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb51-45"><a href="#cb51-45" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb51-46"><a href="#cb51-46" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb51-47"><a href="#cb51-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb51-48"><a href="#cb51-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-49"><a href="#cb51-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-50"><a href="#cb51-50" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
+<span id="cb51-51"><a href="#cb51-51" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-52"><a href="#cb51-52" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb51-53"><a href="#cb51-53" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score<span class="sc">*</span>category, <span class="at">data =</span> .) </span>
+<span id="cb51-54"><a href="#cb51-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb51-55"><a href="#cb51-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb51-56"><a href="#cb51-56" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb51-57"><a href="#cb51-57" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb51-58"><a href="#cb51-58" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb51-59"><a href="#cb51-59" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb51-60"><a href="#cb51-60" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb51-61"><a href="#cb51-61" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb51-62"><a href="#cb51-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb51-63"><a href="#cb51-63" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-64"><a href="#cb51-64" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
+<span id="cb51-65"><a href="#cb51-65" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-66"><a href="#cb51-66" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb51-67"><a href="#cb51-67" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
+<span id="cb51-68"><a href="#cb51-68" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
+<span id="cb51-69"><a href="#cb51-69" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
+<span id="cb51-70"><a href="#cb51-70" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb51-71"><a href="#cb51-71" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb51-72"><a href="#cb51-72" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb51-73"><a href="#cb51-73" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
+<span id="cb51-74"><a href="#cb51-74" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb51-75"><a href="#cb51-75" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb51-76"><a href="#cb51-76" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-77"><a href="#cb51-77" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 6 #######</span></span>
+<span id="cb51-78"><a href="#cb51-78" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb51-79"><a href="#cb51-79" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
+<span id="cb51-80"><a href="#cb51-80" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb51-81"><a href="#cb51-81" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb51-82"><a href="#cb51-82" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb51-83"><a href="#cb51-83" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
+<span id="cb51-84"><a href="#cb51-84" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-fry" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-fry">Suggested solution to <a href="#sec-fry" class="quarto-xref">Section&nbsp;6.4.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="do">## paper https://www.sciencedirect.com/science/article/pii/S1658077X17302655?via%3Dihub#t0005</span></span>
-<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Figure 1 data 'extracted' by https://automeris.io/WebPlotDigitizer/</span></span>
-<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>fries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/fries.csv"</span>)</span>
-<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-15"><a href="#cb46-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-16"><a href="#cb46-16" aria-hidden="true" tabindex="-1"></a><span class="do">## first degree</span></span>
-<span id="cb46-17"><a href="#cb46-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> frying_time_s <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
-<span id="cb46-18"><a href="#cb46-18" aria-hidden="true" tabindex="-1"></a>    gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb46-19"><a href="#cb46-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-20"><a href="#cb46-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-21"><a href="#cb46-21" aria-hidden="true" tabindex="-1"></a><span class="do">## second degree</span></span>
-<span id="cb46-22"><a href="#cb46-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
-<span id="cb46-23"><a href="#cb46-23" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb46-24"><a href="#cb46-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-25"><a href="#cb46-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-26"><a href="#cb46-26" aria-hidden="true" tabindex="-1"></a><span class="do">## third degree</span></span>
-<span id="cb46-27"><a href="#cb46-27" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">1</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> method,</span>
-<span id="cb46-28"><a href="#cb46-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span>
-<span id="cb46-29"><a href="#cb46-29" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb46-30"><a href="#cb46-30" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb46-31"><a href="#cb46-31" aria-hidden="true" tabindex="-1"></a>   gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb46-32"><a href="#cb46-32" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="do">## but these are correlated</span></span>
-<span id="cb46-33"><a href="#cb46-33" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb46-34"><a href="#cb46-34" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
-<span id="cb46-35"><a href="#cb46-35" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-36"><a href="#cb46-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb46-37"><a href="#cb46-37" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb46-38"><a href="#cb46-38" aria-hidden="true" tabindex="-1"></a><span class="do">## orthogonal model</span></span>
-<span id="cb46-39"><a href="#cb46-39" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>) <span class="do">## see https://stackoverflow.com/questions/29999900/poly-in-lm-difference-between-raw-vs-orthogonal</span></span>
-<span id="cb46-40"><a href="#cb46-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb46-41"><a href="#cb46-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
-<span id="cb46-42"><a href="#cb46-42" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb46-43"><a href="#cb46-43" aria-hidden="true" tabindex="-1"></a><span class="do">## remove the 180 obvs as these are not 'data' they are determined</span></span>
-<span id="cb46-44"><a href="#cb46-44" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> fries <span class="sc">%&gt;%</span></span>
-<span id="cb46-45"><a href="#cb46-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(frying_temp_c <span class="sc">!=</span> <span class="dv">180</span>)</span>
-<span id="cb46-46"><a href="#cb46-46" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb46-47"><a href="#cb46-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-48"><a href="#cb46-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() </span>
-<span id="cb46-49"><a href="#cb46-49" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data) </span>
-<span id="cb46-50"><a href="#cb46-50" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
-<span id="cb46-51"><a href="#cb46-51" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
-<span id="cb46-52"><a href="#cb46-52" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
-<span id="cb46-53"><a href="#cb46-53" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb46-54"><a href="#cb46-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">preds =</span> <span class="fu">predict</span>(mod)) <span class="sc">%&gt;%</span></span>
-<span id="cb46-55"><a href="#cb46-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
-<span id="cb46-56"><a href="#cb46-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds))</span>
-<span id="cb46-57"><a href="#cb46-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb46-58"><a href="#cb46-58" aria-hidden="true" tabindex="-1"></a><span class="do">## Model diagnostics not looking "great" still. But how can we choose the "best" possible?</span></span>
-<span id="cb46-59"><a href="#cb46-59" aria-hidden="true" tabindex="-1"></a><span class="do">## We could manually compare pairs of models using ANOVA/AIC etc. or...</span></span>
-<span id="cb46-60"><a href="#cb46-60" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(MuMIn) <span class="do">## remembering which letters are capatalised is a pain</span></span>
-<span id="cb46-61"><a href="#cb46-61" aria-hidden="true" tabindex="-1"></a><span class="do">## stands for Multi Model Inference</span></span>
-<span id="cb46-62"><a href="#cb46-62" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data, <span class="at">na.action =</span> na.fail)</span>
-<span id="cb46-63"><a href="#cb46-63" aria-hidden="true" tabindex="-1"></a><span class="do">## na.action = na.fail is so MuMIn dredge works</span></span>
-<span id="cb46-64"><a href="#cb46-64" aria-hidden="true" tabindex="-1"></a>MuMIn<span class="sc">::</span><span class="fu">dredge</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="do">## paper https://www.sciencedirect.com/science/article/pii/S1658077X17302655?via%3Dihub#t0005</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Figure 1 data 'extracted' by https://automeris.io/WebPlotDigitizer/</span></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>fries <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/fries.csv"</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a><span class="do">## first degree</span></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> frying_time_s <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a>    gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a><span class="do">## second degree</span></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="sc">|&gt;</span></span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">2</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a><span class="do">## third degree</span></span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">1</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span>  <span class="fu">I</span>(frying_time_s<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> method,</span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>)</span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a>   gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>, <span class="at">raw =</span> <span class="cn">TRUE</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries) <span class="do">## but these are correlated</span></span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fries, <span class="fu">aes</span>(<span class="at">x =</span> frying_time_s, <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">stat_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,<span class="at">formula =</span> y<span class="sc">~</span><span class="fu">poly</span>(x, <span class="dv">3</span>, <span class="at">raw=</span><span class="cn">TRUE</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a><span class="do">## orthogonal model</span></span>
+<span id="cb52-39"><a href="#cb52-39" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(frying_time_s, <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> fries, <span class="at">na.action =</span> <span class="st">"na.fail"</span>) <span class="do">## see https://stackoverflow.com/questions/29999900/poly-in-lm-difference-between-raw-vs-orthogonal</span></span>
+<span id="cb52-40"><a href="#cb52-40" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb52-41"><a href="#cb52-41" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb52-42"><a href="#cb52-42" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb52-43"><a href="#cb52-43" aria-hidden="true" tabindex="-1"></a><span class="do">## remove the 180 obvs as these are not 'data' they are determined</span></span>
+<span id="cb52-44"><a href="#cb52-44" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> fries <span class="sc">%&gt;%</span></span>
+<span id="cb52-45"><a href="#cb52-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(frying_temp_c <span class="sc">!=</span> <span class="dv">180</span>)</span>
+<span id="cb52-46"><a href="#cb52-46" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb52-47"><a href="#cb52-47" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-48"><a href="#cb52-48" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() </span>
+<span id="cb52-49"><a href="#cb52-49" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data) </span>
+<span id="cb52-50"><a href="#cb52-50" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span></span>
+<span id="cb52-51"><a href="#cb52-51" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb52-52"><a href="#cb52-52" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  gglm<span class="sc">::</span><span class="fu">gglm</span>()</span>
+<span id="cb52-53"><a href="#cb52-53" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb52-54"><a href="#cb52-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">preds =</span> <span class="fu">predict</span>(mod)) <span class="sc">%&gt;%</span></span>
+<span id="cb52-55"><a href="#cb52-55" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">sqrt</span>(frying_time_s), <span class="at">y =</span> frying_temp_c, <span class="at">col =</span> method)) <span class="sc">+</span></span>
+<span id="cb52-56"><a href="#cb52-56" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.1</span>) <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> preds))</span>
+<span id="cb52-57"><a href="#cb52-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-58"><a href="#cb52-58" aria-hidden="true" tabindex="-1"></a><span class="do">## Model diagnostics not looking "great" still. But how can we choose the "best" possible?</span></span>
+<span id="cb52-59"><a href="#cb52-59" aria-hidden="true" tabindex="-1"></a><span class="do">## We could manually compare pairs of models using ANOVA/AIC etc. or...</span></span>
+<span id="cb52-60"><a href="#cb52-60" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(MuMIn) <span class="do">## remembering which letters are capatalised is a pain</span></span>
+<span id="cb52-61"><a href="#cb52-61" aria-hidden="true" tabindex="-1"></a><span class="do">## stands for Multi Model Inference</span></span>
+<span id="cb52-62"><a href="#cb52-62" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(frying_temp_c <span class="sc">~</span> <span class="fu">poly</span>(<span class="fu">log</span>(frying_time_s), <span class="dv">3</span>) <span class="sc">+</span> method, <span class="at">data =</span> data, <span class="at">na.action =</span> na.fail)</span>
+<span id="cb52-63"><a href="#cb52-63" aria-hidden="true" tabindex="-1"></a><span class="do">## na.action = na.fail is so MuMIn dredge works</span></span>
+<span id="cb52-64"><a href="#cb52-64" aria-hidden="true" tabindex="-1"></a>MuMIn<span class="sc">::</span><span class="fu">dredge</span>(mod)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="code-example-to-support-sec-mods-sec-ss" class="level2">
 <h2 class="anchored" data-anchor-id="code-example-to-support-sec-mods-sec-ss">Code example to support <a href="#sec-mods" class="quarto-xref">Section&nbsp;8.2</a> / <a href="#sec-ss" class="quarto-xref">Section&nbsp;8.2.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"</span></span>
-<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>factorial <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste</span>(base_url, <span class="st">"factorial_expt.csv"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
-<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>factorial<span class="sc">$</span>Disease <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(factorial<span class="sc">$</span>Disease)</span>
-<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>factorial<span class="sc">$</span>Organ <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(factorial<span class="sc">$</span>Organ)</span>
-<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>unbalanced <span class="ot">&lt;-</span> factorial[<span class="sc">-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">10</span>), ]</span>
-<span id="cb47-6"><a href="#cb47-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Null model.</span></span>
-<span id="cb47-7"><a href="#cb47-7" aria-hidden="true" tabindex="-1"></a>fit.null <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> unbalanced)</span>
-<span id="cb47-8"><a href="#cb47-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.null)</span>
-<span id="cb47-9"><a href="#cb47-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Only Factor Disease.</span></span>
-<span id="cb47-10"><a href="#cb47-10" aria-hidden="true" tabindex="-1"></a>fit.a <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease, <span class="at">data =</span> unbalanced)</span>
-<span id="cb47-11"><a href="#cb47-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.a)</span>
-<span id="cb47-12"><a href="#cb47-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Factors Disease and Organ.</span></span>
-<span id="cb47-13"><a href="#cb47-13" aria-hidden="true" tabindex="-1"></a>fit.ab <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease <span class="sc">+</span> Organ, <span class="at">data =</span> unbalanced)</span>
-<span id="cb47-14"><a href="#cb47-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.ab)</span>
-<span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Factors Disease and Organ with interaction.</span></span>
-<span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>fit.abi <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease<span class="sc">*</span>Organ, <span class="at">data =</span> unbalanced)</span>
-<span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a><span class="do">## ANOVA table</span></span>
-<span id="cb47-18"><a href="#cb47-18" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.abi)</span>
-<span id="cb47-19"><a href="#cb47-19" aria-hidden="true" tabindex="-1"></a><span class="do">## First line.</span></span>
-<span id="cb47-20"><a href="#cb47-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.null)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(fit.a)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb47-21"><a href="#cb47-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Second line.</span></span>
-<span id="cb47-22"><a href="#cb47-22" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.a)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(fit.ab)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb47-23"><a href="#cb47-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Third line.</span></span>
-<span id="cb47-24"><a href="#cb47-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.ab)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(fit.abi)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb47-25"><a href="#cb47-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Final line.</span></span>
-<span id="cb47-26"><a href="#cb47-26" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.abi)<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb47-27"><a href="#cb47-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II sums of squares</span></span>
-<span id="cb47-28"><a href="#cb47-28" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(fit.abi, <span class="at">type =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>base_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>factorial <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="fu">paste</span>(base_url, <span class="st">"factorial_expt.csv"</span>, <span class="at">sep =</span> <span class="st">""</span>))</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>factorial<span class="sc">$</span>Disease <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(factorial<span class="sc">$</span>Disease)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>factorial<span class="sc">$</span>Organ <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(factorial<span class="sc">$</span>Organ)</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>unbalanced <span class="ot">&lt;-</span> factorial[<span class="sc">-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">10</span>), ]</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Null model.</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>fit.null <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> unbalanced)</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.null)</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Only Factor Disease.</span></span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>fit.a <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease, <span class="at">data =</span> unbalanced)</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.a)</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Factors Disease and Organ.</span></span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>fit.ab <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease <span class="sc">+</span> Organ, <span class="at">data =</span> unbalanced)</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit.ab)</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Factors Disease and Organ with interaction.</span></span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>fit.abi <span class="ot">&lt;-</span> <span class="fu">lm</span>(logAUC <span class="sc">~</span> Disease<span class="sc">*</span>Organ, <span class="at">data =</span> unbalanced)</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a><span class="do">## ANOVA table</span></span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit.abi)</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a><span class="do">## First line.</span></span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.null)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(fit.a)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Second line.</span></span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.a)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(fit.ab)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Third line.</span></span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.ab)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">-</span> <span class="fu">sum</span>(<span class="fu">residuals</span>(fit.abi)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a><span class="do">## Final line.</span></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">residuals</span>(fit.abi)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Type II sums of squares</span></span>
+<span id="cb53-28"><a href="#cb53-28" aria-hidden="true" tabindex="-1"></a>car<span class="sc">::</span><span class="fu">Anova</span>(fit.abi, <span class="at">type =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-ss" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-ss">Suggested solution to <a href="#sec-ss" class="quarto-xref">Section&nbsp;8.2.2</a></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">## using "gorilla" data from lecture 01</span></span>
-<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="do">## example only</span></span>
-<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
-<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">grand_mean =</span> <span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">sstotal =</span> (bmi <span class="sc">-</span> grand_mean) <span class="sc">^</span><span class="dv">2</span> ) <span class="sc">%&gt;%</span></span>
-<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
-<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">treatment_mean =</span> <span class="fu">mean</span>(bmi),</span>
-<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">sse =</span> (bmi <span class="sc">-</span> treatment_mean)<span class="sc">^</span><span class="dv">2</span>,</span>
-<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">tmp =</span> (treatment_mean <span class="sc">-</span> grand_mean)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">ss_tot =</span> <span class="fu">sum</span>(sstotal), <span class="at">ss_e =</span> <span class="fu">sum</span>(sse), <span class="at">ss_treat =</span> <span class="fu">sum</span>(tmp)) <span class="sc">%&gt;%</span></span>
-<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pull</span>(ss_treat) <span class="sc">%&gt;%</span> <span class="fu">sum</span>()</span>
-<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="do">## compare to SS value in</span></span>
-<span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="do">## using "gorilla" data from lecture 01</span></span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="do">## example only</span></span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> </span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">grand_mean =</span> <span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">sstotal =</span> (bmi <span class="sc">-</span> grand_mean) <span class="sc">^</span><span class="dv">2</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(gender) <span class="sc">%&gt;%</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">treatment_mean =</span> <span class="fu">mean</span>(bmi),</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>          <span class="at">sse =</span> (bmi <span class="sc">-</span> treatment_mean)<span class="sc">^</span><span class="dv">2</span>,</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>          <span class="at">tmp =</span> (treatment_mean <span class="sc">-</span> grand_mean)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(<span class="at">ss_tot =</span> <span class="fu">sum</span>(sstotal), <span class="at">ss_e =</span> <span class="fu">sum</span>(sse), <span class="at">ss_treat =</span> <span class="fu">sum</span>(tmp)) <span class="sc">%&gt;%</span></span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">pull</span>(ss_treat) <span class="sc">%&gt;%</span> <span class="fu">sum</span>()</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a><span class="do">## compare to SS value in</span></span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -2937,6 +3288,15 @@ Suggested <code>R</code> code solutions
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-fries" class="csl-entry" role="listitem">
 Abdul Hamid, N., S. Omar, and M. Sanny. 2019. <span>“Effect of Thawing Conditions and Corresponding Frying Temperature Profiles on the Formation of Acrylamide in French Fries.”</span> <em>Journal of the Saudi Society of Agricultural Sciences</em> 18 (4): 396–400. https://doi.org/<a href="https://doi.org/10.1016/j.jssas.2018.01.002">https://doi.org/10.1016/j.jssas.2018.01.002</a>.
+</div>
+<div id="ref-monkeydata" class="csl-entry" role="listitem">
+Bliss-Moreau, Eliza, and Mark Baxter. 2020. <span>“Data from: Interest in Nonsocial Novel Stimuli as a Function of Age in Rhesus Monkeys.”</span> Dryad. <a href="https://doi.org/10.5061/dryad.1bj133v">https://doi.org/10.5061/dryad.1bj133v</a>.
+</div>
+<div id="ref-monkey" class="csl-entry" role="listitem">
+Bliss-Moreau, Eliza, and Mark G. Baxter. 2019. <span>“Interest in Non-Social Novel Stimuli as a Function of Age in Rhesus Monkeys.”</span> <em>Royal Society Open Science</em> 6 (1): 182237. <a href="https://doi.org/10.1098/rsos.182237">https://doi.org/10.1098/rsos.182237</a>.
+</div>
+<div id="ref-danblog" class="csl-entry" role="listitem">
+Dan. 2022. <span>“Everybody’s Got Something to Hide Except Me and My Monkey.”</span> <a href="https://dansblog.netlify.app/posts/2022-09-04-everybodys-got-something-to-hide-except-me-and-my-monkey/everybodys-got-something-to-hide-except-me-and-my-monkey.html">https://dansblog.netlify.app/posts/2022-09-04-everybodys-got-something-to-hide-except-me-and-my-monkey/everybodys-got-something-to-hide-except-me-and-my-monkey.html</a>.
 </div>
 <div id="ref-fisher" class="csl-entry" role="listitem">
 Fisher, Ronald Aylmer. 1926. <span>“The Arrangement of Field Experiments.”</span> <em>Journal of the Ministry of Agriculture</em> 33: 505–15. <a href="https://doi.org/doi.org/10.23637/rothamsted.8v61q">https://doi.org/doi.org/10.23637/rothamsted.8v61q</a>.
@@ -2956,6 +3316,9 @@ Jones-Todd, Charlotte M., and Alec B. M. van Helsdingen. 2024. <span>“Stelfi: 
 <div id="ref-whales" class="csl-entry" role="listitem">
 Jones-Todd, Charlotte M., Enrico Pirotta, John W. Durban, Diane E. Claridge, Robin W. Baird, Erin A. Falcone, Gregory S. Schorr, Stephanie Watwood, and Len Thomas. 2021. <span>“Discrete-Space Continuous-Time Models of Marine Mammal Exposure to Navy Sonar.”</span> <em>Ecological Applications</em> 32 (1): e02475. https://doi.org/<a href="https://doi.org/10.1002/eap.2475">https://doi.org/10.1002/eap.2475</a>.
 </div>
+<div id="ref-lawson2014design" class="csl-entry" role="listitem">
+Lawson, Colin. 2014. <em>Design and Analysis of Experiments with r</em>. CRC Press. <a href="https://www.routledge.com/Design-and-Analysis-of-Experiments-with-R/Lawson/p/book/9781439868133">https://www.routledge.com/Design-and-Analysis-of-Experiments-with-R/Lawson/p/book/9781439868133</a>.
+</div>
 <div id="ref-robots" class="csl-entry" role="listitem">
 Prather, James, Paul Denny, Juho Leinonen, Brett A. Becker, Ibrahim Albluwi, Michelle Craig, Hieke Keuning, et al. 2023. <span>“The Robots Are Here: Navigating the Generative AI Revolution in Computing Education.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3623762.3633499">https://doi.org/10.1145/3623762.3633499</a>.
 </div>
@@ -2964,6 +3327,9 @@ Sheard, Judy, Paul Denny, Arto Hellas, Juho Leinonen, Lauri Malmi, and Simon. 20
 </div>
 <div id="ref-retracted" class="csl-entry" role="listitem">
 Shu, Lisa L., Nina Mazar, Francesca Gino, Dan Ariely, and Max H. Bazerman. 2012. <span>“RETRACTED: Signing at the Beginning Makes Ethics Salient and Decreases Dishonest Self-Reports in Comparison to Signing at the End.”</span> <em>Proceedings of the National Academy of Sciences</em> 109 (38): 15197–200. <a href="https://doi.org/10.1073/pnas.1209746109">https://doi.org/10.1073/pnas.1209746109</a>.
+</div>
+<div id="ref-grass" class="csl-entry" role="listitem">
+Steinauer, Katja, David Tilman, Peter D. Wragg, Simone Cesarz, Jane M. Cowles, Karin Pritsch, Peter B. Reich, Wolfgang W. Weisser, and Nico Eisenhauer. 2015. <span>“Plant Diversity Effects on Soil Microbial Functions and Enzymes Are Stronger Than Warming in a Grassland Experiment.”</span> <em>Ecology</em> 96 (1): 99–112. https://doi.org/<a href="https://doi.org/10.1890/14-0088.1">https://doi.org/10.1890/14-0088.1</a>.
 </div>
 <div id="ref-ioa" class="csl-entry" role="listitem">
 Ward, Monica, Fiona O’Riordan, Danielle Logan-Fleming, Dervila Cooke, Tara Concannon-Gibney, Marina Efthymiou, and Niamh Watkins and. 2024. <span>“Interactive Oral Assessment Case Studies: An Innovative, Academically Rigorous, Authentic Assessment Approach.”</span> <em>Innovations in Education and Teaching International</em> 61 (5): 930–47. <a href="https://doi.org/10.1080/14703297.2023.2251967">https://doi.org/10.1080/14703297.2023.2251967</a>.
@@ -2983,6 +3349,10 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
 <li id="fn3"><p>See <a href="https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud">this Guardian article</a> about the debacle<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://en.wikipedia.org/wiki/Ronald_Fisher">R. A. Fisher’s</a> work in the area of experimental design is, perhaps, the most well known in the field. The principles he devised we still abide by today. Note, however, to give a balanced view of the celebrated mathematician many of his views (on eugenics and race in particular) are considered unethical by many. I would urge you to read up on <a href="https://www.nature.com/articles/s41437-020-00394-6">his work in this area and come to your own conclusions</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Note that I do like the writing style of the blog but don’t totally agree with the author’s conclusions around repeated measurements; if you want to know why, ask me!<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>The title stolen shamelessly from <a href="https://emitanaka.org/edibble-book/">Emi Tanaka’s ebook</a><a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Modified from Figure 1.1 of <span class="citation" data-cites="lawson2014design">Lawson (<a href="#ref-lawson2014design" role="doc-biblioref">2014</a>)</span><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8"><p>often termed nuisance variables<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9"><p>Random effect models to the rescue!<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->
