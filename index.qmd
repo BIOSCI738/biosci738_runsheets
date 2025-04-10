@@ -32,7 +32,7 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_09.qmd >}}
 
-<!-- {{< include runsheets/runsheet_10.qmd >}} -->
+{{< include runsheets/runsheet_10.qmd >}}
 
 
 {{< include runsheets/solutions.qmd >}}

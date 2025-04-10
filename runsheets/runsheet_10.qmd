@@ -3,7 +3,8 @@
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
-
+ + Discuss, describe & critique different probability distributions 
+ + Appropriately map a random variable to a (likely) distribution
 :::
 
 ## Rough timeline
@@ -12,7 +13,8 @@
 
  + **02:05–02.55 pm** Distributions (@sec-distributions)
  + **02:55–03:05 pm** Break
- + **03.05–03.55 pm** Recap (@sec-recap)
+ + **03:05–03:20 pm** Introduction to GLMs (@sec-glms)
+ + **03.20–03.55 pm** Recap (@sec-recap)
 
 
 ### Randomly allocated groups
@@ -29,7 +31,7 @@ group_allocation(names, seed = 1317, 9)
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the [Google Doc](https://docs.google.com/document/d/1D50lbL0gYLSoJ9kC260e9enbWaOSUWdqJ-J7dBDgAAA/edit?usp=sharing)...
 
-``Read" [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/distributions.png) and summarize the following for each distribution:
+*Read* [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/distributions.png) and summarize the following for each distribution:
 
  + What is the assumed random variable (i.e., variable being measured/modelled)
  + What form does this variable take (e.g., positive-only numbers, integer values etc.)
@@ -75,6 +77,18 @@ I have 11 chickens. Here is a nice picture hanging out in an area between their 
 
 Because I love stats (and chickens) I'm interested in modelling the number of chickens visible in this particular area at different times of the day. What distribution should I use?
 :::
+
+## Introduction to Generalised Linear Models (GLMs) {#sec-glms}
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/06-01-intro_to_glms.pdf" height="400" width="700" title="Introduction to Generalised Linear Models"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15131336?module_item_id=2590952)
+</p>
+
 
 ## Recap {#sec-recap}
 
