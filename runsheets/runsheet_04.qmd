@@ -240,7 +240,7 @@ bootstrap_ratios <- numeric(nreps)
 ##  bootstrap iterations.
 for (i in 1:nreps){
     ## Simulating new response data assuming Normal response
-    data$boot <- rnorm(nrow(data), fitted(fit), summary(fit)$sigma^2)
+    data$boot <- rnorm(nrow(data), fitted(fit), summary(fit)$sigma)
     ## Fitting the model to the bootstrapped response
     fit_boot <- lm(boot ~  height_mm + width_mm, data = data)
     ## Calculating the estimated expectations for new pumpkins

@@ -1,0 +1,410 @@
+# April 28th
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + Write out GLMMs
+ + Assess GLMMs fit
+:::
+
+## Rough timeline
+
+ + **09:05–09:30 am** Guess the distribution (@sec-distribution)
+ + **09:30–09:55 am** Writing out (G)LM(m)s (@sec-writing)
+ + **09:55–11:05 am** Break
+ + **11:00–11:45 am** Assessing model fit (@sec-glmfit)
+   - Class discussion 
+   - Group activities
+
+ + **11.45–11.55 am** Q&A and peer-share (@sec-peershare11)
+
+
+
+## Guess the distribution {#sec-distribution}
+
+Recall the chooks from @sec-distributions? Now, let's play a game.
+
+<center><p><a href="https://dub.sh/biosci738" target="_blank">SCAN ME or head to dub.sh/biosci738</a></p>
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+
+::: {.callout-note}
+## When prompted *Quick Write* the distribution
+
+ 1. 
+
+:::
+
+
+## Writing out (G)LM(m)s
+
+### Linear Models (LMs)
+
+Using the the well modelled [course guide rats](https://biosci738.github.io/BIOSCI738/module-3.html) as an example!
+
+**`R` code**
+
+```{r, message = FALSE, warning = FALSE}
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+rats <- readr::read_csv(paste(base_url, "crd_rats_data.csv", sep = ""))
+rats$Surgery <- as.factor(rats$Surgery)
+rats_lm <- lm(logAUC ~ Surgery, data = rats)
+summary(rats_lm)$coef
+```
+
+**Writing out the fitted model**
+
+```{r, echo = FALSE}
+equatiomatic::extract_eq(rats_lm, use_coefs = TRUE, wrap = TRUE)
+```
+
+
+### Linear Mixed Models (LMMs)
+
+Again, using the the well modelled [course guide rats](https://biosci738.github.io/BIOSCI738/module-3.html) as an example!
+
+**`R` code**
+
+```{r, message = FALSE, warning = FALSE}
+rcbd <- readr::read_csv(paste(base_url, "rcbd.csv", sep = ""))
+rcbd$Run <- as.factor(rcbd$Run); rcbd$Surgery = as.factor(rcbd$Surgery)
+lmer4_mod <- lme4::lmer(logAUC8 ~ Surgery + (1|Run), data = rcbd)
+## fixed effect coefficients
+summary(lmer4_mod)$coef
+## random effect standard deviation
+summary(lmer4_mod)$varcor
+```
+
+**Writing out the fitted model**
+
+```{r, echo = FALSE}
+equatiomatic::extract_eq(lmer4_mod, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
+```
+
+### Generalised Linear Models (GLMs)
+
+Now using the [course guide mice](https://biosci738.github.io/BIOSCI738/module-4.html) as an example!
+
+**`R` code**
+
+```{r, message = FALSE, warning = FALSE}
+require(tidyverse)
+mice <- readr::read_csv(paste(base_url, "autism.csv", sep = ""))
+mice <- mice %>%
+  separate(., col = Treatment, into = c("Diagnosis", "Sex"))
+```
+
+*Additive model*
+
+```{r}
+glm_mod_add <- glm(MB_buried ~ Sex + Diagnosis , data = mice, family = poisson(link = "log"))
+summary(glm_mod_add)$coef
+```
+
+*Interaction model*
+
+```{r}
+glm_mod_int <- glm(MB_buried ~ Sex * Diagnosis , data = mice, family = poisson(link = "log"))
+summary(glm_mod_int)$coef
+```
+
+**Writing out the fitted model**
+
+*Additive model*
+
+```{r, echo = FALSE}
+equatiomatic::extract_eq(glm_mod_add, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
+```
+
+*Interaction model*
+
+```{r, echo = FALSE}
+equatiomatic::extract_eq(glm_mod_int, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
+```
+
+### Generalised Linear Mixed Models (GLMMs)
+
+Again, using the [course guide mice](https://biosci738.github.io/BIOSCI738/module-4.html) as an example!
+
+**`R` code**
+
+```{r, message = FALSE, warning = FALSE}
+glmer4_mod <- lme4::glmer(MB_buried ~ Sex * Diagnosis + (1|Donor), data = mice, family = poisson(link = "log"))
+## fixed effect coefficients
+summary(glmer4_mod)$coef
+## random effect standard deviation
+summary(glmer4_mod)$varcor
+## Same model using glmmTMB
+glmmTMB_mod <- glmmTMB::glmmTMB(MB_buried ~ Sex * Diagnosis + (1|Donor), data = mice, family = poisson(link = "log"))
+summary(glmmTMB_mod)
+```
+
+**Writing out the fitted model**
+
+
+```{r, echo = FALSE}
+equatiomatic::extract_eq(glmer4_mod, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
+```
+
+
+
+## Assessing model fit {#sec-glmfit}
+
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/07-01_glm-model-diagnostics.pdf" height="400" width="700" title="Generalised Linear Model Diagnostics"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15191581?module_item_id=2596043)
+</p>
+
+### Case studies
+
+::: {.callout-note}
+## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/model-diagnostics.html); however, here we go beyond what is covered there!  
+:::
+
+**Bat Abundance**
+
+```{r, eval = FALSE}
+library(tidyverse)
+## subset of data from https://www.sciencedirect.com/science/article/abs/pii/S0006320714004479?via%3Dihub
+bats <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
+## Plot
+ggplot(bats, aes(x = TotalCount, fill = SpeciesID)) + geom_histogram(alpha = 0.4, position = "identity")
+## summarise
+bats %>%
+    group_by(SpeciesID) %>%
+    summarise(mean_roosts = mean(TotalCount))
+## question, difference between number of roosts for each species?
+## So let's fit a Linear Model
+mod <- lm(TotalCount ~ SpeciesID, data = bats)
+mod |> summary()
+## Distribution of residuals
+hist(residuals(mod), xlab = "Model residuals")
+abline(v = 0, lwd = 4, lty = 2)
+## Other residual plots
+gglm::gglm(mod)
+## Poisson model
+gmod <- glm(TotalCount ~ SpeciesID, data = bats, family = "poisson")
+gmod |> summary()
+## quantile residual Q-Q plot
+quantile_residuals <- statmod::qresiduals(gmod)
+qqnorm(!is.infinite(quantile_residuals))
+abline(0,1)
+## Pearson residuals, recall that under a poisson model the variance increases with
+## the mean, so the raw resids should have a spread that increases with fitted vals
+## but a Pearson's residual are resids/sqrt(var) so if model is "correct"
+## then the Peasron residuals should have constant spread...
+resids_pearson <- residuals(gmod, type = "pearson")
+resids <- data.frame(Fitted = gmod$fitted.values,
+                     "Pearson_residuals" = resids_pearson)
+ggplot(resids, aes(x = Fitted, y = Pearson_residuals)) +
+    geom_point() + geom_hline(yintercept = 0) + theme_linedraw() + ylab("Pearson residuals")
+## Deviance
+D <- gmod$deviance
+D
+## extract the residual degrees of freedom (n-k)
+df <- gmod$df.residual
+df
+1 - pchisq(D, df)
+## but are the chi-squared assumptions met?
+## dispersion plot (by simulation!!)
+## dispersion = residual deviance / degrees of freedom
+## expected value is 1, when larger than 1 Neg binomial more appropriate
+observed_dispersion <-  gmod$deviance/df
+nreps <- 1000
+dispersion <- numeric(nreps)
+for(i in 1:nreps){
+    ## gererate nobvs poisson rvs using fitted mean
+    tmp <- rpois(nrow(bats), lambda = fitted(gmod))
+    tmp_mod <- glm(tmp ~ bats$SpeciesID, family = "poisson")
+    df_tmp <- tmp_mod$df.residual
+    dispersion[i] <- tmp_mod$deviance/df_tmp
+}
+ggplot(data.frame(dispersion = dispersion), aes(x = dispersion)) +
+    geom_histogram()
+
+## dispersion plot (by simulation)
+## from the DHARMa package
+simulation <- DHARMa::simulateResiduals(fittedModel = gmod, n = nreps, refit = TRUE)
+DHARMa::testDispersion(simulation)
+####################
+## negative binomial
+nbmod <- MASS::glm.nb(TotalCount ~ SpeciesID, data = bats)
+nbmod |> summary()
+## slopes not very different from the Poisson model
+## quantile residual Q-Q plot
+quantile_residuals <- statmod::qresiduals(nbmod)
+qqnorm(quantile_residuals)
+abline(0,1) ## PHEW
+## dispersion plot (by simulation)
+## from the DHARMa package
+simulation <- DHARMa::simulateResiduals(fittedModel = nbmod, n = nreps, refit = TRUE)
+DHARMa::testDispersion(simulation)
+
+```
+
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below. After each model is fitted assess its fit using the code/functions provided. Discuss each model's suitability. Discuss the similarity and/or differences to previous models.
+:::
+
+**Lobster Survival**
+
+These data are from , before working through the code below recap [this section of the course guide](https://biosci738.github.io/BIOSCI738/logistic-regression.html#an-example-lobsters).
+
+```{r, eval = FALSE}
+library(tidyverse)
+## paper https://www.sciencedirect.com/science/article/pii/S0022098115000039
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/lobster.csv")
+#############
+## Model 1 ##
+#############
+glm_mod_bern <- glm(survived ~ size, family = "binomial", data = data)
+summary(glm_mod_bern)
+qresids <- statmod::qresiduals(glm_mod_bern)
+qqnorm(qresids)
+abline(0, 1)
+ggplot(data, aes(x = size, y = survived)) + 
+  geom_point(alpha = .5) +
+  stat_smooth(method="glm", se = FALSE, method.args = list(family=binomial), col = "#782c26") + 
+  xlab("Carapace length (mm)") +
+  ylab("Juvenile lobster survival") + ggtitle("Fitted logistic regression model") +
+    theme_classic()
+## Deviance
+D <- glm_mod_bern$deviance
+D
+## extract the residual degrees of freedom (n-k)
+df <- glm_mod_bern$df.residual
+df
+1 - pchisq(D, df)
+### BUT are my Chi squared assumptions met?
+
+#############
+## Model 2 ##
+#############
+grouped <- data %>%
+  group_by(size) %>%
+  summarise(y = sum(survived), n = length(survived), p = mean(survived))
+grouped
+grouped %>%
+  ggplot(., aes(x = size, y = p)) +
+  geom_point() + xlab("Carapace length (mm)") +
+  ylab("Proportion survived") + ggtitle("Survival rates of juvenile lobsters") +
+    theme_classic()
+glm_mod_binom <- glm(cbind(y, n - y) ~ size, family = "binomial", data = grouped)
+summary(glm_mod_binom)
+ggplot(grouped, aes(x = size, y = p)) + 
+  geom_point(alpha = .5) +
+  stat_smooth(method = "glm", se = FALSE,
+              method.args = list(family=binomial), 
+              col = "#782c26") + 
+  xlab("Carapace length (mm)") +
+  ylab("Proportion survived") + ggtitle("Fitted logistic regression model") +
+  theme_classic()
+## Deviance
+D <- glm_mod_binom$deviance
+D
+## extract the residual degrees of freedom (n-k)
+df <- glm_mod_binom$df.residual
+df
+1 - pchisq(D, df)
+```
+
+**Bird Abundance**
+
+Data from [*Partitioning beta diversity to untangle mechanisms underlying the assembly of bird communities in Mediterranean olive groves*](https://onlinelibrary.wiley.com/doi/10.1111/ddi.13445)
+
+> We investigated taxonomic and functional beta diversity of bird communities inhabiting Mediterranean olive groves subject to either intensive or low-intensity management of the ground cover and located in landscapes with different degrees of complexity.
+
+
+```{r, eval = FALSE, message = FALSE}
+require(tidyverse)
+require(glmmTMB)
+## data from https://onlinelibrary.wiley.com/doi/10.1111/ddi.13445
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bird_abundance.csv"
+birds <- read_delim(url) %>%
+  pivot_longer(., c(-OliveFarm, -Management, -Complexity), names_to = "Species", values_to = "Count")
+## subset for simplicity
+birds <- subset(birds, birds$Species %in% c("Anthus_pratensis", "Corvus_corax", "Passer_montanus"))
+#############
+## Model 1 ##
+#############
+mod <- lm(Count ~ Species, data = birds)
+mod |> summary()
+## Residual plots
+gglm::gglm(mod)
+#############
+## Model 2 ##
+#############
+mod <- glm(Count ~ Species, data = birds, family = "poisson")
+mod |> summary()
+## Pearson's residuls
+resids_pearson <- residuals(mod, type = "pearson")
+resids <- data.frame(Fitted = mod$fitted.values,
+                     "Pearson_residuals" = resids_pearson)
+ggplot(resids, aes(x = Fitted, y = Pearson_residuals)) +
+    geom_point() + geom_hline(yintercept = 0) + theme_linedraw() + 
+  ylab("Pearson residuals")
+## quantile residual Q-Q plot
+quantile_residuals <- statmod::qresiduals(mod)
+qqnorm(!is.infinite(quantile_residuals))
+## Deviance
+D <- mod$deviance
+df <- mod$df.residual
+1 - pchisq(D, df)
+## dispersion plot (by simulation)
+## from the DHARMa package
+simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000, refit = TRUE)
+DHARMa::testDispersion(simulation)
+#############
+## Model 3 ##
+#############
+mod <- glmmTMB(Count ~ Species + Management + Complexity + (1|OliveFarm), data = birds, 
+               family = "poisson")
+mod |> summary()
+## % variation explained
+predictmeans::R2_glmm(mod)
+## deviance ...
+D <- summary(mod)[["AICtab"]][4] |> as.numeric()
+df <- summary(mod)[["AICtab"]][5] |> as.numeric()
+1 - pchisq(D, df)
+## dispersion plot (by simulation)
+## from the DHARMa package
+simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000)
+DHARMa::testDispersion(simulation)
+#############
+## Model 4 ##
+#############
+mod <- glmmTMB(Count ~ Species +  Management + (1|OliveFarm/Complexity) , data = birds,
+               family = "poisson")
+mod |> summary()
+## % variation explained
+predictmeans::R2_glmm(mod)
+## dispersion plot (by simulation)
+## from the DHARMa package
+simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000)
+DHARMa::testDispersion(simulation)
+#############
+## Model 5 ##
+#############
+mod <- glmmTMB(Count ~ Species +  Management + (1|OliveFarm) , data = birds, 
+               family = "nbinom2")
+mod |> summary()
+## % variation explained
+predictmeans::R2_glmm(mod)
+## dispersion plot (by simulation)
+## from the DHARMa package
+simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000)
+DHARMa::testDispersion(simulation)
+```
+
+
+## Q&A and peer-share {#sec-peershare11}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+Go over an activity from the class again or discuss task 07...Feel free to ask Charlotte a question or two!
+:::

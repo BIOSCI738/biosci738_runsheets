@@ -297,3 +297,8 @@ data %>%
 aov(bmi ~ gender, data = data)
 ```
 
+
+## Suggested reasoning for the @sec-distributions chooks
+
+![](runsheets/img/chooks.png)
+

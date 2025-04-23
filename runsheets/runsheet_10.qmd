@@ -69,7 +69,7 @@ Note: You may find this [RShiny application useful](https://cmjt.shinyapps.io/pr
 
 
 ::: {.callout-note}
-## Bonus activity  
+## Bonus activity 
 
 I have 11 chickens. Here is a nice picture hanging out in an area between their coop and the feeder.
 
@@ -97,7 +97,6 @@ Because I love stats (and chickens) I'm interested in modelling the number of ch
 1. Choose a topic from the content covered so far that you have struggled the most with (e.g., random effects, Bonferonni's correction, resampling etc.).
 2. Revisit the associated materials (e.g., code/courseguide section/cheatsheets/runsheets etc.).
 3. As a group design an activity/materials that explain/illustrate the topic/concept.
-
 
 **Be prepared to present your activity to me/the class** (all group members should expect to contribute).
 

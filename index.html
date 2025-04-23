@@ -266,6 +266,7 @@ window.Quarto = {
   <li><a href="#suggested-solution-to-sec-fry" id="toc-suggested-solution-to-sec-fry" class="nav-link" data-scroll-target="#suggested-solution-to-sec-fry">Suggested solution to Section&nbsp;6.4.2</a></li>
   <li><a href="#code-example-to-support-sec-mods-sec-ss" id="toc-code-example-to-support-sec-mods-sec-ss" class="nav-link" data-scroll-target="#code-example-to-support-sec-mods-sec-ss">Code example to support Section&nbsp;8.2 / Section&nbsp;8.2.2</a></li>
   <li><a href="#suggested-solution-to-sec-ss" id="toc-suggested-solution-to-sec-ss" class="nav-link" data-scroll-target="#suggested-solution-to-sec-ss">Suggested solution to Section&nbsp;8.2.2</a></li>
+  <li><a href="#suggested-reasoning-for-the-sec-distributions-chooks" id="toc-suggested-reasoning-for-the-sec-distributions-chooks" class="nav-link" data-scroll-target="#suggested-reasoning-for-the-sec-distributions-chooks">Suggested reasoning for the Section&nbsp;11.2 chooks</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -1798,7 +1799,7 @@ Some of my 2022 pumpkin haul
 <span id="cb29-59"><a href="#cb29-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  bootstrap iterations.</span></span>
 <span id="cb29-60"><a href="#cb29-60" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
 <span id="cb29-61"><a href="#cb29-61" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Simulating new response data assuming Normal response</span></span>
-<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>boot <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(data), <span class="fu">fitted</span>(fit), <span class="fu">summary</span>(fit)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb29-62"><a href="#cb29-62" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>boot <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(data), <span class="fu">fitted</span>(fit), <span class="fu">summary</span>(fit)<span class="sc">$</span>sigma)</span>
 <span id="cb29-63"><a href="#cb29-63" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Fitting the model to the bootstrapped response</span></span>
 <span id="cb29-64"><a href="#cb29-64" aria-hidden="true" tabindex="-1"></a>    fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(boot <span class="sc">~</span>  height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> data)</span>
 <span id="cb29-65"><a href="#cb29-65" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Calculating the estimated expectations for new pumpkins</span></span>
@@ -3159,6 +3160,7 @@ Bonus activity
 <p><strong>Be prepared to present your activity to me/the class</strong> (all group members should expect to contribute).</p>
 </div>
 </div>
+<!--{{< include runsheets/runsheet_11.qmd >}} -->
 </section>
 </section>
 <section id="sec-solutions" class="level1">
@@ -3458,6 +3460,10 @@ Suggested <code>R</code> code solutions
 <span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a><span class="do">## compare to SS value in</span></span>
 <span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a><span class="fu">aov</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section>
+<section id="suggested-reasoning-for-the-sec-distributions-chooks" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-reasoning-for-the-sec-distributions-chooks">Suggested reasoning for the <a href="#sec-distributions" class="quarto-xref">Section&nbsp;11.2</a> chooks</h2>
+<p><img src="runsheets/img/chooks.png" class="img-fluid"></p>
 </section>
 </section>
 <section id="references" class="level1">
