@@ -9,7 +9,7 @@
 ## Rough timeline
 
  + **09:05–09:30 am** Guess the distribution (@sec-distribution)
- + **09:30–09:55 am** Writing out (G)LM(m)s (@sec-writing)
+ + **09:30–09:55 am** Writing out (G)LM(m)s (@sec-writingglm)
  + **09:55–11:05 am** Break
  + **11:00–11:45 am** Assessing model fit (@sec-glmfit)
    - Class discussion 
@@ -23,18 +23,36 @@
 
 Recall the chooks from @sec-distributions? Now, let's play a game.
 
-<center><p><a href="https://dub.sh/biosci738" target="_blank">SCAN ME or head to dub.sh/biosci738</a></p>
+<center><p>SCAN ME or head to <a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
 <img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
 
 ::: {.callout-note}
 ## When prompted *Quick Write* the distribution
 
- 1. 
+<ol>
+    <li><a href="https://en.wikipedia.org/wiki/Fast_%26_Furious" target="_blank">Dominic Toretto</a> counts how many cars pass by on a highway every 10 minutes while scouting for races.</li>
+
+  <li><a href="https://en.wikipedia.org/wiki/Squid_Game" target="_blank">Squid Game contestants</a> roll a die repeatedly, aiming to get a 6 to progress to the next level.</li>
+
+  <li><a href="https://en.wikipedia.org/wiki/Willy_Wonka_%26_the_Chocolate_Factory" target="_blank">Charlie Bucket</a> opens chocolate bars randomly to find golden tickets hidden among them.</li>
+
+   <li><a href="https://en.wikipedia.org/wiki/Stranger_Things" target="_blank">Dr. Owens</a> from Stranger Things tests a portal detection device 10 times on known rift locations.</li>
+
+  <li><a href="https://en.wikipedia.org/wiki/The_Bachelor_(American_TV_series)" target="_blank">The Bachelor contestants</a> have their heights recorded to design custom suits.</li>
+
+   <li><a href="https://en.wikipedia.org/wiki/Moana_(2016_film)" target="_blank">Moana</a> measures the time intervals between large waves hitting a reef to plan canoe launches.</li>
+
+   <li><a href="https://en.wikipedia.org/wiki/The_Witcher_(TV_series)" target="_blank">Geralt of Rivia</a> wants to understand how long his battle potions last under different combat conditions.</li>
+
+  <li><a href="https://en.wikipedia.org/wiki/Toy_Story" target="_blank">Buzz Lightyear</a> needs to estimate the total number of Buzz Lightyear toys manufactured, to do so he uses the serial numbers on a few toys he finds.</li>
+  </ol>
+
+*[NOTE: Scenarios were created with the assistance of ChatGPT (OpenAI, 2025).]*
 
 :::
 
 
-## Writing out (G)LM(m)s
+## Writing out (G)LM(m)s {#sec-writingglm}
 
 ### Linear Models (LMs)
 
@@ -164,11 +182,10 @@ equatiomatic::extract_eq(glmer4_mod, use_coefs = TRUE, wrap = TRUE, terms_per_li
 ## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/model-diagnostics.html); however, here we go beyond what is covered there!  
 :::
 
-**Bat Abundance**
+**Bat Abundance** (subset of data from @bats)
 
 ```{r, eval = FALSE}
 library(tidyverse)
-## subset of data from https://www.sciencedirect.com/science/article/abs/pii/S0006320714004479?via%3Dihub
 bats <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
 ## Plot
 ggplot(bats, aes(x = TotalCount, fill = SpeciesID)) + geom_histogram(alpha = 0.4, position = "identity")
@@ -251,13 +268,12 @@ DHARMa::testDispersion(simulation)
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below. After each model is fitted assess its fit using the code/functions provided. Discuss each model's suitability. Discuss the similarity and/or differences to previous models.
 :::
 
-**Lobster Survival**
+**Lobster Survival** (data from @lobster)
 
-These data are from , before working through the code below recap [this section of the course guide](https://biosci738.github.io/BIOSCI738/logistic-regression.html#an-example-lobsters).
+Before working through the code below recap [this section of the course guide](https://biosci738.github.io/BIOSCI738/logistic-regression.html#an-example-lobsters).
 
 ```{r, eval = FALSE}
 library(tidyverse)
-## paper https://www.sciencedirect.com/science/article/pii/S0022098115000039
 data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/lobster.csv")
 #############
 ## Model 1 ##
@@ -313,9 +329,8 @@ df
 1 - pchisq(D, df)
 ```
 
-**Bird Abundance**
+**Bird Abundance** (data from @birds)
 
-Data from [*Partitioning beta diversity to untangle mechanisms underlying the assembly of bird communities in Mediterranean olive groves*](https://onlinelibrary.wiley.com/doi/10.1111/ddi.13445)
 
 > We investigated taxonomic and functional beta diversity of bird communities inhabiting Mediterranean olive groves subject to either intensive or low-intensity management of the ground cover and located in landscapes with different degrees of complexity.
 
@@ -323,7 +338,6 @@ Data from [*Partitioning beta diversity to untangle mechanisms underlying the as
 ```{r, eval = FALSE, message = FALSE}
 require(tidyverse)
 require(glmmTMB)
-## data from https://onlinelibrary.wiley.com/doi/10.1111/ddi.13445
 url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bird_abundance.csv"
 birds <- read_delim(url) %>%
   pivot_longer(., c(-OliveFarm, -Management, -Complexity), names_to = "Species", values_to = "Count")
@@ -403,6 +417,11 @@ DHARMa::testDispersion(simulation)
 
 
 ## Q&A and peer-share {#sec-peershare11}
+
+#### VOTE: **R** or **ME**
+<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
