@@ -1,0 +1,223 @@
+# May 2nd
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + 
+ 
+:::
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.50 pm** Recap (@sec-recap02)
+ + **02:50–03:00 pm** Break
+ + **03:00–03:55 pm** Introduction to MLE (@sec-mle)
+    - Class discussion
+    - Group activity
+
+## Recap {#sec-recap02}
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Revisit...
+
+...the following case studies. In each case, write out your chosen model and create a plot/calculate a measure that demonstrates the "fit" of that model.
+
+ 1. **Fry Time** @sec-fry (data from @fries)
+ 2. **Monkeys** case study 04 from @sec-casestudies (data from @monkey)
+ 3. **Bird Abundance** third case study from @sec-glmfit (data from @birds)
+ 
+**Be prepared to present your activity to me/the class** (all group members should expect to contribute).
+
+:::
+
+
+## Maximum Likelihood Estimation (MLE) {#sec-mle}
+
+
+<p align="center">
+<iframe src="slides/mle_summary.html" height="600" width="800" title="Maximum Likelihood Estimation"></iframe>
+</p>
+
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups...
+"Read" and summarise the following cheatsheets.
+
+ 1. [MLE (p)](https://github.com/BIOSCI738/cowstats/blob/main/img/mle_p.png?raw=true)
+ 2. [MLE ($\mu$ & $\sigma$)](https://github.com/BIOSCI738/cowstats/blob/main/img/mle_mu_sigma.png?raw=true)
+
+:::
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/07-02_maximum-likelihood.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15211515?module_item_id=2598102)
+</p>
+
+
+### Case studies
+
+::: {.callout-note}
+## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/maximum-likelihood-estimation.html).  
+:::
+
+```{r, eval =FALSE}
+require(tidyverse)
+require(patchwork)
+#############
+## Binomial #
+#############
+
+likelihood <- function(theta) dbinom(x = 79, size = 159, prob = theta)
+optimise(likelihood, c(0,1), maximum = TRUE)
+
+log_likelihood <- function(theta) dbinom(x = 79, size = 159, prob = theta, log = TRUE)
+optimise(log_likelihood, c(0,1), maximum = TRUE)
+
+
+#############
+## Poisson ##
+#############
+
+likelihood <- function(lambda) dpois(x = 54, lambda)
+optimise(likelihood, c(0,100), maximum = TRUE)
+
+log_likelihood <- function(lambda) dpois(x = 54, lambda, log = TRUE)
+optimise(log_likelihood, c(0,100), maximum = TRUE)
+
+################################
+## plots for Poisson example ###
+################################
+lam <- seq(0, 100, length.out = 500)
+p1 <- data.frame(lam = lam, likelihood =  dpois(x = 54, lam)) %>%
+  ggplot() +
+  geom_line(aes(x = lam, y = likelihood)) +
+  theme_linedraw() + xlab(expression(lambda)) +
+  ylab(expression(paste("L(", ~lambda, ";s)", sep = " "))) +
+  geom_vline(xintercept = 54,  col = "#782c26", linewidth = 1.5) +
+  ggtitle("Likelihood for X ~ Poisson(54)") +
+  annotate(geom = "text", x = 75, y = 0.04, label = "Maximum likelihood \nestimate", col = "#782c26") +
+  geom_hline(yintercept = dpois(x = 54, 54),
+             lty = 2, col = "#26733a", linewidth = 1.5 ) +
+  annotate(geom = "text", x = 5, y = dpois(x = 54, 54) - 0.005 , 
+           label = expression(paste(frac("d L","dx"), " = 0")), col = "#26733a")
+p2 <- data.frame(lam = lam, loglikelihood =  dpois(x = 54, lam, log = TRUE)) %>%
+  ggplot() +
+  geom_line(aes(x = lam, y = loglikelihood)) +
+  theme_linedraw() + xlab(expression(lambda)) +
+  ylab(expression(paste("log(L(", ~lambda, ";s))", sep = " "))) +
+  geom_vline(xintercept = 54,  col = "#782c26", linewidth = 1.5) +
+  ggtitle("log-likelihood for X ~ Poisson(54)") +
+  annotate(geom = "text", x = 70, y = -100, label = "Maximum likelihood \nestimate", col = "#782c26") +
+  geom_hline(yintercept = dpois(x = 54, 54, log = TRUE),
+             lty = 2, col = "#26733a", linewidth = 1.5 ) +
+  annotate(geom = "text", x = 5, y = -20, 
+           label = expression(paste(frac("d log(L)","dx"), " = 0")), col = "#26733a")
+
+patchwork::wrap_plots(p1, p2)
+```
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below (both from @sec-glmfit) and discuss the prompts and plots etc.
+:::
+
+
+**Bat Abundance** (subset of data from @bats)
+
+```{r}
+library(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
+data %>%
+    summarise(mean = mean(TotalCount))
+## Assume Poisson distribution
+## mle for lambda (across all species) is the mean
+#############################################
+## So what is the MLE for lambda when x = 100?
+## Does this make sense?
+## Recall that the (log)likelihood is a function of the parameter(s)
+## for some fixed data; it gives the probability of a fixed (set of)
+## observation(s) for every possible value of the parameter(s)
+data.frame(lambda =  seq(10, 200,by = 1)) %>%
+    mutate(ll = dpois(x = 100, lambda , log = TRUE)) %>%
+    ggplot(., aes( x = lambda, y = ll)) +
+    geom_point() +
+    theme_linedraw() + xlab(expression(lambda)) + ylab("log-likelihood value") +
+    ggtitle(expression(paste("Log-likelihood for X ~ Poisson(", lambda,"), where x = 100")))
+## Now for our data
+## log likelihood for sum of poisson random variables
+## where observations are the observed number of roosts
+## for some unknown parameter lambda
+#' @param lambda unknown parameter lambda 
+#' @param obvs vector of observations
+log_lik_poisson <- function(lambda, obvs){
+  llh <- sum(dpois(obvs, lambda, log = TRUE))
+  return(llh)
+}
+## optimise the function above to find the MLE of  unknown param lambda
+lam_hat <- optimise(log_lik_poisson, c(10,200) , obvs = data$TotalCount, maximum = TRUE)
+lam_hat
+## what is out maximum likelihood estimate here?
+## plot the log-likelihood for the sum of our observed data
+data.frame(lambda =  seq(10, 200, by = 0.5) ) %>%
+    mutate(ll = sapply(lambda, log_lik_poisson, obvs = data$TotalCount)) %>%
+    ggplot(., aes( x = lambda, y = ll)) +
+    geom_point() +
+    theme_linedraw() + xlab(expression(lambda)) + ylab("log-likelihood value") +
+    geom_vline(xintercept = lam_hat$maximum, size = 2, col = "purple") +
+    annotate(geom = "text", lam_hat$maximum, -40000, col = "purple", label = "MLE") +
+    ggtitle(expression(paste("Log-likelihood for X ~ Poisson(", lambda,")")))
+
+```
+
+**Lobster Survival** (data from @lobster)
+
+```{r, eval = FALSE}
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/lobster.csv")
+data <- data %>%
+    mutate(survival = ifelse(survived == 0, "consumed", "alive"))
+table(data$survival)
+n_survived <- 79
+n_total <- 159
+## define the likelihood function
+## note you will need to fill in the correct values
+likelihood <- function(theta) dbinom(x = n_survived, size = n_total, prob = theta)
+optimise(likelihood, interval = c(0, 1), maximum = TRUE) ## what have we estimated here?
+## define the likelihood function
+## note you will need to fill in the correct values
+log_likelihood <- function(theta) dbinom(x = n_survived, size = n_total, prob = theta, log = TRUE)
+optimise(log_likelihood, interval = c(0, 1), maximum = TRUE)  ## what have we estimated here?
+## plot likelihood vs unknown param
+p <- seq(0, 1, length.out = 100)
+lik <- dbinom(x = n_survived, size = n_total, prob = p)
+plot(p, lik, type = "l")
+points(p, lik)
+## Optimise for parameter p
+llh <- function(theta, data){
+    sum(dbinom(x = data, size = 1, prob = theta, log = TRUE))
+}
+optimise(llh, c(0,1), data = data$survived,  maximum = TRUE)
+## Now for prob or survival as a function of claw size.
+## What is the function I've specified? why the negative here??
+llh <- function(par, data){
+    -sum(dbinom(x = data$survived,
+               size = 1,
+               prob = exp(par[1] + par[2]*data$size)/(1 + exp(par[1] + par[2]*data$size)),
+               log = TRUE))
+}
+## find the maximum likelihood estimate for the unknown parameters
+optim(fn = llh, par = c(-1, 0.5), data = data)
+## Compare to the ungrouped model in the course guide
+glm_mod_ug <- glm(survived ~ size, family = "binomial", data = data)
+coef(glm_mod_ug)
+## Briefly comment on why, or why not, your parameter estimates are the same.
+## Has the same model been fitted in each case?
+## Plot your fitted models and compare!
+```
+

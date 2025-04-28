@@ -275,6 +275,7 @@ window.Quarto = {
   <li><a href="#code-example-to-support-sec-mods-sec-ss" id="toc-code-example-to-support-sec-mods-sec-ss" class="nav-link" data-scroll-target="#code-example-to-support-sec-mods-sec-ss">Code example to support Section&nbsp;8.2 / Section&nbsp;8.2.2</a></li>
   <li><a href="#suggested-solution-to-sec-ss" id="toc-suggested-solution-to-sec-ss" class="nav-link" data-scroll-target="#suggested-solution-to-sec-ss">Suggested solution to Section&nbsp;8.2.2</a></li>
   <li><a href="#suggested-reasoning-for-the-sec-distributions-chooks" id="toc-suggested-reasoning-for-the-sec-distributions-chooks" class="nav-link" data-scroll-target="#suggested-reasoning-for-the-sec-distributions-chooks">Suggested reasoning for the Section&nbsp;11.2 chooks</a></li>
+  <li><a href="#suggested-solutions-to-sec-distribution" id="toc-suggested-solutions-to-sec-distribution" class="nav-link" data-scroll-target="#suggested-solutions-to-sec-distribution">Suggested solutions to Section&nbsp;12.2</a></li>
   </ul></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
@@ -1717,7 +1718,7 @@ mean in group BIOSCI220 mean in group BIOSCI738
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Gead to the <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
+<i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the <a href="https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing">Google Doc</a>…
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -1946,11 +1947,6 @@ $`Group 10`
 [4] "Lana Najar"        </code></pre>
 </div>
 </div>
-<ul>
-<li>Critically evaluate linear model fit</li>
-<li>Communicate &amp; discuss data structure</li>
-</ul>
-<p>:::</p>
 </section>
 </section>
 <section id="rough-timeline-5" class="level2">
@@ -3184,7 +3180,7 @@ By the end of today’s seminar, you should be able to
 <div class="callout-body-container callout-body">
 <ul>
 <li>Write out GLMMs</li>
-<li>Assess GLMMs fit</li>
+<li>Assess GLMM fit</li>
 </ul>
 </div>
 </div>
@@ -3719,6 +3715,7 @@ We’ll work through this example together! Note that this aligns with the conte
 <p>Go over an activity from the class again or discuss task 07…Feel free to ask Charlotte a question or two!</p>
 </div>
 </div>
+<!-- {{< include runsheets/runsheet_12.qmd >}} -->
 </section>
 </section>
 </section>
@@ -4024,6 +4021,35 @@ Suggested <code>R</code> code solutions
 <h2 class="anchored" data-anchor-id="suggested-reasoning-for-the-sec-distributions-chooks">Suggested reasoning for the <a href="#sec-distributions" class="quarto-xref">Section&nbsp;11.2</a> chooks</h2>
 <p><img src="runsheets/img/chooks.png" class="img-fluid"></p>
 </section>
+<section id="suggested-solutions-to-sec-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-solutions-to-sec-distribution">Suggested solutions to <a href="#sec-distribution" class="quarto-xref">Section&nbsp;12.2</a></h2>
+<ol>
+<li>
+<strong>Poisson</strong>
+</li>
+<li>
+<strong>Geometric</strong> (number of independent trials until the first success)
+</li>
+<li>
+<strong>Hypergeometric</strong> (sampling without replacement from a finite group)
+</li>
+<li>
+<strong>Binomial</strong>
+</li>
+<li>
+<strong>Normal</strong>
+</li>
+<li>
+<strong>Exponential</strong> (waiting time between independent events)
+</li>
+<li>
+<strong>Gamma</strong>
+</li>
+<li>
+<strong>Uniform</strong><a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a>
+</li>
+</ol>
+</section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
@@ -4104,6 +4130,7 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
 <li id="fn7"><p>Modified from Figure 1.1 of <span class="citation" data-cites="lawson2014design">Lawson (<a href="#ref-lawson2014design" role="doc-biblioref">2014</a>)</span><a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn8"><p>often termed nuisance variables<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn9"><p>Random effect models to the rescue!<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10"><p>This was based on an IRL <a href="https://en.wikipedia.org/wiki/German_tank_problem">WWII problem</a><a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->

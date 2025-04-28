@@ -30,11 +30,6 @@
 group_allocation(names, seed = 1458, 10)
 ```
 
-+ Critically evaluate linear model fit
-+ Communicate & discuss data structure
-
-:::
-
 
 ## Rough timeline
 

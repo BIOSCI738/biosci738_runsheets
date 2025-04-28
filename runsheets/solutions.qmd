@@ -302,3 +302,15 @@ aov(bmi ~ gender, data = data)
 
 ![](runsheets/img/chooks.png)
 
+## Suggested solutions to @sec-distribution
+
+<ol>
+    <li><strong>Poisson</strong></li>
+    <li><strong>Geometric</strong> (number of independent trials until the first success)</li>
+    <li><strong>Hypergeometric</strong> (sampling without replacement from a finite group)</li>
+    <li><strong>Binomial</strong></li>
+    <li><strong>Normal</strong> </li>
+    <li><strong>Exponential</strong> (waiting time between independent events)</li>
+    <li><strong>Gamma</strong> </li>
+    <li><strong>Uniform</strong>^[This was based on an IRL [WWII problem](https://en.wikipedia.org/wiki/German_tank_problem)]</li>
+  </ol>

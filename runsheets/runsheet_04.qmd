@@ -161,7 +161,7 @@ A bootstrap is a procedure for finding the (approximate) sampling distribution o
    3. the bootstrap distribution of a statistic represents that statistic’s sampling distribution.
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Gead to the [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
 "Read" [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png) and summarize the procedure explained. What are the key differences to the resampling procedures in @sec-resampling
 :::
 

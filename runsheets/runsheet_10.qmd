@@ -5,6 +5,7 @@
 ## By the end of today's seminar, you should be able to
  + Discuss, describe & critique different probability distributions 
  + Appropriately map a random variable to a (likely) distribution
+
 :::
 
 ## Rough timeline
