@@ -1,0 +1,185 @@
+# May 5th
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + Distinguish frequentist and Bayesian approaches to data analysis
+ + Choose appropriate prior distributions for a Bayesian model
+:::
+
+## Rough timeline
+
+ + **09:05–09:35 am** Introduction to Bayesian Statistics (@sec-bayes)
+   - Class discussion
+   - Class activities
+   
+ + **09:55–11:05 am** Break
+ + **11:05–11:30 am** Casestudies from a Bayesian viewpoint (@sec-bayesestudies)
+ + **11.30–11.55 am** Recap (@sec-recap03)
+
+NOTE: here we only briefly discuss Bayesian approaches using examples, for more details see [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html) and for a much more rounded discussion I strongly recommend at least Chapter 1 of @bayesrules. This runsheet only skims the basics!
+
+## Introduction to Bayesian Statistics {#sec-bayes}
+
+<center><p>SCAN ME or head to <a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
+<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+
+::: {.callout-note}
+## When prompted *Quick Write* **a**, **b**, or **c** in answer to the following^[Questions taken verbatim from @bayesrules] (*record your answers*)
+
+<ul>
+  <li>
+    When flipping a fair coin, we say that “the probability of flipping Heads is 0.5.” How do you interpret this probability?
+    <ul>
+      <li>If I flip this coin over and over, roughly 50% will be Heads.</li>
+      <li>Heads and Tails are equally plausible.</li>
+      <li>Both a and b make sense.</li>
+    </ul>
+  </li>
+  <li>
+    An election is coming up and a pollster claims that candidate A has a 0.9 probability of winning. How do you interpret this probability?
+    <ul>
+      <li>If we observe the election over and over, candidate A will win roughly 90% of the time.</li>
+      <li>Candidate A is much more likely to win than to lose.</li>
+      <li>The pollster’s calculation is wrong. Candidate A will either win or lose, thus their probability of winning can only be 0 or 1.</li>
+    </ul>
+  </li>
+  <li>
+    Consider two claims. (1) Zuofu claims that he can predict the outcome of a coin flip. To test his claim, you flip a fair coin 10 times and he correctly predicts all 10. (2) Kavya claims that she can distinguish natural and artificial sweeteners. To test her claim, you give her 10 sweetener samples and she correctly identifies each. In light of these experiments, what do you conclude?
+    <ul>
+      <li>You’re more confident in Kavya’s claim than Zuofu’s claim.</li>
+      <li>The evidence supporting Zuofu’s claim is just as strong as the evidence supporting Kavya’s claim.</li>
+    </ul>
+  </li>
+  <li>
+    Suppose that during a recent doctor’s visit, you tested positive for a very rare disease. If you only get to ask the doctor one question, which would it be?
+    <ul>
+      <li>What’s the chance that I actually have the disease?</li>
+      <li>If in fact I don’t have the disease, what’s the chance that I would’ve gotten this positive test result?</li>
+    </ul>
+  </li>
+</ul>
+
+Scoring^[1. a = 1 point, b = 3 points, c = 2 points; 2. a = 1 point, b = 3 points, c = 1 point; 3. a = 3 points, b = 1 point; 4. a = 3 points, b = 1 point. According to @bayesrules *Totals from 4–5 indicate that your current thinking is fairly frequentist, whereas totals from 9–12 indicate alignment with the Bayesian philosophy. In between these extremes, totals from 6–8 indicate that you see strengths in both philosophies*]
+:::
+
+::: {.callout-tip}
+## The simplified distinction
+
+**Frequentist**: The parameter **is not** a random variable (i.e., is fixed and has one *true* value).
+**Bayesian**: The parameter **is** a random variable (i.e., comes from some probability distribution).
+:::
+
+### A Bayesian Beta-Binomial model
+
+::: {.callout-note}
+## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html); however, here we go beyond what is covered there!  
+:::
+
+Let's take a look again at the **Lobster Survival** data from @lobster. The NULL model equivalent to the ungrouped model we considered in @sec-glmfit was
+
+```{r, eval = TRUE, echo = FALSE, message = FALSE}
+library(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/lobster.csv")
+glm_mod_bern <- glm(survived ~ 1, family = "binomial", data = data)
+equatiomatic::extract_eq(glm_mod_bern)
+```
+
+In other words, let $y$ be either 1 or 0 depending on survival then $y \sim \text{Binomial}(n = 1, p)$ (i.e., $y \sim \text{Bernoulli}(p)$) where $p$ is the probability of survival.
+
+Here,  $y \sim \text{Binomial}(n = 1, p)$ is the **likelihood** (see @sec-mle) and $p$ is an **unknown parameter** we wish to estimate. Under a Bayesian framework we assume that $p$ is a random variable, with it's own distribution!
+
+**So, what do we know about $p$?** It is a probability and therefore bounded between 0 and 1. At this stage we have no further information (i.e., nothing about what value this probability might be).
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups suggest a candidate distribution for $p$.
+:::
+
+This distribution is your **prior** distribution and reflect your beliefs about $p$.
+
+```{r, eval = FALSE}
+library(bayesrules)
+## The data (i.e., likelihood)
+plot_binomial_likelihood(y = 79, n = 159)
+## What about a Beta prior on p
+plot_beta(10,3) ##??
+plot_beta(0.5,0.5) ## favours extremes (actually called a Jeffreys prior)
+plot_beta(1,1) ##?? (all equally likely)
+## The posterior with an uninformative prior
+plot_beta_binomial(alpha = 1, beta = 1, y = 79, n = 159)
+## What about an "extreme favouring" prior
+plot_beta_binomial(alpha = 0.5, beta = 0.5, y = 79, n = 159)
+## The data usurps the prior!! As it should
+## Inference
+summarize_beta_binomial(alpha = 1, beta = 1, y = 79, n = 159)
+## The estimate we're interested in is the posterior mean
+## How does this compare to our MLE approach?
+log_likelihood <- function(theta) dbinom(x = 79, size = 159, prob = theta, log = TRUE)
+optimise(log_likelihood, c(0,1), maximum = TRUE)
+```
+
+Read more about prior sensitivity (i.e., your choice of prior affecting results) in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html#prior-sensitivity). 
+
+What about frequentist approach vs Bayesian? 
+
+> Typically, Bayesian and frequentist estimates will always agree if there is sufficient data, so long as the likelihood is not explicitly ruled out by the prior.— Olivier Gimenez, Bayesian statistics with R
+
+## Casestudies from a Bayesian viewpoint {#sec-bayesestudies}
+
+### Choosing a prior distribution
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups discuss/answer the sceanrios below.
+
+
+ 1. **Test Scores Under a New Teaching Method** A school is testing a new math teaching method. A sample of students is taught using the new method, and their standardized test scores are recorded. Assume test scores are normally distributed with known variance \( \sigma^2 = 100 \) (i.e., standard deviation = 10). We're interested in the average score \( \mu \) under the new method as follows $y_i \sim \mathcal{N}(\mu, \sigma^2)$. What might be a suitable distribution to reflect the prior belief about the average score \( \mu \).
+ 2. **Kiwi Call Monitoring** Wildlife biologists are studying nocturnal kiwi activity in a forest reserve. On several nights, researchers record the number of kiwi calls heard per hour from a fixed listening post. Let \( y_i \) be the number of kiwi calls heard during hour \( i \), modeled as $y_i \sim \text{Poisson}(\lambda)$. What might be a suitable distribution to reflect the prior belief about the average call rate \( \lambda \). 
+
+Now, a statistician has come along and said that things will be a lot easier (ask Charlotte why if you're interested) and said that an appropriate prior for the average score (scenario 1) is $\mu \sim \mathcal{N}(\mu_0, \tau^2)$ and for the average call rate (scenario 2) is $\lambda \sim \text{Gamma}(\alpha, \beta)$. In addition, the principal of the school in scenario 1 believes students taught with the new method will average around 75 points, but the level of certainty varies depending on context. And Ecologists familiar with the region in scenario 2 suggest that the rate of kiwi calls typically ranges from 2 to 4 calls per hour. 
+
+Assuming these prior distributions and the extra information 
+  
+  a.Based on the prior knowledge, how might you choose values for the parameters of each prior distribution?
+  b. What prior reflects strong certainty about random variable?
+  c. What prior reflects strong uncertainty about random variable?
+
+
+*[NOTE: Scenarios were created with the assistance of ChatGPT (OpenAI, 2025).]*
+
+:::
+
+
+### Casestudies
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below (both from @sec-glmfit) and discuss the prompts and plots etc.
+:::
+
+#### A Gamma-Poisson Model (i.e., Negative Binomial)
+
+**Bat Abundance** (subset of data from @bats)
+
+
+```{r, eval = FALSE}
+library(tidyverse)
+bats <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
+## frequentist approach
+nbmod <- MASS::glm.nb(TotalCount ~ SpeciesID, data = bats)
+nbmod |> summary()
+equatiomatic::extract_eq(nbmod)
+```
+
+
+
+
+## Recap {#sec-recap03}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
+1. Choose a topic from the content covered so far that you wish to revisit.
+2. Revisit the associated materials (e.g., code/courseguide section/cheatsheets/runsheets etc.).
+3. As a group design an activity/materials that explain/illustrate the topic/concept.
+
+**Be prepared to present your activity to me/the class** (all group members should expect to contribute).
+
+:::
+

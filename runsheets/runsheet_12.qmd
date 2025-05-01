@@ -1,11 +1,5 @@
 # May 2nd
 
-::: {.callout-tip}
-## By the end of today's seminar, you should be able to
- + 
- 
-:::
-
 ## Rough timeline
 
 ### **02:05 pm - 03:55 pm** 
@@ -131,7 +125,7 @@ patchwork::wrap_plots(p1, p2)
 
 **Bat Abundance** (subset of data from @bats)
 
-```{r}
+```{r, eval = FALSE}
 library(tidyverse)
 data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
 data %>%
