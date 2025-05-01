@@ -4,6 +4,7 @@
 ## By the end of today's seminar, you should be able to
  + Distinguish frequentist and Bayesian approaches to data analysis
  + Choose appropriate prior distributions for a Bayesian model
+
 :::
 
 ## Rough timeline
@@ -30,36 +31,37 @@ NOTE: here we only briefly discuss Bayesian approaches using examples, for more 
   <li>
     When flipping a fair coin, we say that “the probability of flipping Heads is 0.5.” How do you interpret this probability?
     <ul>
-      <li>If I flip this coin over and over, roughly 50% will be Heads.</li>
-      <li>Heads and Tails are equally plausible.</li>
-      <li>Both a and b make sense.</li>
+      <li>a. If I flip this coin over and over, roughly 50% will be Heads.</li>
+      <li>b. Heads and Tails are equally plausible.</li>
+      <li>c.Both a and b make sense.</li>
     </ul>
   </li>
   <li>
     An election is coming up and a pollster claims that candidate A has a 0.9 probability of winning. How do you interpret this probability?
     <ul>
-      <li>If we observe the election over and over, candidate A will win roughly 90% of the time.</li>
-      <li>Candidate A is much more likely to win than to lose.</li>
-      <li>The pollster’s calculation is wrong. Candidate A will either win or lose, thus their probability of winning can only be 0 or 1.</li>
+      <li>a. If we observe the election over and over, candidate A will win roughly 90% of the time.</li>
+      <li>b. Candidate A is much more likely to win than to lose.</li>
+      <li>c. The pollster’s calculation is wrong. Candidate A will either win or lose, thus their probability of winning can only be 0 or 1.</li>
     </ul>
   </li>
   <li>
     Consider two claims. (1) Zuofu claims that he can predict the outcome of a coin flip. To test his claim, you flip a fair coin 10 times and he correctly predicts all 10. (2) Kavya claims that she can distinguish natural and artificial sweeteners. To test her claim, you give her 10 sweetener samples and she correctly identifies each. In light of these experiments, what do you conclude?
     <ul>
-      <li>You’re more confident in Kavya’s claim than Zuofu’s claim.</li>
-      <li>The evidence supporting Zuofu’s claim is just as strong as the evidence supporting Kavya’s claim.</li>
+      <li>a. You’re more confident in Kavya’s claim than Zuofu’s claim.</li>
+      <li>b. The evidence supporting Zuofu’s claim is just as strong as the evidence supporting Kavya’s claim.</li>
     </ul>
   </li>
   <li>
     Suppose that during a recent doctor’s visit, you tested positive for a very rare disease. If you only get to ask the doctor one question, which would it be?
     <ul>
-      <li>What’s the chance that I actually have the disease?</li>
-      <li>If in fact I don’t have the disease, what’s the chance that I would’ve gotten this positive test result?</li>
+      <li>a. What’s the chance that I actually have the disease?</li>
+      <li>b. If in fact I don’t have the disease, what’s the chance that I would’ve gotten this positive test result?</li>
     </ul>
   </li>
 </ul>
 
 Scoring^[1. a = 1 point, b = 3 points, c = 2 points; 2. a = 1 point, b = 3 points, c = 1 point; 3. a = 3 points, b = 1 point; 4. a = 3 points, b = 1 point. According to @bayesrules *Totals from 4–5 indicate that your current thinking is fairly frequentist, whereas totals from 9–12 indicate alignment with the Bayesian philosophy. In between these extremes, totals from 6–8 indicate that you see strengths in both philosophies*]
+
 :::
 
 ::: {.callout-tip}
@@ -121,7 +123,7 @@ Read more about prior sensitivity (i.e., your choice of prior affecting results)
 
 What about frequentist approach vs Bayesian? 
 
-> Typically, Bayesian and frequentist estimates will always agree if there is sufficient data, so long as the likelihood is not explicitly ruled out by the prior.— Olivier Gimenez, Bayesian statistics with R
+> Typically, Bayesian and frequentist estimates will always agree if there is sufficient data, so long as the likelihood is not explicitly ruled out by the prior.— Olivier Gimenez (@olivier)
 
 ## Casestudies from a Bayesian viewpoint {#sec-bayesestudies}
 
@@ -131,8 +133,8 @@ What about frequentist approach vs Bayesian?
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups discuss/answer the sceanrios below.
 
 
- 1. **Test Scores Under a New Teaching Method** A school is testing a new math teaching method. A sample of students is taught using the new method, and their standardized test scores are recorded. Assume test scores are normally distributed with known variance \( \sigma^2 = 100 \) (i.e., standard deviation = 10). We're interested in the average score \( \mu \) under the new method as follows $y_i \sim \mathcal{N}(\mu, \sigma^2)$. What might be a suitable distribution to reflect the prior belief about the average score \( \mu \).
- 2. **Kiwi Call Monitoring** Wildlife biologists are studying nocturnal kiwi activity in a forest reserve. On several nights, researchers record the number of kiwi calls heard per hour from a fixed listening post. Let \( y_i \) be the number of kiwi calls heard during hour \( i \), modeled as $y_i \sim \text{Poisson}(\lambda)$. What might be a suitable distribution to reflect the prior belief about the average call rate \( \lambda \). 
+ 1. **Test Scores Under a New Teaching Method** A school is testing a new math teaching method. A sample of students is taught using the new method, and their standardized test scores are recorded. Assume test scores are normally distributed with known variance $\sigma^2 = 100$ (i.e., standard deviation = 10). We're interested in the average score $\mu$ under the new method as follows $y_i \sim \mathcal{N}(\mu, \sigma^2)$. What might be a suitable distribution to reflect the prior belief about the average score $\mu$.
+ 2. **Kiwi Call Monitoring** Wildlife biologists are studying nocturnal kiwi activity in a forest reserve. On several nights, researchers record the number of kiwi calls heard per hour from a fixed listening post. Let $y_i$ be the number of kiwi calls heard during hour $i$, modeled as $y_i \sim \text{Poisson}(\lambda)$. What might be a suitable distribution to reflect the prior belief about the average call rate $\lambda$. 
 
 Now, a statistician has come along and said that things will be a lot easier (ask Charlotte why if you're interested) and said that an appropriate prior for the average score (scenario 1) is $\mu \sim \mathcal{N}(\mu_0, \tau^2)$ and for the average call rate (scenario 2) is $\lambda \sim \text{Gamma}(\alpha, \beta)$. In addition, the principal of the school in scenario 1 believes students taught with the new method will average around 75 points, but the level of certainty varies depending on context. And Ecologists familiar with the region in scenario 2 suggest that the rate of kiwi calls typically ranges from 2 to 4 calls per hour. 
 
@@ -148,28 +150,125 @@ Assuming these prior distributions and the extra information
 :::
 
 
-### Casestudies
+### Casestudy
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below (both from @sec-glmfit) and discuss the prompts and plots etc.
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the section below (previously seen example from @sec-glmfit) and discuss the prompts and plots etc. 
+
+*NOTE that this is quite advanced and touches on the boundary of what is beyond the scope of this course, but you're all up to it!*
 :::
 
 #### A Gamma-Poisson Model (i.e., Negative Binomial)
 
 **Bat Abundance** (subset of data from @bats)
 
+In @sec-glmfit we fitted the following model in a frequentist framework
+
+$$
+\log ({ E( \operatorname{TotalCount} ) })  = \alpha + \beta_{1}(\operatorname{SpeciesID}_{\operatorname{Rhinolophus\ hipposideros}})
+$$
+
+where $Y = y$ was the nest count and $y \sim \text{NegBin}(\mu, \phi)$, with $\mu$ the expected count ($E( \operatorname{TotalCount} )$) and $\phi$ the dispersion parameter (i.e., how much variance exceeds the mean).
 
 ```{r, eval = FALSE}
 library(tidyverse)
 bats <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
 ## frequentist approach
 nbmod <- MASS::glm.nb(TotalCount ~ SpeciesID, data = bats)
-nbmod |> summary()
-equatiomatic::extract_eq(nbmod)
+nbmod |> summary() |> coef()
+```
+
+Just a recap, why did we choose a Negative Binomial model? Because the was a lot more variation than we'd expect under a Poisson model. We saw this in @sec-glmfit, but let's use simulation to *show* this again.
+
+```{r, eval = FALSE}
+## observed mean
+mean(bats$TotalCount) ## ~174
+## observed variance
+var(bats$TotalCount) ## a LOT higher
+## simulate from a Poisson with lambda = observed mean
+sim <- replicate(100, rpois(100, mean(bats$TotalCount))) ## quicker than a 'for loop'
+## wrangle and plot
+sim |> as.data.frame() %>% 
+  pivot_longer(., everything(), names_to = "column", values_to = "value") %>%
+  ggplot(aes(x = value, group = column)) +
+  geom_density(linewidth = 0.2, alpha = 0.1) +
+  geom_density(data = bats, aes(x = TotalCount), color = "purple", 
+               linewidth = 1, inherit.aes = FALSE) 
+  theme_minimal()
+## Clearly the observed (purple) doesn't match the assumed Poisson (all the black lines)
+```
+
+OK, back to Bayesian modelling. We have $y \sim \text{NegBin}(\mu, \phi)$. We have two unknown parameters $\mu$ and $\phi$. Let's first consider a NULL (i.e., intercept only) model $\log (\mu)  = \alpha$.
+
+We use the following priors
+
+   1. $\alpha \sim \text{N}(0,5)$ and
+   2. $\phi \sim \text{Exp}(1)$.
+   
+Do these seem appropriate?
+
+```{r, eval = FALSE}
+plot_normal(0, 5)
+plot_gamma(1, 1) ## recall that exponential is a special case of Gamma with shape = 1 
+```
+
+```{r, eval = FALSE}
+library(rstanarm)
+fit_null <- stan_glm(
+  TotalCount ~ 1,
+  family = neg_binomial_2(), ## Likelihood
+  data = bats,
+  prior = normal(0, 5),             ## Prior on log(mu) (i.e., alpha)
+  prior_aux = exponential(1),       ## Prior on phi (overdispersion)
+  chains = 4, iter = 2000, seed = 123
+)
+## coefficients
+print(fit_null, digits = 2)
 ```
 
 
+Now, let's consider a model with the factor explanatory variable `SpeciesID`. Here $\log(\mu)  = \alpha + \beta_{1}(\operatorname{SpeciesID}_{\operatorname{Rhinolophus\ hipposideros}})$. So now we have three unknown parameters $\alpha$, $\beta_1$ and $\phi$.
 
+We use the following priors
+
+   1. $\alpha \sim \text{N}(0, 2.5)$, 
+   2. $\beta_1 \sim  \text{N}(0, 5)$, and
+   3. $\phi \sim \text{Exp}(1)$.
+   
+Fitting the model:
+
+
+```{r, eval = FALSE}
+fit_species <- stan_glm(
+  TotalCount ~ SpeciesID,
+  family = neg_binomial_2(),
+  data = bats,
+  prior = normal(0, 2.5),           # Prior on coefficients (log scale)
+  prior_intercept = normal(0, 5),   # Prior on intercept
+  prior_aux = exponential(1),       # Prior on phi (overdispersion)
+  chains = 4, iter = 2000, seed = 123
+)
+## coefficients
+print(fit_species, digits = 2)
+## compare to
+nbmod |> summary() |> coef()
+```
+
+**Assessing model fit** the full details of this are beyond the scope of this course, but let's use a common sense check of *does our data look similar to the model*. Special Bayesian terminology for this might be a *posterior predictive check*, we can do this in one step using `pp_check()`:
+
+```{r, eval = FALSE}
+pp_check(fit_species)
+```
+
+::: {.callout-note}
+## Bonus activity (Advanced)
+Revisit one of the following case studies and fit an appropriate model in a Bayesian framework
+
+ 1. **Fry Time** @sec-fry (data from @fries)
+ 2. **Monkeys** case study 04 from @sec-casestudies (data from @monkey)
+ 3. **Bird Abundance** third case study from @sec-glmfit (data from @birds)
+
+:::
 
 ## Recap {#sec-recap03}
 
