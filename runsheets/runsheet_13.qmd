@@ -24,43 +24,32 @@ NOTE: here we only briefly discuss Bayesian approaches using examples, for more 
 <center><p>SCAN ME or head to <a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
 <img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
 
-::: {.callout-note}
-## When prompted *Quick Write* **a**, **b**, or **c** in answer to the following^[Questions taken verbatim from @bayesrules] (*record your answers*)
+:::{.callout-note}
+## When prompted *Quick Write*...
 
-<ul>
-  <li>
-    When flipping a fair coin, we say that “the probability of flipping Heads is 0.5.” How do you interpret this probability?
-    <ul>
-      <li>a. If I flip this coin over and over, roughly 50% will be Heads.</li>
-      <li>b. Heads and Tails are equally plausible.</li>
-      <li>c.Both a and b make sense.</li>
-    </ul>
-  </li>
-  <li>
-    An election is coming up and a pollster claims that candidate A has a 0.9 probability of winning. How do you interpret this probability?
-    <ul>
-      <li>a. If we observe the election over and over, candidate A will win roughly 90% of the time.</li>
-      <li>b. Candidate A is much more likely to win than to lose.</li>
-      <li>c. The pollster’s calculation is wrong. Candidate A will either win or lose, thus their probability of winning can only be 0 or 1.</li>
-    </ul>
-  </li>
-  <li>
-    Consider two claims. (1) Zuofu claims that he can predict the outcome of a coin flip. To test his claim, you flip a fair coin 10 times and he correctly predicts all 10. (2) Kavya claims that she can distinguish natural and artificial sweeteners. To test her claim, you give her 10 sweetener samples and she correctly identifies each. In light of these experiments, what do you conclude?
-    <ul>
-      <li>a. You’re more confident in Kavya’s claim than Zuofu’s claim.</li>
-      <li>b. The evidence supporting Zuofu’s claim is just as strong as the evidence supporting Kavya’s claim.</li>
-    </ul>
-  </li>
-  <li>
-    Suppose that during a recent doctor’s visit, you tested positive for a very rare disease. If you only get to ask the doctor one question, which would it be?
-    <ul>
-      <li>a. What’s the chance that I actually have the disease?</li>
-      <li>b. If in fact I don’t have the disease, what’s the chance that I would’ve gotten this positive test result?</li>
-    </ul>
-  </li>
-</ul>
+...**a**, **b**, or **c** in answer to the following^[questions taken verbatim from @bayesrules] (*record your answers*)
 
-Scoring^[1. a = 1 point, b = 3 points, c = 2 points; 2. a = 1 point, b = 3 points, c = 1 point; 3. a = 3 points, b = 1 point; 4. a = 3 points, b = 1 point. According to @bayesrules *Totals from 4–5 indicate that your current thinking is fairly frequentist, whereas totals from 9–12 indicate alignment with the Bayesian philosophy. In between these extremes, totals from 6–8 indicate that you see strengths in both philosophies*]
+1. When flipping a fair coin, we say that “the probability of flipping Heads is 0.5.” How do you interpret this probability?
+    - a. If I flip this coin over and over, roughly 50% will be Heads.  
+    - b. Heads and Tails are equally plausible.  
+    - c. Both a and b make sense.  
+
+2. An election is coming up and a pollster claims that candidate A has a 0.9 probability of winning. How do you interpret this probability?
+    - a. If we observe the election over and over, candidate A will win roughly 90% of the time.  
+    - b. Candidate A is much more likely to win than to lose.  
+    - c. The pollster’s calculation is wrong. Candidate A will either win or lose, thus their probability of winning can only be 0 or 1.  
+
+3. Consider two claims.  
+    (1) Zuofu claims that he can predict the outcome of a coin flip. To test his claim, you flip a fair coin 10 times and he correctly predicts all 10.  
+    (2) Kavya claims that she can distinguish natural and artificial sweeteners. To test her claim, you give her 10 sweetener samples and she correctly identifies each.  
+    In light of these experiments, what do you conclude?  
+    - a. You’re more confident in Kavya’s claim than Zuofu’s claim.  
+    - b. The evidence supporting Zuofu’s claim is just as strong as the evidence supporting Kavya’s claim.  
+
+4. Suppose that during a recent doctor’s visit, you tested positive for a very rare disease. If you only get to ask the doctor one question, which would it be?  
+    - a. What’s the chance that I actually have the disease?  
+    - b. If in fact I don’t have the disease, what’s the chance that I would’ve gotten this positive test result?
+
 
 :::
 

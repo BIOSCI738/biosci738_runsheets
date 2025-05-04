@@ -314,3 +314,7 @@ aov(bmi ~ gender, data = data)
     <li><strong>Gamma</strong> </li>
     <li><strong>Uniform</strong>^[This was based on an IRL [WWII problem](https://en.wikipedia.org/wiki/German_tank_problem)]</li>
   </ol>
+
+## Scoring for quiz in @sec-bayes
+
+1. a = 1 point, b = 3 points, c = 2 points; 2. a = 1 point, b = 3 points, c = 1 point; 3. a = 3 points, b = 1 point; 4. a = 3 points, b = 1 point. According to @bayesrules *Totals from 4–5 indicate that your current thinking is fairly frequentist, whereas totals from 9–12 indicate alignment with the Bayesian philosophy. In between these extremes, totals from 6–8 indicate that you see strengths in both philosophies*
