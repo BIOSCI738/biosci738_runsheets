@@ -1,0 +1,156 @@
+# May 12th
+
+## Rough timeline
+
+ + **09:05–09:25 am** Multivariate Data Analysis (@sec-multivariate)
+   - Class discussion
+   - Class activities
+ + **09:25–09:55 am** PCA (@sec-pca) 
+ + **09:55–11:05 am** Break
+ + **11:05–11:50 am** Eigenfaces  (@sec-eigenfaces)  
+   
+
+
+## Introduction to Multivariate Data Analysis {#sec-multivariate}
+
+> An assignment was given to BIOSCI220 students in 2022 that asked them to create an `R` script that produced a plot. This was marked using a rubric-based marking scheme that had 5 sections I1, I2, I3, I4, and I5. Submissions were graded by three peers (prefix P) and three tutors (prefix T), the average across the three grades was taken to be the scores (T and P) summarised in the following table and plot. **What inference can you draw?**
+
+![](runsheets/img/table.png)
+
+## Principal Component Analysis (PCA) {#sec-pca}
+
+Compare the following two GIFs; **what is the main difference?**
+
+::: {layout-ncol=2}
+![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/lm.gif)
+
+![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/perp.gif)
+:::
+
+
+**Principal Component Analysis (PCA)** is a dimension reduction technique! In summary, we want to
+
+ 1. find important features in a dataset, and
+ 2. find the best low-dimensional representation of the variation in the multivariate dataset.
+ 
+The new variables we create with PCA are called Principal components (PCs)
+
+*Note that one problem with PCA is that the components are not scale invariant. So, we standardise (scale) by centering and convert variables into standard deviation units. See [this section of the course guide for more details](https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html).*
+
+Two things we're interested in:
+
+ + the **direction** of these PCs (otherwise called eigenvectors), which reflect the weight that each variable has on a particular PC.
+ + the **magnitude** of theses PCs (otherwise called eigenvalues), which represent the variance explained by each PC.
+
+
+We'll work through the code below together, it is that from [this section of the course guide for more details](https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html).
+
+```{r, eval = FALSE}
+library(GGally)
+penguins %>%
+  dplyr::select(species, where(is.numeric)) %>% 
+  ggpairs(aes(color = species),
+        columns = c("flipper_length_mm", "body_mass_g", 
+                     "bill_length_mm", "bill_depth_mm")) 
+pca <- penguins %>% 
+  dplyr::select(where(is.numeric), -year) %>% ## year makes no sense here so we remove it and keep the other numeric variables
+  scale() %>% ## scale the variables
+  prcomp()
+## print out a summary
+summary(pca)
+## loadings 
+pca$rotation
+## PC1 vs PC2
+library(factoextra) ## install this package first
+fviz_pca_biplot(pca, geom = "point") +
+      geom_point (alpha = 0.2)
+## PC2 vs PC3
+fviz_pca_biplot(pca, axes = c(2,3),geom = "point") +
+      geom_point (alpha = 0.2)
+## how many are informative enough
+fviz_screeplot(pca)
+
+```
+
+Now, think back to @sec-multivariate and the BIOSCI220 data. What conclusions might you draw from the following plot of the loadings?
+
+![](runsheets/img/pca_loadings.png)
+
+## Eigenfaces {#sec-eigenfaces}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three..
+
+... work through the code below and discuss what each step is achieving, what do you conclude?
+
+:::
+
+```{r, eval = FALSE}
+data_url <- "https://github.com/cmjt/statbiscuits/raw/master/swots/data/faces.RData"
+load(url(data_url))
+library(pixmap)
+names(faces)
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(faces)){
+    plot(faces[[i]])
+    legend("bottom", bty = "n", names(faces[i]))
+}
+## collapse the grey matrix
+face_data <- lapply(faces, function(x) c(x@grey))
+## each column is a face
+face_data <- do.call('cbind',face_data)
+colnames(face_data) <- names(faces)
+## have a look at the data matrix
+head(face_data)
+## center around mean
+mean <- apply(face_data, 1, mean)
+mean_face <- pixmapGrey(mean, 64, 64, bbox = c(0, 0, 64, 64))
+plot(mean_face)
+centered <- apply(face_data, 2, function(x) x - mean)
+## centered images
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(faces)){
+    plot(pixmapGrey(centered[,i], 64, 64, bbox = c(0, 0, 64, 64)))
+    legend("bottom", bty = "n", paste(names(faces[i]), "centered", sep = " "))
+}
+pca <- prcomp(centered)
+summary(pca)
+## for a nice biplot
+library(ggfortify)
+library(ggplot2)
+## using autoplot
+## PC1 vs PC2 by default
+autoplot(pca,loadings = TRUE,loadings.label = TRUE,alpha = 0.1)
+## play around with the arguments to see what they control
+autoplot(pca,x = 3, y = 4,loadings = TRUE,loadings.label = TRUE,alpha = 0.1)
+## eigen faces
+pcs <- pca$x
+eigenfaces <- apply(pcs,2, function(x)  pixmapGrey(x, 64, 64, bbox = c(0, 0, 64, 64)))
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(eigenfaces)){
+    plot(eigenfaces[[i]])
+    legend("bottom", bty = "n", paste("PC", i, sep = " "))
+}
+## Each face is a weighted (loadings) combintation of the eigen faces (PCs) above, 
+## but how many PCs (eigenfaces) do we keep?
+## screeplot
+screeplot(pca,type = "lines", pch = 20)
+## 2 PCs ?
+n_pc <- 2
+recon <- pixm <- list()
+for (i in 1:length(faces)){
+    recon[[i]] <- rowSums(pca$x[,1:n_pc]%*%pca$rotation[i,1:n_pc])
+    pixm[[i]] <- pixmapGrey(recon[[i]], 64, 64, bbox = c(0, 0, 64, 64))
+}
+
+## 2PC to reconstruct centered images
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(pixm)){
+    plot(pixm[[i]])
+    legend("bottom", bty = "n", paste(names(faces[i]), "2 PC", sep = " "))
+}
+## Now add on the "mean face"
+## Is 2 enough? Try 5... Or 10 PCs
+```
+
+

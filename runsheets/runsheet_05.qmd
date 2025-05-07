@@ -126,7 +126,7 @@ As the **Consultant**, your role is to question the **Client** and ask for speci
 
 :::
 
-## Interactive Oral assessments (IOAs) {#sec-ioa}
+## Interactive Oral Assessments (IOAs) {#sec-ioa}
 
 Don't worry too much if you've not completely delved into/chosen your [project data](https://canvas.auckland.ac.nz/courses/120054/assignments/436873). However, the activity from above (@sec-project) will basically be mirrored in your [Interactive 01 assessment](https://canvas.auckland.ac.nz/courses/120054/assignments/436870).
 

@@ -1,0 +1,146 @@
+# May 9th
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.50 pm** Modelling Data (@sec-model)
+ + **02:50–03:00 pm** Break
+ + **03:00–03:55 pm** Coding on the fly (@sec-ica)
+    - Class discussion
+    - Group activity
+
+## Modelling data, where to start {#sec-model}
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
+
+...choose one of the three case studies outlined below then 
+
+ 1. discuss what questions you might be interested in answering with these data,
+ 2. discuss how you might analyse these data so that you could answer those questions, and
+ 3. and carry out any analysis you deem appropriate and infer your conclusions.
+
+**You will be expected to give a brief presentation about your approach and analysis to the class**.
+
+:::
+
+### Case study 1
+
+For this case study you will be considering data from a paper investigating the recovery of biological evidence from common drink containers (@james).
+
+The object `data` below contains 96 observations and 17 different variables. The `amylase` column gives the relative amount of $\alpha$ amylase activity extracted from the swabs, the `dna` column gives the DNA yield (as a proportion), and the `failed.profile` column are logical values indicating if obtaining a usable DNA profile was a failure or a success. Other variables are as discussed in the paper.
+
+
+```{r, echo = TRUE, eval = FALSE}
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/amylase.csv"
+data <- readr::read_csv(url)
+```
+
+In your groups, 
+
+  1. discuss what questions you might be interested in answering with these data,
+  2. discuss how you might analyse these data so that you could answer those questions, and
+  3. and carry out any analysis you deem appropriate. 
+  
+The profile intensity variable mentioned in the paper is a linear combination of the peak height measurements for each of the STR loci. The peak heights of `D3S1358`, `HUMvWF31/A`, `D16S539`, `D2S1338`, `Amelogenin`, `D8S1179`, `D21S11`, `D18S51`, `D19S433`, `HUMTH01` and `HUMFIBRA` in RFU quantify, to some extent, the amount of DNA present. Can you recreate this variable?
+
+**NOTE: You will be expected to give a brief presentation about your approach and analysis.**
+
+### Case study 2
+
+In this case study you are going to be be dealing with a subset of data from a project called ACCURATE: ACoustic CUe RATEs for Passive Acoustics Density Estimation (@tiago). (If you are interested the full data were modelled by my PhD student in @alec.) 
+
+The ACCURATE project aims to estimate marine mammal using passive acoustics (i.e., using passive tools to listen to the sounds the animals make rather than having to rely on sighting them). One such method relies on the estimation of an appropriate cue rate (number of cues per unit time). Attaching a Digital Acoustic Recording Tag (DTAG) to marine mammals is a non-invasive method by which we can monitor the behaviour of these animals continuously throughout the dive cycle. 
+
+The object `data` is an aggregated version of the full ACCURATE data:
+
+```{r, eval = FALSE}
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/whale_clicks.csv"
+data <- readr::read_csv(url)
+```
+
+These data contain 843 observations and three variables:
+ 
+   + `minute` the minute index over the time period the DTAG was active
+   + `mean_depth` the average depth in meters (below the surface) for each minute
+   + `n_click` the number of clicks recorded in each minute
+
+In your groups, 
+
+  1. discuss what questions you might be interested in answering with these data,
+  2. discuss how you might analyse these data so that you could answer those questions, and
+  3. and carry out any analysis you deem appropriate. 
+
+**NOTE: You will be expected to give a brief presentation about your approach and analysis.**
+
+### Case study 3
+
+In this case study you are going to be dealing with data that refer to 346 Pokémon (fictional creatures that feature is certain games, each with associated measures of their ability). The data includes individual Pokémon stats including their number, name, first and second type, the stat total and basic stats: HP (`hp`), Attack (`attack`), Defense (`defense`), Special Attack (`sp_attack`), Special Defense (`sp_defense`), and Speed (`speed`), generation, and legendary status.
+
+```{r, eval = FALSE}
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pokemon.csv"
+data <- readr::read_csv(url)
+```
+
+
+In your groups, 
+
+  1. discuss what questions you might be interested in answering with these data,
+  2. discuss how you might analyse these data so that you could answer those questions, and
+  3. and carry out any analysis you deem appropriate. 
+
+**NOTE: You will be expected to give a brief presentation about your approach and analysis.**
+
+
+## Interactive Coding Assessments (ICA) {#sec-ica}
+
+
+Recall @sec-ioa and your first [interactive assessment](https://canvas.auckland.ac.nz/courses/120054/assignments/436870)! Now it's time for [your second, which will have a focus on coding practices](https://canvas.auckland.ac.nz/courses/120054/assignments/436871)! How this is achieved is up you you!
+
+::: {.callout-note}
+### What is an IOA
+
+> IOAs are novel, low-stakes authentic assessments, designed to promote academic integrity and prepare students for the workplace. Communication as a key skill in the UoA's graduate profile and is integral for students' skill development and employability. An IOA is authentic because it is based on a real-world scenario and promotes student engagement and facilitates higher-order thinking. It also preserves academic integrity through its unscripted conversation prompts based on student responses. --- @ioa
+
+:::
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
+
+...draw on your experience from your first [interactive assessment](https://canvas.auckland.ac.nz/courses/120054/assignments/436870) and
+
+  1. **Design an ICA** that demonstrates the participants effective data management, wrangling and visualisation skills as well as clearly communicating their thought process whilst doing so. Things that are set (by me!)
+    
+  + the ICA should be designed to take no more than 10 minutes,
+  + the ICA should be interactive and require participants to demonstrate `R` programming skills, 
+  + the ICA should be designed such that everyone *starts* on an equal footing (e.g., participants will all use a pre-provided laptop with the same software installed), and
+  + the ICA should facilitate flexibility (e.g., no set questions) and reflect, as best as it can, an authentic scenario.
+
+    
+  2. In line with the [University of Auckland's Grade Descriptors Policy](https://www.auckland.ac.nz/en/about-us/about-the-university/policy-hub/education-student-experience/assessment/grade-descriptors-policy.html) **design a rubric for the ICA** outlining what you might expect for each Grade/GPA score.
+
+:::
+
+### Some example ICA scenarios you may want to consider/amend
+  
+  a. You are in a technical interview with a senior data analyst at a research lab. Your task is to wrangle and visualize a provided dataset. The focus will be on your approach to solving any problems, how you handle any challenges, and your coding process. The analyst is there to observe your methods and after support if needed, not to judge the final result.
+
+ *You have 10 minutes to complete the task. This task will focus on*
+ 
+ -  How you approach **cleaning the data** and dealing with any issues*  
+ -  How you use **external tools** (e.g., Stack Overflow, AI assistance) to resolve challenges  
+ -  How **clean and readable** your code is  
+ -  How well you **explain your process**, reasoning, and decisions  
+ 
+ 
+ b. You have been asked to carry out a code review (script pre-provided) on a script used by a colleague for data cleaning, analysis, and visualization. Your task is to interpret the code and communicate your understanding what it does alongside identifying any bugs/inefficiencies and/or unclear coding practices.
+ 
+ *You have 10 minutes to complete the task. This task will focus on*
+
+ - How you **interpret** what unfamiliar code is doing  
+ - Your ability to provide **constructive feedback** (technical and stylistic)  
+ - How well you **communicate** your reasoning, and decisions
+ - Your ability to recognize opportunities to improve **efficiency** and/or **reproducibility** etc.
