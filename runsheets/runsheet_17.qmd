@@ -1,0 +1,198 @@
+# May 19th
+
+## Rough timeline
+
+ + **09:05–09:25 am** *Grouping* multivariate data (@sec-clustering)
+ + **09:25–09:55 am** Divisive vs. Hierarchical (@sec-div) 
+ + **09:55–11:05 am** Break
+ + **11:05–11:45 am** Clusterducks  (@sec-clusterducks) 
+ + **11.45–11.55 pm** Q&A and Task 09 (@sec-peershare17)
+   
+
+
+## *Grouping* multivariate data {#sec-clustering}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Here are some celebrity stats.
+
+![](runsheets/img/celebs.png)
+
+In your groups sort the celebrities into clusters; outline your reasoning.
+
+
+:::
+
+We'll now work through the code below together.
+
+```{r, eval = FALSE}
+library(tidyverse)
+library(GGally)
+library(factoextra)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/celebs.csv")
+data <- column_to_rownames(data, "name")
+data %>% ggpairs()
+## k-means clustering
+set.seed(4321)
+## two clusters
+k2 <- kmeans(data, centers = 2, nstart = 25)
+fviz_cluster(k2, data = data)
+## three clusters
+k3 <- kmeans(data, centers = 3, nstart = 25)
+fviz_cluster(k3, data = data)
+## choose clusters?
+fviz_nbclust(data, kmeans, method = "wss") +
+    labs(subtitle = "Elbow method")
+## dimensions?
+## What about PCA
+pca <- data %>% scale() %>% prcomp()
+summary(pca)
+fviz_pca_biplot(pca, geom = c("point", "text")) 
+```
+
+## Divisive vs. Hierarchical {#sec-div} 
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/10-01_clustering.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15377008?module_item_id=2615037)
+</p>
+
+**Ant example** from [this section of the courseguide](https://biosci738.github.io/BIOSCI738/clustering.html#ants)
+
+```{r, eval = FALSE}
+library(tidyverse)
+library(factoextra)
+library(vegan)
+library(ape)
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+ants <- read_csv(paste(base_url, "pitfalls.csv", sep = ""))
+pitfall.dist <- vegan::vegdist(ants[,5:8], method = "bray", binary = FALSE)
+factoextra::fviz_dist(pitfall.dist)
+## single (nearest neighbour) linkage
+single <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "single")
+plot(single, labels = ants$Site)
+## complete (maximium neighbour) linkage
+complete <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "complete")
+plot(complete, labels = ants$Site)
+## average linkage
+average <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "average")
+plot(average, labels = ants$Site)
+## ward's method
+ward <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "ward.D")
+plot(ward, labels = ants$Site)
+## split clusters on based on your choice of position
+ants$clust4 <- cutree(ward, k = 4)
+pitfall.phylo <- as.phylo(ward)
+pitfall.phylo$tip.label <- ants$Site
+## Set colours 
+colours  <-  c("red","blue","green","black")
+plot(pitfall.phylo, cex = 0.6, tip.color = colours[ants$clust4], label.offset = 0.05)
+## Now there are other variables in the dataset, discuss what, if any,
+## might lead to the suggested "clusters" of sites.
+
+```
+
+## Clusterducks {#sec-clusterducks}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three..
+
+... work through the code below and discuss what each step is achieving, what do you conclude?
+
+*NOTE* [this worksheet may help you a little](https://statbiscuit.github.io/swots/clusterducks.html)
+
+:::
+
+
+```{r, eval = FALSE}
+library(plotly)
+library(factoextra)
+data_url <- "https://github.com/cmjt/statbiscuits/raw/master/swots/data/duck_rgbs.RData"
+load(url(data_url))
+cluster_ducks <- data.frame(attire  = stringr::str_match(names(duck_rgbs),"(.*?)-")[,2],
+                            av_red = sapply(duck_rgbs, function(x) mean(c(x[,,1]))),
+                            av_green = sapply(duck_rgbs, function(x) mean(c(x[,,2]))),
+                            av_blue = sapply(duck_rgbs, function(x) mean(c(x[,,3]))))
+head(cluster_ducks)
+plot_ly(x = cluster_ducks$av_red, y = cluster_ducks$av_green, 
+        z = cluster_ducks$av_blue,
+        type = "scatter3d", mode = "markers", 
+        color = cluster_ducks$attire)
+prop.max <- function(x){
+    ## matrix of index of max RGB values of x
+    mat_max <- apply(x,c(1,2),which.max)
+    ## table of collapsed values
+    tab <- table(c(mat_max))
+    ## proportion of red
+    prop_red <- tab[1]/sum(tab)
+    prop_green <- tab[2]/sum(tab)
+    prop_blue <- tab[3]/sum(tab)
+    return(c(prop_red,prop_green,prop_blue))
+}
+## proportion of r, g, b in each image
+prop <- do.call('rbind',lapply(duck_rgbs,prop.max))
+cluster_ducks$prop_red <- prop[,1]
+cluster_ducks$prop_green <- prop[,2]
+cluster_ducks$prop_blue <- prop[,3]
+plot_ly(x = cluster_ducks$prop_red, y = cluster_ducks$prop_green, 
+        z = cluster_ducks$prop_blue,
+        type = "scatter3d", mode = "markers", 
+        color = cluster_ducks$attire)
+## K-means clustering
+## re format data. We deal only with the numerics info
+df <- cluster_ducks[,2:7]
+## specify rownames as image names
+rownames(df) <- names(duck_rgbs)
+distance <- get_dist(df)
+fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
+## from two clusters to 6 (can we separate out the images?)
+set.seed(4321)
+k2 <- kmeans(df, centers = 2, nstart = 25)
+k3 <- kmeans(df, centers = 3, nstart = 25)
+k4 <- kmeans(df, centers = 4, nstart = 25)
+k5 <- kmeans(df, centers = 5, nstart = 25)
+k6 <- kmeans(df, centers = 6, nstart = 25)
+## total tithin-cluster SS
+barplot(c(k2$tot.withinss,k3$tot.withinss,k4$tot.withinss,
+          k5$tot.withinss,k6$tot.withinss),
+        names = paste(2:6," clusters"))
+## eyeballing it
+p2 <- fviz_cluster(k2, data = df)
+p3 <- fviz_cluster(k3, data = df)
+p4 <- fviz_cluster(k4, data = df)
+p5 <- fviz_cluster(k5, data = df)
+p6 <- fviz_cluster(k6, data = df)
+## for arranging plots
+library(patchwork) 
+p2/ p3/ p4/ p5/ p6
+# Elbow method
+fviz_nbclust(df, kmeans, method = "wss") +
+    labs(subtitle = "Elbow method")
+
+# Silhouette method
+fviz_nbclust(df, kmeans, method = "silhouette")+
+    labs(subtitle = "Silhouette method")
+# Gap statistic
+# recommended value: nboot= 500 for your analysis.
+set.seed(123)
+fviz_nbclust(df, kmeans, nstart = 25,  method = "gap_stat", nboot = 50)+
+  labs(subtitle = "Gap statistic method")
+```
+
+## Q&A and peer-share {#sec-peershare17}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!
+:::

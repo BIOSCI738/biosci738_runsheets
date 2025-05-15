@@ -44,7 +44,9 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_15.qmd >}}
 
-<!--{{< include runsheets/runsheet_16.qmd >}}-->
+{{< include runsheets/runsheet_16.qmd >}}
+
+<!-- {{< include runsheets/runsheet_17.qmd >}} -->
 
 {{< include runsheets/solutions.qmd >}}
 

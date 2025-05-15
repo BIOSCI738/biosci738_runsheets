@@ -23,7 +23,7 @@ Recall @sec-ica? Listen to hear the upshot. Any questions?
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Soon...
 
-Charlotte will soon share some PCA analysis carried out using the grades of this class to date! Obviously, I can't give you the data, however, based on the outputs shown discuss what inference PCA offers you
+Charlotte will soon share some PCA analysis carried out using the grades of this class to date! Obviously, I can't give you the data; however, based on the outputs shown let's discuss what inference PCA offers you!
 
 :::
 
@@ -31,13 +31,14 @@ Charlotte will soon share some PCA analysis carried out using the grades of this
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Fill out [THIS QUIZ](https://docs.google.com/forms/d/e/1FAIpQLSc2Lxlr4IwrooEoQ6SgWSdFuv_ULVL-XL0GBt6q3TO98FWyOQ/viewform?usp=sf_link)
 
- + Feel free to use a pseudonym!
- + Feel free to answer as you imagine a fictitious character would!
+**Note I will be using this data live in class, you do not have to answer honestly if you are uncomfortable doing so, but please be consistent! Perhaps answer as if you were your favourite gaming character. I will be sharing the responses with the class.**
+
+*Questions stolen from [this page](https://community.typeform.com/build-your-typeform-7/using-opinion-scales-for-personality-quizzes-1929)*
 
 :::
 
 
-We'll work through the code below together
+Using [these data (i.e., that collected above)](https://docs.google.com/spreadsheets/d/1Oiyz5WgMKCKpNw7zkHN8Vw0-zMx-5tU9yUOwtWUhUMs/edit?usp=sharing) we'll now work through the code below together.
 
 
 ```{r, eval = FALSE}
@@ -108,6 +109,99 @@ data.frame(x = mds$points[,1], y = mds$points[,2]) %>%
 <p align="center">
 [**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15372455?module_item_id=2614789)
 </p>
+
+**Examples** from [this section of the courseguide](https://biosci738.github.io/BIOSCI738/multidimensional-scaling-mds.html)
+
+```{r, eval = FALSE}
+library(tidyverse)
+library(factoextra) 
+library(vegan)
+library(ade4)
+library(ggfortify) 
+library(pheatmap)
+library(corrplot)
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+north_island <- read_csv(paste(base_url, "north_islands_distances.csv", sep = "")) %>% 
+  column_to_rownames(var = "...1")
+data("HairEyeColor", package = "datasets")
+ekman <- read_csv(paste(base_url, "ekman.csv", sep = ""))
+
+## North Island cities
+## Principal Coordinate Analysis (PCO): 
+## also known as classical multidimensional scaling (classical MDS). 
+head(north_island)
+pheatmap(north_island, cluster_rows = TRUE,
+         treeheight_row = 2, treeheight_col = 2,
+         fontsize_row = 12, fontsize_col = 12,
+         cellwidth = 26, cellheight = 26)
+mds <- cmdscale(north_island, eig = TRUE)
+
+## GOF based on eigenvalues (scree plot)
+plot(mds$eig, type="b",  ylab="Eigenvalue", xlab="Index", lwd=3)
+## GOF (proportion explained by first two PC)
+mds$GOF
+## plot
+autoplot(mds, label = TRUE, shape = FALSE) ## does this look right?
+## switch direction as distances are only relative
+## Note however that axes (principal coordinates) are rarely interpretable in
+## PCO
+data.frame(x = -mds$points[,2], y = mds$points[,1]) %>%
+   ggplot(., aes(x = x, y = y, label = rownames(mds$points))) +
+    geom_text() +coord_fixed()
+
+## HairEyeColor
+## Correspondence Analysis (CA) is a special case of metric 
+## MDS where the distance measure is the chi-square distance 
+## (again conceptually similar to PCA).
+HC.df <- as.data.frame.matrix(HairEyeColor[ , , 2])
+HC.df
+chisq.test(HC.df)
+coaHC <- dudi.coa(HC.df, scannf = FALSE, nf = 2)
+plot(coaHC$eig, type="b",  ylab="Eigenvalue", xlab="Index", lwd=3)
+fviz_ca_row(coaHC)
+fviz_ca_col(coaHC)
+fviz_ca_biplot(coaHC, repel = TRUE, col.col = "brown", col.row = "purple",
+               labelsize = 5, pointsize = 5) + ggtitle("") +
+  theme(legend.text = element_text(size = 25),
+        axis.title.x.bottom = element_text(size = 15),
+        axis.title.y.left = element_text(size = 15),
+        axis.text = element_text(size = 15)) +
+  ylim(c(-0.5,0.5))
+## Colour perception
+### Metric
+str(ekman)
+names(ekman) ## nanometer wavelengths
+mds <- cmdscale(ekman, eig = TRUE)
+## GOF based on eigenvalues (scree plot)
+plot(mds$eig, type="b",  ylab="Eigenvalue", xlab="Index", lwd=3)
+## GOF (proportion explained by first two PC)
+mds$GOF
+## Non-metric
+## 2 d
+mmds2d <- metaMDS(ekman, k = 2, autotransform = FALSE, trace = FALSE)
+stressplot(mmds2d, pch = 20, cex = 2)
+mmds2d$stress
+## 3 d
+mmds3d <- metaMDS(ekman, k = 3, autotransform = FALSE, trace = FALSE)
+stressplot(mmds3d, pch = 20, cex = 2)
+mmds3d$stress
+mmds2d$points %>% as.data.frame() %>%
+ggplot(., aes(x = MDS1, y = MDS2, label = colnames(ekman))) +
+geom_text()
+## rough wavelength conversion to hex code  based on
+## https://www.johndcook.com/wavelength_to_RGB.html
+## ekman wavelengths based from data(ekman,package = "smacof") attributes
+wavelengths <- c(434, 445, 465, 472, 490, 504, 537, 555, 584, 600, 610, 628, 651, 674)
+hex <- c("#2800ff", "#0028ff", "#0092ff", "#00b2ff", "#00ffff", "#00ff61", "#77ff00", "#b3ff00", "#fff200", "#ffbe00", "#ff9b00", "#ff5700", "#ff0000", "#ff0000")
+
+mmds2d$points %>% as.data.frame() %>%
+ggplot(., aes(x = MDS1, y = MDS2, label = hex, col = hex)) +
+  scale_color_manual(values = hex) +
+geom_text()
+
+## BONUS TASK create a 3D plot (e.g., using plotly) showing the results from mmds3d
+```
+
 
 ## Casestudies {#sec-mdscasestudies}
 
