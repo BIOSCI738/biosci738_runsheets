@@ -1,0 +1,240 @@
+# May 16th
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.30 pm** Miscellaneous activities (@sec-misc)
+ + **02:30–02.50 pm** Multidimensional Scaling (@sec-mds)
+ + **02:50–03:00 pm** Break
+ + **03:00–03:55 pm** Casestudies (@sec-mdscasestudies)
+   
+
+## Miscellaneous activities {#sec-misc}
+
+
+::: {.callout-note}
+## ICA
+
+Recall @sec-ica? Listen to hear the upshot. Any questions?
+
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Soon...
+
+Charlotte will soon share some PCA analysis carried out using the grades of this class to date! Obviously, I can't give you the data, however, based on the outputs shown discuss what inference PCA offers you
+
+:::
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Fill out [THIS QUIZ](https://docs.google.com/forms/d/e/1FAIpQLSc2Lxlr4IwrooEoQ6SgWSdFuv_ULVL-XL0GBt6q3TO98FWyOQ/viewform?usp=sf_link)
+
+ + Feel free to use a pseudonym!
+ + Feel free to answer as you imagine a fictitious character would!
+
+:::
+
+
+We'll work through the code below together
+
+
+```{r, eval = FALSE}
+data <- read.csv("person_quiz.csv") ## or equivalent
+require(tidyverse)
+## set up names and correlations
+names(data)[3:12] <- stringr::str_match(names(data)[3:12], "as.\\s*(.*?)\\s*..Do")[,2]
+## variables
+data %>% select(where(is.numeric)) |> cor() |> corrplot::corrplot(addrect = 2, order = 'hclust')
+## people
+people <- t(data[,3:12])
+colnames(people) <- data[,2]
+people |> scale() |> cor() |> corrplot::corrplot()
+## PCA
+pca <- data %>%
+    select(where(is.numeric)) |> scale() |> prcomp()
+factoextra::fviz_pca_biplot(pca, geom = "point")
+factoextra::fviz_screeplot(pca)
+pca$rotation %>%
+  as.data.frame() %>%
+  mutate(variables = rownames(.)) %>%
+  gather(PC,loading,PC1:PC3) %>%
+  ggplot(aes(abs(loading), variables, fill = loading > 0)) +
+  geom_col() +
+  facet_wrap(~PC, scales = "free_y") +
+    labs(x = "Absolute value of loading",y = NULL, fill = "Positive?")
+
+## Euclidean distance matrix using scaled data
+dists <- data %>%
+    select(where(is.numeric)) |> scale() |> dist(upper = TRUE, diag = TRUE)
+mds <- cmdscale(dists, eig = TRUE)
+mds
+plot(mds$points, cex = 0)
+text(mds$points, label = data[,2])
+library(ggfortify)
+autoplot(mds, label = TRUE, shape = FALSE,
+         label.size = 3)
+## Manhattan distance matrix using scaled data (typically used treating ordinal as interval)
+dists <- data %>%
+    select(where(is.numeric)) |> scale() |> dist(method = "manhattan", upper = TRUE, diag = TRUE)
+mds <- cmdscale(dists, eig = TRUE)
+mds
+plot(mds$points, cex = 0)
+text(mds$points, label = data[,2])
+## Minkowski distance matrix using scaled data (typically used)
+dists <- data %>%
+    select(where(is.numeric)) |> scale() |> dist(method = "minkowski", upper = TRUE, diag = TRUE)
+mds <- cmdscale(dists, eig = TRUE)
+mds
+data.frame(x = mds$points[,1], y = mds$points[,2]) %>%
+    ggplot(., aes(x = x, y = y, label = data[,2])) +
+    geom_point(size = 0.9) + coord_fixed()  +
+    ggtitle("BIOSCI738 Personality Map...") + theme_void() +
+   geom_segment(aes(x = -1, y = -4, xend = -1, yend = 4.5),
+                arrow = arrow(length = unit(0.5, "cm")), col = "grey") +
+    geom_segment(aes(x = -4, y = 0, xend = 2.5, yend = 0),
+                 arrow = arrow(length = unit(0.5, "cm")), col = "grey") +
+    geom_text(size = 3.5, vjust = -0.8)
+```
+
+## Multidimensional Scaling {#sec-mds}
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/08-01_mds.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15372455?module_item_id=2614789)
+</p>
+
+## Casestudies {#sec-mdscasestudies}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
+
+... work through each case study below discuss what each step is achieving, what do you conclude?
+
+:::
+
+
+**Bird Abundance** (recall the example from @sec-glmfit; data from @birds)
+
+
+```{r, eval = FALSE}
+require(tidyverse)
+library(ggfortify)
+library(factoextra)
+require(vegan)
+birds <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bird_abundance.csv")
+birds %>%
+    select(-c("OliveFarm", "Management", "Complexity")) %>%
+    cor() |>
+corrplot::corrplot(method = "ellipse", type = "lower")
+### PCA
+pca <-birds %>%
+    select(-c("OliveFarm", "Management", "Complexity")) %>%
+    scale() %>%
+    prcomp()
+summary(pca)
+fviz_screeplot(pca)
+fviz_pca_biplot(pca, geom = "point") +
+    geom_point (alpha = 0.2)
+pca$rotation
+pca$rotation %>%
+  as.data.frame() %>%
+  mutate(variables = rownames(.)) %>%
+  gather(PC,loading,PC1:PC4) %>%
+  ggplot(aes(abs(loading), variables, fill = loading > 0)) +
+  geom_col() +
+  facet_wrap(~PC, scales = "free_y") +
+    labs(x = "Absolute value of loading",y = NULL, fill = "Positive?")
+mmds <- birds %>%
+  select(-c("OliveFarm", "Management", "Complexity")) |> 
+  metaMDS( distance = "bray", trace = FALSE, autotransform = FALSE)
+## 'badness-of-fit indicator'
+## stress provides a measure of the degree to which the distance between 
+## samples in reduced (2) dimensional space matches the actual multivariate distance between 
+## the samples. rule of thumb that stress < 0.2 is ok
+mmds$stress
+## 'Shepard' plot (i.e., scatter plot of the  of the interpoint distances
+## vs. the original dissimilarities)
+## In brief, a narrow scatter around the fitted line indicates a good fit of the distances to the
+## dissimilarities
+stressplot(mmds, pch = 20, cex = 2)
+## do you think there's a  difference in species composition by farm/management
+mmds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = MDS1, y = MDS2, label = birds$OliveFarm)) +
+  geom_text()
+
+mmds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = MDS1, y = MDS2, label = birds$Management, col = birds$Management)) +
+  geom_text()
+```
+
+
+**DNA** data from @dna
+
+```{r, eval = FALSE}
+require(tidyverse)
+library(ggfortify)
+library(factoextra)
+dna <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dna_forensic.csv")
+dna %>% group_by(Group) %>%
+    summarise(mean = mean(Age), sem = sd(Age)/sqrt(n()), mad = sum(abs((Age - mean(Age))))/n())
+dna %>%
+   select(-c("Group", "Sex", "NO")) %>%
+   cor() |>
+   corrplot::corrplot(method = "ellipse", type = "lower")
+
+## Replicating model as in the paper
+data <- dna
+names(data)
+names(data)[5] <- "x1"
+names(data)[8] <- "x2"
+names(data)[15] <- "x3"
+
+model <- lm(Age ~ x1 + x2 + x3, data = data)
+summary(model)
+gglm::gglm(model)
+
+### PCA
+pca <- dna %>%
+    select(-c("Group", "Sex", "NO", "Age")) %>%
+    prcomp()
+summary(pca)
+fviz_screeplot(pca)
+fviz_pca_biplot(pca, geom = "point") +
+    geom_point (alpha = 0.2)
+pca$rotation
+pca$rotation %>%
+  as.data.frame() %>%
+  mutate(variables = rownames(.)) %>%
+  gather(PC,loading,PC1:PC4) %>%
+  ggplot(aes(abs(loading), variables, fill = loading > 0)) +
+  geom_col() +
+  facet_wrap(~PC, scales = "free_y") +
+  labs(x = "Absolute value of loading",y = NULL, fill = "Positive?") 
+## MDS
+dna <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dna_forensic.csv")
+mds <- dna %>%
+  select(-c("Group", "Sex", "NO", "Age")) |> scale() |>
+  dist(upper = TRUE, diag = TRUE, method = "manhattan") |> cmdscale( eig = TRUE)
+
+## GOF gives us the proportion of variance explained by the first 2 dimensions
+## think of PCA
+mds$GOF
+autoplot(mds, label = TRUE, shape = FALSE,
+         label.size = 3)
+## Age
+mds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = V1, y = V2, label = dna$Age, col = dna$Age)) +
+  geom_text()
+## Sex
+mds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = V1, y = V2, label = dna$Sex, col = dna$Sex)) +
+  geom_text()
+
+```
+
