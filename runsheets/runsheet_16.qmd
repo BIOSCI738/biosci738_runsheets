@@ -193,7 +193,7 @@ geom_text()
 ## ekman wavelengths based from data(ekman,package = "smacof") attributes
 wavelengths <- c(434, 445, 465, 472, 490, 504, 537, 555, 584, 600, 610, 628, 651, 674)
 hex <- c("#2800ff", "#0028ff", "#0092ff", "#00b2ff", "#00ffff", "#00ff61", "#77ff00", "#b3ff00", "#fff200", "#ffbe00", "#ff9b00", "#ff5700", "#ff0000", "#ff0000")
-
+## 2D points
 mmds2d$points %>% as.data.frame() %>%
 ggplot(., aes(x = MDS1, y = MDS2, label = hex, col = hex)) +
   scale_color_manual(values = hex) +
