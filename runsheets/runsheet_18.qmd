@@ -15,47 +15,42 @@
 
 > Multivariate analyses refers to a suite of statistical techniques designed to analyse data with more than one variable: either multiple dependent variables, or both multiple dependent and independent variables.
 
-```{mermaid}
-flowchart TD
-    A[Raw data] --> B[Transformed/Standardized/Normalized data]
-    B --> C[Association matrix]
-    C --> D[Hypothesis Testing]
-    C --> E[Cluster]
-    C --> F[Ordination]
-```
+A typical sequence of inference for multivariate data would be **Raw Data** $^?\rightarrow$ **Scale/Standardize Raw Data** $^?\rightarrow$ **Create a Similarity/Dissimilarity Matrix**. From the created matrix you might consider **Cluster Analysis** and/or **Ordination** (a fancy word for summarizing/visualizing/reducing multiple variables in/to a lower-dimensional space).
 
-
+::: {layout-ncol=2}
 
 ```{mermaid}
 flowchart TD
-    A[Common Multivariate Analysis Techniques] 
-    A --> B[Cluster]
-    B --> B1[Hierarchical]
-    B --> B2[Non hierarchical]
-    B1 --> C1[Dendrograms or tree like graphs]
-    C1 --> D1[Links]
-    C1 --> D2[Average]
-    C1 --> D3[Ward]
-    B2 --> E1[Groups of objects or variables]
-    E1 --> E2[Kmeans]
-    A --> F
-    F[Ordination] --> G1[Unconstrained]
-    F --> G2[Constrained]
-    G1 --> H1[Passive single dataset Interpreted a posteriori]
-    H1 --> I1[PCA]
-    H1 --> I2[CA]
-    H1 --> I3[MDS]
-    G2 --> J1[Relates 2 datasets in a single ordination]
-    J1 --> K1[RDA]
-    J1 --> K2[CCA]
+    A[Cluster Analysis] --> B1(Hierarchical)
+    A --> B2(Non hierarchical)
+    B1 --> C1[Dendrograms]
+    C1 -- ? --> D1[Single]
+    C1 -- ? --> D2[Complete]
+    C1 -- ? --> D3[UPGMA]
+    C1 -- ? --> D4[Ward]
+    B2 -- ? --> E1[Kmeans]
+    style A fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
-
+```{mermaid}
+flowchart TD
+    A[Ordination] --> B1(Unconstrained)
+    A --> B2(Constrained)
+    B1 --> C1[Reduced dimensions]
+    C1 -- ? --> D1[PCA]
+    C1 -- ? --> D2[CA]
+    C1 -- ? --> D3[mMDS]
+    C1 -- ? --> D4[PCO]
+    B2 --> E1[Not covered here]
+    style E1 fill:#808080,stroke:#333,stroke-width:0.5px
+    style A fill:#f9f,stroke:#333,stroke-width:4px
+```
+:::
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
 
-Elaborate on the flowcharts above giving specific examples from the courseguide for each box. Discuss the decisions & justifications required/made to traverse along each arrow.
+The sequences and flow charts above have the occasional $?$ visible in the interim steps. Discuss the decisions & justifications required/made to traverse along each arrow (i.e., pass the $?$).  Elaborate on the what each stage achieves giving specific examples from the courseguide. D
 :::
 
 ### Visualizing multivariate data
