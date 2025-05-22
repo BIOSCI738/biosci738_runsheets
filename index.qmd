@@ -6,7 +6,9 @@ date: "2025"
 date-format: "YYYY"
 author: Charlotte Jones-Todd
 institute: University of Auckland
-format: html
+format: 
+   html:
+     mermaid: true
 toc: true
 toc-depth: 2
 bibliography: runsheets/references.bib
@@ -47,6 +49,10 @@ bibliography: runsheets/references.bib
 {{< include runsheets/runsheet_16.qmd >}}
 
 {{< include runsheets/runsheet_17.qmd >}}
+
+<!--{{< include runsheets/runsheet_18.qmd >}}
+
+{{< include runsheets/runsheet_19.qmd >}} -->
 
 {{< include runsheets/solutions.qmd >}}
 

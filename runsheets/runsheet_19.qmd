@@ -1,0 +1,162 @@
+# May 26th
+
+## Rough timeline
+
+ + **09:05–09:55 am** *Discriminating* multivariate data (@sec-discrim)
+ + **09:55–11:05 am** Break
+ + **11:05–11:45 am** Casestudies  (@sec-caselda) 
+ + **11.45–11.55 pm** Q&A (@sec-peershare19)
+   
+
+
+## Linear Discriminant Analysis (LDA) {#sec-discrim}
+
+
+Compare the following two GIFs; **what is the main difference?**
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Compare the following two GIFs...
+
+...**what is the main difference?**
+
+
+::: {layout-ncol=2}
+![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/lm.gif)
+
+![](runsheets/img/fac_lm.gif)
+:::
+
+:::
+
+**Linear discriminant analysis (LDA)** is all about $y = mx + c …$
+
+<p align="center">
+![](runsheets/img/lda.gif)
+</p>
+
+
+**Slides**
+
+
+<iframe src="slides/11-01_lda.pdf" height="400" width="700" title="LDA"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15372455?module_item_id=2614789)
+</p>
+
+
+## Casestudies {#sec-caselda}
+
+**THC levels in cannabis** (data from @cannabis)
+
+```{r, eval = FALSE}
+library(tidyverse)
+thc <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/thc.csv")
+thc <- thc %>%
+    rowwise() %>%
+    mutate(reported = mean(c(low, high, mid), na.rm = TRUE))
+
+ggplot(thc, aes(x = "Lab tested", y = total)) +
+    geom_boxplot() +
+    geom_boxplot(aes(x = "Reported by dispensary", y = reported)) +
+    xlab("") + ylab("THC") +
+    theme_bw()
+
+data <- thc %>%
+    filter(strain %in% c("Dankey Kong", "OG Kush", "Blue Dream"))
+
+ggplot(data, aes(y = total, x = strain, col = strain)) +
+    geom_boxplot() +
+    geom_jitter() +
+    theme_bw()
+### Kind of like regression!
+library(MASS)
+lda  <-  lda(strain ~ total, data = data)
+lda
+
+means <-  data.frame(total = lda$means[,1],
+                        strain = row.names(lda$means))
+                        
+ggplot(data, aes(y = total, x = strain, col = strain)) +
+    geom_boxplot() +
+    geom_jitter() +
+    theme_bw() +
+    geom_point(data = means, pch = 18, size = 5)
+
+
+### The LDA  score, which along with the prior is used to compute the
+## posterior probability of group membership (there are a number of different formulas for this).
+lda$scaling
+
+pred <- predict(lda)
+pred
+
+## plot prediction
+make1Dgrid <- function(x) {
+    rg <- grDevices::extendrange(x)
+    seq(from = rg[1], to = rg[2], length.out = 100)
+}
+                                        
+grid.df <- with(data, expand.grid(total = make1Dgrid(total)))
+# Do the predictions
+grid.df$ghat <- predict(lda, newdata = grid.df)$class
+##plot prediction surface
+ggplot(data, aes(y = total, x = strain, col = strain)) +
+    geom_boxplot() +
+    geom_jitter() +
+    theme_bw() +
+    geom_point(data = means, pch = 18, size = 5) +
+    geom_raster(aes(fill = ghat, x = ghat, y = total), data = grid.df, alpha = 0.25, interpolate = TRUE, inherit.aes = FALSE)
+```
+
+
+**Glass Identification** (dataset from UCI, accessed [here](https://www.kaggle.com/datasets/uciml/glass))
+
+```{r, eval = FALSE}
+glass <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/glass.csv") %>%
+    mutate(Type = as.factor(Type))
+ggplot(reshape2::melt(glass, id.vars = c("Type")),
+       aes(x = value, colour = Type)) +
+       geom_density() + facet_wrap( ~variable, ncol = 1, scales = "free") +
+    theme(legend.position = "bottom")
+##Possible classification rules? RI & Al??
+ggplot(glass, mapping = aes(x = RI, y = Al)) +
+    theme_bw() +
+    geom_point(aes(colour = Type), size = 3)
+## LDA
+library(MASS)
+lda  <-  lda(Type ~ RI + Al, data = glass)
+## Proportion of Trace gives the percentage separation achieved by each discriminant function
+lda
+## predict
+ghat <- predict(lda)$class
+table(prediced = ghat, observed = glass$Type)
+## missclassification rate?
+mean(ghat != glass$Type)
+## group means
+centers  <-  lda$means
+### plot the discriminant surface
+## Set up grid for prediction, 100 x 100 that covers the data range of the two variables
+
+grid.df <-  with(glass,
+                 expand.grid(RI = make1Dgrid(RI),
+                             Al = make1Dgrid(Al)))
+ghat <- predict(lda, newdata = grid.df)
+str(ghat)
+## plot
+ggplot(glass, mapping = aes(x = RI, y = Al))+
+    theme_bw() +
+    geom_point(aes(colour = Type), size = 3) +
+    geom_raster(aes(fill = ghat$class),
+                data = grid.df, alpha = 0.25, interpolate = TRUE) +
+    geom_point(data = as_tibble(centers), pch = "+", size = 8)
+### So, not doing great! Can you improve?
+```
+
+
+## Q&A and peer-share {#sec-peershare19}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!
+:::

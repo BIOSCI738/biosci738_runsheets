@@ -1,0 +1,189 @@
+# May 23rd
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.40 pm** Multivariate data (@sec-vizmult)
+  + What we're interested in
+  + Visualizing it
+ + **02:40–03:30 pm** Casestudies [*including a break*] (@sec-mdscasestudies02)
+ + **03:30–03:55 pm** Model based multivariate analysis (@sec-modelbasedmult)
+   
+
+## Multivariate data {#sec-vizmult}
+
+> Multivariate analyses refers to a suite of statistical techniques designed to analyse data with more than one variable: either multiple dependent variables, or both multiple dependent and independent variables.
+
+```{mermaid}
+flowchart TD
+    A[Raw data] --> B[Transformed/Standardized/Normalized data]
+    B --> C[Association matrix]
+    C --> D[Hypothesis Testing]
+    C --> E[Cluster]
+    C --> F[Ordination]
+```
+
+
+
+```{mermaid}
+flowchart TD
+    A[Common Multivariate Analysis Techniques] 
+    A --> B[Cluster]
+    B --> B1[Hierarchical]
+    B --> B2[Non hierarchical]
+    B1 --> C1[Dendrograms or tree like graphs]
+    C1 --> D1[Links]
+    C1 --> D2[Average]
+    C1 --> D3[Ward]
+    B2 --> E1[Groups of objects or variables]
+    E1 --> E2[Kmeans]
+    A --> F
+    F[Ordination] --> G1[Unconstrained]
+    F --> G2[Constrained]
+    G1 --> H1[Passive single dataset Interpreted a posteriori]
+    H1 --> I1[PCA]
+    H1 --> I2[CA]
+    H1 --> I3[MDS]
+    G2 --> J1[Relates 2 datasets in a single ordination]
+    J1 --> K1[RDA]
+    J1 --> K2[CCA]
+```
+
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
+
+Elaborate on the flowcharts above giving specific examples from the courseguide for each box. Discuss the decisions & justifications required/made to traverse along each arrow.
+:::
+
+### Visualizing multivariate data
+
+We'll work through the code below together; the data refer to different Pokémon (seen in case study 3 of @sec-model). How useful do you find each plot?
+
+```{r, eval = FALSE}
+require(tidyverse)
+require(GGally)
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pokemon.csv"
+data <- read_csv(url)
+## pairs plots for continuous variables
+data %>%
+  select(where(is.numeric)) |> pairs()
+data %>%
+  select(where(is.numeric)) |> ggpairs()
+## but what if you had a categorical variable
+data %>%
+  select(legendary, where(is.numeric)) |> ggpairs(aes(color = legendary))
+## two (or more) categorical variables
+with(data, table(legendary,
+    type2)) |> barplot(legend = TRUE)
+## conditional
+with(data, prop.table(table(legendary,
+    type2), margin = 2)) |> barplot(legend = TRUE)
+## alluvial plots
+require(alluvial)
+data$Freq <- 1
+mult <- aggregate(Freq ~ type2 + legendary,
+    data = data, FUN = sum)
+alluvial(mult, freq = mult$Freq, border = NA, col = ifelse(mult$legendary, "red", "blue"))
+## What are some potential interpretation pitfalls
+## heatmaps
+library(pheatmap)
+data %>%
+  select(where(is.numeric), -Freq, - generation, -number) |> cor() |>
+  pheatmap( cluster_rows = TRUE, cluster_cols = TRUE,
+    treeheight_row = 0, treeheight_col = 0)
+data %>% select(where(is.numeric), -Freq, -generation, -number) |>
+  pheatmap( , cluster_rows = TRUE,
+    cluster_cols = TRUE, labels_row = data$name, cex = 0.7)
+## look at ?pheatmap
+library(corrplot)
+data %>% select(where(is.numeric), -Freq, - generation, -number) |> cor() |> 
+  corrplot(addrect = 3, order = 'hclust')
+
+```
+
+
+
+## Casestudies {#sec-mdscasestudies02}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Revisit...
+
+...one of the following case studies. Create an informative visualization that appropriately demonstrates the structure of these multivariate data. You may find some useful examples [here](https://epurdom.github.io/Stat131A/book/visualizing-multivariate-data.html#relationships-between-continous-variables).
+
+ 1. **Eigenfaces** from @sec-eigenfaces
+ 2. **Clusterducks** from @sec-clusterducks
+ 3. **Bird Abundance** first case study from revisited in @sec-mdscasestudies (data from @birds)
+ 4. **DNA** second case study from @sec-mdscasestudies (data from @dna)
+ 
+**Be prepared to present your activity to me as I'll be prepared to critique!**
+
+:::
+
+## Model based multivariate analysis {#sec-modelbasedmult}
+
+Note this is a bit beyond the scope of this course, but I include it here for fun! We'll go through each example together. Here, we don’t reduce data to correlation or similarity matrix. Can calculate AIC, plot residuals, etc and can directly relate multiple responses to covariates in single analysis....
+
+> The `mvabund` package provides tools for model-based analysis of multivariate abundance data in ecology (@mvabund)
+
+```{r, eval = FALSE}
+require(mvabund)
+data(Tasmania)
+tasmvabund <- mvabund(Tasmania$copepods)
+## fit a model
+tas.nb <- manyglm(Tasmania$copepods ~ Tasmania$block*Tasmania$treatment, family = "negative.binomial")
+summary(tas.nb)
+## predict
+predict(tas.nb, type = "response")
+## model assumptions
+plot(tas.nb)
+## multivariate hypothesis
+anova(tas.nb, p.uni = "adjusted")
+
+```
+
+
+> The `clustglm` package implements multivariate methods using mixtures combining correspondence analysis (CA), scaling (like multidimensional scaling, or MDS), and pattern detection techniques to analyze data with both categorical and continuous variables (@clustglm)
+
+```{r, eval = FALSE}
+## devtools::install_github("vuw-clustering/clustglm")
+library(clustglm)
+data(cottontails)
+## glm
+glm.null <- glm(formula = cbind(nsucc,nfail) ~ 1,
+                data = cottontails,
+                family = "binomial")
+glm.null$deviance
+logLik(glm.null) 
+## clustglm
+clustglm.null <- clustglm(formula = cbind(nsucc,nfail) ~ rep(1,74),
+                          data = cottontails,
+             	          family = "binomial")
+clustglm.null$deviance   
+clustglm.null$LL   ## calculated slightly differently 
+## two clusters...
+cg.2clust <- clustglm(formula = cbind(nsucc,nfail) ~ IDclust,
+                       family = "binomial",
+         	       data = cottontails,
+         	       fact4clust = "ID", nclust = 2,
+         	       clustfactnames = "IDclust",
+         	       start.control = list(randstarts = 100),
+         	       verbose = 1)
+summary(cg.2clust)
+## three clusters?
+cg.3clust <- clustglm(formula = cbind(nsucc,nfail) ~ IDclust,
+                       family = "binomial",
+         	       data = cottontails,
+         	       fact4clust = "ID", nclust = 3,
+         	       clustfactnames = "IDclust",
+         	       start.control = list(randstarts = 100),
+         	       verbose = 1)
+summary(cg.3clust)
+## choose between them
+model.list <- list(cg.null = clustglm.null,
+                   cg.2clust = cg.2clust,
+                   cg.3clust = cg.3clust)
+comparison(model.list)
+```
