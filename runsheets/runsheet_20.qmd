@@ -1,0 +1,28 @@
+# May 30th
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** Stats Bake-Off 
+   
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of three or four assign the following roles...
+
+ 1. **Facilitator** Responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute. 
+ 2. **Notetaker** Responsible for recording the key points of your group’s activity.
+ 3. **Coder** Responsible for synthesising and creating the group's `R` codebank via [Posit Cloud (*Free*)](https://posit.cloud/).
+ 4. **Reporter** Responsible for reporting back to the class on behalf of the group. Seek consensus from the group about your most important aspects of your discussion to share.
+
+
+[*Determine who is filling what role by order of next birthdays – the person with the next birthday will be facilitator, the next birthday after that will be the notetaker, the third birthday will be the coder, and if your group has four members, the fourth member will be the timekeeper.*]
+
+**Then 1) choose a team name and 2) your coder should set up a [Posit Cloud (Free)](https://posit.cloud/) account**
+
+Once determined, the **facilitator should come up to me** giving me the team's name and the coder's email address associated with [Posit Cloud](https://posit.cloud/). I will then run the following `R` code, which will determine your groups' next step^[more specifically, randomly choose which one of @lizards, @autism, or @herbicide you will be considering in this workshop.].
+
+```{r, eval = FALSE}
+sample(c("lizard", "asd", "herbicide"), size = 1)
+```
+
+:::
+
