@@ -2,27 +2,62 @@
 
 ## Rough timeline
 
-### **02:05 pm - 03:55 pm** Stats Bake-Off 
+### **02:05 pm - 03:55 pm** Stats Bake-Off & Report Roulette
    
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of three or four assign the following roles...
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Organize yourselves into groups of four.
 
- 1. **Facilitator** Responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute. 
- 2. **Notetaker** Responsible for recording the key points of your group’s activity.
- 3. **Coder** Responsible for synthesising and creating the group's `R` codebank via [Posit Cloud (*Free*)](https://posit.cloud/).
- 4. **Reporter** Responsible for reporting back to the class on behalf of the group. Seek consensus from the group about your most important aspects of your discussion to share.
+#### Determine who is filling which role listed below by order of next birthdays: the person with the next birthday will be facilitator, the next birthday after that will be the notetaker, the third birthday will be the coder, and if your group has four members, the fourth member will be the reporter.
+
+#### 👥 Team Roles & Responsibilities
+
+Each team member should actively contribute to **both the discussion and the analysis**. Use [Posit Cloud](https://posit.cloud/) to collaborate in real-time, with the *Coder* hosting the shared project. Roles are designed to support equitable collaboration — not divide tasks in silos.
+
+---
+
+1. 🤝 **Facilitator**
+- Ensures inclusive and collaborative participation.
+- Encourages all members to contribute ideas and opinions.
+- Summarizes progress and decisions during discussions.
+- Helps keep the group focused and on task.
+
+---
+
+2. 📝 **Notetaker**
+- Records key points, decisions, and reasoning during the task.
+- Maintains a digital “lab notebook” (e.g., `.txt` or `.Rmd` file) in Posit Cloud.
+- Logs assumptions, issues, and questions for the teaching team.
+- Supports the Reporter by providing clear summaries of group work.
+
+---
+
+3. 💻 **Coder** *(Posit Cloud Project Host)*
+- Creates and shares a [Posit Cloud project](https://posit.cloud/) for the group (*yet to be given by Charlotte*).
+- Organizes code files clearly, using comments and logical structure.
+- Collaboratively implements the analysis — with input from all members.
+- Helps debug code and ensure everyone can run scripts smoothly.
+
+---
+
+4. 📢 **Reporter**
+- Drafts the **press release-style report** in `.Rmd` format in the shared Posit Cloud project.
+- Leads group consensus on interpretations and key messages.
+- Presents the final group findings (in the last 15 minutes of this workshop to the other teams).
+- Reflects on both the scientific analysis and group collaboration.
+
+---
+
+🔁 Shared Responsibilities
+Regardless of role, everyone should:
+- Contribute to the **statistical analysis and interpretation**.
+- Review and give feedback on code and written outputs.
+- Ask questions, support others, and engage with the task.
 
 
-[*Determine who is filling what role by order of next birthdays – the person with the next birthday will be facilitator, the next birthday after that will be the notetaker, the third birthday will be the coder, and if your group has four members, the fourth member will be the timekeeper.*]
+#### Then 1) choose a team name and 2) each set up a [Posit Cloud (Free)](https://posit.cloud/) account. Now, the **facilitator should come up to me** giving me the team's name and the coder's email address associated with [Posit Cloud](https://posit.cloud/). I will then randomly allocate your team a scenario, which will determine your groups' next step^[more specifically, randomly choose which one of @lizards, @autism, or @herbicide you will be considering in this workshop.].
 
-**Then 1) choose a team name and 2) your coder should set up a [Posit Cloud (Free)](https://posit.cloud/) account**
 
-Once determined, the **facilitator should come up to me** giving me the team's name and the coder's email address associated with [Posit Cloud](https://posit.cloud/). I will then run the following `R` code, which will determine your groups' next step^[more specifically, randomly choose which one of @lizards, @autism, or @herbicide you will be considering in this workshop.].
-
-```{r, eval = FALSE}
-sample(c("lizard", "asd", "herbicide"), size = 1)
-```
-
+*[NOTE: Role responsibilities were ammended from those we've used earlier in the course with the assistance of ChatGPT (OpenAI, 2025).]*
 :::
 
