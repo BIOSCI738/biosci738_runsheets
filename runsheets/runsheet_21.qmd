@@ -1,0 +1,207 @@
+# June 6th
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** Recap & Final Report with accompanying GitHub repo!
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>What's the common factor?
+
+:::{.columns}
+
+::: {.column width="25%"}
+![Cats (2019)](https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/Cats_2019_poster.jpg/250px-Cats_2019_poster.jpg)
+:::
+
+::: {.column width="25%"}
+![Toy Story 2](https://upload.wikimedia.org/wikipedia/en/c/c0/Toy_Story_2.jpg)
+:::
+
+::: {.column width="25%"}
+![Foodfight!](https://upload.wikimedia.org/wikipedia/en/thumb/d/d4/Foodfight%21_DVD_cover.jpg/250px-Foodfight%21_DVD_cover.jpg)
+:::
+
+::: {.column width="25%"}
+![Atari E.T. 2600](https://upload.wikimedia.org/wikipedia/en/f/f8/Etvideogamecover.jpg)
+:::
+
+:::
+
+
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> GitHub Repo Tour
+
+I will be coming around each group to discuss the blocks below, as you are waiting...
+
+Take it in turn to take your peers on a tour of your  [GitHub code repository](https://canvas.auckland.ac.nz/courses/120054/assignments/436872) as-it stands! How do you think it scores in terms of the rubric? Any suggestions to improve your peers' repo?
+
+
+
+:::
+
+
+::: {.callout-note}
+
+## [Written Report](https://canvas.auckland.ac.nz/courses/120054/assignments/436873)
+
+
+```{r written-report-rubric-kable, echo=FALSE, message=FALSE, warning=FALSE}
+library(tibble)
+library(knitr)
+library(kableExtra)
+
+rubric_report <- tribble(
+  ~Criterion,
+  "Report Structure",
+  "Clear and Concise Writing",
+  "Description of Statistical Methodology",
+  "Data Analysis and Interpretation",
+  "Additional Insights"
+)
+
+rubric_report$`Exemplary (Band A)\n[Full Marks]` <- c(
+  "Well-crafted structure that captivates from intro to conclusion. Smooth, logical flow enhances readability.",
+  "Flawless grammar, cohesive writing style. Clear, precise, and engaging analysis presentation.",
+  "Thorough, precise explanation of statistical methods with assumptions, limitations, and interpretations.",
+  "Sophisticated, insightful analysis using critical thinking. Conclusions deepen topic understanding.",
+  "Exceptional creativity and critical thinking with unique, valuable insights extending beyond expectations."
+)
+
+rubric_report$`Proficient (Band B)\n[High–Mid Marks]` <- c(
+  "Logical structure with clear intro, developed body, and summarizing conclusion. Aids understanding.",
+  "Clear, concise writing with minimal grammar errors. Effective communication of ideas and implications.",
+  "Clear and accurate method explanations. Solid understanding, though some elaboration may be lacking.",
+  "Solid analysis with relevant findings. Evidence-based conclusions show good comprehension.",
+  "Provides additional insights connecting ideas or proposing alternative interpretations or applications."
+)
+
+rubric_report$`Adequate (Band C)\n[Mid–Low Marks]` <- c(
+  "Basic structure present, but may be disjointed. Logical flow may be hard to follow.",
+  "Some grammar errors and unclear sections. Generally understandable, but may lack clarity in places.",
+  "Mentions methods but explanations are shallow or inconsistent. Some misunderstanding evident.",
+  "Some analysis included, but interpretation is superficial or lacks depth.",
+  "Some minor or loosely related insights offered, but lacking originality or depth."
+)
+
+rubric_report$`Insufficient (Band D)\n[Low–No Marks]` <- c(
+  "Lacks clear intro, body, or conclusion. Structure is confusing and ineffective.",
+  "Many grammar issues, unclear and hard to follow writing. Lacks coherence.",
+  "Poor or incorrect explanation of methods. Little understanding shown.",
+  "Fails to analyze or interpret data effectively. No meaningful conclusions.",
+  "No insights beyond expected analysis. Lacks creativity or depth."
+)
+
+# Render as kable
+kable(rubric_report,
+      format = "html",
+      escape = FALSE,
+      caption = "Summary of CANVAS Grading Rubric for your Written Report") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover", "condensed"))
+
+
+```
+
+### What I am not expecting
+
+ + A fully fledged paper
+ 
+    + This exercise is more one in reviewing!
+    
+ + A regurgitation of the publication
+ 
+    + This exercise if for you to showcase your understanding of a research topic of your choice
+    
+ + Too much beyond the content of the course
+ 
+    + You should, though, feel free to read up on any methods you find that are new and draw parallels to content we’ve covered.
+    
+
+### What I am expecting
+
+
+ + A coherent and insightful essay
+ 
+    + Use this to showcase your understanding
+    + Use this to demonstrate your critical thinking
+    + What to think of
+    
+         + Is the writing appropriate for the target audience? 
+         + Does your work skillfully interpret the results?
+         + Are your tables/figures clear, effective, and informative?
+         + Do you make the appropriate links to the article you are reviewing/critiquing/rese
+:::
+
+
+::: {.callout-note}
+## [GitHub code repository](https://canvas.auckland.ac.nz/courses/120054/assignments/436872)
+
+```{r github-rubric-kable, echo=FALSE, message=FALSE, warning=FALSE}
+library(tibble)
+library(knitr)
+library(kableExtra)
+
+rubric_github <- tribble(
+  ~Criterion,
+  "Repository Structure and Organization",
+  "Reproducible Execution",
+  "Documentation and Code Comments",
+  "Inclusion of Examples",
+  "Consistent File Naming Policies",
+  "README"
+)
+
+rubric_github$`Exemplary (Band A)\n[Full Marks]` <- c(
+  "Follows a standardized structure (e.g., project template) with comprehensive guidance for navigating and reproducing results.",
+  "Includes fully documented scripts covering all steps for reproduction, handles issues, sample inputs/outputs, and automation.",
+  "Comprehensive documentation or code comments explaining purpose, usage, design choices, and possible improvements.",
+  "Comprehensive examples covering many scenarios, with input/output, explanations, and clear behavior.",
+  "Strict, documented, intuitive naming conventions for easy navigation and understanding.",
+  "README is thorough, logical, professional, and clearly explains purpose and goals using concise language."
+)
+
+rubric_github$`Proficient (Band B)\n[High–Mid Marks]` <- c(
+  "Well-organized repo with separate folders for code/data/docs. Easy to navigate.",
+  "Clear instructions or scripts provided for reproduction; some edge cases may not be covered.",
+  "Good documentation/comments explaining code’s purpose and logic; may lack some detail.",
+  "Clear examples of functionality; may lack coverage of complex scenarios.",
+  "Mostly consistent naming; some minor inconsistencies.",
+  "README outlines purpose well, mostly clear, some room for improvement in format or clarity."
+)
+
+rubric_github$`Adequate (Band C)\n[Mid–Low Marks]` <- c(
+  "Basic structure with folders, but some files misplaced or missing.",
+  "Some steps for reproduction included but incomplete, unclear, or outdated.",
+  "Limited or unclear documentation; organization may hinder understanding.",
+  "Some examples exist but are limited, poorly documented, or unclear.",
+  "Some naming consistency, but ambiguous/confusing filenames present.",
+  "README lacks clarity or detail; may be disorganized or incomplete."
+)
+
+rubric_github$`Insufficient (Band D)\n[Low–No Marks]` <- c(
+  "No recognizable structure; difficult to find or understand contents.",
+  "No scripts or instructions to reproduce results.",
+  "Lacks documentation; code is difficult to understand or use.",
+  "No examples of code usage or output.",
+  "Inconsistent, unclear naming; difficult to navigate.",
+  "README absent or provides no clarity on repo’s purpose."
+)
+
+# Render as kable
+kable(rubric_github,
+      format = "html",
+      escape = FALSE,
+      caption = "Summary of CANVAS Grading Rubric for your GitHub Repository") %>%
+  kable_styling(full_width = TRUE, bootstrap_options = c("striped", "hover", "condensed"))
+
+```
+
+### What I am expecting
+
+  + A fully reproducible code repository
+
+       + Imagine that someone with no knowledge of this stumbles across your repo and wishes to find out about what it contains and wants to reproduce your work
+
+:::
