@@ -1,9 +1,14 @@
 # June 6th
 
+::: {.callout-warning}
+## Please remember to fillout your SETs!
+:::
+
 ## Rough timeline
 
 ### **02:05 pm - 03:55 pm** Recap & Final Report with accompanying GitHub repo!
 
+## Intro
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>What's the common factor?
@@ -34,14 +39,15 @@
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> GitHub Repo Tour
 
+
+Take it in turn to take your peers on a tour of your  [GitHub code repository](https://canvas.auckland.ac.nz/courses/120054/assignments/436872) as-it stands! How do you think it scores in terms of the rubric? Any suggestions to improve your peers' repo? ([*example*](https://github.com/statbiscuit/mini_games/tree/main))
+
 I will be coming around each group to discuss the blocks below, as you are waiting...
-
-Take it in turn to take your peers on a tour of your  [GitHub code repository](https://canvas.auckland.ac.nz/courses/120054/assignments/436872) as-it stands! How do you think it scores in terms of the rubric? Any suggestions to improve your peers' repo?
-
-
 
 :::
 
+
+## [Written Report](https://canvas.auckland.ac.nz/courses/120054/assignments/436873)
 
 ::: {.callout-note}
 
@@ -104,11 +110,15 @@ kable(rubric_report,
 
 ```
 
-### What I am not expecting
+:::
+
+**In summary, what I am not expecting**
 
  + A fully fledged paper
  
-    + This exercise is more one in reviewing!
+ + A literature review
+ 
+ + A blow-by-blow account of all your work
     
  + A regurgitation of the publication
  
@@ -119,10 +129,10 @@ kable(rubric_report,
     + You should, though, feel free to read up on any methods you find that are new and draw parallels to content we’ve covered.
     
 
-### What I am expecting
+**In summary, what I am expecting** (*think back to the @sec-bakeoff*)
 
 
- + A coherent and insightful essay
+ + A coherent and insightful essay 
  
     + Use this to showcase your understanding
     + Use this to demonstrate your critical thinking
@@ -131,9 +141,10 @@ kable(rubric_report,
          + Is the writing appropriate for the target audience? 
          + Does your work skillfully interpret the results?
          + Are your tables/figures clear, effective, and informative?
-         + Do you make the appropriate links to the article you are reviewing/critiquing/rese
-:::
+         + Are your findings clear
+         + Have you appropriately acknowledged your tools/sources!
 
+## [GitHub code repository](https://canvas.auckland.ac.nz/courses/120054/assignments/436872)
 
 ::: {.callout-note}
 ## [GitHub code repository](https://canvas.auckland.ac.nz/courses/120054/assignments/436872)
@@ -198,10 +209,11 @@ kable(rubric_github,
 
 ```
 
-### What I am expecting
+:::
+
+**In summary, I am expecting**
 
   + A fully reproducible code repository
 
        + Imagine that someone with no knowledge of this stumbles across your repo and wishes to find out about what it contains and wants to reproduce your work
 
-:::

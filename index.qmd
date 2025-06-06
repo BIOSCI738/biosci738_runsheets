@@ -55,7 +55,7 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_20.qmd >}}
 
-<!--{{< include runsheets/runsheet_21.qmd >}}-->
+{{< include runsheets/runsheet_21.qmd >}}
 
 {{< include runsheets/solutions.qmd >}}
 

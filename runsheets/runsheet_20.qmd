@@ -3,7 +3,8 @@
 ## Rough timeline
 
 ### **02:05 pm - 03:55 pm** Stats Bake-Off & Report Roulette
-   
+
+## Stats Bake-Off & Report Roulette {#sec-bakeoff}
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Organize yourselves into groups of four.
