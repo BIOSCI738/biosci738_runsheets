@@ -2,7 +2,7 @@
 title: "Advanced Biological Data Analysis"
 title-block-banner: "#c7dbe2"
 subtitle: "BIOSCI 738"
-date: "2025"
+date: "2026"
 date-format: "YYYY"
 author: Charlotte Jones-Todd
 institute: University of Auckland
@@ -14,49 +14,7 @@ bibliography: runsheets/references.bib
 ---
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+{{< include runsheets/runsheet_00.qmd >}}
 
-{{< include runsheets/runsheet_01.qmd >}}
+<!-- {{< include runsheets/runsheet_01.qmd >}} -->
 
-{{< include runsheets/runsheet_02.qmd >}}
-
-{{< include runsheets/runsheet_03.qmd >}}
-
-{{< include runsheets/runsheet_04.qmd >}}
-
-{{< include runsheets/runsheet_05.qmd >}}
-
-{{< include runsheets/runsheet_06.qmd >}}
-
-{{< include runsheets/runsheet_07.qmd >}}
-
-{{< include runsheets/runsheet_08.qmd >}}
-
-{{< include runsheets/runsheet_09.qmd >}}
-
-{{< include runsheets/runsheet_10.qmd >}}
-
-{{< include runsheets/runsheet_11.qmd >}}
-
-{{< include runsheets/runsheet_12.qmd >}}
-
-{{< include runsheets/runsheet_13.qmd >}}
-
-{{< include runsheets/runsheet_14.qmd >}}
-
-{{< include runsheets/runsheet_15.qmd >}}
-
-{{< include runsheets/runsheet_16.qmd >}}
-
-{{< include runsheets/runsheet_17.qmd >}}
-
-{{< include runsheets/runsheet_18.qmd >}}
-
-{{< include runsheets/runsheet_19.qmd >}}
-
-{{< include runsheets/runsheet_20.qmd >}}
-
-{{< include runsheets/runsheet_21.qmd >}}
-
-{{< include runsheets/solutions.qmd >}}
-
-{{< include runsheets/references.qmd >}}

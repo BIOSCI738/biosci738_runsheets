@@ -1,0 +1,17 @@
+# Notes
+
+All BIOSCI 738 lectures require your **active involvement**! See the [course policies](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies) for further infomation.
+
+Throughout this runsheet you'll find a number of different callout boxes:
+
+::: {.callout-tip}
+## this box will contain the expected learning objectives and/or outcomes for the material
+:::
+
+::: {.callout-note}
+## this box will contain some useful information
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer either individually or within your group
+:::
