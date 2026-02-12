@@ -13,5 +13,71 @@ Throughout this runsheet you'll find a number of different callout boxes:
 :::
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer either individually or within your group
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch/code something! Completing these tasks will make up part of your weekly task-based participation mark.
 :::
+
+# Week 01
+
+A big part of the learning experience in BIOSCI738 comes from you engaging with all the material suggested. Have you familiarised yourself with the [BIOSCI738 CANVAS page](https://canvas.auckland.ac.nz/courses/141056) and the [Course policies and FAQs](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies)? Let's see...
+
+
+::: {.interactive}
+<p>What's the name of my dog? (*hint he stars in the introductory video*)</p>
+
+<input type="text" id="petInput" placeholder="Type the dog's name..." />
+
+<p id="feedback" style="font-weight: bold; font-size: 1.2em;"></p>
+
+<script>
+const inputBox = document.getElementById("petInput");
+const feedback = document.getElementById("feedback");
+const correctAnswer = "cai"; // change to your pet's name
+
+inputBox.addEventListener("input", function() {
+  const userAnswer = inputBox.value.trim().toLowerCase();
+
+  if(userAnswer === correctAnswer) {
+    feedback.textContent = "Correct! 🎉🐾";
+    feedback.style.color = "green";
+  } else if(userAnswer.length > 0) {
+    feedback.textContent = "Not quite… 😅 Try again!";
+    feedback.style.color = "red";
+  } else {
+    feedback.textContent = "";
+  }
+});
+</script>
+:::
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Introduction to BIOSCI738
+BIOSCI738 kicks off a little differently in week 1. Rather than a typical lecture, we have 30-minute small-group sessions.
+
+**Sign up** for a slot via the BIOSCI738 CANVAS calander and come along for an introduction to the course. During the session, I’ll go over my expectations, introduce the diagnostic tasks (below), and answer any questions you may have. Be ready to share what you hope to get out of the course!
+
+If you’re also enrolled in BIOSCI747 and can’t attend, please reach out to me directly (c.jonestodd@auckland.ac.nz).
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Diagnostic Coding Task
+
+Below, are a few tasks designed for you to self-assess your data wrangling skills and to make sure that you are all set up for the semester. You are encouraged to use any tools, including AI-based tools, you wish; however, the responsibility is yours to ensure you fully understand and verify all work you submit.
+
+You are not expected to have prior experience with GitHub and should [refer to this section of the courseguide for an introduction](https://biosci738.github.io/BIOSCI738/version-control-with-git-and-github.html) (as well as some common issue fixes).
+
+ 1. **Install** git ([follow these instrictions](https://happygitwithr.com/install-git.html))
+ 2. **Register** an account with [GitHub](https://github.com/) (*choose the free option!*)
+ 3. **Link** to the GitHub Classroom repository you were invited to (via the CANVAS announcement) and ensure it is correctly set up.
+ 4. **Download** and open the repository in RStudio, make sure to familiarise yourself with its structure.
+ 5. **Update** the `tasks/week_01.r` script to reproduce Figure 1 of [this paper](https://doi.org/10.1111/1365-2664.13691) using the data the script already reads in (sourced from the paper).
+ 
+    - All data manipulation must be done **in R** and be fully reproducible
+    - Useful `tidyverse` functions: `group_by()`, `summarise_all()`, `pivot_longer()`, `pivot_wider()`, `separate()`, `mutate()`, `str_remove()`, `str_replace()`.
+ 6. Finally, **add** and **commit** your changes with a meaningful commit message. Then **push** the changes to GitHub.
+ 
+    - Refer to [this section of the coursebook](https://biosci738.github.io/BIOSCI738/version-control-with-git-and-github.html) if you need help with committing and pushing.
+
+Any problems then please reach out via c.jonestodd@auckland.ac.nz. This task should be completed by the end of Week 01.
+:::
+

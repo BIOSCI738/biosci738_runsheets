@@ -92,6 +92,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul class="collapse">
   <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
+  <li><a href="#week-01" id="toc-week-01" class="nav-link" data-scroll-target="#week-01">Week 01</a></li>
   </ul>
 </nav>
 </div>
@@ -138,11 +139,87 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch an answer either individually or within your group
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> this box will ask you discuss/write/sketch/code something! Completing these tasks will make up part of your weekly task-based participation mark.
 </div>
 </div>
 <div class="callout-body-container callout-body">
 
+</div>
+</div>
+</section>
+<section id="week-01" class="level1">
+<h1>Week 01</h1>
+<p>A big part of the learning experience in BIOSCI738 comes from you engaging with all the material suggested. Have you familiarised yourself with the <a href="https://canvas.auckland.ac.nz/courses/141056">BIOSCI738 CANVAS page</a> and the <a href="https://biosci738.github.io/BIOSCI738/key-information.html#course-policies">Course policies and FAQs</a>? Let’s see…</p>
+<div class="interactive">
+<p>
+What’s the name of my dog? (<em>hint he stars in the introductory video</em>)
+</p>
+<p><input type="text" id="petInput" placeholder="Type the dog's name..."></p>
+<p id="feedback" style="font-weight: bold; font-size: 1.2em;">
+</p>
+<script>
+const inputBox = document.getElementById("petInput");
+const feedback = document.getElementById("feedback");
+const correctAnswer = "cai"; // change to your pet's name
+
+inputBox.addEventListener("input", function() {
+  const userAnswer = inputBox.value.trim().toLowerCase();
+
+  if(userAnswer === correctAnswer) {
+    feedback.textContent = "Correct! 🎉🐾";
+    feedback.style.color = "green";
+  } else if(userAnswer.length > 0) {
+    feedback.textContent = "Not quite… 😅 Try again!";
+    feedback.style.color = "red";
+  } else {
+    feedback.textContent = "";
+  }
+});
+</script>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Introduction to BIOSCI738
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>BIOSCI738 kicks off a little differently in week 1. Rather than a typical lecture, we have 30-minute small-group sessions.</p>
+<p><strong>Sign up</strong> for a slot via the BIOSCI738 CANVAS calander and come along for an introduction to the course. During the session, I’ll go over my expectations, introduce the diagnostic tasks (below), and answer any questions you may have. Be ready to share what you hope to get out of the course!</p>
+<p>If you’re also enrolled in BIOSCI747 and can’t attend, please reach out to me directly (c.jonestodd@auckland.ac.nz).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Diagnostic Coding Task
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Below, are a few tasks designed for you to self-assess your data wrangling skills and to make sure that you are all set up for the semester. You are encouraged to use any tools, including AI-based tools, you wish; however, the responsibility is yours to ensure you fully understand and verify all work you submit.</p>
+<p>You are not expected to have prior experience with GitHub and should <a href="https://biosci738.github.io/BIOSCI738/version-control-with-git-and-github.html">refer to this section of the courseguide for an introduction</a> (as well as some common issue fixes).</p>
+<ol type="1">
+<li><p><strong>Install</strong> git (<a href="https://happygitwithr.com/install-git.html">follow these instrictions</a>)</p></li>
+<li><p><strong>Register</strong> an account with <a href="https://github.com/">GitHub</a> (<em>choose the free option!</em>)</p></li>
+<li><p><strong>Link</strong> to the GitHub Classroom repository you were invited to (via the CANVAS announcement) and ensure it is correctly set up.</p></li>
+<li><p><strong>Download</strong> and open the repository in RStudio, make sure to familiarise yourself with its structure.</p></li>
+<li><p><strong>Update</strong> the <code>tasks/week_01.r</code> script to reproduce Figure 1 of <a href="https://doi.org/10.1111/1365-2664.13691">this paper</a> using the data the script already reads in (sourced from the paper).</p>
+<ul>
+<li>All data manipulation must be done <strong>in R</strong> and be fully reproducible</li>
+<li>Useful <code>tidyverse</code> functions: <code>group_by()</code>, <code>summarise_all()</code>, <code>pivot_longer()</code>, <code>pivot_wider()</code>, <code>separate()</code>, <code>mutate()</code>, <code>str_remove()</code>, <code>str_replace()</code>.</li>
+</ul></li>
+<li><p>Finally, <strong>add</strong> and <strong>commit</strong> your changes with a meaningful commit message. Then <strong>push</strong> the changes to GitHub.</p>
+<ul>
+<li>Refer to <a href="https://biosci738.github.io/BIOSCI738/version-control-with-git-and-github.html">this section of the coursebook</a> if you need help with committing and pushing.</li>
+</ul></li>
+</ol>
+<p>Any problems then please reach out via c.jonestodd@auckland.ac.nz. This task should be completed by the end of Week 01.</p>
 </div>
 </div>
 <!-- {{< include runsheets/runsheet_01.qmd >}} -->
