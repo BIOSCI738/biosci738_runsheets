@@ -6,8 +6,7 @@
 
  + **02:05–02.20 pm** Activity & AI expectations (@sec-coccompleted)
  + **02.20–02.45 pm** Data visualization (@sec-viz)
-    - What *makes* a plot? (@sec-vibes)
-    - Roast my plots (@sec-roast)
+    - Roast your lecturer's plot (@sec-roast)
     
  + **02:45–02:55 pm** Break
  
@@ -23,7 +22,7 @@
 
 **It's your responsibility to get into these, just look for the cows!**
 
-```{r, echo = 2}
+```{r, eval = FALSE, echo = 2}
 names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Daneshajeya Jeyavalan", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Hnin Lwin", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "Vivian Qian", "Pikitangarangi Ratapu", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
 group_allocation(names, seed = 1312, 10)
 ```
@@ -57,26 +56,30 @@ IMO these tools are here to stay and I do think that part of your future career 
 ## Interpret, critique and communicate using visualization! 
 :::
 
-
-### What *makes* a plot? {#sec-vibes}
-
-::: {.callout-note}
-## Scan the QR code below and based on *vibes* alone choose your favourite until I tell you to stop
-
-<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
-<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
-:::
-
-### Roast my plots {#sec-roast}
+### Roast your lecturer's plot {#sec-roast}
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> 
 
-In your groups head to [**this shared Google Doc**](https://docs.google.com/document/d/1VVVii7_TQ4J1Yqu_aJ8yWe1i2DAyl6rtAH5AebA5XFQ/edit?usp=sharing) and as a group, **roast** (yes you can be as mean as you like, honestly) or admire a plot from **one** of the following publications^[Note I have intentionally only used published plots that I made, I consent to the roasting!]
+In your groups take a look at **Figure 1** from the following publication and **roast** (yes you can be as mean as you like, honestly) or admire it^[Note that your lecturer is an author of the publication and she consents to the roasting!]
 
- + [*Discrete-space continuous-time models of marine mammal exposure to Navy sonar*](https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/eap.2475) (@whales)
- + [`stelfi`: *An `R` package for fitting Hawkes and log-Gaussian Cox point process models*](https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.11005) (@stelfi)
- + [Identifying prognostic structural features in tissue sections of colon cancer patients using point pattern analysis](https://eprints.gla.ac.uk/193326/7/193326.pdf) (@cancer)
+ + [Colours of the Taylor Swift universe: a statistical story](https://academic.oup.com/jrssig/article/23/1/12/8380148)
+
+Figure 1 shows which "surprise" dresses were worn during which concerts in Taylor Swift's Eras Tour.  According to the text of the article, Figure 1 is supposed to show:
+
+* that there were different legs of the tour.
+* the relative lengths of the different legs of the tour.
+* the number of concerts in each leg of the tour.
+* the density of concerts in each leg of the tour.
+* which dresses were used in each concert.
+* the proportion of concerts that each dress was used for.
+* that the dresses in the European leg were new (not used in previous legs).  
+* ditto for the North American leg.
+* that several new albums were released during the tour.
+
+You will have no doubt read and digested [this section of the course guide](https://biosci738.github.io/BIOSCI738/data-visualization.html), so you will have some basis for critiquing the plot.
+
+We will discuss your responses and some general approaches to critically assessing data visualizations.
 
 :::
 
@@ -102,7 +105,7 @@ Remember the pre-course tasks? I mentioned the following
 > During this course, very likely in other courses you'll be taking this semester and in your future careers you will have to deal with many different datasets, wrangle "dirty" data and deal with data from different sources (at the very least). The key thing is to ensure that ANY ANALYSIS YOU CARRY OUT is TRANSPARENT and FULLY REPRODICIBLE (either for your peers or future you). This is where setting good foundations and devising a well-thought-out workflow is imperative!
 
 
-```{r, echo = FALSE, message = FALSE}
+```{r, eval = FALSE, echo = FALSE, message = FALSE}
 work <- read_csv("runsheets/workflow.csv")
 work <- work |> separate_wider_delim(workflow, delim = ",", names_sep = "", too_few = "align_start") |> c() |> unlist()
 knitr::kable(sort(table(work)), caption = "A summary of your responses", col.names = c("Answer", "Freq"))
