@@ -1,6 +1,6 @@
 # Notes
 
-All BIOSCI 738 lectures require your **active involvement**! See the [course policies](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies) for further infomation.
+All BIOSCI 738 lectures require your **active involvement**! See the [course policies](https://biosci738.github.io/BIOSCI738/key-information.html#course-policies) for further information.
 
 Throughout this runsheet you'll find a number of different callout boxes:
 
@@ -54,9 +54,11 @@ inputBox.addEventListener("input", function() {
 Try out the [$R^2$-D2 AI agent](https://canvas.auckland.ac.nz/courses/141056/pages/r2-d2?module_item_id=2897024) specifically designed for this purpose. I would task yourself with around 30 questions, or until you are completely comfortable with the content (basically Module 1 from BIOSCI 220). If you're stuck $R^2$-D2 will guide you through the answers too!
 :::
 
+## Tasks
+
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Introduction to BIOSCI738
-BIOSCI738 kicks off a little differently in week 1. Rather than a typical lecture, we have 30-minute small-group sessions.
+BIOSCI738 kicks off a little differently in week 1. Rather than a typical lecture, we have 30-minute small-group sessions (*you only need to attend one*).
 
 **Sign up** for a slot via the BIOSCI738 CANVAS calander and come along for an introduction to the course. During the session, I’ll go over my expectations, introduce the diagnostic tasks (below), and answer any questions you may have. Be ready to share what you hope to get out of the course!
 
@@ -83,5 +85,18 @@ You are not expected to have prior experience with GitHub and should [refer to t
     - Refer to [this section of the coursebook](https://biosci738.github.io/BIOSCI738/version-control-with-git-and-github.html) if you need help with committing and pushing.
 
 Any problems then please reach out via c.jonestodd@auckland.ac.nz. This task should be completed by the end of Week 01.
+:::
+
+## Other info
+
+::: {.callout-note}
+## 📢 Call for class rep! 📢  First meeting 31 March, 1-2pm
+![](runsheets/img/ausa.png)
+:::
+
+
+::: {.callout-note}
+## Wellbeing Resources
+![](runsheets/img/wellbeing.png)
 :::
 
