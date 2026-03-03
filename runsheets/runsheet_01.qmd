@@ -1,43 +1,85 @@
-# March 10th
+# Week 02 - Lecture 01
 
-## Rough timeline
+## Rough Agenda
 
-### **09:05 am - 10:55 am** 
+### **4:05 pm - 5:55 pm** 
 
- + **09:05–10.25 am** Gorilla Gambit (@sec-gorilla)
- + **10.25–10.55 am** Group Code of Conduct (@sec-coc)
-    - Classwide discussion (@sec-coc01)
-    - Group activity (@sec-coc02)
- + **09:55–10:05 am** Break
- 
- + **10.05–10.15 am** Introduction to BIOSCI 738 (@sec-intro)
- + **10.15–10.40 am** AI in the BOISCI 738 classroom (@sec-ai)
-    - Classwide discussion (@sec-ai01)
-    - Group activity (@sec-ai02)
-+ **10.40–10.55 am** Q&A and peer-share (@sec-peershare01)
+ + Gorilla Gambit (@sec-gorilla)
+ + AI in the BOISCI 738 classroom (@sec-ai01) 
+ + Group Code of Conduct (@sec-coc)
+     - Classwide discussion (@sec-coc01)
+     - Group activity (@sec-coc02)
+ + Programming Practice (@sec-prog_practice)
+ + Reproducible / retracted analysis (@sec-honesty)
+ + Peer-share (@sec-peershare01)
 
+## Getting into Groups {#sec-groups}
 
-### Randomly allocated groups
+Each lecture will involve a a few group-based activities/discussion. It is **your responsibility** to organise yourselves into groups (see below). Feel free to reorganise the tables to suit your needs!
 
-**It's your responsibility to get into these, just look for the cows!**
+::: {.callout-note}
+## In groups of ~4
 
-```{r, echo = 2}
-names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Shoule Du", "Yi Han", "Shuxiang He", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Bayu Pitandoyo", "Pikitangarangi Ratapu", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
-group_allocation(names, seed = 100325)
-```
+Designate roles:
+
+ - **Facilitator** Responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute.  
+ - **Notetaker/Coder** Responsible for recording the key points or for implementing the code for the group this does **NOT** mean the sole coder, rather the person responsible for running any suggested code etc.
+ - **Reporter** Responsible for reporting back to the class on behalf of the group. Seek consensus from the group about the most important aspects of your discussion to share.  
+ - **Timekeeper** Responsible for managing time for the group, making sure you stay on track and spend equal time on each question. 
+
+Determine **who is filling each role** by order of upcoming birthdays:  
+
+- The person with the next birthday → **Notetaker**  
+- The next birthday after that → **Reporter**  
+- The third birthday → **Timekeeper**  
+- Next → **Facilitator**  
+:::
+
 
 ## Gorilla Gambit {#sec-gorilla}
 
-Group activity roles include
+In your groups **quickly** determine who is filling what role.
 
-  + **A runner**, responsible for running (*or at least getting the next instruction from Charlotte*)
-  + **A coder**, responsible for implementing the code for the group this does **NOT** mean the sole coder, rather the person responsible for running any suggested code etc.
-  + **A timekeeper**, responsible for managing time for the group, making sure you stay on track
-  + **A facilitator**, responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute
-  
-In your groups **quickly** determine who is filling what role by order of next birthdays: the person with the next birthday will be the **runner**, the next birthday after that will be the **coder**, the third birthday will be **timekeeper**, and if your group has four members, the fourth member will be the **facilitator**.
+Once you have allocated group roles your **Reporter** should come to me to retrieve the first instruction!
 
-Once you have allocated group roles your **runner** should come to me to retrieve the first instruction.
+## Let's talk AI - for programming {#sec-ai01}
+
+### Who's heard of *bullshit*? 
+
+> *Recently, there has been considerable interest in large language models: machine learning systems which produce human-like text and dialogue. Applications of these systems have been plagued by persistent inaccuracies in their output; these are often called “AI hallucinations”. We argue that these falsehoods, and the overall activity of large language models, is better understood as bullshit in the sense explored by Frankfurt (On Bullshit, Princeton, 2005): the models are in an important way indifferent to the truth of their outputs* 
+
+This is an excerpt from the abstract of @bullshit.
+
+> *If a student is confused about a concept, they can sit with ChatGPT and it will talk to them for hours about that particular concept.*
+
+> *It is a really great tool to create code but also a really great tool to prevent yourself from learning.*
+
+> *It’s teachers’ responsibility to motivate them and make such a problem that [students] are keen to solve and in a way that they actually would like to learn something and realize that they need these skills also in the future.*
+
+> *...there have always been so many ways of cheating, but I don’t think I’ve ever been aware of such an obvious, cheap, and easy way of cheating. Students can get [an AI tool] to answer any question I can ask them at the moment and therefore I have lost my ability to confidently assess any work that students hand in.*
+
+> *I think we need different kinds of professionals with different understandings of computing. Some need to be very deeply involved with how our programming languages work ... others might only need some kind of overall understanding. They are not programmers by themselves, but they still should understand how software is produced.*
+
+All the above are quotes garnered in @instructor.
+
+### Questions
+
+
+Below *generative AI* refers to tools that can generate text, code, explanations, or other content in response to prompts (e.g., large language models and AI coding assistants).
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Quick Poll
+
+Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) (*log into your at.aucklanduni account*)
+
+
+ 1. **To what extent do you think your peers use generative AI in ways that instructors would consider inappropriate?** Answer Either: A = None, B = Some, C = A Few, D = Many
+ 2. **I rely on generative AI as a regular part of my workflow for coursework.** Answer Either: A = Strongly Disagree, B = Disagree, C = Neutral, D = Agree, E = Strongly Agree
+ 3. **Reusing small portions of code from external sources without acknowledgement is unethical.** Answer Either: A = Strongly Disagree, B = Disagree, C = Neutral, D = Agree, E = Strongly Agree
+
+:::
+
 
 ## Group Code of Conduct {#sec-coc}
 
@@ -63,222 +105,176 @@ A Code of Conduct is not just a strange thing the university make you sign. They
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
+
+As a group discuss your expectations of yourself and each other during group work activities. You may want to think about
+
+  + how to ensure all members feel welcome,
+  + your expectations around being an active (*and equal*) contributor, and
+  + your expectations around peers' use of technologies and generative AI during activities.
+  
+**Individually submit your summaries via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) 
 :::
 
-In your groups head to [**this shared Google Doc**](https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing).
-
- 1. Follow the instructions given around assigning group role.
- 2. Your notetaker should then navigate to your groups' section.
- 3. As a group discuss and write down your expectations of yourself and each other during group work activities. You may want to think about
-    
-    + how to ensure all members feel welcome,
-    + your expectations around being an active (*and equal*) contributor, and
-    + your expectations around use of technologies during activities.
-
-## Introduction to BIOSCI 738 {#sec-intro}
-
- + 📢 Call for class rep! 📢  First meeting **25 March, 1-2pm**
- + The [course guide](https://biosci738.github.io/BIOSCI738/), how it works
- + [Assessments in BIOSCI 738](https://biosci738.github.io/BIOSCI738/key-information.html#assessment-summary)
-
-## GenAI in the BIOSCI 738 classroom {#sec-ai}
+## Good programming practice {#sec-prog_practice}
 
 ::: {.callout-tip}
-## Expectations of genAI use
-Upon the completion of this activity I will summarise the main themes/suggestions from @sec-ai02 (*that I deem appropriate*). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.
-:::
+## Abide by good programming practices to avoid future heartaches!
 
-### Who's heard of *bullshit*? {#sec-ai01}
-
-> *Recently, there has been considerable interest in large language models: machine learning systems which produce human-like text and dialogue. Applications of these systems have been plagued by persistent inaccuracies in their output; these are often called “AI hallucinations”. We argue that these falsehoods, and the overall activity of large language models, is better understood as bullshit in the sense explored by Frankfurt (On Bullshit, Princeton, 2005): the models are in an important way indifferent to the truth of their outputs* 
-
-This is an excerpt from the abstract of @bullshit.
-
-> *If a student is confused about a concept, they can sit with ChatGPT and it will talk to them for hours about that particular concept.*
-
-> *It is a really great tool to create code but also a really great tool to prevent yourself from learning.*
-
-> *It’s teachers’ responsibility to motivate them and make such a problem that [students] are keen to solve and in a way that they actually would like to learn something and realize that they need these skills also in the future.*
-
-> *...there have always been so many ways of cheating, but I don’t think I’ve ever been aware of such an obvious, cheap, and easy way of cheating. Students can get [an AI tool] to answer any question I can ask them at the moment and therefore I have lost my ability to confidently assess any work that students hand in.*
-
-> *I think we need different kinds of professionals with different understandings of computing. Some need to be very deeply involved with how our programming languages work ... others might only need some kind of overall understanding. They are not programmers by themselves, but they still should understand how software is produced.*
-
-All the above are quotes garnered in @instructor.
-
-Remember back to last week when I asked you to complete a *pre-course* quiz or two? Below are a summary of your responses to the genAI related questions. These questions were, by design, worded in the same way those in @robots (see Figure 3 of that paper for a summary of their findings). 
-
-#### A summary of your responses
-
-```{r, echo = FALSE, eval = TRUE}
-question <- c(
-  "To what extent do you believe that your peers are using \nGenAI tools in ways that you would not approve of?",
-  "To what extent do you think your peers are using GenAI \ntools in ways that your lecturers would not approve of?",
-  "I regularly use GenAI tools when working with text \n(e.g. writing emails, reports, summaries).",
-  "I regularly use GenAI tools when working with code \n (e.g. generating code or explanations, debugging).",
-  "For programming assignments, I believe GenAI should be...",
-  "It is unethical to auto-generate a solution for a given \nproblem (or a large portion of it) and submit it without understanding it.",
-  "It is unethical to auto-generate a solution for a given \nproblem (or a large portion of it) and submit it after reading it and completely understanding it.",
-  "It is unethical to provide code to GenAI tools \nand ask them to help fix a bug.",
-  "It is unethical to ask GenAI tools to comment, \ntidy and improve the style of the code.",
-  "It is unethical to auto-generate a solution even for \nsmall parts of the assignment.",
-  "It is unethical to use GenAI tools to explain to you \n(step-by-step) how to solve a given problem.",
-  "It is unethical to reuse large portions of code verbatim \nfrom any source (e.g., the course guide, another course, a peer, online help forums etc.).",
-  "It is unethical to reuse code verbatim from any source \n(e.g., the course guide, another course, a peer, online help forums etc.)."
-)
-intro <- read.csv("runsheets/ai_qs.csv")
-names(intro)[1] <- "ai"
-intro[,1] <- stringr::str_replace(intro[,1],stringr::fixed(",Allowed in some assignments\\, disallowed in others (based on the assignment type\\, course level\\, etc.),"), ",Allowed/Disallowed,")
-```
-
-```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width=12}
-library(tidyr)
-ans <- intro |>
-separate_wider_delim(ai, delim = ",", names = paste("A", 1:13))
-library(tidyverse)
-require(patchwork)
-ans$`A 1` <- fct_relevel(ans$`A 1`, "None", "Some", "A Few", "Many")
-ans$`A 2` <- fct_relevel(ans$`A 2`, "None", "Some", "A Few", "Many")
-p1 <- ggplot(ans, aes(x = `A 1`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[1]) +
-    xlab("") + ylim(c(0, 25))
-p2 <- ggplot(ans, aes(x = `A 2`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[2]) +
-    xlab("") + ylim(c(0, 25))
-p1 + p2
-
-```
-
-
-```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width=12}
-levels(ans$`A 3`) <- c("Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
-ans$`A 3` <- fct_relevel(ans$`A 3`, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
-ans$`A 4` <- fct_relevel(ans$`A 4`, "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
-p1 <- ggplot(ans, aes(x = `A 3`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[3]) +
-    xlab("") + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p2 <- ggplot(ans, aes(x = `A 4`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[4]) +
-    xlab("")  + ylim(c(0, 25))
-p1 + p2
-
-```
-
-\captionsetup[table]{labelformat=empty}
-
-```{r, echo = FALSE, results='asis'}
-knitr::kable(table(ans[,5]), caption = question[5], col.names = c("Answer", "Freq"))
-```
-
-```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE, fig.width=15, fig.height = 25}
-## 6:13
-for (i in 6:13){
-    nm <- names(ans)[i]
-    levels(ans[[nm]]) <- c("Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
-    ans[[nm]] <- fct_relevel(ans[[nm]], "Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree")
-}
-p1 <- ggplot(ans, aes(x = `A 6`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[6]) +
-    xlab("") + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p2 <- ggplot(ans, aes(x = `A 7`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[7]) +
-    xlab("")  + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p3 <- ggplot(ans, aes(x = `A 8`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[8]) +
-    xlab("") + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p4 <- ggplot(ans, aes(x = `A 9`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[9]) +
-    xlab("")  + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p5 <- ggplot(ans, aes(x = `A 10`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[10]) +
-    xlab("") + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p6 <- ggplot(ans, aes(x = `A 11`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[11]) +
-    xlab("")  + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p7 <- ggplot(ans, aes(x = `A 12`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[12]) +
-    xlab("") + ylim(c(0, 25)) +
-    scale_x_discrete(drop = FALSE)
-p8 <- ggplot(ans, aes(x = `A 13`)) +
-    geom_bar() + theme_bw() + ylab("") + ggtitle(question[13]) +
-    xlab("")  + ylim(c(0, 25))  +
-    scale_x_discrete(drop = FALSE)
-
-(p1 + p2 + p3 + p4)/(p5 + p6 + p7 + p8)
-```
-
-
-```{r, echo = FALSE, eval = TRUE, message = FALSE, warning = FALSE}
-### cor
-tmp <- ans
-for (i in 6:13){
-    nm <- names(tmp)[i]
-    tmp[[nm]] <-  ifelse(ans[[nm]] ==  "Strongly Disagree", 1, ifelse(ans[[nm]] ==  "Disagree", 2,
-                                                               ifelse(ans[[nm]] ==  "Neutral", 3, 
-                                                               ifelse(ans[[nm]] ==  "Agree", 4, 5))))
-   
-}
-
-M <- cor(tmp[, 6:13])
-require(corrplot)
-corrplot(M, method = 'ellipse',type = 'upper',  col = COL2('PiYG'))
-```
-
-```{r, echo = FALSE, results='asis'}
-knitr::kable(data.frame(Abbr = paste("A ", 6:13, sep = ""), Question = stringr::str_replace(question[6:13], "\n", "")))
-```
-
-
-![*The theme of your responses*](runsheets/ai_wordcloud.png)
-
-
-
-**Some specific answers I particularly liked or wanted to discuss**
-
-> In my opinion, the controversy behind LLMs and other AIs is rather blown out of proportion, if people use it to do all their assignments for them it should be EASILY detectable for any marker/instructor...
-
-> I'm getting increasingly concerned by assignments at uni with the basic premise of "get chatgpt to generate this, then do [whatever is relevant for the assignment which is almost never critiquing the output]"...
-
-> I don't enjoy the increasing prevalence and reliance on AI in academic settings and in day to day life due the large environmental impacts and blurry ethics...
-
-> GenAI’s kinda like a double-edged sword for jobs...AI’s the shortcut, but my brain’s still the GPS!
-
-> I have been using Grammarly (to my understanding, it's also a generative AI),...
-
-> I'm worried that non-native English speakers using translation tools might be identified as AI...
-
-
-**Do you have anything else that you'd to mention about your experiences with GenAI tools?**
-
-### Share and discuss {#sec-ai02}
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss in your group how much you agree/disagree with the opinions and summaries presented above. 
-
-If you are comfortable doing so you may wish to share some of your personal experiences. Feel free to expand on the answers you gave in the *pre-course* quiz. 
+For a more in-depth and general discussion I recommend reading @goodprogramming.
 :::
 
 
-Again in your groups head to [**the shared Google Doc**](https://docs.google.com/document/d/1_mAmTSuFFiCV-LV8xOuWgduEjmPnmJpbsD2KXm2v68I/edit?usp=sharing).
+### IMO {#sec-prog_practice01}
 
- 1. As a group discuss and write down your expectations of yourself and each other with regards to use of GenAI for classroom activities, and assignment activities. You may want to think about
-    
-    + how to ensure GenAI tools are use for the benefit of everyone's learning, or
-    + what your expectations are of your peers who use gen AI are.
+Following [this section of the course guide](https://biosci738.github.io/BIOSCI738/accuracy-and-honesty.html#good-coding-practice) let's talk about what good programming practice looks like in this course.
 
-## Q&A and peer-share {#sec-peershare01}
+#### You should always start with a **clean work space**. 
+
+Honestly, I think the default RStudio behaviour of restoring `.RData` files etc. just makes everyone lazy...
+
+#### Devise a workflow
+
+> During this course, very likely in other courses you'll be taking this semester and in your future careers you will have to deal with many different datasets, wrangle "dirty" data and deal with data from different sources (at the very least). The key thing is to ensure that ANY ANALYSIS YOU CARRY OUT is TRANSPARENT and FULLY REPRODICIBLE (either for your peers or future you). This is where setting good foundations and devising a well-thought-out workflow is imperative!
+
+
+```{r, eval = FALSE, echo = FALSE, message = FALSE}
+work <- read_csv("runsheets/workflow.csv")
+work <- work |> separate_wider_delim(workflow, delim = ",", names_sep = "", too_few = "align_start") |> c() |> unlist()
+knitr::kable(sort(table(work)), caption = "A summary of your responses", col.names = c("Answer", "Freq"))
+```
+
+#### It's not all about length
+
+::: {.callout-note}
+## Lines of code written is NOT a measure of skill! 
+
+Some people thing that a writing a large number of lines of code demonstrates prowess. It does not. Surely we've all added nonsense to essays to "fill up" the word count! 
+
+On the over hand some people strive for carrying out operations in the fewest number of lines possible. This typically makes their work impossible to follow!
+
+:::
+
+I recommend finding a spot you're comfortable in between the following code snippets.^[The former example is a solution posed on [this StackOverflow post](https://stackoverflow.com/questions/19341554/regular-expression-in-base-r-regex-to-identify-email-address) asking about email address validation. The latter snippet is my attempt at a long winded (and far less stable) approach.] Most importantly keep your style readable & consistent! 
+
+```{r}
+grepl("^[[:alnum:]._-]+@[[:alnum:].-]+[:alnum:]+$", c("larry@gmail.com", "larry-sally@sally.com", "larry@sally.larry.com", "test@test.com.", "charlottejones-todd"))
+```
+
+or
+
+```{r}
+email_addresses <- c("larry@gmail.com", "larry-sally@sally.com", "larry@sally.larry.com", "test@test.com.", "charlottejones-todd")
+contain_at <- function(x){
+  grep("@", x)
+}
+idx <- contain_at(email_addresses)
+correct_email <- email_addresses[idx]
+correct_email
+contain_notrailing <- function(x){
+  grep("^[:alnum:]+", x)
+}
+idx01 <- contain_notrailing(correct_email)
+final_correct_email <- correct_email[idx01]
+final_correct_email
+```
+
+
+
+#### Keep the *inside* thoughts *inside* 
+
+::: {.callout-note}
+## An `R` script (or equivalent) is a roadmap to your work. 
+
+You should present the cleanest most direct route you can!
+
+:::
+
+I recommend the latter approach below (if you were going to pass on your solution that is). It's not that each step shouldn't be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.
+
+```{r, eval = FALSE}
+## read in data
+data <- readr::read_csv("a_valid_filename")
+## printing data
+print(data)
+View(data) ##view opens up new window
+data$variable
+## Create new data object
+newdata <- data$variable
+newdata
+## plot data
+plot(newdata)
+## calculate mean
+mean <- mean(newdata)
+print(mean)
+## round
+round(mean(newdata))
+```
+
+vs
+
+```{r, eval = FALSE}
+data <- readr::read_csv("a_valid_filename")
+round(mean(data$variable))
+```
+
+#### Telltale signs... 
+
+::: {.callout-note}
+## An `R` script (or equivalent) showcases your approch!
+
+There are a few quirks that AI insists on including in `R` scripts; with a bit of knowledge these are unnecessary. Rightly or wrongly as soon as I see these in a script I become suspicious!
+
+ 1. `print()` statements e.g., `print(variable)`
+ 2. `cat()` statements e.g., `cat("There are", variable, "students enrolled.\n")`
+ 
+Anyone know why these are telltale signs?
+
+:::
+
+#### Make it EASY for me to give you marks
+  
+  + **Think** about your audience!
+  + Ensure your code is **reproducible**!
+  + **Do not include any irrelevant or overly verbose output**; this makes it difficult to find and therefore award the relevant components!
+  + Keep your code **tidy** and your plots **neat** and **professional**. For example, use informative, readable axis labels rather than allowing the default behaviour of printing the R object name.  
+
+
+## *Reproducible* analysis {#sec-honesty}
+
+::: {.callout-tip}
+## Exploring data
+Building on @sec-gorilla here you'll be carrying out some basic EDA and interpreting hypothesis tests.
+:::
+
+
+In this task you're going to be using [these data](https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854) collected as part of a (now retracted) study (@retracted)^[See [this Guardian article](https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud) about the debacle].
+
+> The data comes from a study that claims to show that people are less likely to act dishonestly when they sign an honesty pledge at the top of a form rather than at the bottom of a form. Participants received a worksheet with 20 math puzzles and were offered $1 for each puzzle they (reported to have) solved correctly within 5 minutes. After the 5 minutes passed, participants were asked to count how many puzzles they solved correctly and then throw away their worksheets. The goal was to mislead participants into thinking that the experimenter could not observe their true performance, when in fact they could because each worksheet had a unique identifier. Thus, participants could cheat (and earn more money) without fear of being caught, while the researchers could observe how much each participant had cheated. Participants then completed a “tax” form reporting how much money they had earned, and also how much time and money they spent coming to the lab. The experimenters partially compensated participants for those costs.
+
+> The paper reported very large effects. Signing at the top vs. the bottom lowered the share of people over-reporting their math puzzle performance from 79% to 37% (p = .0013), and lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p < .00001). Similarly, it nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014).
+
+
+**Variables of interest**
+
+  + `Cond`: `= 0`, No signature; `= 1`, Signed at the top; and `= 2`, Signed at the bottom.
+  + `CheatedOnMatrixTax`: `= 0`, participants didn't *cheat*/over-report their maths puzzle performance; and `= 1`, participants did *cheat*/over-report their maths puzzle performance.
+  + `OverReport`: the amount of puzzles solved participants over-reported by.
+  + `SumDeduction`: the amount of claimed commuting expenses $US (corrected for the *true* amount).
+ 
+As a group:
+
+ 1. Discuss what to the presented results indicate/claim? 
+ 
+ 2. Use the variables listed above and reproduce the results quoted above using the appropriate statistical analysis/test. How easy was it to replicate these results given the way the results were presented? How might you improve the way the results were presented?
+ 
+ 3. There is an additional column of interest `flag`; this is a binary variable that indicates if the observations were considered dodgy (i.e., fraudulent) or not. Create a visualization/carry out some analysis that *could* be used as evidence for/against this belief.
+
+## Peer-share {#sec-peershare01}
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
 
-Below is my solution to the diagnostic coding task. This is not the only solution! In your groups run through my approach and share your approach (especially if you got stuck in a few places)! Sharing and talking things through will make things clearer. Trust me! 😉
+Below is my solution to the diagnostic coding task. This is not the only solution! In your groups run through my approach and share your approach (especially if you got stuck in a few places)! Sharing and talking things through will make things clearer. Trust me! 😉 - (*Also a great task to start practicing for your interactive Oral Assessments*)
 :::
 
 ```{r, eval = TRUE, echo = TRUE, message=FALSE, warning=FALSE}

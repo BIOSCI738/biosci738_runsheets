@@ -7,14 +7,16 @@ date-format: "YYYY"
 author: Charlotte Jones-Todd
 institute: University of Auckland
 format: 
-   html
-toc: true
-toc-depth: 2
+   html:
+    toc: true
+    toc-depth: 3
 bibliography: runsheets/references.bib
 ---
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {{< include runsheets/runsheet_00.qmd >}}
 
-<!-- {{< include runsheets/runsheet_01.qmd >}} -->
+<!--{{< include runsheets/runsheet_01.qmd >}}
+
+{{< include runsheets/runsheet_02.qmd >}}-->
 

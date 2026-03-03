@@ -11,16 +11,7 @@
 :::
 
 
-## Rough timeline
 
- + **09:05–09:45 am** Reverse engineer (@sec-draw)
- + **09:45–10:55 am** Break
- + **09:55–10:30 am** Linear model diagnostics
-   - Recap residual plots (@sec-qq)
-   - Fry time (@sec-fry)
- + **10.30–10.55 am** Communicating statistics (@sec-comm)
-   - Project paper choice (@sec-project)
-   - Consulting a statistician (@sec-ioa)
    
 ### Randomly allocated groups
 
@@ -50,14 +41,7 @@ group_allocation(names, seed = 1458, 10)
 group_allocation(names, seed = 1458, 10)
 ```
 
-## From numbers to plots {#sec-draw}
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> As a group
-
-[Here is a handout](https://canvas.auckland.ac.nz/courses/120054/files/14903576?module_item_id=2564916) with nothing but data summaries and linear model summary output given. On the whiteboards sketch the model fit (including uncertainty), for each case.
-
-:::
 
 
 ## Linear model diagnostics
