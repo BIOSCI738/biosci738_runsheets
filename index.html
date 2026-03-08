@@ -22,7 +22,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="index_files/libs/clipboard/clipboard.min.js"></script>
@@ -125,6 +180,31 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a></li>
   <li><a href="#other-info" id="toc-other-info" class="nav-link" data-scroll-target="#other-info">Other info</a></li>
+  </ul></li>
+  <li><a href="#week-02---lecture-01" id="toc-week-02---lecture-01" class="nav-link" data-scroll-target="#week-02---lecture-01">Week 02 - Lecture 01</a>
+  <ul class="collapse">
+  <li><a href="#rough-agenda" id="toc-rough-agenda" class="nav-link" data-scroll-target="#rough-agenda">Rough Agenda</a>
+  <ul class="collapse">
+  <li><a href="#pm---555-pm" id="toc-pm---555-pm" class="nav-link" data-scroll-target="#pm---555-pm"><strong>4:05 pm - 5:55 pm</strong></a></li>
+  </ul></li>
+  <li><a href="#sec-groups" id="toc-sec-groups" class="nav-link" data-scroll-target="#sec-groups">Getting into Groups</a></li>
+  <li><a href="#sec-gorilla" id="toc-sec-gorilla" class="nav-link" data-scroll-target="#sec-gorilla">Gorilla Gambit</a></li>
+  <li><a href="#sec-ai01" id="toc-sec-ai01" class="nav-link" data-scroll-target="#sec-ai01">Let’s talk AI - for programming</a>
+  <ul class="collapse">
+  <li><a href="#whos-heard-of-bullshit" id="toc-whos-heard-of-bullshit" class="nav-link" data-scroll-target="#whos-heard-of-bullshit">Who’s heard of <em>bullshit</em>?</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
+  </ul></li>
+  <li><a href="#sec-coc" id="toc-sec-coc" class="nav-link" data-scroll-target="#sec-coc">Group Code of Conduct</a>
+  <ul class="collapse">
+  <li><a href="#sec-coc01" id="toc-sec-coc01" class="nav-link" data-scroll-target="#sec-coc01">Why I think this is important</a></li>
+  <li><a href="#sec-coc02" id="toc-sec-coc02" class="nav-link" data-scroll-target="#sec-coc02">Write your own</a></li>
+  </ul></li>
+  <li><a href="#sec-prog_practice" id="toc-sec-prog_practice" class="nav-link" data-scroll-target="#sec-prog_practice">Good programming practice</a>
+  <ul class="collapse">
+  <li><a href="#sec-prog_practice01" id="toc-sec-prog_practice01" class="nav-link" data-scroll-target="#sec-prog_practice01">IMO</a></li>
+  </ul></li>
+  <li><a href="#sec-honesty" id="toc-sec-honesty" class="nav-link" data-scroll-target="#sec-honesty"><em>Reproducible</em> analysis</a></li>
+  <li><a href="#sec-peershare01" id="toc-sec-peershare01" class="nav-link" data-scroll-target="#sec-peershare01">Peer-share</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -299,13 +379,437 @@ inputBox.addEventListener("input", function() {
 <p><img src="runsheets/img/wellbeing.png" class="img-fluid"></p>
 </div>
 </div>
-<!--{{< include runsheets/runsheet_01.qmd >}}
+</section>
+</section>
+<section id="week-02---lecture-01" class="level1">
+<h1>Week 02 - Lecture 01</h1>
+<section id="rough-agenda" class="level2">
+<h2 class="anchored" data-anchor-id="rough-agenda">Rough Agenda</h2>
+<section id="pm---555-pm" class="level3">
+<h3 class="anchored" data-anchor-id="pm---555-pm"><strong>4:05 pm - 5:55 pm</strong></h3>
+<ul>
+<li>Gorilla Gambit (<a href="#sec-gorilla" class="quarto-xref">Section&nbsp;3.3</a>)</li>
+<li>AI in the BOISCI 738 classroom (<a href="#sec-ai01" class="quarto-xref">Section&nbsp;3.4</a>)</li>
+<li>Group Code of Conduct (<a href="#sec-coc" class="quarto-xref">Section&nbsp;3.5</a>)
+<ul>
+<li>Classwide discussion (<a href="#sec-coc01" class="quarto-xref">Section&nbsp;3.5.1</a>)</li>
+<li>Group activity (<a href="#sec-coc02" class="quarto-xref">Section&nbsp;3.5.2</a>)</li>
+</ul></li>
+<li>Programming Practice (<a href="#sec-prog_practice" class="quarto-xref">Section&nbsp;3.6</a>)</li>
+<li>Reproducible / retracted analysis (<a href="#sec-honesty" class="quarto-xref">Section&nbsp;3.7</a>)</li>
+<li>Peer-share (<a href="#sec-peershare01" class="quarto-xref">Section&nbsp;3.8</a>)</li>
+</ul>
+</section>
+</section>
+<section id="sec-groups" class="level2">
+<h2 class="anchored" data-anchor-id="sec-groups">Getting into Groups</h2>
+<p>Each lecture will involve a a few group-based activities/discussion. It is <strong>your responsibility</strong> to organise yourselves into groups (see below). Feel free to reorganise the tables to suit your needs!</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>In groups of ~4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Designate roles:</p>
+<ul>
+<li><strong>Facilitator</strong> Responsible for seeking out opinions from all group members and ensuring that everyone has the opportunity to contribute.<br>
+</li>
+<li><strong>Notetaker/Coder</strong> Responsible for recording the key points or for implementing the code for the group this does <strong>NOT</strong> mean the sole coder, rather the person responsible for running any suggested code etc.</li>
+<li><strong>Reporter</strong> Responsible for reporting back to the class on behalf of the group. Seek consensus from the group about the most important aspects of your discussion to share.<br>
+</li>
+<li><strong>Timekeeper</strong> Responsible for managing time for the group, making sure you stay on track and spend equal time on each question.</li>
+</ul>
+<p>Determine <strong>who is filling each role</strong> by order of upcoming birthdays:</p>
+<ul>
+<li>The person with the next birthday → <strong>Notetaker</strong><br>
+</li>
+<li>The next birthday after that → <strong>Reporter</strong><br>
+</li>
+<li>The third birthday → <strong>Timekeeper</strong><br>
+</li>
+<li>Next → <strong>Facilitator</strong><br>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec-gorilla" class="level2">
+<h2 class="anchored" data-anchor-id="sec-gorilla">Gorilla Gambit</h2>
+<p>In your groups <strong>quickly</strong> determine who is filling what role.</p>
+<p>Once you have allocated group roles your <strong>Reporter</strong> should come to me to retrieve the first instruction!</p>
+</section>
+<section id="sec-ai01" class="level2">
+<h2 class="anchored" data-anchor-id="sec-ai01">Let’s talk AI - for programming</h2>
+<section id="whos-heard-of-bullshit" class="level3">
+<h3 class="anchored" data-anchor-id="whos-heard-of-bullshit">Who’s heard of <em>bullshit</em>?</h3>
+<blockquote class="blockquote">
+<p><em>Recently, there has been considerable interest in large language models: machine learning systems which produce human-like text and dialogue. Applications of these systems have been plagued by persistent inaccuracies in their output; these are often called “AI hallucinations”. We argue that these falsehoods, and the overall activity of large language models, is better understood as bullshit in the sense explored by Frankfurt (On Bullshit, Princeton, 2005): the models are in an important way indifferent to the truth of their outputs</em></p>
+</blockquote>
+<p>This is an excerpt from the abstract of <span class="citation" data-cites="bullshit">Hicks, Humphries, and Slater (<a href="#ref-bullshit" role="doc-biblioref">2024</a>)</span>.</p>
+<blockquote class="blockquote">
+<p><em>If a student is confused about a concept, they can sit with ChatGPT and it will talk to them for hours about that particular concept.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>It is a really great tool to create code but also a really great tool to prevent yourself from learning.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>It’s teachers’ responsibility to motivate them and make such a problem that [students] are keen to solve and in a way that they actually would like to learn something and realize that they need these skills also in the future.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>…there have always been so many ways of cheating, but I don’t think I’ve ever been aware of such an obvious, cheap, and easy way of cheating. Students can get [an AI tool] to answer any question I can ask them at the moment and therefore I have lost my ability to confidently assess any work that students hand in.</em></p>
+</blockquote>
+<blockquote class="blockquote">
+<p><em>I think we need different kinds of professionals with different understandings of computing. Some need to be very deeply involved with how our programming languages work … others might only need some kind of overall understanding. They are not programmers by themselves, but they still should understand how software is produced.</em></p>
+</blockquote>
+<p>All the above are quotes garnered in <span class="citation" data-cites="instructor">Sheard et al. (<a href="#ref-instructor" role="doc-biblioref">2024</a>)</span>.</p>
+</section>
+<section id="questions" class="level3">
+<h3 class="anchored" data-anchor-id="questions">Questions</h3>
+<p>Below <em>generative AI</em> refers to tools that can generate text, code, explanations, or other content in response to prompts (e.g., large language models and AI coding assistants).</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Quick Poll
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Open <a href="https://canvas.auckland.ac.nz/courses/141056/external_tools/38296">StatChat</a> (<em>log into your at.aucklanduni account</em>)</p>
+<ol type="1">
+<li><strong>To what extent do you think your peers use generative AI in ways that instructors would consider inappropriate?</strong> Answer Either: A = None, B = Some, C = A Few, D = Many</li>
+<li><strong>I rely on generative AI as a regular part of my workflow for coursework.</strong> Answer Either: A = Strongly Disagree, B = Disagree, C = Neutral, D = Agree, E = Strongly Agree</li>
+<li><strong>Reusing small portions of code from external sources without acknowledgement is unethical.</strong> Answer Either: A = Strongly Disagree, B = Disagree, C = Neutral, D = Agree, E = Strongly Agree</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-coc" class="level2">
+<h2 class="anchored" data-anchor-id="sec-coc">Group Code of Conduct</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>A classwide agreed group working Code of Conduct
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Upon the completion of this activity I will summarise the main themes/suggestions from <a href="#sec-coc02" class="quarto-xref">Section&nbsp;3.5.2</a> (<em>that I deem appropriate</em>). This will become the class-agreed group working Code of Conduct that you are expected to adhere to during each activity.</p>
+</div>
+</div>
+<section id="sec-coc01" class="level3">
+<h3 class="anchored" data-anchor-id="sec-coc01">Why I think this is important</h3>
+<p>As a student of University of Auckland student, you are responsible for understanding and abiding by the requirements of the <a href="https://www.auckland.ac.nz/en/students/forms-policies-and-guidelines/student-policies-and-guidelines/student-charter.html">Student Charter</a>.</p>
+<p>In this activity we’re going to be talking about my and your expectation when working in a group during this class, see <a href="https://biosci738.github.io/BIOSCI738/key-information.html#participation">this section of the course guide for further details</a>.</p>
+<p>A Code of Conduct is not just a strange thing the university make you sign. They are a large part of many professional and research-focused bodies beyond university. The following lists just a few examples of societies or institutes you will likely come across during a biostats career in NZ.</p>
+<ul>
+<li><a href="https://newzealandecology.org/about/council-members/society-rules">The NZ Ecological Society CoC</a></li>
+<li><a href="https://www.stats.org.nz/code-of-conduct/">The NZ Statistical Association CoC</a></li>
+<li><a href="https://www.doc.govt.nz/about-us/our-policies-and-plans/code-of-ethical-conduct/">DoCs Code of Ethical Conduct</a></li>
+</ul>
+</section>
+<section id="sec-coc02" class="level3">
+<h3 class="anchored" data-anchor-id="sec-coc02">Write your own</h3>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Propose your own code of conduct for group work in this class
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As a group discuss your expectations of yourself and each other during group work activities. You may want to think about</p>
+<ul>
+<li>how to ensure all members feel welcome,</li>
+<li>your expectations around being an active (<em>and equal</em>) contributor, and</li>
+<li>your expectations around peers’ use of technologies and generative AI during activities.</li>
+</ul>
+<p>**Individually submit your summaries via <a href="https://canvas.auckland.ac.nz/courses/141056/external_tools/38296">StatChat</a></p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-prog_practice" class="level2">
+<h2 class="anchored" data-anchor-id="sec-prog_practice">Good programming practice</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Abide by good programming practices to avoid future heartaches!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For a more in-depth and general discussion I recommend reading <span class="citation" data-cites="goodprogramming">Wilson et al. (<a href="#ref-goodprogramming" role="doc-biblioref">2017</a>)</span>.</p>
+</div>
+</div>
+<section id="sec-prog_practice01" class="level3">
+<h3 class="anchored" data-anchor-id="sec-prog_practice01">IMO</h3>
+<p>Following <a href="https://biosci738.github.io/BIOSCI738/accuracy-and-honesty.html#good-coding-practice">this section of the course guide</a> let’s talk about what good programming practice looks like in this course.</p>
+<section id="you-should-always-start-with-a-clean-work-space." class="level4">
+<h4 class="anchored" data-anchor-id="you-should-always-start-with-a-clean-work-space.">You should always start with a <strong>clean work space</strong>.</h4>
+<p>Honestly, I think the default RStudio behaviour of restoring <code>.RData</code> files etc. just makes everyone lazy…</p>
+</section>
+<section id="devise-a-workflow" class="level4">
+<h4 class="anchored" data-anchor-id="devise-a-workflow">Devise a workflow</h4>
+<blockquote class="blockquote">
+<p>During this course, very likely in other courses you’ll be taking this semester and in your future careers you will have to deal with many different datasets, wrangle “dirty” data and deal with data from different sources (at the very least). The key thing is to ensure that ANY ANALYSIS YOU CARRY OUT is TRANSPARENT and FULLY REPRODICIBLE (either for your peers or future you). This is where setting good foundations and devising a well-thought-out workflow is imperative!</p>
+</blockquote>
+</section>
+<section id="its-not-all-about-length" class="level4">
+<h4 class="anchored" data-anchor-id="its-not-all-about-length">It’s not all about length</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Lines of code written is NOT a measure of skill!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some people thing that a writing a large number of lines of code demonstrates prowess. It does not. Surely we’ve all added nonsense to essays to “fill up” the word count!</p>
+<p>On the over hand some people strive for carrying out operations in the fewest number of lines possible. This typically makes their work impossible to follow!</p>
+</div>
+</div>
+<p>I recommend finding a spot you’re comfortable in between the following code snippets.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> Most importantly keep your style readable &amp; consistent!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">grepl</span>(<span class="st">"^[[:alnum:]._-]+@[[:alnum:].-]+[:alnum:]+$"</span>, <span class="fu">c</span>(<span class="st">"larry@gmail.com"</span>, <span class="st">"larry-sally@sally.com"</span>, <span class="st">"larry@sally.larry.com"</span>, <span class="st">"test@test.com."</span>, <span class="st">"charlottejones-todd"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  TRUE  TRUE  TRUE FALSE FALSE</code></pre>
+</div>
+</div>
+<p>or</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>email_addresses <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"larry@gmail.com"</span>, <span class="st">"larry-sally@sally.com"</span>, <span class="st">"larry@sally.larry.com"</span>, <span class="st">"test@test.com."</span>, <span class="st">"charlottejones-todd"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>contain_at <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grep</span>(<span class="st">"@"</span>, x)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>idx <span class="ot">&lt;-</span> <span class="fu">contain_at</span>(email_addresses)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>correct_email <span class="ot">&lt;-</span> email_addresses[idx]</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>correct_email</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "larry@gmail.com"       "larry-sally@sally.com" "larry@sally.larry.com"
+[4] "test@test.com."       </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>contain_notrailing <span class="ot">&lt;-</span> <span class="cf">function</span>(x){</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">grep</span>(<span class="st">"^[:alnum:]+"</span>, x)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>idx01 <span class="ot">&lt;-</span> <span class="fu">contain_notrailing</span>(correct_email)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>final_correct_email <span class="ot">&lt;-</span> correct_email[idx01]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>final_correct_email</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "larry@gmail.com"       "larry-sally@sally.com" "larry@sally.larry.com"</code></pre>
+</div>
+</div>
+</section>
+<section id="keep-the-inside-thoughts-inside" class="level4">
+<h4 class="anchored" data-anchor-id="keep-the-inside-thoughts-inside">Keep the <em>inside</em> thoughts <em>inside</em></h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>An <code>R</code> script (or equivalent) is a roadmap to your work.
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You should present the cleanest most direct route you can!</p>
+</div>
+</div>
+<p>I recommend the latter approach below (if you were going to pass on your solution that is). It’s not that each step shouldn’t be carried out. On the contrary, exploring your data via printing and plotting it is very important! But when you have a solution, pare down your script! no need to take everyone on your journey.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"a_valid_filename"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="do">## printing data</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(data) <span class="do">##view opens up new window</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>variable</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="do">## Create new data object</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>newdata <span class="ot">&lt;-</span> data<span class="sc">$</span>variable</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>newdata</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">## plot data</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(newdata)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="do">## calculate mean</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(newdata)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mean)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="do">## round</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(newdata))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>vs</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"a_valid_filename"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(data<span class="sc">$</span>variable))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="telltale-signs" class="level4">
+<h4 class="anchored" data-anchor-id="telltale-signs">Telltale signs…</h4>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>An <code>R</code> script (or equivalent) showcases your approch!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There are a few quirks that AI insists on including in <code>R</code> scripts; with a bit of knowledge these are unnecessary. Rightly or wrongly as soon as I see these in a script I become suspicious!</p>
+<ol type="1">
+<li><code>print()</code> statements e.g., <code>print(variable)</code></li>
+<li><code>cat()</code> statements e.g., <code>cat("There are", variable, "students enrolled.\n")</code></li>
+</ol>
+<p>Anyone know why these are telltale signs?</p>
+</div>
+</div>
+</section>
+<section id="make-it-easy-for-me-to-give-you-marks" class="level4">
+<h4 class="anchored" data-anchor-id="make-it-easy-for-me-to-give-you-marks">Make it EASY for me to give you marks</h4>
+<ul>
+<li><strong>Think</strong> about your audience!</li>
+<li>Ensure your code is <strong>reproducible</strong>!</li>
+<li><strong>Do not include any irrelevant or overly verbose output</strong>; this makes it difficult to find and therefore award the relevant components!</li>
+<li>Keep your code <strong>tidy</strong> and your plots <strong>neat</strong> and <strong>professional</strong>. For example, use informative, readable axis labels rather than allowing the default behaviour of printing the R object name.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="sec-honesty" class="level2">
+<h2 class="anchored" data-anchor-id="sec-honesty"><em>Reproducible</em> analysis</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exploring data
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Building on <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;3.3</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
+</div>
+</div>
+<p>In this task you’re going to be using <a href="https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854">these data</a> collected as part of a (now retracted) study (<span class="citation" data-cites="retracted">Shu et al. (<a href="#ref-retracted" role="doc-biblioref">2012</a>)</span>)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<blockquote class="blockquote">
+<p>The data comes from a study that claims to show that people are less likely to act dishonestly when they sign an honesty pledge at the top of a form rather than at the bottom of a form. Participants received a worksheet with 20 math puzzles and were offered $1 for each puzzle they (reported to have) solved correctly within 5 minutes. After the 5 minutes passed, participants were asked to count how many puzzles they solved correctly and then throw away their worksheets. The goal was to mislead participants into thinking that the experimenter could not observe their true performance, when in fact they could because each worksheet had a unique identifier. Thus, participants could cheat (and earn more money) without fear of being caught, while the researchers could observe how much each participant had cheated. Participants then completed a “tax” form reporting how much money they had earned, and also how much time and money they spent coming to the lab. The experimenters partially compensated participants for those costs.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>The paper reported very large effects. Signing at the top vs.&nbsp;the bottom lowered the share of people over-reporting their math puzzle performance from 79% to 37% (p = .0013), and lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p &lt; .00001). Similarly, it nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014).</p>
+</blockquote>
+<p><strong>Variables of interest</strong></p>
+<ul>
+<li><code>Cond</code>: <code>= 0</code>, No signature; <code>= 1</code>, Signed at the top; and <code>= 2</code>, Signed at the bottom.</li>
+<li><code>CheatedOnMatrixTax</code>: <code>= 0</code>, participants didn’t <em>cheat</em>/over-report their maths puzzle performance; and <code>= 1</code>, participants did <em>cheat</em>/over-report their maths puzzle performance.</li>
+<li><code>OverReport</code>: the amount of puzzles solved participants over-reported by.</li>
+<li><code>SumDeduction</code>: the amount of claimed commuting expenses $US (corrected for the <em>true</em> amount).</li>
+</ul>
+<p>As a group:</p>
+<ol type="1">
+<li><p>Discuss what to the presented results indicate/claim?</p></li>
+<li><p>Use the variables listed above and reproduce the results quoted above using the appropriate statistical analysis/test. How easy was it to replicate these results given the way the results were presented? How might you improve the way the results were presented?</p></li>
+<li><p>There is an additional column of interest <code>flag</code>; this is a binary variable that indicates if the observations were considered dodgy (i.e., fraudulent) or not. Create a visualization/carry out some analysis that <em>could</em> be used as evidence for/against this belief.</p></li>
+</ol>
+</section>
+<section id="sec-peershare01" class="level2">
+<h2 class="anchored" data-anchor-id="sec-peershare01">Peer-share</h2>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Share your approach to the diagnostic coding task
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Below is my solution to the diagnostic coding task. This is not the only solution! In your groups run through my approach and share your approach (especially if you got stuck in a few places)! Sharing and talking things through will make things clearer. Trust me! 😉 - (<em>Also a great task to start practicing for your interactive Oral Assessments</em>)</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dicots_proportions.csv"</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(url)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">select</span>(<span class="fu">starts_with</span>(<span class="fu">c</span>(<span class="st">"Calluna"</span>, <span class="st">"Treat"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="do">## select only heather &amp; treatment cols</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="do">## group by treatment so calcs are done by group</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise_all</span>(<span class="fu">list</span>(<span class="at">mean =</span> mean, <span class="at">sd =</span> sd)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="do">## cal mean and sd of each group</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_longer</span>(<span class="sc">!</span><span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="do">## flip the data frame to "long" format</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">separate</span>(name, <span class="fu">c</span>(<span class="cn">NA</span>, <span class="st">"year"</span>, <span class="st">"calc"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="do">## extract and separate info from name column</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">str_remove</span>(year, <span class="st">"vulgaris"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    <span class="do">## keep numeric year info only</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"calc"</span>, <span class="at">values_from =</span> <span class="st">"value"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="do">## data into wider format based on mean &amp; sd</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">str_replace</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>, <span class="st">"HB"</span>, <span class="st">"BH"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    <span class="do">## change treatment label HB to BH</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">fct_relevel</span>(<span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>,<span class="fu">c</span>(<span class="st">"C"</span>, <span class="st">"B"</span>, <span class="st">"H"</span>, <span class="st">"BH"</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="do">## relevel treatment to help with legend ordering later on</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> mean, <span class="at">group =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span> <span class="do">## set up plot</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">pch =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">linetype =</span> <span class="st">`</span><span class="at">Treat!</span><span class="st">`</span>)) <span class="sc">+</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    <span class="do">## add mean points &amp; lines</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">"Percentage cover"</span>) <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Year"</span>) <span class="sc">+</span> <span class="do">## axis labels</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean <span class="sc">-</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>),</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ymax =</span> mean <span class="sc">+</span> sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>)), <span class="at">width =</span> .<span class="dv">05</span>) <span class="sc">+</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="do">## add error-bars note we need the standard error of the mean of the proportion</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">1</span>),</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>                       <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">2008</span>, <span class="dv">2012</span>, <span class="dv">1</span>),</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>                       <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fl">0.01</span>),</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">08</span>, <span class="dv">12</span>)) <span class="sc">+</span> <span class="do">## match x-axis labels and limits</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="fl">0.1</span>), <span class="at">labels =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">10</span>),</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>                       <span class="at">expand =</span> <span class="fu">expansion</span>(<span class="fl">0.01</span>),</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>                       <span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.7</span>)) <span class="sc">+</span> <span class="do">## match y-axis labels and limits</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_classic</span>() <span class="sc">+</span> <span class="do">## closest in-built ggplot theme I could find</span></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.title =</span> <span class="fu">element_blank</span>()) <span class="do">## remove legend title</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<!--{{< include runsheets/runsheet_02.qmd >}}-->
 
-{{< include runsheets/runsheet_02.qmd >}}-->
 </section>
 </section>
 
-</main>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-bullshit" class="csl-entry" role="listitem">
+Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.”</span> <em>Ethics and Information Technology</em> 26 (38). <a href="https://doi.org/10.1007/s10676-024-09775-5">https://doi.org/10.1007/s10676-024-09775-5</a>.
+</div>
+<div id="ref-instructor" class="csl-entry" role="listitem">
+Sheard, Judy, Paul Denny, Arto Hellas, Juho Leinonen, Lauri Malmi, and Simon. 2024. <span>“Instructor Perceptions of AI Code Generation Tools - a Multi-Institutional Interview Study.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3626252.3630880">https://doi.org/10.1145/3626252.3630880</a>.
+</div>
+<div id="ref-retracted" class="csl-entry" role="listitem">
+Shu, Lisa L., Nina Mazar, Francesca Gino, Dan Ariely, and Max H. Bazerman. 2012. <span>“RETRACTED: Signing at the Beginning Makes Ethics Salient and Decreases Dishonest Self-Reports in Comparison to Signing at the End.”</span> <em>Proceedings of the National Academy of Sciences</em> 109 (38): 15197–200. <a href="https://doi.org/10.1073/pnas.1209746109">https://doi.org/10.1073/pnas.1209746109</a>.
+</div>
+<div id="ref-goodprogramming" class="csl-entry" role="listitem">
+Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K. Teal. 2017. <span>“Good Enough Practices in Scientific Computing.”</span> <em>PLoS Computational Biology</em> 13 (6): e1005510. <a href="https://doi.org/10.1371/journal.pcbi.1005510">https://doi.org/10.1371/journal.pcbi.1005510</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The former example is a solution posed on <a href="https://stackoverflow.com/questions/19341554/regular-expression-in-base-r-regex-to-identify-email-address">this StackOverflow post</a> asking about email address validation. The latter snippet is my attempt at a long winded (and far less stable) approach.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>See <a href="https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud">this Guardian article</a> about the debacle<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

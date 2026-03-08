@@ -16,7 +16,7 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_00.qmd >}}
 
-<!--{{< include runsheets/runsheet_01.qmd >}}
+{{< include runsheets/runsheet_01.qmd >}}
 
-{{< include runsheets/runsheet_02.qmd >}}-->
+<!--{{< include runsheets/runsheet_02.qmd >}}-->
 
