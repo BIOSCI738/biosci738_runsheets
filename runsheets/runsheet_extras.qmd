@@ -1,0 +1,50 @@
+# Extra Activities (time dependent) {#sec-extras}
+
+## *Reproducible* analysis {#sec-honesty}
+
+::: {.callout-tip}
+## Exploring data
+Building on @sec-gorilla here you'll be carrying out some basic EDA and interpreting hypothesis tests.
+:::
+
+
+In this task you're going to be using [these data](https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854) collected as part of a (now retracted) study (@retracted)^[See [this Guardian article](https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud) about the debacle].
+
+> The data comes from a study that claims to show that people are less likely to act dishonestly when they sign an honesty pledge at the top of a form rather than at the bottom of a form. Participants received a worksheet with 20 math puzzles and were offered $1 for each puzzle they (reported to have) solved correctly within 5 minutes. After the 5 minutes passed, participants were asked to count how many puzzles they solved correctly and then throw away their worksheets. The goal was to mislead participants into thinking that the experimenter could not observe their true performance, when in fact they could because each worksheet had a unique identifier. Thus, participants could cheat (and earn more money) without fear of being caught, while the researchers could observe how much each participant had cheated. Participants then completed a “tax” form reporting how much money they had earned, and also how much time and money they spent coming to the lab. The experimenters partially compensated participants for those costs.
+
+> The paper reported very large effects. Signing at the top vs. the bottom lowered the share of people over-reporting their math puzzle performance from 79% to 37% (p = .0013), and lowered the average amount of over-reporting from 3.94 puzzles to 0.77 puzzles (p < .00001). Similarly, it nearly halved the average amount of claimed commuting expenses, from $9.62 to $5.27 (p = .0014).
+
+
+**Variables of interest**
+
+  + `Cond`: `= 0`, No signature; `= 1`, Signed at the top; and `= 2`, Signed at the bottom.
+  + `CheatedOnMatrixTax`: `= 0`, participants didn't *cheat*/over-report their maths puzzle performance; and `= 1`, participants did *cheat*/over-report their maths puzzle performance.
+  + `OverReport`: the amount of puzzles solved participants over-reported by.
+  + `SumDeduction`: the amount of claimed commuting expenses $US (corrected for the *true* amount).
+ 
+As a group:
+
+ 1. Discuss what to the presented results indicate/claim? 
+ 
+ 2. Use the variables listed above and reproduce the results quoted above using the appropriate statistical analysis/test. How easy was it to replicate these results given the way the results were presented? How might you improve the way the results were presented?
+ 
+ 3. There is an additional column of interest `flag`; this is a binary variable that indicates if the observations were considered dodgy (i.e., fraudulent) or not. Create a visualization/carry out some analysis that *could* be used as evidence for/against this belief.
+
+
+## Fry time {#sec-fry}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> GitHub script upload
+
+
+Below is a plot of some data collected as part of a study carried out by @fries.
+
+<center>
+<img src="https://ars.els-cdn.com/content/image/1-s2.0-S1658077X17302655-gr1.jpg" alt="Figure 1 from  article doi.org/10.1016/j.jssas.2018.01.002" >
+<p>Figure 1 from @fries</p>
+</center>
+
+
+To the `tasks` folder of your GitHub repository create, add and push a reproducible `R` script named `week_0x.r` (where `x` is the current semester week) that simulates these data as best you can. Remember to update your `README.md` accordingly.
+
+:::

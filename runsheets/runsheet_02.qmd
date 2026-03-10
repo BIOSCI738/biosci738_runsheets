@@ -6,12 +6,9 @@
 
  + The power of simulation (@sec-simulation)
  + Reverse engineer (@sec-draw)
- + Fry time (@sec-fry)
 
 
-**Sort yourselves into groups** following @sec-groups
-
-## Simulation {#sec-simulation}
+### Before we begin **sort yourselves into groups** following @sec-groups
 
 ::: {.callout-tip}
 ## Before modelling, you should first be able to simulate!
@@ -22,6 +19,10 @@
  + Explore the consequences of assumption violations
 
 :::
+
+
+## Simulation {#sec-simulation}
+
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> What is a Model?
@@ -56,6 +57,12 @@ Be prepared to discuss your progress/thoughts with me as I wander around the cla
 
 Extra things to think about: *Could there be non-linear relationships?*, *Could there be interaction effects?*, *Could some predictors be correlated?*, *Could errors be non-constant or clustered?*
  
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> 
+
+Once you've simulated a scenario you're happy with (**individually**) paste your code and assumptions into [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296).
+
+:::
 
 ## From numbers to plots {#sec-draw}
 
@@ -70,7 +77,11 @@ data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/
 ```
 
 
+::: {.callout-caution collapse="true"}
+## From numbers to plots - Code and Output
+
 ```{r}
+
 data
 str(data)
 ##### ##### ##### ###
@@ -107,23 +118,8 @@ mod <- lm(worldwide ~ budget*critics_score, data = data)
 mod |> summary()
 ```
 
-### Fry time {#sec-fry}
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> GitHub script upload
-
-
-Below is a plot of some data collected as part of a study carried out by @fries.
-
-<center>
-<img src="https://ars.els-cdn.com/content/image/1-s2.0-S1658077X17302655-gr1.jpg" alt="Figure 1 from  article doi.org/10.1016/j.jssas.2018.01.002" >
-<p>Figure 1 from @fries</p>
-</center>
-
-
-To the `tasks` folder of your GitHub repository push a reproducible `R` script named `week_02.r` that simulates these data as best you can. Remember to update your `README.md` accordingly.
-
 :::
+
 
 
 

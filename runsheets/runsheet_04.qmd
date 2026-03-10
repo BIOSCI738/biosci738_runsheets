@@ -28,129 +28,15 @@
  + **03.45–03.55 pm** Q&A and peer-share (@sec-peershare04)
 
 
-### Randomly allocated groups
-
-**It's your responsibility to get into these, just look for the cows!**
-
-```{r, echo = 2}
-names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Daneshajeya Jeyavalan", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Hnin Lwin", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Vivian Qian", "Pikitangarangi Ratapu", "YOGAPRIYA S", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
-group_allocation(names, seed = 1131, 10)
-```
-
-## *Significance* {#sec-significance}
-
-
-#### How good are you at assessing *significance*? [Test yourself](https://statbiscuit.github.io/mini_games/shady/index.html).
-
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
 Rerun the analysis discussed in @sec-honesty (see @sec-solutions for relevant `R` code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?
 :::
 
-**5% is NOT some magic threshold**! Below is an excerpt taken from @fisher.^[[R. A. Fisher’s](https://en.wikipedia.org/wiki/Ronald_Fisher) work in the area of experimental design is, perhaps, the most well known in the field. The principles he devised we still abide by today. Note, however, to give a balanced view of the celebrated mathematician many of his views (on eugenics and race in particular) are considered unethical by many. I would urge you to read up on [his work in this area and come to your own conclusions](https://www.nature.com/articles/s41437-020-00394-6).]
-
-> If one in twenty does not seem high enough odds, we may, if we prefer it, draw the line at one in fifty (the 2 per cent. point), or one in a hundred (the 1 per cent. point). Personally, the writer prefers to set a low standard of significance at the 5 per cent. point, and ignore entirely all results which fail to reach this level. A scientific fact should be regarded as experimentally established only if a properly designed experiment *rarely fails* to give this level of significance. The very high odds sometimes claimed for experimental results should usually be discounted, for inaccurate methods of estimating error have far more influence than has the particular standard of significance chosen. -- Page 504, @fisher.
 
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
-Write out a inferential statement that includes the magical word *significance* (as well as quoting the appropriate quantities)! It can be from the analysis we've covered in this course, or from a paper, or from your other classes. 
-:::
 
-Remember back to @sec-caseliza where you faced some potential ethical issues in the given case studies? These ranged from data availability to drawing & reporting conclusions. Your obligations in being an responsible (*ethical*) also applies to your use of language when reporting. 
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
-Re-write out your inferential statements from above that switching out the magical word *significance* to something you believe is more likely to be immediately understood/is less obscure, yet is still concise and meaningful.
-:::
-
-
-## Hypothesis testing via resampling {#sec-resampling}
-
-```{r}
-require(tidyverse)
-data <- data.frame(Group = rep(c("BIOSCI220", "BIOSCI738"), each = 4),
-                   Value = c(7,6,4,1.5,5,6,9.5,3))
-means <- data %>%
-	group_by(Group) %>%
-	summarise(means = round(mean(Value), 3))
-vars <- data %>%
-	group_by(Group) %>%
-	summarise(vars = round(var(Value), 3))
-ggplot(data, aes(x = Group, y = Value, col = Group)) + geom_violin() + geom_jitter(aes(col = Group), size = 3) +
-	xlab("Group") + ylab("Value") + theme_light() +
-	annotate(geom = "text", x = means$Group, y = means$means, label = paste("mu == ", means$means), parse = TRUE, col = c("#80CFF0", "#DFC0D0"), size = 6) +
-	annotate(geom = "text", x = vars$Group, y = (means$means) - 0.75, label = paste("sigma^2 == ", vars$vars), parse = TRUE, col = c("#80CFF0", "#DFC0D0"), size = 6)  +
-  scale_color_manual(values = c("#80CFF0", "#DFC0D0"))
-```
-
-**Q** Do you think the means of each group are *significantly* different from each other? Why or why not?
-
-**Q** Do you think the variances of each group are *significantly* different from each other? Why or why not?
-
-
-### Permutation (*exact*) tests {#sec-perm}
-
-How many times can you rearrange 8 values into two groups, each of size 4? Remember $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ the binomial coefficient! In our case, $\binom{8}{4}$. Luckily `R` has the function `choose(8,4)`!
-
-Using a permutation test (i.e., one that considers all possible re-combinations of our data) we test the following hypothesis
-
-NULL $H_0: \mu_\text{BIOSCI738} = \mu_\text{BIOSCI220}$  vs alternative $H_1: \mu_\text{BIOSCI738} \neq \mu_\text{BIOSCI220}$.
-
-
-```{r}
-mean_diff <- means %>% 
-  summarise(diff = diff(means)) %>%
-  as.numeric()
-mean_diff
-```
-
-The observed statistic in our case is $\mu_\text{BIOSCI738} - \mu_\text{BIOSCI220} =$ `r mean_diff`. Below we carry out a permutation test.
-
-```{r}
-combinations <- combn(8,4) ## 70 in total
-permtest_combinations <- apply(combinations, 2, function(x)
-  mean(data$Value[x]) - mean(data$Value[-x]))
-p_val <- length(permtest_combinations[abs(permtest_combinations) >= mean_diff]) / choose(8,4)
-p_val
-```
-TBH all we've really done is carried out a t-test without the associated assumptions, compare this to the output from `t.test()`.
-
-```{r}
-t.test(Value ~ Group, data = data)
-```
-
-**BUT** what if it wasn't just a vanilla stat we were interested in?
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Carry out...
-a permutation test that compares the variances of the groups.
-:::
-
-### Randomization tests {#sec-random}
-
-A randomization test is really just a incomplete permutation test (i.e., one where we can't be bothered to compute all possible combinations). For a randomization test we reshuffle randomly and hope that we do this enough times to construct a sampling distribution of our test statistic under the NULL hypothesis.
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
-
- 1. ``Read" [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/randomisation.png) and summarize the procedure explained.
- 2. Given the data below, carry out
-    a. A permutation test that compares the **medians** of the groups
-    b. A randomization test for the same statistic ([Module 2 of the courseguide give some pretty strong hints](https://biosci738.github.io/BIOSCI738/permutation-and-randomisation-tests.html#a-randomisation-test-p%C4%81ua-shell-length))
-      + think about how many times you want to resample
-      + create a plot of your sampling distribution of the test statistic
-      + what do you infer?
-
-```{r, message = FALSE}
-data <- data.frame(weight = c(7.1, 5.2, 6.3, 6.7, 7.4, 
-                              5.9, 5.3, 6.1, 2.1, 4.9,
-                              4.8, 5.4, 3.6, 4.1, 4.4, 
-                              4.8, 3.4, 5.1, 5.3, 5.2),
-                   group = rep(c("Group_1","Group_2"), each = 10))
-```
-:::
 
 ## Bootstrapping {#sec-bootstrap}
 
