@@ -33,4 +33,75 @@ ggplot(data, aes(x = steps, y = bmi, col = gender)) +
     geom_point()
 ```
 
+## Suggested solution to @sec-draw
 
+```{r, eval = FALSE}
+## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588
+library(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv") %>%
+	mutate(critics_score = as.numeric(str_replace_all(`critics % score`, "%", ""))) %>%
+	mutate(budget_recovered = as.numeric(str_replace_all(`% budget recovered`, "%", "")))
+##### ##### ##### ###
+##### Model 1 #######
+##### ##### ##### ###
+data %>%
+	lm(budget_recovered ~ critics_score, data = .) |>
+	summary()
+## Ans
+data %>%
+	ggplot(., aes(y = budget_recovered, x = critics_score)) +
+	geom_smooth(method = "lm", se = FALSE) + ylab(" Estimated budget_recovered")
+## w. data
+data %>%
+	ggplot(., aes(y = budget_recovered, x = critics_score)) +
+	geom_smooth(method = "lm", se = FALSE) + geom_point()
+##### ##### ##### ###
+##### Model 2 #######
+##### ##### ##### ###
+names(table(data$category))
+mod <- data %>%
+	lm(budget_recovered ~  category, data = .) 
+mod |> summary()
+## Ans
+data$pred_vals <- predict(mod)
+## plot
+data %>%
+	ggplot(aes(y = pred_vals, x = category)) +
+    geom_point(size = 15, pch = "-") + ylab(" Estimated budget_recovered")
+
+##### ##### ##### ###
+##### Model 3 #######
+##### ##### ##### ###
+mod <- data %>%
+	lm(budget_recovered ~ critics_score + category, data = .) 
+mod |>	summary()
+## Ans
+data$pred_vals <- predict(mod)
+## plot
+data %>%
+	ggplot(aes(y = pred_vals, x = critics_score, color = category)) +
+	geom_line() + ylab(" Estimated budget_recovered")
+
+##### ##### ##### ###
+##### Model 4 #######
+##### ##### ##### ###
+data <- data %>%
+	rename(., "worldwide" = `worldwide gross ($m)`, "domestic" = `domestic gross ($m)`,
+				 "international" = `international gross ($m)`)
+mod <- lm(worldwide ~ 0 + domestic + international, data = data) 
+mod |> summary()
+## Ans
+## plot
+require(rsm) ## install if not available
+persp(mod, form =  ~ 0 + domestic + international)
+image(mod, form =  ~ 0 + domestic + international)
+##### ##### ##### ###
+##### Model 5 #######
+##### ##### ##### ###
+mod <- lm(worldwide ~ budget*critics_score, data = data) 
+mod |>	summary()
+## Ans
+## plot
+persp(mod, form =  ~ budget*critics_score)
+image(mod, form =  ~ budget*critics_score)
+```
