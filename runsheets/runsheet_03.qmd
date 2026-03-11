@@ -68,7 +68,7 @@ means <- data %>%
 vars <- data %>%
 	group_by(Pet) %>%
 	summarise(vars = round(var(Time), 3))
-ggplot(data, aes(x = Pet, y = Time, col = Pet)) + geom_violin() + geom_jitter(aes(col = Pet), size = 3) +
+ggplot(data, aes(x = Pet, y = Time, col = Pet)) + geom_violin() + geom_point(aes(col = Pet), size = 3) +
 	xlab("") + ylab("Time taken to find treat (m)") + theme_light() +
 	annotate(geom = "text", x = means$Pet, y = means$means, label = paste("mu == ", means$means), parse = TRUE, col = c("#80CFF0", "#DFC0D0"), size = 6) +
 	annotate(geom = "text", x = vars$Pet, y = (means$means) - 0.75, label = paste("sigma^2 == ", vars$vars), parse = TRUE, col = c("#80CFF0", "#DFC0D0"), size = 6)  +
@@ -82,7 +82,42 @@ ggplot(data, aes(x = Pet, y = Time, col = Pet)) + geom_violin() + geom_jitter(ae
 
 How many times can you rearrange 8 values into two groups, each of size 4? Remember $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ the binomial coefficient! In our case, $\binom{8}{4}$. Luckily `R` has the function `choose(8,4)`!
 
-Using a permutation test (i.e., one that considers all possible re-combinations of our data) we test the following hypothesis
+
+```{r, echo=FALSE, message=FALSE}
+require(gganimate)
+data <- data %>%
+  mutate(Pet_orig = Pet,
+         id = 1:n())
+set.seed(1)
+n_perm <- choose(8,4)
+perm_data <- map_dfr(1:n_perm, function(i){
+  data %>%
+    mutate(
+      Pet_perm = sample(Pet_orig),
+      iter = i
+    )
+})
+
+p <- ggplot(perm_data,
+            aes(x = Pet_perm, y = Time, group = id)) +
+
+  geom_violin(aes(group = Pet_perm),
+              fill = NA,
+              colour = "grey70") +
+  geom_point(aes(col = Pet_orig),
+             size = 4) +
+  xlab("") +
+  ylab("Time taken to find treat (m)") +
+  theme_light() +
+  scale_color_manual(values = c("#80CFF0", "#DFC0D0")) +
+  labs(title = "Permutation {closest_state}", color = "Actual pet") +
+  transition_states(iter, transition_length = 1, state_length = 1) +
+  ease_aes("cubic-in-out")
+
+animate(p, fps = 2, width = 700, height = 500, renderer = gifski_renderer(), units = "px", device = "ragg_png")
+```
+
+Using a permutation test (i.e., one that considers all possible re-combinations of our data, see animation above) we test the following hypothesis
 
 NULL $H_0: \mu_\text{Cai} = \mu_\text{Kobe}$  vs alternative $H_1: \mu_\text{Cai} \neq \mu_\text{Kobe}$.
 
@@ -125,7 +160,105 @@ A randomization test is really just a incomplete permutation test (i.e., one whe
 :::
 
 
-Let's move on to some slightly more *colourful* data! [Colours of the Taylor Swift universe: a statistical story](https://academic.oup.com/jrssig/article/23/1/12/8380148)
+Let's move on to some slightly more *colourful* data! Below is a subset of the data explored in @swift, where each vector gives the dominant colour of the surprise song^{the acoustic setlist during each concert} outfit Taylor Swift wore during that leg of her Eras tour.
 
-Using a subset of the data exlplored in 
+![](https://marina-klemm.github.io/screamingcolour/viz_files/figure-html/unnamed-chunk-3-1.png)
 
+
+```{r}
+first_leg_outfits <- c("Pink", "Green", "Pink", "Green", "Green", "Pink", "Yellow", 
+"Pink", "Green", "Yellow", "Pink", "Green", "Green", "Pink", 
+"Yellow", "Pink", "Green", "Yellow", "Pink", "Yellow", "Green", 
+"Yellow", "Green", "Pink", "Pink", "Green", "Yellow", "Pink", 
+"Green", "Yellow", "Pink", "Yellow", "Yellow", "Pink", "Green", 
+"Pink", "Pink", "Yellow", "Yellow", "Pink", "Green", "Pink", 
+"Pink", "Yellow", "Pink", "Pink", "Pink", "Pink", "Yellow", "Green", 
+"Blue", "Blue", "Pink", "Green", "Yellow", "Blue", "Pink", "Yellow", 
+"Yellow", "Blue", "Green", "Blue", "Yellow", "Green", "Blue", 
+"Yellow", "Pink", "Green", "Yellow", "Pink", "Blue", "Pink", 
+"Blue", "Yellow", "Green", "Yellow", "Green", "Pink", "Pink", 
+"Yellow", "Blue")
+europe_leg_outfits <- c("Flamingo pink", "Ocean blue", "Sunset orange", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Ocean blue", "Sunset orange", 
+"Flamingo pink", "Sunset orange", "Ocean blue", "Flamingo pink", 
+"Sunset orange", "Ocean blue", "Sunset orange", "Flamingo pink", 
+"Flamingo pink", "Ocean blue", "Sunset orange", "Sunset orange", 
+"Sunset orange", "Ocean blue", "Flamingo pink", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Sunset orange", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Flamingo pink", "Sunset orange", 
+"Ocean blue", "Sunset orange", "Ocean blue", "Flamingo pink", 
+"Sunset orange", "Ocean blue", "Flamingo pink", "Sunset orange", 
+"Ocean blue", "Sunset orange", "Flamingo pink", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Flamingo pink", "Sunset orange")
+final_leg_outfits <- c("Cotton candy", "Blurple", "Grapefruit", "Popsicle", "Sunset orange", 
+"Blurple", "Cotton candy", "Popsicle", "Grapefruit", "Popsicle", 
+"Blurple", "Grapefruit", "Cotton candy", "Popsicle", "Blurple", 
+"Blurple", "Blurple", "Blurple")
+
+```
+
+### Does Taylor Swift choose her outfits at random?
+
+
+```{r, eval = FALSE}
+## helper function to make a transition matrix
+transitions <- function(x) {
+  n <- length(x)
+  table(x[-n], x[-1])
+}
+first_leg_outfits |> transitions()
+europe_leg_outfits |> transitions()
+final_leg_outfits |> transitions()
+```
+
+
+**$\chi^2$ statistic as a metric**
+
+```{r, eval = FALSE, warning = FALSE}
+## helper function
+randomisation <- function(data, nreps = 1000, seed = 1984){
+  sampling_dist <- numeric(nreps)
+  set.seed(seed) 
+  for (i in 1:nreps) {
+   sampling_dist[i] <- suppressWarnings(sample(data) |> 
+                                          transitions() |> 
+                                          chisq.test())$statistic
+  }
+return(sampling_dist)
+}
+## first leg
+null_first <- randomisation(first_leg_outfits)
+mean(null_first >= (first_leg_outfits |> transitions() |> chisq.test())$statistic)
+## now try the other legs!
+## compare to a traditional Chi-square test
+## does your inference make sense?
+## create a plot comparing your sampling distribution
+## of the test statistic under the NULL and the
+## observed value
+```
+
+
+**What about a particular outfit transition?**
+
+```{r, eval = FALSE}
+## helper function
+randomisation <- function(data, from, to, 
+                          nreps = 1000, seed = 1984){
+  sampling_dist <- numeric(nreps)
+  set.seed(seed) 
+  for (i in 1:nreps) {
+   sampling_dist[i] <- (sample(data) |> transitions())[from, to]
+  }
+return(sampling_dist)
+}
+## European leg, Ocean blue --> Ocean blue
+null_mid <- randomisation(europe_leg_outfits, from = "Ocean blue", to = "Ocean blue")
+obs_mid <- (europe_leg_outfits |> transitions())["Ocean blue", "Ocean blue"]
+mean(abs(null_mid - mean(null_mid)) >= abs(obs_mid - mean(null_mid)))
+## now try the other legs and/or other transitions!
+## does your inference make sense?
+## create a plot comparing your sampling distribution
+## of the test statistic under the NULL and the
+## observed value
+## Devise your own metric to represent what is of interest to you
+```
