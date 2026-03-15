@@ -81,6 +81,10 @@ ggplot(data, aes(x = Pet, y = Time, col = Pet)) + geom_violin() + geom_point(aes
 
 ### Permutation (*exact*) tests {#sec-perm}
 
+::: {.callout-important}
+## **Permutation tests simulate data that would occur if this null hypothesis were true**! 
+:::
+
 How many times can you rearrange 8 values into two groups, each of size 4? Remember $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ the binomial coefficient! In our case, $\binom{8}{4}$. Luckily `R` has the function `choose(8,4)`!
 
 
@@ -121,6 +125,8 @@ animate(p, fps = 2, width = 700, height = 500, renderer = gifski_renderer(), uni
 Using a permutation test (i.e., one that considers all possible re-combinations of our data, see animation above) we test the following hypothesis
 
 NULL $H_0: \mu_\text{Cai} = \mu_\text{Kobe}$  vs alternative $H_1: \mu_\text{Cai} \neq \mu_\text{Kobe}$.
+
+
 
 
 ```{r, eval = FALSE}

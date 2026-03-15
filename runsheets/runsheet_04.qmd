@@ -1,39 +1,23 @@
-# March 21st
+# Week 03 - Lecture 02
+
+## Rough Agenda
+
+### **2:05 pm - 3:55 pm** 
+
+ + Bootstrapping (@sec-bootstrap)
+   - Case study (@sec-boot01) 
+ + Bootstrap vs Permutation (@sec-bootvsperm)
+    
+### Before we begin **sort yourselves into groups** following @sec-groups
 
 ::: {.callout-tip}
-## By the end of today's seminar, you should be able to
-
+## Bootstrapping seems like magic!
+ 
  - Carry out, interpret, and communicate the result of
-   + a randomization hypothesis test,
-   + a permutation test, and
-   + a bootstrap.
- 
- - Identify which of, and when, the above resampling procedures are appropriate to use
- - Interpret *p-values* correctly!
+   + a parametric bootstrap
+   + a non-parametric bootstrap
+ - Discuss and define the difference between a bootstrap and a permutation test
 :::
-
-## Rough timeline
-
-### **02:05 pm - 03:55 pm** 
-
- + **02:05–02.25 pm** *Significance* (@sec-significance)
- + **02.25–02.55 pm** Hypothesis testing via resampling (@sec-resampling)
-    - Permutation (*exact*) tests (@sec-perm)
-    - Randomization tests (@sec-random)
-    
- + **02:55–03:05 pm** Break
- 
- + **03.05–03.45 pm** Bootstrapping (@sec-bootstrap)
-    - Case study (@sec-boot01) 
- + **03.45–03.55 pm** Q&A and peer-share (@sec-peershare04)
-
-
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In this [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
-Rerun the analysis discussed in @sec-honesty (see @sec-solutions for relevant `R` code). Compare the two p-values and discuss the inference around them from the hypothesis tests carried out with and without the flagged data values. Discuss why the observations were manipulated in the way they were?
-:::
-
 
 
 
@@ -45,10 +29,12 @@ A bootstrap is a procedure for finding the (approximate) sampling distribution o
    1. the original sample represents the distribution of the population from which it was drawn, therefore
    2. resamples, taken with replacement from the original sample are representative of what we would get from drawing many samples from the population (*the distribution of the statistics calculated from each resample is known as the bootstrap distribution of the statistic*), so
    3. the bootstrap distribution of a statistic represents that statistic’s sampling distribution.
+   
+   
+::: {.callout-note collapse="true"}
+## Bootstrapping Cheatsheet
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to the [Google Doc](https://docs.google.com/document/d/1ph7vSEel0r7u_W1a7HaI8TewKRqY-DjrPidJGxrXONY/edit?usp=sharing)...
-"Read" [this cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png) and summarize the procedure explained. What are the key differences to the resampling procedures in @sec-resampling
+![](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png)
 :::
 
 
@@ -59,10 +45,10 @@ A bootstrap is a procedure for finding the (approximate) sampling distribution o
 <img src="runsheets/img/pumpkins.jpg" alt="Some of my 2022 pumpkin haul" height="400px"></center>
 
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Run through the `R` code below 
-Discuss/answer each question posed in the comments. Figure out what each line of code does and replace the comments with your own.
-:::
+In your groups Run through the `R` code below and discuss/answer each question posed in the comments. Figure out what each line of code does and replace the comments with your own. 
+
+Be prepared to discuss your progress/thoughts with me as I wander around the class.
+
 
 ```{r, eval = FALSE}
 library(tidyverse)
@@ -172,11 +158,137 @@ CI_non_parametric
 ```
 
 
+## Bootstrap vs Permutation {#sec-bootvsperm}
 
-## Q&A/peer-share/Task 03 {#sec-peershare04}
+### Bootstrap (*esimate uncertainty*)
+
+Abalone are large, edible sea snails. Their age is determined by cutting the shell through the cone, staining it, and counting the number of rings through a microscope! Below we're going to look at some abalone data collected by @abalone. These data  contains ten columns: a categorical variable (Sex), seven continuous variables (Length, Diameter, Height, Whole weight, Shucked weight, Viscera weight,
+and Shell weight), a count variable (number of rings) and categorical variable which classifies
+abalone into three ring classes (Class) in which abalone with 8 or fewer (Class = 1), 9 or 10
+(Class = 2), and 11 or more (Class = 3) rings.
+
+
+Now, let's say we're interested in testing the NULL hypothesis of *no difference in mean diameter between male, female and infant abalone of different ring classes*.
+
+
+```{r, eval = FALSE}
+abalone <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/abalone.csv")
+## make sure Class is catrgorical
+abalone$Class <- as.factor(abalone$Class)
+## fit interaction model
+## ANOVA way
+aov <- aov(Diameter ~ Sex * Class, data = abalone)
+## lm way (both the same!)
+lm(Diameter ~ Sex * Class, data = abalone) |> anova()
+## at about the sampling variability of the interaction F-statistic?
+## extract statistic
+F_obs <- summary(aov)[[1]]["Sex:Class","F value"]
+## Bootstrap!
+nreps <- 1000
+## initialize empty array to hold results
+bootstrap_Fs <- numeric(nreps)
+##  bootstrap iterations.
+for (i in 1:nreps){
+    ## Simulating with replacement 
+    ## to "mirror" a potential other sample from the
+    ## population
+    boot <- abalone[sample(1:nrow(abalone), replace = TRUE), ]
+    ## ANOVA using resampled data!
+    aov <- aov(Diameter ~ Sex * Class, data = boot)
+    bootstrap_Fs[i] <- summary(aov)[[1]]["Sex:Class","F value"]
+}
+## ~approximates the sampling distribution of 
+## the F-statistic if we repeatedly sampled abalone from the population
+```
+
+
+### Permutation/randomisation test (*testing a hypothesis*)
+
+Let's test the NULL hypothesis $H_0:$ *No interaction between Sex and Class*.
+
+Recall, that permutation (aka randomisation) tests simulate data that would occur if this null hypothesis were true.
+
+Now, instead of resampling with replacement, we're going to shuffle data in a way that preserves the NULL model.
+
+```{r,eval = FALSE}
+## method 1
+## permutation under reduced model
+## additive only model
+fit_add <- aov(Diameter ~ Sex + Class, data = abalone)
+fitted_vals <- fitted(fit_add)
+res <- residuals(fit_add)
+## permute residuals; reconstruct response; fit full model
+nreps <- 1000
+## initialize empty array to hold results
+Fs <- numeric(nreps)
+for (i in 1:nreps){
+  res_perm <- sample(res) ## resample residuals
+  y_star <- fitted_vals + res_perm ## 'new' response
+  ## ANOVA using 'new' data!
+  aov <- aov(y_star ~ Sex * Class, data = abalone)
+  Fs[i] <- summary(aov)[[1]]["Sex:Class","F value"]
+}
+## Fs, is the sampling distribution when there
+## interaction effect is zero (NULL in out case)
+## evidence against this shows our observed Fs
+## is not consistent with the NULL
+mean(Fs >= F_obs)
+```
+
+```{r, eval = FALSE}
+## method 2
+## permutation under full model
+fit_full <- aov(Diameter ~ Sex * Class, data = abalone)
+res <- residuals(fit_full)
+## permute residuals; reconstruct response; fit full model
+nreps <- 1000
+## initialize empty array to hold results
+Fs <- numeric(nreps)
+for (i in 1:nreps){
+  res_perm <- sample(res) ## resample residuals
+  ## fit full model to permuted residuals
+  ## ANOVA using 'new' data!
+  aov <- aov(res_perm ~ Sex * Class, data = abalone)
+  Fs[i] <- summary(aov)[[1]]["Sex:Class","F value"]
+}
+## more `conservative` than method 1
+mean(Fs >= F_obs)
+```
+
+
+
+```{r, eval = FALSE}
+## method 3
+## permutation of response
+## test assumes responses are exchangeable
+nreps <- 1000
+## initialize empty array to hold results
+Fs <- numeric(nreps)
+for (i in 1:nreps){
+  y_perm <- sample(abalone$Diameter) ## resample response
+  ## fit full model to permuted response
+  ## ANOVA using 'new' data!
+  aov <- aov(y_perm ~ Sex * Class, data = abalone)
+  Fs[i] <- summary(aov)[[1]]["Sex:Class","F value"]
+}
+
+mean(Fs >= F_obs)
+
+```
+
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
-Go over an activity from the class again or spend some time on Task 03, due today!
-:::
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Resampling Summary
 
+To the `tasks` folder of your GitHub repository create, add and push a reproducible Rmarkdown (`.Rmd`) file called `week_03.Rmd` with a completed version of the table below. [LEARN about Rmarkdown files here](https://rmarkdown.rstudio.com/lesson-2.html). Remember to update your `README.md` accordingly!
+
+| Feature | Bootstrap | Permutation (residuals – reduced model) | Permutation (residuals – full model) | Permutation (observations) |
+|--------|-----------|-------------------------------------------|---------------------------------------|-----------------------------|
+| Goal of the method |  |  |  |  |
+| What is resampled or shuffled? |  |  |  |  |
+| Is sampling done with replacement? |  |  |  |  |
+| What distribution is generated? |  |  |  |  |
+| How is inference made? |  |  |  |  |
+
+
+:::
