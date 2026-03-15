@@ -178,7 +178,7 @@ window.Quarto = {
   <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
   <li><a href="#week-01" id="toc-week-01" class="nav-link" data-scroll-target="#week-01">Week 01</a>
   <ul class="collapse">
-  <li><a href="#tasks" id="toc-tasks" class="nav-link" data-scroll-target="#tasks">Tasks</a></li>
+  <li><a href="#sec-diagnostic" id="toc-sec-diagnostic" class="nav-link" data-scroll-target="#sec-diagnostic">Tasks</a></li>
   <li><a href="#other-info" id="toc-other-info" class="nav-link" data-scroll-target="#other-info">Other info</a></li>
   </ul></li>
   <li><a href="#week-02---lecture-01" id="toc-week-02---lecture-01" class="nav-link" data-scroll-target="#week-02---lecture-01">Week 02 - Lecture 01</a>
@@ -218,6 +218,21 @@ window.Quarto = {
   <li><a href="#simulate-your-own-scenario" id="toc-simulate-your-own-scenario" class="nav-link" data-scroll-target="#simulate-your-own-scenario">Simulate your own scenario</a></li>
   </ul></li>
   <li><a href="#sec-draw" id="toc-sec-draw" class="nav-link" data-scroll-target="#sec-draw">From numbers to plots</a></li>
+  </ul></li>
+  <li><a href="#week-03---lecture-01" id="toc-week-03---lecture-01" class="nav-link" data-scroll-target="#week-03---lecture-01">Week 03 - Lecture 01</a>
+  <ul class="collapse">
+  <li><a href="#rough-agenda-2" id="toc-rough-agenda-2" class="nav-link" data-scroll-target="#rough-agenda-2">Rough Agenda</a>
+  <ul class="collapse">
+  <li><a href="#pm---555-pm-1" id="toc-pm---555-pm-1" class="nav-link" data-scroll-target="#pm---555-pm-1"><strong>4:05 pm - 5:55 pm</strong></a></li>
+  <li><a href="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-1" id="toc-before-we-begin-sort-yourselves-into-groups-following-sec-groups-1" class="nav-link" data-scroll-target="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-1">Before we begin <strong>sort yourselves into groups</strong> following Section&nbsp;3.2</a></li>
+  </ul></li>
+  <li><a href="#sec-significance" id="toc-sec-significance" class="nav-link" data-scroll-target="#sec-significance"><em>Significance</em></a></li>
+  <li><a href="#sec-resampling" id="toc-sec-resampling" class="nav-link" data-scroll-target="#sec-resampling">Hypothesis testing via resampling</a>
+  <ul class="collapse">
+  <li><a href="#sec-perm" id="toc-sec-perm" class="nav-link" data-scroll-target="#sec-perm">Permutation (<em>exact</em>) tests</a></li>
+  <li><a href="#sec-random" id="toc-sec-random" class="nav-link" data-scroll-target="#sec-random">Randomization tests</a></li>
+  <li><a href="#does-taylor-swift-choose-her-outfits-at-random" id="toc-does-taylor-swift-choose-her-outfits-at-random" class="nav-link" data-scroll-target="#does-taylor-swift-choose-her-outfits-at-random">Does Taylor Swift choose her outfits at random?</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#sec-extras" id="toc-sec-extras" class="nav-link" data-scroll-target="#sec-extras">Extra Activities (time dependent)</a>
   <ul class="collapse">
@@ -326,8 +341,8 @@ inputBox.addEventListener("input", function() {
 <p>Try out the <a href="https://canvas.auckland.ac.nz/courses/141056/pages/r2-d2?module_item_id=2897024"><span class="math inline">\(R^2\)</span>-D2 AI agent</a> specifically designed for this purpose. I would task yourself with around 30 questions, or until you are completely comfortable with the content (basically Module 1 from BIOSCI 220). If you’re stuck <span class="math inline">\(R^2\)</span>-D2 will guide you through the answers too!</p>
 </div>
 </div>
-<section id="tasks" class="level2">
-<h2 class="anchored" data-anchor-id="tasks">Tasks</h2>
+<section id="sec-diagnostic" class="level2">
+<h2 class="anchored" data-anchor-id="sec-diagnostic">Tasks</h2>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1082,7 +1097,279 @@ F-statistic: 25.72 on 3 and 26 DF,  p-value: 6.07e-08</code></pre>
 </div>
 </div>
 </div>
-<!--{{< include runsheets/runsheet_03.qmd >}}-->
+</section>
+</section>
+<section id="week-03---lecture-01" class="level1">
+<h1>Week 03 - Lecture 01</h1>
+<section id="rough-agenda-2" class="level2">
+<h2 class="anchored" data-anchor-id="rough-agenda-2">Rough Agenda</h2>
+<section id="pm---555-pm-1" class="level3">
+<h3 class="anchored" data-anchor-id="pm---555-pm-1"><strong>4:05 pm - 5:55 pm</strong></h3>
+<ul>
+<li><em>Significance</em> (<a href="#sec-significance" class="quarto-xref">Section&nbsp;5.2</a>)</li>
+<li>Hypothesis testing via resampling (<a href="#sec-resampling" class="quarto-xref">Section&nbsp;5.3</a>)
+<ul>
+<li>Permutation (<em>exact</em>) tests (<a href="#sec-perm" class="quarto-xref">Section&nbsp;5.3.1</a>)</li>
+<li>Randomization tests (<a href="#sec-random" class="quarto-xref">Section&nbsp;5.3.2</a>)</li>
+</ul></li>
+</ul>
+</section>
+<section id="before-we-begin-sort-yourselves-into-groups-following-sec-groups-1" class="level3">
+<h3 class="anchored" data-anchor-id="before-we-begin-sort-yourselves-into-groups-following-sec-groups-1">Before we begin <strong>sort yourselves into groups</strong> following <a href="#sec-groups" class="quarto-xref">Section&nbsp;3.2</a></h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Resampling to the Rescue
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Translate a question into a formal hypothesis test</li>
+<li>Carry out, interpret, and communicate the result of
+<ul>
+<li>a randomization hypothesis test,</li>
+<li>a permutation test, and</li>
+</ul></li>
+<li>Identify which of, and when, the above resampling procedures are appropriate to use</li>
+<li>Interpret <em>p-values</em> correctly!</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-significance" class="level2">
+<h2 class="anchored" data-anchor-id="sec-significance"><em>Significance</em></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>How good are you at assessing <em>significance</em>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="https://statbiscuit.github.io/mini_games/shady/index.html">Test yourself</a></p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span><strong>5% is NOT some magic threshold</strong>!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+<p>Below is an excerpt taken from <span class="citation" data-cites="fisher">Fisher (<a href="#ref-fisher" role="doc-biblioref">1926</a>)</span>.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<blockquote class="blockquote">
+<p>If one in twenty does not seem high enough odds, we may, if we prefer it, draw the line at one in fifty (the 2 per cent. point), or one in a hundred (the 1 per cent. point). Personally, the writer prefers to set a low standard of significance at the 5 per cent. point, and ignore entirely all results which fail to reach this level. A scientific fact should be regarded as experimentally established only if a properly designed experiment <em>rarely fails</em> to give this level of significance. The very high odds sometimes claimed for experimental results should usually be discounted, for inaccurate methods of estimating error have far more influence than has the particular standard of significance chosen. – Page 504, <span class="citation" data-cites="fisher">Fisher (<a href="#ref-fisher" role="doc-biblioref">1926</a>)</span>.</p>
+</blockquote>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Significance Statements!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here are the first two sentences from Section 3.1 of <span class="citation" data-cites="herbicide">Peterson et al. (<a href="#ref-herbicide" role="doc-biblioref">2020</a>)</span> (the heather paper you saw in <a href="#sec-diagnostic" class="quarto-xref">Section&nbsp;2.1</a>).</p>
+<blockquote class="blockquote">
+<p>Heather cover varied with treatment (<span class="math inline">\(F_{3,15}\)</span> <span class="math inline">\(= 98.81\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>) and year (<span class="math inline">\(F_{3,60}\)</span> <span class="math inline">\(= 198.35\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>). The interaction between treatment and year was also highly significant (<span class="math inline">\(F_{9,60}\)</span> <span class="math inline">\(= 44.98\)</span>, <span class="math inline">\(p &lt; 0.001\)</span>; Figure 1).</p>
+</blockquote>
+<ol type="1">
+<li>Discuss what this is trying to tell you…</li>
+<li>Now, open <a href="https://canvas.auckland.ac.nz/courses/141056/external_tools/38296">StatChat</a> and <strong>individually</strong> re-write out the inferential statements from above that switching out the magical word <em>significant</em> (and any others) to something you believe is more likely to be immediately understood/is less obscure, yet is still concise and meaningful.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="sec-resampling" class="level2">
+<h2 class="anchored" data-anchor-id="sec-resampling">Hypothesis testing via resampling</h2>
+<p>How long does it take Cai (my Vizsla you have already ‘met’) or Kobe (his best friend whom we’re currently dog-sitting) to find a hidden treat in minutes!</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Pet =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Kobe"</span>, <span class="st">"Cai"</span>), <span class="at">each =</span> <span class="dv">4</span>),</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">Time =</span> <span class="fu">c</span>(<span class="dv">7</span>,<span class="dv">6</span>,<span class="dv">4</span>,<span class="fl">1.5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="fl">9.5</span>,<span class="dv">3</span>))</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>means <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Pet) <span class="sc">%&gt;%</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">means =</span> <span class="fu">round</span>(<span class="fu">mean</span>(Time), <span class="dv">3</span>))</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>vars <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(Pet) <span class="sc">%&gt;%</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">vars =</span> <span class="fu">round</span>(<span class="fu">var</span>(Time), <span class="dv">3</span>))</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> Pet, <span class="at">y =</span> Time, <span class="at">col =</span> Pet)) <span class="sc">+</span> <span class="fu">geom_violin</span>() <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">col =</span> Pet), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">xlab</span>(<span class="st">""</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Time taken to find treat (m)"</span>) <span class="sc">+</span> <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> means<span class="sc">$</span>Pet, <span class="at">y =</span> means<span class="sc">$</span>means, <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"mu == "</span>, means<span class="sc">$</span>means), <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>), <span class="at">size =</span> <span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">annotate</span>(<span class="at">geom =</span> <span class="st">"text"</span>, <span class="at">x =</span> vars<span class="sc">$</span>Pet, <span class="at">y =</span> (means<span class="sc">$</span>means) <span class="sc">-</span> <span class="fl">0.75</span>, <span class="at">label =</span> <span class="fu">paste</span>(<span class="st">"sigma^2 == "</span>, vars<span class="sc">$</span>vars), <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>), <span class="at">size =</span> <span class="dv">6</span>)  <span class="sc">+</span></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"#80CFF0"</span>, <span class="st">"#DFC0D0"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Q</strong> Do you think the means of each group are <em>significantly</em> different from each other? Why or why not? <strong>Q</strong> Do you think the variances of each group are <em>significantly</em> different from each other? Why or why not?</p>
+<section id="sec-perm" class="level3">
+<h3 class="anchored" data-anchor-id="sec-perm">Permutation (<em>exact</em>) tests</h3>
+<p>How many times can you rearrange 8 values into two groups, each of size 4? Remember <span class="math inline">\(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)</span> the binomial coefficient! In our case, <span class="math inline">\(\binom{8}{4}\)</span>. Luckily <code>R</code> has the function <code>choose(8,4)</code>!</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Using a permutation test (i.e., one that considers all possible re-combinations of our data, see animation above) we test the following hypothesis</p>
+<p>NULL <span class="math inline">\(H_0: \mu_\text{Cai} = \mu_\text{Kobe}\)</span> vs alternative <span class="math inline">\(H_1: \mu_\text{Cai} \neq \mu_\text{Kobe}\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mean_diff <span class="ot">&lt;-</span> means <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">diff =</span> <span class="fu">diff</span>(means)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>()</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>mean_diff</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>combinations <span class="ot">&lt;-</span> <span class="fu">combn</span>(<span class="dv">8</span>,<span class="dv">4</span>) <span class="do">## 70 in total</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>permtest_combinations <span class="ot">&lt;-</span> <span class="fu">apply</span>(combinations, <span class="dv">2</span>, <span class="cf">function</span>(x)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(data<span class="sc">$</span>Time[x]) <span class="sc">-</span> <span class="fu">mean</span>(data<span class="sc">$</span>Time[<span class="sc">-</span>x]))</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>p_val <span class="ot">&lt;-</span> <span class="fu">length</span>(permtest_combinations[<span class="fu">abs</span>(permtest_combinations) <span class="sc">&gt;=</span> <span class="fu">abs</span>(mean_diff)]) <span class="sc">/</span> <span class="fu">choose</span>(<span class="dv">8</span>,<span class="dv">4</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>p_val</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="do">## To be honest,  all we've really done is carried out a t-test without the </span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="do">## associated assumptions, compare this to the output from `t.test()`.</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Time <span class="sc">~</span> Pet, <span class="at">data =</span> data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>BUT</strong> what if it wasn’t just a <em>vanilla</em> statistic we were interested in?</p>
+<p>In your groups</p>
+<ul>
+<li>Carry out a permutation test that compares the <strong>ratio</strong> of the variance in the times taken to find the hidden treat for each Pet,</li>
+<li>Compose a statement that outlines the inference you draw (include any relevant numbers!)</li>
+<li>Discuss if this is a useful test statistic.</li>
+</ul>
+<p>Be prepared to discuss your progress/thoughts with me as I wander around the class.</p>
+</section>
+<section id="sec-random" class="level3">
+<h3 class="anchored" data-anchor-id="sec-random">Randomization tests</h3>
+<p>A randomization test is really just a incomplete permutation test (i.e., one where we can’t be bothered, or have the computational power, to compute all possible combinations). For a randomization test we reshuffle randomly and hope that we do this enough times to construct a sampling distribution of our test statistic under the NULL hypothesis.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-26-contents" aria-controls="callout-26" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Randomisation Test Cheatsheet
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-26" class="callout-26-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/randomisation.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<p>Let’s move on to some slightly more <em>colourful</em> data! Below is a subset of the data explored in <span class="citation" data-cites="swift">Klemm and Jones-Todd (<a href="#ref-swift" role="doc-biblioref">2026</a>)</span>, where each vector gives the dominant colour of the surprise song<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> outfit Taylor Swift wore during that leg of her Eras tour.</p>
+<p><img src="https://marina-klemm.github.io/screamingcolour/viz_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid"></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>first_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Green"</span>, <span class="st">"Pink"</span>, <span class="st">"Yellow"</span>, </span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Green"</span>, <span class="st">"Pink"</span>, </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Yellow"</span>, <span class="st">"Green"</span>, </span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Yellow"</span>, <span class="st">"Green"</span>, <span class="st">"Pink"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, </span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="st">"Green"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Yellow"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, </span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="st">"Pink"</span>, <span class="st">"Pink"</span>, <span class="st">"Yellow"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Pink"</span>, </span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="st">"Pink"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Pink"</span>, <span class="st">"Pink"</span>, <span class="st">"Pink"</span>, <span class="st">"Yellow"</span>, <span class="st">"Green"</span>, </span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="st">"Blue"</span>, <span class="st">"Blue"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Yellow"</span>, <span class="st">"Blue"</span>, <span class="st">"Pink"</span>, <span class="st">"Yellow"</span>, </span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="st">"Yellow"</span>, <span class="st">"Blue"</span>, <span class="st">"Green"</span>, <span class="st">"Blue"</span>, <span class="st">"Yellow"</span>, <span class="st">"Green"</span>, <span class="st">"Blue"</span>, </span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Green"</span>, <span class="st">"Yellow"</span>, <span class="st">"Pink"</span>, <span class="st">"Blue"</span>, <span class="st">"Pink"</span>, </span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="st">"Blue"</span>, <span class="st">"Yellow"</span>, <span class="st">"Green"</span>, <span class="st">"Yellow"</span>, <span class="st">"Green"</span>, <span class="st">"Pink"</span>, <span class="st">"Pink"</span>, </span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="st">"Yellow"</span>, <span class="st">"Blue"</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>europe_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>)</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>final_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cotton candy"</span>, <span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, </span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Blurple"</span>, </span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="does-taylor-swift-choose-her-outfits-at-random" class="level3">
+<h3 class="anchored" data-anchor-id="does-taylor-swift-choose-her-outfits-at-random">Does Taylor Swift choose her outfits at random?</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## helper function to make a transition matrix</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>transitions <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">length</span>(x)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">table</span>(x[<span class="sc">-</span>n], x[<span class="sc">-</span><span class="dv">1</span>])</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>first_leg_outfits <span class="sc">|&gt;</span> <span class="fu">transitions</span>()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>europe_leg_outfits <span class="sc">|&gt;</span> <span class="fu">transitions</span>()</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>final_leg_outfits <span class="sc">|&gt;</span> <span class="fu">transitions</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong><span class="math inline">\(\chi^2\)</span> statistic as a metric</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">## helper function</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> <span class="fu">suppressWarnings</span>(<span class="fu">sample</span>(data) <span class="sc">|&gt;</span> </span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>                                          <span class="fu">transitions</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>                                          <span class="fu">chisq.test</span>())<span class="sc">$</span>statistic</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="do">## first leg</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>null_first <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(first_leg_outfits)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(null_first <span class="sc">&gt;=</span> (first_leg_outfits <span class="sc">|&gt;</span> <span class="fu">transitions</span>() <span class="sc">|&gt;</span> <span class="fu">chisq.test</span>())<span class="sc">$</span>statistic)</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="do">## now try the other legs!</span></span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="do">## compare to a traditional Chi-square test</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="do">## does your inference make sense?</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="do">## create a plot comparing your sampling distribution</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="do">## of the test statistic under the NULL and the</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="do">## observed value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>What about a particular outfit transition?</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="do">## helper function</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, from, to, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> (<span class="fu">sample</span>(data) <span class="sc">|&gt;</span> <span class="fu">transitions</span>())[from, to]</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="do">## European leg, Ocean blue --&gt; Ocean blue</span></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>null_mid <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(europe_leg_outfits, <span class="at">from =</span> <span class="st">"Ocean blue"</span>, <span class="at">to =</span> <span class="st">"Ocean blue"</span>)</span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>obs_mid <span class="ot">&lt;-</span> (europe_leg_outfits <span class="sc">|&gt;</span> <span class="fu">transitions</span>())[<span class="st">"Ocean blue"</span>, <span class="st">"Ocean blue"</span>]</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">abs</span>(null_mid <span class="sc">-</span> <span class="fu">mean</span>(null_mid)) <span class="sc">&gt;=</span> <span class="fu">abs</span>(obs_mid <span class="sc">-</span> <span class="fu">mean</span>(null_mid)))</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="do">## now try the other legs and/or other transitions!</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="do">## does your inference make sense?</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="do">## create a plot comparing your sampling distribution</span></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="do">## of the test statistic under the NULL and the</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="do">## observed value</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Devise your own metric to represent what is of interest to you</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
 </section>
 </section>
 <section id="sec-extras" class="level1">
@@ -1102,7 +1389,7 @@ F-statistic: 25.72 on 3 and 26 DF,  p-value: 6.07e-08</code></pre>
 <p>Building on <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;3.3</a> here you’ll be carrying out some basic EDA and interpreting hypothesis tests.</p>
 </div>
 </div>
-<p>In this task you’re going to be using <a href="https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854">these data</a> collected as part of a (now retracted) study (<span class="citation" data-cites="retracted">Shu et al. (<a href="#ref-retracted" role="doc-biblioref">2012</a>)</span>)<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>In this task you’re going to be using <a href="https://canvas.auckland.ac.nz/courses/120054/files/folder/data?preview=14841854">these data</a> collected as part of a (now retracted) study (<span class="citation" data-cites="retracted">Shu et al. (<a href="#ref-retracted" role="doc-biblioref">2012</a>)</span>)<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
 <blockquote class="blockquote">
 <p>The data comes from a study that claims to show that people are less likely to act dishonestly when they sign an honesty pledge at the top of a form rather than at the bottom of a form. Participants received a worksheet with 20 math puzzles and were offered $1 for each puzzle they (reported to have) solved correctly within 5 minutes. After the 5 minutes passed, participants were asked to count how many puzzles they solved correctly and then throw away their worksheets. The goal was to mislead participants into thinking that the experimenter could not observe their true performance, when in fact they could because each worksheet had a unique identifier. Thus, participants could cheat (and earn more money) without fear of being caught, while the researchers could observe how much each participant had cheated. Participants then completed a “tax” form reporting how much money they had earned, and also how much time and money they spent coming to the lab. The experimenters partially compensated participants for those costs.</p>
 </blockquote>
@@ -1165,100 +1452,100 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <section id="suggested-solution-to-sec-gorilla" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;3.3</a></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-draw" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-draw">Suggested solution to <a href="#sec-draw" class="quarto-xref">Section&nbsp;4.3</a></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
-<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb27-41"><a href="#cb27-41" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb27-42"><a href="#cb27-42" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb27-43"><a href="#cb27-43" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb27-44"><a href="#cb27-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb27-45"><a href="#cb27-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb27-46"><a href="#cb27-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-47"><a href="#cb27-47" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-48"><a href="#cb27-48" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
-<span id="cb27-49"><a href="#cb27-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-50"><a href="#cb27-50" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb27-51"><a href="#cb27-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
-<span id="cb27-52"><a href="#cb27-52" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
-<span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
-<span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb27-55"><a href="#cb27-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb27-56"><a href="#cb27-56" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb27-57"><a href="#cb27-57" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
-<span id="cb27-58"><a href="#cb27-58" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb27-59"><a href="#cb27-59" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb27-60"><a href="#cb27-60" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-61"><a href="#cb27-61" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
-<span id="cb27-62"><a href="#cb27-62" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb27-63"><a href="#cb27-63" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
-<span id="cb27-64"><a href="#cb27-64" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb27-65"><a href="#cb27-65" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb27-66"><a href="#cb27-66" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb27-67"><a href="#cb27-67" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
-<span id="cb27-68"><a href="#cb27-68" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
+<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
+<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
+<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
+<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
+<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
+<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
+<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
+<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
+<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
+<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
+<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -1269,8 +1556,17 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <div id="ref-fries" class="csl-entry" role="listitem">
 Abdul Hamid, N., S. Omar, and M. Sanny. 2019. <span>“Effect of Thawing Conditions and Corresponding Frying Temperature Profiles on the Formation of Acrylamide in French Fries.”</span> <em>Journal of the Saudi Society of Agricultural Sciences</em> 18 (4): 396–400. https://doi.org/<a href="https://doi.org/10.1016/j.jssas.2018.01.002">https://doi.org/10.1016/j.jssas.2018.01.002</a>.
 </div>
+<div id="ref-fisher" class="csl-entry" role="listitem">
+Fisher, Ronald Aylmer. 1926. <span>“The Arrangement of Field Experiments.”</span> <em>Journal of the Ministry of Agriculture</em> 33: 505–15. <a href="https://doi.org/doi.org/10.23637/rothamsted.8v61q">https://doi.org/doi.org/10.23637/rothamsted.8v61q</a>.
+</div>
 <div id="ref-bullshit" class="csl-entry" role="listitem">
 Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.”</span> <em>Ethics and Information Technology</em> 26 (38). <a href="https://doi.org/10.1007/s10676-024-09775-5">https://doi.org/10.1007/s10676-024-09775-5</a>.
+</div>
+<div id="ref-swift" class="csl-entry" role="listitem">
+Klemm, Marina Ferrari de Aquino, and Charlotte M. Jones-Todd. 2026. <span>“We Were in Screaming Colour: Colours of the Taylor Swift Universe: A Statistical Story.”</span> <em>Significance</em> 23 (1): 12–17. <a href="https://doi.org/10.1093/jrssig/qmaf093">https://doi.org/10.1093/jrssig/qmaf093</a>.
+</div>
+<div id="ref-herbicide" class="csl-entry" role="listitem">
+Peterson, PG, MF Merrett, SV Fowler, DP Barrett, and Q Paynter. 2020. <span>“Comparing Biocontrol and Herbicide for Managing an Invasive Non-Native Plant Species: Efficacy, Non-Target Effects and Secondary Invasion.”</span> <em>Journal of Applied Ecology</em> 57 (10): 1876–84. <a href="https://doi.org/10.1111/1365-2664.13691">https://doi.org/10.1111/1365-2664.13691</a>.
 </div>
 <div id="ref-instructor" class="csl-entry" role="listitem">
 Sheard, Judy, Paul Denny, Arto Hellas, Juho Leinonen, Lauri Malmi, and Simon. 2024. <span>“Instructor Perceptions of AI Code Generation Tools - a Multi-Institutional Interview Study.”</span> In. New York, NY, USA: Association for Computing Machinery. <a href="https://doi.org/10.1145/3626252.3630880">https://doi.org/10.1145/3626252.3630880</a>.
@@ -1285,7 +1581,9 @@ Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and
 
 <ol>
 <li id="fn1"><p>The former example is a solution posed on <a href="https://stackoverflow.com/questions/19341554/regular-expression-in-base-r-regex-to-identify-email-address">this StackOverflow post</a> asking about email address validation. The latter snippet is my attempt at a long winded (and far less stable) approach.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>See <a href="https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud">this Guardian article</a> about the debacle<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://en.wikipedia.org/wiki/Ronald_Fisher">R. A. Fisher’s</a> work in the area of experimental design is, perhaps, the most well known in the field. The principles he devised we still abide by today. Note, however, to give a balanced view of the celebrated mathematician many of his views (on eugenics and race in particular) are considered unethical by many. I would urge you to read up on <a href="https://www.nature.com/articles/s41437-020-00394-6">his work in this area and come to your own conclusions</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>the acoustic setlist during each concert<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>See <a href="https://www.theguardian.com/education/2023/jun/25/harvard-professor-data-fraud">this Guardian article</a> about the debacle<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main>
 <!-- /main column -->

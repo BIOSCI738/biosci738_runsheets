@@ -20,7 +20,7 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_02.qmd >}}
 
-<!--{{< include runsheets/runsheet_03.qmd >}}-->
+{{< include runsheets/runsheet_03.qmd >}}
 
 {{< include runsheets/runsheet_extras.qmd >}}
 

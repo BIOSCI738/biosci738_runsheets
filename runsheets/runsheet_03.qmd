@@ -46,11 +46,12 @@ Below is an excerpt taken from @fisher.^[[R. A. Fisher’s](https://en.wikipedia
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Significance Statements!
 
-Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and
+Here are the first two sentences from Section 3.1 of @herbicide (the heather paper you saw in @sec-diagnostic).
 
+> Heather cover varied with treatment ($F_{3,15}$ $= 98.81$, $p < 0.001$) and year ($F_{3,60}$ $= 198.35$, $p < 0.001$). The interaction between treatment and year was also highly significant ($F_{9,60}$ $= 44.98$, $p < 0.001$; Figure 1).
 
-  1. Write out a inferential statement that includes the magical word *significance* (as well as quoting the appropriate quantities)! It can be from the analysis we've covered in this course, or from a paper, or from your other classes. 
-  2. Re-write out your inferential statements from above that switching out the magical word *significance* to something you believe is more likely to be immediately understood/is less obscure, yet is still concise and meaningful.
+ 1. Discuss what this is trying to tell you...
+ 2. Now, open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** re-write out the inferential statements from above that switching out the magical word *significant* (and any others) to something you believe is more likely to be immediately understood/is less obscure, yet is still concise and meaningful.
 :::
 
 
@@ -129,23 +130,23 @@ mean_diff <- means %>%
 mean_diff
 combinations <- combn(8,4) ## 70 in total
 permtest_combinations <- apply(combinations, 2, function(x)
-  mean(data$Value[x]) - mean(data$Value[-x]))
-p_val <- length(permtest_combinations[abs(permtest_combinations) >= mean_diff]) / choose(8,4)
+  mean(data$Time[x]) - mean(data$Time[-x]))
+p_val <- length(permtest_combinations[abs(permtest_combinations) >= abs(mean_diff)]) / choose(8,4)
 p_val
 
 ## To be honest,  all we've really done is carried out a t-test without the 
 ## associated assumptions, compare this to the output from `t.test()`.
 
-t.test(Value ~ Group, data = data)
+t.test(Time ~ Pet, data = data)
 ```
 
 **BUT** what if it wasn't just a *vanilla* statistic we were interested in?
 
 In your groups
 
-  + Carry out a permutation test that compares the differences between the variances in the times taken to find the hidden treat between each Pet,
+  + Carry out a permutation test that compares the **ratio** of the variance in the times taken to find the hidden treat for each Pet,
   + Compose a statement that outlines the inference you draw (include any relevant numbers!)
-  + Discuss if this is a useful test statistic
+  + Discuss if this is a useful test statistic.
   
 Be prepared to discuss your progress/thoughts with me as I wander around the class.
 
@@ -160,7 +161,7 @@ A randomization test is really just a incomplete permutation test (i.e., one whe
 :::
 
 
-Let's move on to some slightly more *colourful* data! Below is a subset of the data explored in @swift, where each vector gives the dominant colour of the surprise song^{the acoustic setlist during each concert} outfit Taylor Swift wore during that leg of her Eras tour.
+Let's move on to some slightly more *colourful* data! Below is a subset of the data explored in @swift, where each vector gives the dominant colour of the surprise song^[the acoustic setlist during each concert] outfit Taylor Swift wore during that leg of her Eras tour.
 
 ![](https://marina-klemm.github.io/screamingcolour/viz_files/figure-html/unnamed-chunk-3-1.png)
 
