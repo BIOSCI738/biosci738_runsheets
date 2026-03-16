@@ -204,7 +204,7 @@ final_leg_outfits <- c("Cotton candy", "Blurple", "Grapefruit", "Popsicle", "Sun
 
 ```
 
-### Does Taylor Swift choose her outfits at random?
+### Does Taylor Swift choose her outfits at random? {#sec-taylor}
 
 
 ```{r, eval = FALSE}

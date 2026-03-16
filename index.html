@@ -231,7 +231,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#sec-perm" id="toc-sec-perm" class="nav-link" data-scroll-target="#sec-perm">Permutation (<em>exact</em>) tests</a></li>
   <li><a href="#sec-random" id="toc-sec-random" class="nav-link" data-scroll-target="#sec-random">Randomization tests</a></li>
-  <li><a href="#does-taylor-swift-choose-her-outfits-at-random" id="toc-does-taylor-swift-choose-her-outfits-at-random" class="nav-link" data-scroll-target="#does-taylor-swift-choose-her-outfits-at-random">Does Taylor Swift choose her outfits at random?</a></li>
+  <li><a href="#sec-taylor" id="toc-sec-taylor" class="nav-link" data-scroll-target="#sec-taylor">Does Taylor Swift choose her outfits at random?</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#sec-extras" id="toc-sec-extras" class="nav-link" data-scroll-target="#sec-extras">Extra Activities (time dependent)</a>
@@ -243,6 +243,7 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#suggested-solution-to-sec-gorilla" id="toc-suggested-solution-to-sec-gorilla" class="nav-link" data-scroll-target="#suggested-solution-to-sec-gorilla">Suggested solution to Section&nbsp;3.3</a></li>
   <li><a href="#suggested-solution-to-sec-draw" id="toc-suggested-solution-to-sec-draw" class="nav-link" data-scroll-target="#suggested-solution-to-sec-draw">Suggested solution to Section&nbsp;4.3</a></li>
+  <li><a href="#some-suggested-in-class-metrics-for-sec-taylor" id="toc-some-suggested-in-class-metrics-for-sec-taylor" class="nav-link" data-scroll-target="#some-suggested-in-class-metrics-for-sec-taylor">Some suggested in-class metrics for Section&nbsp;5.3.3</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -1324,8 +1325,8 @@ F-statistic: 25.72 on 3 and 26 DF,  p-value: 6.07e-08</code></pre>
 <span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="does-taylor-swift-choose-her-outfits-at-random" class="level3">
-<h3 class="anchored" data-anchor-id="does-taylor-swift-choose-her-outfits-at-random">Does Taylor Swift choose her outfits at random?</h3>
+<section id="sec-taylor" class="level3">
+<h3 class="anchored" data-anchor-id="sec-taylor">Does Taylor Swift choose her outfits at random?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## helper function to make a transition matrix</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>transitions <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
@@ -1560,6 +1561,60 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
 <span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
 <span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="some-suggested-in-class-metrics-for-sec-taylor" class="level2">
+<h2 class="anchored" data-anchor-id="some-suggested-in-class-metrics-for-sec-taylor">Some suggested in-class metrics for <a href="#sec-taylor" class="quarto-xref">Section&nbsp;5.3.3</a></h2>
+<p><strong>Number of time until the first repeat</strong> (in this case <em>Blurple</em>)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>final_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cotton candy"</span>, <span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, </span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Blurple"</span>, </span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="do">## times until first repeat</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">## in this case Blurple, with 5 outfits before repeat</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">duplicated</span>(final_leg_outfits))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> (<span class="fu">which</span>(<span class="fu">duplicated</span>(<span class="fu">sample</span>(data)))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(final_leg_outfits)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Number of times we have <em>Sunset Orange</em> thrice in a row</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>europe_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>)</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Sunset orange only appears exactly thrice in a row once</span></span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>run_lengths <span class="ot">&lt;-</span> <span class="fu">rle</span>(europe_leg_outfits) <span class="do">## inbuilt R function for run lengths</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">sum</span>(run_lengths<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> run_lengths<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">sample</span>(data) <span class="sc">|&gt;</span> <span class="fu">rle</span>()</span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> x<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(europe_leg_outfits)</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
+<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>

@@ -105,3 +105,62 @@ mod |>	summary()
 persp(mod, form =  ~ budget*critics_score)
 image(mod, form =  ~ budget*critics_score)
 ```
+
+
+## Some suggested in-class metrics for @sec-taylor
+
+**Number of time until the first repeat** (in this case *Blurple*)
+
+```{r, eval = FALSE}
+final_leg_outfits <- c("Cotton candy", "Blurple", "Grapefruit", "Popsicle", "Sunset orange", 
+"Blurple", "Cotton candy", "Popsicle", "Grapefruit", "Popsicle", 
+"Blurple", "Grapefruit", "Cotton candy", "Popsicle", "Blurple", 
+"Blurple", "Blurple", "Blurple")
+## times until first repeat
+## in this case Blurple, with 5 outfits before repeat
+obvs <- which(duplicated(final_leg_outfits))[1] - 1
+randomisation <- function(data, nreps = 1000, seed = 1984){
+  sampling_dist <- numeric(nreps)
+  set.seed(seed) 
+  for (i in 1:nreps) {
+   sampling_dist[i] <- (which(duplicated(sample(data)))[1] - 1)
+  }
+return(sampling_dist)
+}
+sampling_distribution <- randomisation(final_leg_outfits)
+hist(sampling_distribution)
+abline(v = obvs, lwd = 2)
+```
+
+**Number of times we have *Sunset Orange* thrice in a row**
+
+```{r, eval = FALSE}
+europe_leg_outfits <- c("Flamingo pink", "Ocean blue", "Sunset orange", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Ocean blue", "Sunset orange", 
+"Flamingo pink", "Sunset orange", "Ocean blue", "Flamingo pink", 
+"Sunset orange", "Ocean blue", "Sunset orange", "Flamingo pink", 
+"Flamingo pink", "Ocean blue", "Sunset orange", "Sunset orange", 
+"Sunset orange", "Ocean blue", "Flamingo pink", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Sunset orange", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Flamingo pink", "Sunset orange", 
+"Ocean blue", "Sunset orange", "Ocean blue", "Flamingo pink", 
+"Sunset orange", "Ocean blue", "Flamingo pink", "Sunset orange", 
+"Ocean blue", "Sunset orange", "Flamingo pink", "Ocean blue", 
+"Flamingo pink", "Sunset orange", "Flamingo pink", "Sunset orange")
+## Sunset orange only appears exactly thrice in a row once
+run_lengths <- rle(europe_leg_outfits) ## inbuilt R function for run lengths
+obvs <- sum(run_lengths$values == "Sunset orange" & run_lengths$lengths == 3)
+randomisation <- function(data, nreps = 1000, seed = 1984){
+  sampling_dist <- numeric(nreps)
+  set.seed(seed) 
+  for (i in 1:nreps) {
+    x <- sample(data) |> rle()
+   sampling_dist[i] <- sum(x$values == "Sunset orange" & x$lengths == 3)
+  }
+return(sampling_dist)
+}
+sampling_distribution <- randomisation(europe_leg_outfits)
+hist(sampling_distribution)
+abline(v = obvs, lwd = 2)
+```
+
