@@ -280,7 +280,7 @@ mean(Fs >= F_obs)
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Resampling Summary
 
-To the `tasks` folder of your GitHub repository include, modify, add and push a reproducible version of this [Rmarkdown (`.Rmd`) file]() that compares at least two of the resampling procedures discussed this week (e.g., permutation vs bootstrapping). [LEARN about Rmarkdown files here](https://rmarkdown.rstudio.com/lesson-2.html). Remember to update your `README.md` accordingly!
+To the `tasks` folder of your GitHub repository include, modify, add and push a reproducible version of this [Rmarkdown (`.Rmd`) file](https://canvas.auckland.ac.nz/files/17283305/download?download_frd=1) that compares at least two of the resampling procedures discussed this week (e.g., permutation vs bootstrapping). [LEARN about Rmarkdown files here](https://rmarkdown.rstudio.com/lesson-2.html). Remember to update your `README.md` accordingly!
 
 
 :::
