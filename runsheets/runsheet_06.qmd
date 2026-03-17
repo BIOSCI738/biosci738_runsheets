@@ -1,54 +1,66 @@
-# March 28th
+# Week 04 - Lecture 02 (Guest Lectuerer Paul Murrell!)
+
+## Rough Agenda
+
+### **2:05 pm - 3:55 pm** 
+
+ + Data visualization (@sec-viz)
+ + Plot roast (@sec-roast)
+ + Create your own (@sec-plot)
+    
+### Before we begin **sort yourselves into groups** following @sec-groups
 
 ::: {.callout-tip}
-## By the end of today's seminar, you should be able to
- + Fit, draw inference from and critique polynomial regression models
+## Data Viz is key
+ - Interpret, critique and communicate using visualization! 
 :::
 
-## Rough timeline
+## Data visualization {#sec-viz}
 
-### **02:05 pm - 03:55 pm** 
-
- + **02:05–02.20 pm** Polynomials (@sec-poly)
- + **02.20–02.45 pm** Fry time revisited (@sec-fry02)
- + **02:45–02:55 pm** Break
- + **02.55–03.30 pm** Revisiting @sec-comm
- + **03.30–03.55 pm** Q&A and Task 04 (@sec-peershare06)
+*In-class content*
 
 
-### Randomly allocated groups
+## Roast your lecturer's plot {#sec-roast}
 
-**It's your responsibility to get into these, just look for the cows!**
+Figure 1 in @swift shows which "surprise" dresses were worn during which concerts in Taylor Swift's Eras Tour.  According to the text of the article, Figure 1 is supposed to show:
 
-```{r, echo = 2}
-names <- c("Emma Akeroyd", "Jianing Chen", "Sunny Chen", "Anqi Cheng", "Barnaby Clegg-Shaw", "Francesca Domanska", "Shoule Du", "Yi Han", "Shuxiang He", "Daneshajeya Jeyavalan", "Alex Johnson", "Karie Labidon", "He Li", "Zichang Li", "Happy Liang", "Jiaxin Liu", "Leyang Liu", "Angel Loh", "Hnin Lwin", "Yue Ma", "Congkai Meng", "Robert Mihok", "Laura Munck", "Lana Najar", "Vivian Qian", "Pikitangarangi Ratapu", "Yogapriya", "Antonia Schebek-Fuerstenberg", "Keyi Sun", "Charlotte Sutton", "Julia Thain", "Yingyi Wang", "Yutong Wang", "Ziyi Wang", "Yutao Yang", "Tongzheng Yao", "Xinyue Zhang", "Zhixiao Zhang")
-group_allocation(names, seed = 0833, 10)
-```
+* that there were different legs of the tour.
+* the relative lengths of the different legs of the tour.
+* the number of concerts in each leg of the tour.
+* the density of concerts in each leg of the tour.
+* which dresses were used in each concert.
+* the proportion of concerts that each dress was used for.
+* that the dresses in the European leg were new (not used in previous legs).  
+* ditto for the North American leg.
+* that several new albums were released during the tour.
 
-## Polynomials {#sec-poly}
+**In your groups** take a look at **Figure 1** from @swift and **roast** (yes you can be as mean as you like, honestly) or admire it^[Note that your lecturer is an author of the publication and she consents to the roasting!] You will have no doubt read and digested [this section of the course guide](https://biosci738.github.io/BIOSCI738/data-visualization.html), so you will have some basis for critiquing the plot.
+
+**Be prepared to discuss your progress/thoughts as we wander around the class.**
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1QCAqp8EIxCZwh4PImcpVz9LzGGaO29Q3ET3EszV8kWg/edit?usp=sharing)...
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Plot Roast!
 
-Discuss this cheatsheet below, what do you think it is attempting to show/compare?
-
-![](runsheets/img/poly_vs_I.png)
+Once you've come to a consensus (or not ;)), open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your Figure 1 roasts (aka critiques).
 :::
 
 
-## Polynomial regression  {#sec-fry02}
+## Plot your own Swift story (#sec-plot)
 
-Individually, or as a group, revisit @sec-fry alongside the suggested solution given in @sec-solutions. Discuss and summarise each fitted model and modelling choice made. Chose and justify your choice of preferred/"best" model?
+Pay attention for the code to unlock what's below!
 
-## Revisiting @sec-comm
+The code below creates the figure you've been roasting. Now it's your turn to follow through on your critiques. Using the code below as a baseline (*if you wish*) create a new and improved version of [Figure 1](). 
 
-## Q&A and Task 04 {#sec-peershare06}
 
-[**Task 04**](https://canvas.auckland.ac.nz/courses/120054/assignments/436860)
+**Be prepared to show us your progress as we wander around the class!** Remember too, to take the opportunity to pick Paul's brain!
 
-> Git is a version control system that manages the evolution of a set of files, called a repository (repo), in a structured way (*think of Word's Track Changes*). 
 
-> GitHub is a hosting service that provides a hgme for your git-based projects on the internet (*think of Dropbox*).
 
-The template repo you've been invited to in [Task 04](https://canvas.auckland.ac.nz/courses/120054/assignments/436860) is set up as a `RStudio` Project. It contains the basics for you to get started on the analysis for your assessed project! For this [Task 04](https://canvas.auckland.ac.nz/courses/120054/assignments/436860) all I'd like you to do is 1) connect to the repo assignment you've been invited to, 2) make a change locally in the repo, 3) then commit and push this change to the remote repo. **We'll do this in class if you've not yet already.**
 
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> New and improved
+
+To the `tasks` folder of your GitHub repository include, add and push a **fully reproducible** `R` script named `week_04.r` that creates your new and improved version of the Figure we've been critiquing! You can of course use the code you *unlocked* above as a starting point. Remember to update your `README.md` accordingly!
+
+
+:::

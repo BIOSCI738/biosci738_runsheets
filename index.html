@@ -234,6 +234,23 @@ window.Quarto = {
   <li><a href="#sec-taylor" id="toc-sec-taylor" class="nav-link" data-scroll-target="#sec-taylor">Does Taylor Swift choose her outfits at random?</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#week-03---lecture-02" id="toc-week-03---lecture-02" class="nav-link" data-scroll-target="#week-03---lecture-02">Week 03 - Lecture 02</a>
+  <ul class="collapse">
+  <li><a href="#rough-agenda-3" id="toc-rough-agenda-3" class="nav-link" data-scroll-target="#rough-agenda-3">Rough Agenda</a>
+  <ul class="collapse">
+  <li><a href="#pm---355-pm-1" id="toc-pm---355-pm-1" class="nav-link" data-scroll-target="#pm---355-pm-1"><strong>2:05 pm - 3:55 pm</strong></a></li>
+  <li><a href="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-2" id="toc-before-we-begin-sort-yourselves-into-groups-following-sec-groups-2" class="nav-link" data-scroll-target="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-2">Before we begin <strong>sort yourselves into groups</strong> following Section&nbsp;3.2</a></li>
+  </ul></li>
+  <li><a href="#sec-bootstrap" id="toc-sec-bootstrap" class="nav-link" data-scroll-target="#sec-bootstrap">Bootstrapping</a>
+  <ul class="collapse">
+  <li><a href="#sec-boot01" id="toc-sec-boot01" class="nav-link" data-scroll-target="#sec-boot01">Case study</a></li>
+  </ul></li>
+  <li><a href="#sec-bootvsperm" id="toc-sec-bootvsperm" class="nav-link" data-scroll-target="#sec-bootvsperm">Bootstrap vs Permutation</a>
+  <ul class="collapse">
+  <li><a href="#bootstrap-esimate-uncertainty" id="toc-bootstrap-esimate-uncertainty" class="nav-link" data-scroll-target="#bootstrap-esimate-uncertainty">Bootstrap (<em>esimate uncertainty</em>)</a></li>
+  <li><a href="#permutationrandomisation-test-testing-a-hypothesis" id="toc-permutationrandomisation-test-testing-a-hypothesis" class="nav-link" data-scroll-target="#permutationrandomisation-test-testing-a-hypothesis">Permutation/randomisation test (<em>testing a hypothesis</em>)</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#sec-extras" id="toc-sec-extras" class="nav-link" data-scroll-target="#sec-extras">Extra Activities (time dependent)</a>
   <ul class="collapse">
   <li><a href="#sec-honesty" id="toc-sec-honesty" class="nav-link" data-scroll-target="#sec-honesty"><em>Reproducible</em> analysis</a></li>
@@ -1383,7 +1400,305 @@ F-statistic: 25.72 on 3 and 26 DF,  p-value: 6.07e-08</code></pre>
 <span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="do">## observed value</span></span>
 <span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Devise your own metric to represent what is of interest to you</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<!--{{< include runsheets/runsheet_04.qmd >}}-->
+</section>
+</section>
+</section>
+<section id="week-03---lecture-02" class="level1">
+<h1>Week 03 - Lecture 02</h1>
+<section id="rough-agenda-3" class="level2">
+<h2 class="anchored" data-anchor-id="rough-agenda-3">Rough Agenda</h2>
+<section id="pm---355-pm-1" class="level3">
+<h3 class="anchored" data-anchor-id="pm---355-pm-1"><strong>2:05 pm - 3:55 pm</strong></h3>
+<ul>
+<li>Bootstrapping (<a href="#sec-bootstrap" class="quarto-xref">Section&nbsp;6.2</a>)
+<ul>
+<li>Case study (<a href="#sec-boot01" class="quarto-xref">Section&nbsp;6.2.1</a>)</li>
+</ul></li>
+<li>Bootstrap vs Permutation (<a href="#sec-bootvsperm" class="quarto-xref">Section&nbsp;6.3</a>)</li>
+</ul>
+</section>
+<section id="before-we-begin-sort-yourselves-into-groups-following-sec-groups-2" class="level3">
+<h3 class="anchored" data-anchor-id="before-we-begin-sort-yourselves-into-groups-following-sec-groups-2">Before we begin <strong>sort yourselves into groups</strong> following <a href="#sec-groups" class="quarto-xref">Section&nbsp;3.2</a></h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Bootstrapping seems like magic!
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Carry out, interpret, and communicate the result of
+<ul>
+<li>a parametric bootstrap</li>
+<li>a non-parametric bootstrap</li>
+</ul></li>
+<li>Discuss and define the difference between a bootstrap and a permutation test</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-bootstrap" class="level2">
+<h2 class="anchored" data-anchor-id="sec-bootstrap">Bootstrapping</h2>
+<p>A bootstrap is a procedure for finding the (approximate) sampling distribution of a <strong>statistic/parameter of interest</strong> from a single data sample. We assume that,</p>
+<ol type="1">
+<li>the original sample represents the distribution of the population from which it was drawn, therefore</li>
+<li>resamples, taken with replacement from the original sample are representative of what we would get from drawing many samples from the population (<em>the distribution of the statistics calculated from each resample is known as the bootstrap distribution of the statistic</em>), so</li>
+<li>the bootstrap distribution of a statistic represents that statistic’s sampling distribution.</li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-29-contents" aria-controls="callout-29" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Bootstrapping Cheatsheet
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-29" class="callout-29-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/bootstrapping.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<section id="sec-boot01" class="level3">
+<h3 class="anchored" data-anchor-id="sec-boot01">Case study</h3>
+<center>
+<p>
+Some of my 2022 pumpkin haul
+</p>
+<img src="runsheets/img/pumpkins.jpg" alt="Some of my 2022 pumpkin haul" height="400px">
+</center>
+<p><strong>In your groups run through</strong> the <code>R</code> code below and discuss/answer each question posed in the comments. Figure out what each line of code does and replace the comments with your own.</p>
+<p>Be prepared to discuss your progress/thoughts with me as I wander around the class.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">## data about the weight, height, and width of some of my homegrown 2022 pumpkins</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pumpkins.csv"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">#####################</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## pairsplot</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>(data)</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="do">## change to kg</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">weight_kg =</span> weight_g<span class="sc">/</span><span class="dv">1000</span>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Pairwise relationships between the three</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="do">## dimensions all appear approximately linear,</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="do">## with a high correlation</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="do">######################</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="do">## linear model</span></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Fitted model.</span></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight_kg <span class="sc">~</span> height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> data)</span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>fit <span class="sc">|&gt;</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>()</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="do">## fitted values</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="fu">fitted</span>(fit) <span class="do">## notice anything strange?</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="do">## estimated error variance</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="do">## standard errors for the estimated coefficients</span></span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)<span class="sc">$</span>coefficients[, <span class="dv">2</span>]</span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="do">## New pumpkins</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 1, height_mm 150, width_mm 240</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 2, height_mm 100, width_mm 160</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">height_mm =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">100</span>), <span class="at">width_mm =</span> <span class="fu">c</span>(<span class="dv">240</span>, <span class="dv">160</span>))</span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 1 (~) 60% bigger than pumpkin 2</span></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y  =</span> height_mm , <span class="at">x =</span> width_mm)) <span class="sc">+</span></span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">data =</span> new, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a><span class="do">## point predictions</span></span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> new)</span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a><span class="do">## confidence intervals</span></span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">"confidence"</span>)[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a><span class="do">## prediction intervals</span></span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> new, <span class="at">interval =</span> <span class="st">"prediction"</span>)[, <span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 1 is 60% larger than pumpkin 2 in terms of height and width. If</span></span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin growth is isometric, then pumpkin 1's expected weight will be 60% larger than</span></span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a><span class="do">## pumpkin 2s (ratio 1.6). If the ratio is less than 60% (1.6), then we have negative allometric growth</span></span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a><span class="do">## (pumpkins get less heavy , relative to the other dimensions), otherwise we have</span></span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a><span class="do">## positive allometric growth (&gt; 1/6) (pumpkins tend to get heavier as they grow, relative</span></span>
+<span id="cb32-45"><a href="#cb32-45" aria-hidden="true" tabindex="-1"></a><span class="do">## to the other dimensions).</span></span>
+<span id="cb32-46"><a href="#cb32-46" aria-hidden="true" tabindex="-1"></a><span class="do">## under model above what is the estimated ratio of pumpkin 1 weight (kg) to pumpkin 2 weight (kg)</span></span>
+<span id="cb32-47"><a href="#cb32-47" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit, <span class="at">newdata =</span> new)</span>
+<span id="cb32-48"><a href="#cb32-48" aria-hidden="true" tabindex="-1"></a>mu[<span class="dv">1</span>]<span class="sc">/</span>mu[<span class="dv">2</span>]</span>
+<span id="cb32-49"><a href="#cb32-49" aria-hidden="true" tabindex="-1"></a><span class="do">## Compute a confidence interval for this ratio using 1) a parametric and 2)a  non-parametric bootstrap.</span></span>
+<span id="cb32-50"><a href="#cb32-50" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb32-51"><a href="#cb32-51" aria-hidden="true" tabindex="-1"></a><span class="do">## Parametric (resample from assumed response distribution)</span></span>
+<span id="cb32-52"><a href="#cb32-52" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb32-53"><a href="#cb32-53" aria-hidden="true" tabindex="-1"></a><span class="do">## seed</span></span>
+<span id="cb32-54"><a href="#cb32-54" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1567</span>)</span>
+<span id="cb32-55"><a href="#cb32-55" aria-hidden="true" tabindex="-1"></a><span class="do">## number of bootstrap iterations</span></span>
+<span id="cb32-56"><a href="#cb32-56" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb32-57"><a href="#cb32-57" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb32-58"><a href="#cb32-58" aria-hidden="true" tabindex="-1"></a>bootstrap_ratios <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb32-59"><a href="#cb32-59" aria-hidden="true" tabindex="-1"></a><span class="do">##  bootstrap iterations.</span></span>
+<span id="cb32-60"><a href="#cb32-60" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb32-61"><a href="#cb32-61" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Simulating new response data assuming Normal response</span></span>
+<span id="cb32-62"><a href="#cb32-62" aria-hidden="true" tabindex="-1"></a>    data<span class="sc">$</span>boot <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="fu">nrow</span>(data), <span class="fu">fitted</span>(fit), <span class="fu">summary</span>(fit)<span class="sc">$</span>sigma)</span>
+<span id="cb32-63"><a href="#cb32-63" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Fitting the model to the bootstrapped response</span></span>
+<span id="cb32-64"><a href="#cb32-64" aria-hidden="true" tabindex="-1"></a>    fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(boot <span class="sc">~</span>  height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> data)</span>
+<span id="cb32-65"><a href="#cb32-65" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Calculating the estimated expectations for new pumpkins</span></span>
+<span id="cb32-66"><a href="#cb32-66" aria-hidden="true" tabindex="-1"></a>    mu_new <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_boot, <span class="at">newdata =</span> new)</span>
+<span id="cb32-67"><a href="#cb32-67" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Saving the estimated ratio from the bootstrap model fit.</span></span>
+<span id="cb32-68"><a href="#cb32-68" aria-hidden="true" tabindex="-1"></a>    bootstrap_ratios[i] <span class="ot">&lt;-</span> mu_new[<span class="dv">1</span>]<span class="sc">/</span>mu_new[<span class="dv">2</span>]</span>
+<span id="cb32-69"><a href="#cb32-69" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-70"><a href="#cb32-70" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bootstrap_ratios)</span>
+<span id="cb32-71"><a href="#cb32-71" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu[<span class="dv">1</span>]<span class="sc">/</span>mu[<span class="dv">2</span>], <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb32-72"><a href="#cb32-72" aria-hidden="true" tabindex="-1"></a><span class="do">## CI</span></span>
+<span id="cb32-73"><a href="#cb32-73" aria-hidden="true" tabindex="-1"></a>CI_parametric <span class="ot">&lt;-</span> <span class="fu">quantile</span>(bootstrap_ratios, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a>CI_parametric</span>
+<span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a><span class="do">## The confidence interval from the parametric bootstrap does not contain 1.6. We</span></span>
+<span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a><span class="do">## therefore have evidence in favour of positive allometric growth.</span></span>
+<span id="cb32-77"><a href="#cb32-77" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb32-78"><a href="#cb32-78" aria-hidden="true" tabindex="-1"></a><span class="do">## Non-parametric (resample from observed data)</span></span>
+<span id="cb32-79"><a href="#cb32-79" aria-hidden="true" tabindex="-1"></a><span class="do">###########################################################</span></span>
+<span id="cb32-80"><a href="#cb32-80" aria-hidden="true" tabindex="-1"></a><span class="do">## seed</span></span>
+<span id="cb32-81"><a href="#cb32-81" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7651</span>)</span>
+<span id="cb32-82"><a href="#cb32-82" aria-hidden="true" tabindex="-1"></a><span class="do">## number of bootstrap iterations</span></span>
+<span id="cb32-83"><a href="#cb32-83" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb32-84"><a href="#cb32-84" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb32-85"><a href="#cb32-85" aria-hidden="true" tabindex="-1"></a>bootstrap_ratios <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb32-86"><a href="#cb32-86" aria-hidden="true" tabindex="-1"></a><span class="do">##  bootstrap iterations.</span></span>
+<span id="cb32-87"><a href="#cb32-87" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb32-88"><a href="#cb32-88" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Bootstrap resample</span></span>
+<span id="cb32-89"><a href="#cb32-89" aria-hidden="true" tabindex="-1"></a>    boot.df <span class="ot">&lt;-</span> data[<span class="fu">sample</span>(<span class="fu">nrow</span>(data), <span class="at">replace =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb32-90"><a href="#cb32-90" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Fitting the model to the bootstrapped response</span></span>
+<span id="cb32-91"><a href="#cb32-91" aria-hidden="true" tabindex="-1"></a>    fit_boot <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight_kg <span class="sc">~</span>  height_mm <span class="sc">+</span> width_mm, <span class="at">data =</span> boot.df)</span>
+<span id="cb32-92"><a href="#cb32-92" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Calculating the estimated expectations for new pumpkins</span></span>
+<span id="cb32-93"><a href="#cb32-93" aria-hidden="true" tabindex="-1"></a>    mu_new <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit_boot, <span class="at">newdata =</span> new)</span>
+<span id="cb32-94"><a href="#cb32-94" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Saving the estimated ratio from the bootstrap model fit.</span></span>
+<span id="cb32-95"><a href="#cb32-95" aria-hidden="true" tabindex="-1"></a>    bootstrap_ratios[i] <span class="ot">&lt;-</span> mu_new[<span class="dv">1</span>]<span class="sc">/</span>mu_new[<span class="dv">2</span>]</span>
+<span id="cb32-96"><a href="#cb32-96" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb32-97"><a href="#cb32-97" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(bootstrap_ratios)</span>
+<span id="cb32-98"><a href="#cb32-98" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu[<span class="dv">1</span>]<span class="sc">/</span>mu[<span class="dv">2</span>], <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span>
+<span id="cb32-99"><a href="#cb32-99" aria-hidden="true" tabindex="-1"></a><span class="do">## CI</span></span>
+<span id="cb32-100"><a href="#cb32-100" aria-hidden="true" tabindex="-1"></a>CI_non_parametric <span class="ot">&lt;-</span> <span class="fu">quantile</span>(bootstrap_ratios, <span class="fu">c</span>(<span class="fl">0.025</span>, <span class="fl">0.975</span>))</span>
+<span id="cb32-101"><a href="#cb32-101" aria-hidden="true" tabindex="-1"></a>CI_non_parametric</span>
+<span id="cb32-102"><a href="#cb32-102" aria-hidden="true" tabindex="-1"></a><span class="do">## again, evidence in favour of positive allometric growth (i.e., pumpkins get rounder the</span></span>
+<span id="cb32-103"><a href="#cb32-103" aria-hidden="true" tabindex="-1"></a><span class="do">## bigger they get)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="sec-bootvsperm" class="level2">
+<h2 class="anchored" data-anchor-id="sec-bootvsperm">Bootstrap vs Permutation</h2>
+<section id="bootstrap-esimate-uncertainty" class="level3">
+<h3 class="anchored" data-anchor-id="bootstrap-esimate-uncertainty">Bootstrap (<em>esimate uncertainty</em>)</h3>
+<p>Abalone are large, edible sea snails. Their age is determined by cutting the shell through the cone, staining it, and counting the number of rings through a microscope! Below we’re going to look at some abalone data collected by <span class="citation" data-cites="abalone">Nash et al. (<a href="#ref-abalone" role="doc-biblioref">1994</a>)</span>. These data contains ten columns: a categorical variable (Sex), seven continuous variables (Length, Diameter, Height, Whole weight, Shucked weight, Viscera weight, and Shell weight), a count variable (number of rings) and categorical variable which classifies abalone into three ring classes (Class) in which abalone with 8 or fewer (Class = 1), 9 or 10 (Class = 2), and 11 or more (Class = 3) rings.</p>
+<p>Now, let’s say we’re interested in testing the NULL hypothesis of <em>no difference in mean diameter between male, female and infant abalone of different ring classes</em>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>abalone <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/abalone.csv"</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">## make sure Class is categorical</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>abalone<span class="sc">$</span>Class <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(abalone<span class="sc">$</span>Class)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">## fit interaction model</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ANOVA way</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Diameter <span class="sc">~</span> Sex <span class="sc">*</span> Class, <span class="at">data =</span> abalone)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">## lm way (both the same!)</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Diameter <span class="sc">~</span> Sex <span class="sc">*</span> Class, <span class="at">data =</span> abalone) <span class="sc">|&gt;</span> <span class="fu">anova</span>()</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="do">## at about the sampling variability of the interaction F-statistic?</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="do">## extract statistic</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>F_obs <span class="ot">&lt;-</span> <span class="fu">summary</span>(aov)[[<span class="dv">1</span>]][<span class="st">"Sex:Class"</span>,<span class="st">"F value"</span>]</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Bootstrap!</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>bootstrap_Fs <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  bootstrap iterations.</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="do">## Simulating with replacement </span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="do">## to "mirror" a potential other sample from the</span></span>
+<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>    <span class="do">## population</span></span>
+<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a>    boot <span class="ot">&lt;-</span> abalone[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(abalone), <span class="at">replace =</span> <span class="cn">TRUE</span>), ]</span>
+<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a>    <span class="do">## ANOVA using resampled data!</span></span>
+<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a>    aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(Diameter <span class="sc">~</span> Sex <span class="sc">*</span> Class, <span class="at">data =</span> boot)</span>
+<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>    bootstrap_Fs[i] <span class="ot">&lt;-</span> <span class="fu">summary</span>(aov)[[<span class="dv">1</span>]][<span class="st">"Sex:Class"</span>,<span class="st">"F value"</span>]</span>
+<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a><span class="do">## ~approximates the sampling distribution of </span></span>
+<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a><span class="do">## the F-statistic if we repeatedly sampled abalone from the population</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="permutationrandomisation-test-testing-a-hypothesis" class="level3">
+<h3 class="anchored" data-anchor-id="permutationrandomisation-test-testing-a-hypothesis">Permutation/randomisation test (<em>testing a hypothesis</em>)</h3>
+<p>Let’s test the NULL hypothesis <span class="math inline">\(H_0:\)</span> <em>No interaction between Sex and Class</em>.</p>
+<p>Recall, that permutation (aka randomisation) tests simulate data that would occur if this null hypothesis were true.</p>
+<p>Now, instead of resampling with replacement, we’re going to shuffle data in a way that <strong>preserves the NULL model</strong>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="do">## method 1</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="do">## permutation under reduced model</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="do">## additive only model</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>fit_add <span class="ot">&lt;-</span> <span class="fu">aov</span>(Diameter <span class="sc">~</span> Sex <span class="sc">+</span> Class, <span class="at">data =</span> abalone)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>fitted_vals <span class="ot">&lt;-</span> <span class="fu">fitted</span>(fit_add)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit_add)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="do">## permute residuals; reconstruct response; fit full model</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>Fs <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  res_perm <span class="ot">&lt;-</span> <span class="fu">sample</span>(res) <span class="do">## resample residuals</span></span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  y_star <span class="ot">&lt;-</span> fitted_vals <span class="sc">+</span> res_perm <span class="do">## 'new' response</span></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>  <span class="do">## ANOVA using 'new' data!</span></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>  aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(y_star <span class="sc">~</span> Sex <span class="sc">*</span> Class, <span class="at">data =</span> abalone)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>  Fs[i] <span class="ot">&lt;-</span> <span class="fu">summary</span>(aov)[[<span class="dv">1</span>]][<span class="st">"Sex:Class"</span>,<span class="st">"F value"</span>]</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Fs, is the sampling distribution when there</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="do">## interaction effect is zero (NULL in out case)</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="do">## evidence against this shows our observed Fs</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="do">## is not consistent with the NULL</span></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Fs <span class="sc">&gt;=</span> F_obs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="do">## method 2</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="do">## permutation under full model</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>fit_full <span class="ot">&lt;-</span> <span class="fu">aov</span>(Diameter <span class="sc">~</span> Sex <span class="sc">*</span> Class, <span class="at">data =</span> abalone)</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit_full)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="do">## permute residuals; reconstruct response; fit full model</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>Fs <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>  res_perm <span class="ot">&lt;-</span> <span class="fu">sample</span>(res) <span class="do">## resample residuals</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## fit full model to permuted residuals</span></span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="do">## ANOVA using 'new' data!</span></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>  aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(res_perm <span class="sc">~</span> Sex <span class="sc">*</span> Class, <span class="at">data =</span> abalone)</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>  Fs[i] <span class="ot">&lt;-</span> <span class="fu">summary</span>(aov)[[<span class="dv">1</span>]][<span class="st">"Sex:Class"</span>,<span class="st">"F value"</span>]</span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="do">## more `conservative` than method 1</span></span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Fs <span class="sc">&gt;=</span> F_obs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## method 3</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="do">## permutation of response</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="do">## test assumes responses are exchangeable</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>nreps <span class="ot">&lt;-</span> <span class="dv">1000</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="do">## initialize empty array to hold results</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>Fs <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps){</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>  y_perm <span class="ot">&lt;-</span> <span class="fu">sample</span>(abalone<span class="sc">$</span>Diameter) <span class="do">## resample response</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## fit full model to permuted response</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>  <span class="do">## ANOVA using 'new' data!</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>  aov <span class="ot">&lt;-</span> <span class="fu">aov</span>(y_perm <span class="sc">~</span> Sex <span class="sc">*</span> Class, <span class="at">data =</span> abalone)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>  Fs[i] <span class="ot">&lt;-</span> <span class="fu">summary</span>(aov)[[<span class="dv">1</span>]][<span class="st">"Sex:Class"</span>,<span class="st">"F value"</span>]</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Fs <span class="sc">&gt;=</span> F_obs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Resampling Summary
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To the <code>tasks</code> folder of your GitHub repository include, modify, add and push a <strong>fully reproducible</strong> version of this <a href="https://canvas.auckland.ac.nz/files/17283305/download?download_frd=1">Rmarkdown (<code>.Rmd</code>) file</a> that compares at least two of the resampling procedures discussed this week (e.g., permutation vs bootstrapping). <a href="https://rmarkdown.rstudio.com/lesson-2.html">LEARN about Rmarkdown files here</a>. Remember to update your <code>README.md</code> accordingly!</p>
+</div>
+</div>
+<!--{{< include runsheets/runsheet_05.qmd >}}
+
+{{< include runsheets/runsheet_06.qmd >}}-->
 </section>
 </section>
 </section>
@@ -1467,154 +1782,154 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <section id="suggested-solution-to-sec-gorilla" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;3.3</a></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
-<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
-<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
-<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
-<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
-<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
-<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
-<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
-<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
-<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
+<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
+<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
+<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
+<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
+<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
+<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
+<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-draw" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-draw">Suggested solution to <a href="#sec-draw" class="quarto-xref">Section&nbsp;4.3</a></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-21"><a href="#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
-<span id="cb33-22"><a href="#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-23"><a href="#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
-<span id="cb33-24"><a href="#cb33-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb33-25"><a href="#cb33-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
-<span id="cb33-26"><a href="#cb33-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb33-27"><a href="#cb33-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb33-28"><a href="#cb33-28" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb33-29"><a href="#cb33-29" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb33-30"><a href="#cb33-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb33-31"><a href="#cb33-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
-<span id="cb33-32"><a href="#cb33-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb33-33"><a href="#cb33-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-34"><a href="#cb33-34" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-35"><a href="#cb33-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
-<span id="cb33-36"><a href="#cb33-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-37"><a href="#cb33-37" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb33-38"><a href="#cb33-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
-<span id="cb33-39"><a href="#cb33-39" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb33-40"><a href="#cb33-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb33-41"><a href="#cb33-41" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb33-42"><a href="#cb33-42" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb33-43"><a href="#cb33-43" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb33-44"><a href="#cb33-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb33-45"><a href="#cb33-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb33-46"><a href="#cb33-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-47"><a href="#cb33-47" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-48"><a href="#cb33-48" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
-<span id="cb33-49"><a href="#cb33-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-50"><a href="#cb33-50" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb33-51"><a href="#cb33-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
-<span id="cb33-52"><a href="#cb33-52" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
-<span id="cb33-53"><a href="#cb33-53" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
-<span id="cb33-54"><a href="#cb33-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb33-55"><a href="#cb33-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb33-56"><a href="#cb33-56" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb33-57"><a href="#cb33-57" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
-<span id="cb33-58"><a href="#cb33-58" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb33-59"><a href="#cb33-59" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb33-60"><a href="#cb33-60" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-61"><a href="#cb33-61" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
-<span id="cb33-62"><a href="#cb33-62" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb33-63"><a href="#cb33-63" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
-<span id="cb33-64"><a href="#cb33-64" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb33-65"><a href="#cb33-65" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb33-66"><a href="#cb33-66" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb33-67"><a href="#cb33-67" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
-<span id="cb33-68"><a href="#cb33-68" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
+<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
+<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
+<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
+<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
+<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
+<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
+<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-50"><a href="#cb38-50" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
+<span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
+<span id="cb38-53"><a href="#cb38-53" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
+<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb38-55"><a href="#cb38-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb38-56"><a href="#cb38-56" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb38-57"><a href="#cb38-57" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
+<span id="cb38-58"><a href="#cb38-58" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb38-59"><a href="#cb38-59" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb38-60"><a href="#cb38-60" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-61"><a href="#cb38-61" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
+<span id="cb38-62"><a href="#cb38-62" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb38-63"><a href="#cb38-63" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
+<span id="cb38-64"><a href="#cb38-64" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb38-65"><a href="#cb38-65" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb38-66"><a href="#cb38-66" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb38-67"><a href="#cb38-67" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
+<span id="cb38-68"><a href="#cb38-68" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="some-suggested-in-class-metrics-for-sec-taylor" class="level2">
 <h2 class="anchored" data-anchor-id="some-suggested-in-class-metrics-for-sec-taylor">Some suggested in-class metrics for <a href="#sec-taylor" class="quarto-xref">Section&nbsp;5.3.3</a></h2>
 <p><strong>Number of time until the first repeat</strong> (in this case <em>Blurple</em>)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>final_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cotton candy"</span>, <span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, </span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Blurple"</span>, </span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>)</span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="do">## times until first repeat</span></span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">## in this case Blurple, with 5 outfits before repeat</span></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">duplicated</span>(final_leg_outfits))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> (<span class="fu">which</span>(<span class="fu">duplicated</span>(<span class="fu">sample</span>(data)))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(final_leg_outfits)</span>
-<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
-<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>final_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cotton candy"</span>, <span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, </span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Blurple"</span>, </span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="do">## times until first repeat</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">## in this case Blurple, with 5 outfits before repeat</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">duplicated</span>(final_leg_outfits))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> (<span class="fu">which</span>(<span class="fu">duplicated</span>(<span class="fu">sample</span>(data)))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(final_leg_outfits)</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Number of times we have <em>Sunset Orange</em> thrice in a row</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>europe_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, </span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>)</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Sunset orange only appears exactly thrice in a row once</span></span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>run_lengths <span class="ot">&lt;-</span> <span class="fu">rle</span>(europe_leg_outfits) <span class="do">## inbuilt R function for run lengths</span></span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">sum</span>(run_lengths<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> run_lengths<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
-<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
-<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
-<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
-<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">sample</span>(data) <span class="sc">|&gt;</span> <span class="fu">rle</span>()</span>
-<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> x<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
-<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(europe_leg_outfits)</span>
-<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
-<span id="cb35-27"><a href="#cb35-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>europe_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>)</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Sunset orange only appears exactly thrice in a row once</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>run_lengths <span class="ot">&lt;-</span> <span class="fu">rle</span>(europe_leg_outfits) <span class="do">## inbuilt R function for run lengths</span></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">sum</span>(run_lengths<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> run_lengths<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">sample</span>(data) <span class="sc">|&gt;</span> <span class="fu">rle</span>()</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> x<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(europe_leg_outfits)</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -1633,6 +1948,9 @@ Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.�
 </div>
 <div id="ref-swift" class="csl-entry" role="listitem">
 Klemm, Marina Ferrari de Aquino, and Charlotte M. Jones-Todd. 2026. <span>“We Were in Screaming Colour: Colours of the Taylor Swift Universe: A Statistical Story.”</span> <em>Significance</em> 23 (1): 12–17. <a href="https://doi.org/10.1093/jrssig/qmaf093">https://doi.org/10.1093/jrssig/qmaf093</a>.
+</div>
+<div id="ref-abalone" class="csl-entry" role="listitem">
+Nash, Warwick J., Tracy L. Sellers, Simon R. Talbot, Andrew J. Cawthorn, and Wes B. Ford. 1994. <span>“The Population Biology of Abalone (Haliotis Species) in Tasmania. 1: Blacklip Abalone (h. Rubra) from the North Coast and the Islands of Bass Strait.”</span> Hobart, Australia: Sea Fisheries Division, Department of Primary Industry; Fisheries, Tasmania. <a href="https://nla.gov.au/nla.cat-vn124287">https://nla.gov.au/nla.cat-vn124287</a>.
 </div>
 <div id="ref-herbicide" class="csl-entry" role="listitem">
 Peterson, PG, MF Merrett, SV Fowler, DP Barrett, and Q Paynter. 2020. <span>“Comparing Biocontrol and Herbicide for Managing an Invasive Non-Native Plant Species: Efficacy, Non-Target Effects and Secondary Invasion.”</span> <em>Journal of Applied Ecology</em> 57 (10): 1876–84. <a href="https://doi.org/10.1111/1365-2664.13691">https://doi.org/10.1111/1365-2664.13691</a>.

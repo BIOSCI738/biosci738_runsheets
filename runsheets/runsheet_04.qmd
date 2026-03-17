@@ -45,7 +45,7 @@ A bootstrap is a procedure for finding the (approximate) sampling distribution o
 <img src="runsheets/img/pumpkins.jpg" alt="Some of my 2022 pumpkin haul" height="400px"></center>
 
 
-In your groups Run through the `R` code below and discuss/answer each question posed in the comments. Figure out what each line of code does and replace the comments with your own. 
+**In your groups run through** the `R` code below and discuss/answer each question posed in the comments. Figure out what each line of code does and replace the comments with your own. 
 
 Be prepared to discuss your progress/thoughts with me as I wander around the class.
 
@@ -173,7 +173,7 @@ Now, let's say we're interested in testing the NULL hypothesis of *no difference
 
 ```{r, eval = FALSE}
 abalone <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/abalone.csv")
-## make sure Class is catrgorical
+## make sure Class is categorical
 abalone$Class <- as.factor(abalone$Class)
 ## fit interaction model
 ## ANOVA way
@@ -208,7 +208,7 @@ Let's test the NULL hypothesis $H_0:$ *No interaction between Sex and Class*.
 
 Recall, that permutation (aka randomisation) tests simulate data that would occur if this null hypothesis were true.
 
-Now, instead of resampling with replacement, we're going to shuffle data in a way that preserves the NULL model.
+Now, instead of resampling with replacement, we're going to shuffle data in a way that **preserves the NULL model**.
 
 ```{r,eval = FALSE}
 ## method 1
@@ -280,7 +280,7 @@ mean(Fs >= F_obs)
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Resampling Summary
 
-To the `tasks` folder of your GitHub repository include, modify, add and push a reproducible version of this [Rmarkdown (`.Rmd`) file](https://canvas.auckland.ac.nz/files/17283305/download?download_frd=1) that compares at least two of the resampling procedures discussed this week (e.g., permutation vs bootstrapping). [LEARN about Rmarkdown files here](https://rmarkdown.rstudio.com/lesson-2.html). Remember to update your `README.md` accordingly!
+To the `tasks` folder of your GitHub repository include, modify, add and push a **fully reproducible** version of this [Rmarkdown (`.Rmd`) file](https://canvas.auckland.ac.nz/files/17283305/download?download_frd=1) that compares at least two of the resampling procedures discussed this week (e.g., permutation vs bootstrapping). [LEARN about Rmarkdown files here](https://rmarkdown.rstudio.com/lesson-2.html). Remember to update your `README.md` accordingly!
 
 
 :::
