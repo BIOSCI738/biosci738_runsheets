@@ -11,7 +11,7 @@
 ### Before we begin **sort yourselves into groups** following @sec-groups
 
 ::: {.callout-tip}
-## Resampling to the Rescue
+## Straight(ish) lines
  
  + Critically evaluate linear model fit
  + Include polynomial terms in a linear model
@@ -28,10 +28,13 @@
 Otherwise known as *least squares* regression, by default `lm()` seeks to minimize the squared Euclidean distance between the observations and the fitted line.
 
 
+
 ### Residual plots (*a recap*) {#sec-qq}
 
-
+::: {.callout-note collapse="true"}
+## Blank Residual Plots
 <center><img src="runsheets/img/blank_diagnostic.png" height="700px" alt="blank lm diagnostic plots"></center>
+:::
 
 
 ::: {.callout-note collapse="true"}
@@ -44,12 +47,12 @@ Otherwise known as *least squares* regression, by default `lm()` seeks to minimi
 
 ### Light response {#sec-light}
 
-Below is a plot of a subset of the data detailed in @lightresponse. 
+Below, we investigate the relationship between the photosynthetic rate (µmol CO2 $m^-2 s^-1$) of sunflower leaves and light intensity (`PAR`, µmol $m^-2 s^-1$) (the plot below shows a subset of the data detailed in @lightresponse).
 
 
-```{r, eval = TRUE, echo = FALSE, message=FALSE}
+```{r, eval = TRUE, echo = FALSE, message=FALSE, warning=FALSE}
 require(ggplot2)
-require(photosynthesisLRC)
+require(photosynthesisLRC) 
 data <- sunflowers[sunflowers$Replicate == 1,]
 ggplot(data, aes(x = PARi, y = A)) +
   geom_point() + theme_light() +
@@ -60,7 +63,7 @@ ggplot(data, aes(x = PARi, y = A)) +
 
 What does a linear model look like for these data?
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
 fit <- lm(A ~ PARi, data = data)
 ggplot(data, aes(x = PARi, y = A)) +
   geom_point(col = "grey") + theme_light() +
@@ -71,20 +74,20 @@ ggplot(data, aes(x = PARi, y = A)) +
 
 And the residual plots?
 
-```{r, echo = FALSE}
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
 gglm::gglm(fit)
 ```
 
-Can we improve our fit using other variables? Note, these data are contained in the `R` package `photosynthesisLRC` (@photosynthesisLRC) as the object `sunflowers`:
+OK, so not a great fit. Could we perhaps improve our fit using other variables? Note, these data are contained in the `R` package `photosynthesisLRC` (@photosynthesisLRC) as the object `sunflowers`:
 
 ```{r, eval = FALSE}
 require(photosynthesisLRC)
 data <- sunflowers[sunflowers$Replicate == 1,]
 ```
 
-In your groups, fit, interpret, and critique the models below? Which is the "best" fitting model? Create a plot of the model of your choice.
+In your groups, fit, interpret, and critique the models below? Which is the "best" fitting model (out of the three fitted below)? Create a plot of this model and be prepared to share it as I wander around the class.
 
-```{r, echo = FALSE}
+```{r, eval = FALSE}
 ## MODEL 1
 fit_01 <- lm(A ~ PARi, data = data) 
 summary(fit_01)
@@ -110,7 +113,7 @@ Now, @photosynthesisLRC is an `R` package that
 
 > Provides functions for modeling, comparing, and visualizing photosynthetic light response curves using established mechanistic and empirical models like the rectangular hyperbola Michaelis-Menton based models...
 
-For example, Equation 1 of @lobo2013lightresponse is
+For example, one such function in is Equation 1 of @lobo2013lightresponse is
 
 $A = \frac{\alpha \, I \, A_{\max}}{\alpha \, I + A_{\max}} - R_d$
 

@@ -67,8 +67,7 @@ data <- data %>%
 ## linear model
 ## Fitted model.
 fit <- lm(weight_kg ~ height_mm + width_mm, data = data)
-fit |>
-summary()
+fit |> summary()
 ## fitted values
 fitted(fit) ## notice anything strange?
 ## estimated error variance
@@ -152,11 +151,48 @@ abline(v = mu[1]/mu[2], lwd = 2, col = "red")
 ## CI
 CI_non_parametric <- quantile(bootstrap_ratios, c(0.025, 0.975))
 CI_non_parametric
-## again, evidence in favour of positive allometric growth (i.e., pumpkins get rounder the
-## bigger they get)
+## What do you think is going on here and why.
 
 ```
 
+<!-- Styling -->
+<style>
+.correct { background-color: #d4edda; border: 2px solid #28a745; }
+.incorrect { background-color: #f8d7da; border: 2px solid #dc3545; }
+input { padding: 4px; margin: 6px 0; }
+</style>
+
+<!-- Logic -->
+<script>
+function check(id, ans, tol=0){
+  let el = document.getElementById(id);
+  let v = el.value.trim();
+
+  if(!isNaN(ans)){
+    let num = parseFloat(v);
+    if(!isNaN(num) && Math.abs(num - ans) <= tol){
+      el.className = "correct";
+    } else {
+      el.className = "incorrect";
+    }
+  } else {
+    if(v.toLowerCase() === ans.toLowerCase()){
+      el.className = "correct";
+    } else {
+      el.className = "incorrect";
+    }
+  }
+}
+</script>
+
+<!-- Questions -->
+1. Under the additive model how much of a kilogram does a pumpkin increase on average for every millimeter (mm) in height? (*2 dps*) <input id="q1" oninput="check('q1',0.03,0.001)">
+
+2. Estimated weight of Pumpkin 2 (kg) (*2 dps*) <input id="q2" oninput="check('q2',1.477,0.01)">
+
+3. Ratio of pumpkin 1 weight to pumpkin 2 weight (additive model) (*2 dps*) <input id="q3" oninput="check('q3',3.38,0.05)">
+
+4. Which bootstrap gives the wider 95% confidence interval, parametric or non-parametric? <input id="q4" oninput="check('q4','non-parametric')">
 
 ## Bootstrap vs Permutation {#sec-bootvsperm}
 
