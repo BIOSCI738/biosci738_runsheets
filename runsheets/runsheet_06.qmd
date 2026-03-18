@@ -1,10 +1,10 @@
-# Week 04 - Lecture 02 (Guest Lectuerer Paul Murrell!)
+# Week 04 - Lecture 02 (Guest Lecturer Paul Murrell)
 
 ## Rough Agenda
 
 ### **2:05 pm - 3:55 pm** 
 
- + Data visualization (@sec-viz)
+ + Data visualization 
  + Plot roast (@sec-roast)
  + Create your own (@sec-plot)
     
@@ -15,7 +15,7 @@
  - Interpret, critique and communicate using visualization! 
 :::
 
-## Data visualization {#sec-viz}
+## Data visualization 
 
 *In-class content*
 

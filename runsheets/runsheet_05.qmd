@@ -36,11 +36,16 @@ Otherwise known as *least squares* regression, by default `lm()` seeks to minimi
 <center><img src="runsheets/img/blank_diagnostic.png" height="700px" alt="blank lm diagnostic plots"></center>
 :::
 
+::: {.callout-note collapse="true"}
+## QQ plot cheatsheet `lm()`
+<center><img src="runsheets/img/qq_residuals.png" height="700px" alt="blank lm diagnostic plots"></center>
+:::
+
 
 ::: {.callout-note collapse="true"}
-## Diagnostic Cheatsheet
+## Outliers... (*Charlotte's bugbear*)
 
-![](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/outlawing_outliers.png)
+<center><img src="runsheets/img/outlawing_outliers.png" height="700px" alt="blank lm diagnostic plots"></center>
 :::
 
 
@@ -106,6 +111,85 @@ anova(fit_01,fit_02, fit_03)
 ```
 
 
+::: {.callout-note collapse="true"}
+## Model comparison quiz
+
+<style>
+.quiz-option {
+  padding: 6px;
+  border: 1px solid #ccc;
+  margin: 4px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.correct { background-color: #c8f7c5; }
+.incorrect { background-color: #f7c5c5; }
+</style>
+
+<script>
+function checkAnswer(el, correct) {
+  const options = el.parentElement.querySelectorAll('.quiz-option');
+  options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+  el.classList.add(correct ? 'correct' : 'incorrect');
+}
+</script>
+
+---
+
+**Q1. Which model is preferred based on AIC?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Model 1</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Model 2</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Model 3</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">All models are equivalent</div>
+</div>
+
+---
+
+**Q2. What does the ANOVA comparison between Model 1 and Model 2 indicate?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">PARi is not important</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Adding Species improves model fit</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Model 1 is better</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">There is no difference between models</div>
+</div>
+
+---
+
+**Q3. What does the ANOVA comparison between Model 2 and Model 3 indicate?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">The interaction is not needed</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">The interaction between PARi and Species improves model fit</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Model 2 is preferred</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Species has no effect</div>
+</div>
+
+---
+
+**Q4. Which statement best describes Model 3 biologically?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">All species have the same relationship with light</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Species only differ in intercepts</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Species differ in both baseline photosynthesis and response to light</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Light has no effect</div>
+</div>
+
+---
+
+**Q5. Why is Model 3 preferred despite having more parameters?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">More parameters always make a model better</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">It sufficiently improves fit to justify the added complexity</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Because it has the largest R-squared</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Because ANOVA always selects more complex models</div>
+</div>
+:::
+
 ## Polynomial regression  {#sec-poly}
 
 
@@ -113,9 +197,9 @@ Now, @photosynthesisLRC is an `R` package that
 
 > Provides functions for modeling, comparing, and visualizing photosynthetic light response curves using established mechanistic and empirical models like the rectangular hyperbola Michaelis-Menton based models...
 
-For example, one such function in is Equation 1 of @lobo2013lightresponse is
+For example, one such function is Equation 1 of @lobo2013lightresponse:
 
-$A = \frac{\alpha \, I \, A_{\max}}{\alpha \, I + A_{\max}} - R_d$
+$$A = \frac{\alpha \, I \, A_{\max}}{\alpha \, I + A_{\max}} - R_d$$
 
 where, $A$ = net photosynthesis, $I$ = irradiance (light intensity), $\alpha$ = apparent quantum efficiency (initial slope), $A_{\max}$ = maximum gross photosynthesis, and $R_d$ = dark respiration.
 
@@ -136,31 +220,54 @@ ggplot(data, aes(x = PARi, y = A)) +
 ```
 
 
+### Can we use `lm()` for this?
 
-Can we use `lm()` for this?
+::: {.callout-important}
+## Note: Statistical modelling and mechanical modelling are typically used for different purposes...
 
-```{r}
-ploy_lm <- lm(A ~ PARi + I(PARi^2), data = data)
-ggplot(data, aes(x = PARi, y = A)) +
-  geom_point(col = "grey") + theme_light() +
-  xlab("PAR (µmol m^-2 s^-1)") + ylab("Photosynthetic rate (µmol CO2 m^-2 s^-1)") +
-  geom_smooth(method = "lm", formula = y ~ x + I(x^2), se = FALSE, col = "black", size = 2) + 
-  ggtitle("Fitted ploynomial linear model: Photosynthetic rate ~ PAR + PAR^2")
-```
-
-
+... but the aim of today is to show you how a polynomial regression model fitted using `lm()` can recreate the *shape* of a non-linear model
+:::
  
+
 ::: {.callout-note collapse="true"}
 ## Polynomial regression
 
 ![](runsheets/img/poly_vs_I.png)
 :::
 
+```{r, echo = FALSE, messgae = FALSE}
+poly_lm <- lm(A ~ poly(PARi, 4), data = data, na.action = na.fail)
+## MuMIn::dredge(poly_lm)
+ggplot(data, aes(x = PARi, y = A)) +
+  geom_point(col = "grey") + theme_light() +
+  xlab("PAR (µmol m^-2 s^-1)") + ylab("Photosynthetic rate (µmol CO2 m^-2 s^-1)") +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 4), se = FALSE, col = "red", lty = "dashed", size = 2) + 
+  geom_line(data = preds, aes(y = A_expected), col = "black", size = 1.5) +
+  ggtitle("Fitted ploynomial linear model (red) vs Mechanistic model (black)")
+```
+
+Above show *my* best `lm()` model to 'recreate' the mechanistic curve above. Note
+
+ 1. I have used polynomial terms (e.g., terms like `I(x^a)` or `ploy(x, a)`, I'm not telling you which ones!)
+ 2. I have not included `Species` information, but from above it seems like this would be important information to include in a model...
+
+
+**In your groups discuss what may be an appropriate model for these data. This will be an iterative process. Fit & interpret your "best" model, Discuss, how you decided on your "best" model.**
+
+You may find the function `dredge` from the `R` package `MuMIn` useful for model selection. `dredge()` generates a model selection table of models with combinations of fixed effect terms in the given global (full) model. By default `dredge()` uses AICc as its model comparison metric. (p.s. you may need to set  `na.action = na.fail` in your `lm()` call for `dregde()` to work)
 
 
 
-1. Choose and then plot your best-fitting model. How did you decide on your "best" model?
-2. The function `dredge` is from the `R` package `MuMIn`; it is very useful for model selection. `dredge()` generates a model selection table of models with combinations of fixed effect terms in the given global (full) model. By default `dredge()` uses AICc as its model comparison metric. Supplying your "best" model from 1) write out the top two selected models as chosen by dredge (including the estimated coefficients). From all the considered models which would you select? Justify your answer. Note, you should use residual plots in your justification. (p.s. you may need to set  `na.action = na.fail` in your `lm()` call for `dregde()` to work)
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> What's your best polynomial?
+
+Once you've decided on your 'best fitting' model open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your model formula. We'll then compare the class' models!
+:::
+
+
+
+
+
 
 
 
