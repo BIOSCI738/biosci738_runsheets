@@ -71,17 +71,36 @@ require(ggimage)
 require(cowplot)
 require(extrafont)
 extrafont::loadfonts()
-
+require(forcats)
+require(dplyr)
 ##############
 ## data
 load("swift.RData")
 ##############
+
+## reorder data according to
+## first appearance
+
+first_dates <- oneRowPerConcert %>%
+  group_by(DressName) %>%
+  summarise(first_date = min(Date), .groups = "drop")
+
+oneRowPerConcert <- oneRowPerConcert %>%
+  left_join(first_dates, by = "DressName") %>%
+  mutate(DressName = fct_reorder(DressName, first_date)) %>%
+  select(-first_date)
+
+outfits <- outfits %>%
+  left_join(first_dates, by = "DressName") %>%
+  mutate(DressName = fct_reorder(DressName, first_date)) %>%
+  select(-first_date)
 
 ##################
 ### Figure 1 #####
 ##################
 
 max_dress_level <- length(unique((oneRowPerConcert$DressName)))
+
 
 main_plot <- ggplot(oneRowPerConcert, aes(x = Date, y = DressName, colour = ColourHex1)) +
     geom_point(size = 4, alpha = 1) +
