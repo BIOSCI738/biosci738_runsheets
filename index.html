@@ -251,6 +251,23 @@ window.Quarto = {
   <li><a href="#permutationrandomisation-test-testing-a-hypothesis" id="toc-permutationrandomisation-test-testing-a-hypothesis" class="nav-link" data-scroll-target="#permutationrandomisation-test-testing-a-hypothesis">Permutation/randomisation test (<em>testing a hypothesis</em>)</a></li>
   </ul></li>
   </ul></li>
+  <li><a href="#week-04---lecture-01" id="toc-week-04---lecture-01" class="nav-link" data-scroll-target="#week-04---lecture-01">Week 04 - Lecture 01</a>
+  <ul class="collapse">
+  <li><a href="#rough-agenda-4" id="toc-rough-agenda-4" class="nav-link" data-scroll-target="#rough-agenda-4">Rough Agenda</a>
+  <ul class="collapse">
+  <li><a href="#pm---555-pm-2" id="toc-pm---555-pm-2" class="nav-link" data-scroll-target="#pm---555-pm-2"><strong>4:05 pm - 5:55 pm</strong></a></li>
+  <li><a href="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-3" id="toc-before-we-begin-sort-yourselves-into-groups-following-sec-groups-3" class="nav-link" data-scroll-target="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-3">Before we begin <strong>sort yourselves into groups</strong> following Section&nbsp;3.2</a></li>
+  </ul></li>
+  <li><a href="#linear-model-diagnostics" id="toc-linear-model-diagnostics" class="nav-link" data-scroll-target="#linear-model-diagnostics">Linear model diagnostics</a>
+  <ul class="collapse">
+  <li><a href="#sec-qq" id="toc-sec-qq" class="nav-link" data-scroll-target="#sec-qq">Residual plots (<em>a recap</em>)</a></li>
+  <li><a href="#sec-light" id="toc-sec-light" class="nav-link" data-scroll-target="#sec-light">Light response</a></li>
+  </ul></li>
+  <li><a href="#sec-poly" id="toc-sec-poly" class="nav-link" data-scroll-target="#sec-poly">Polynomial regression</a>
+  <ul class="collapse">
+  <li><a href="#can-we-use-lm-for-this" id="toc-can-we-use-lm-for-this" class="nav-link" data-scroll-target="#can-we-use-lm-for-this">Can we use <code>lm()</code> for this?</a></li>
+  </ul></li>
+  </ul></li>
   <li><a href="#sec-extras" id="toc-sec-extras" class="nav-link" data-scroll-target="#sec-extras">Extra Activities (time dependent)</a>
   <ul class="collapse">
   <li><a href="#sec-honesty" id="toc-sec-honesty" class="nav-link" data-scroll-target="#sec-honesty"><em>Reproducible</em> analysis</a></li>
@@ -1729,9 +1746,368 @@ function check(id, ans, tol=0){
 <p>To the <code>tasks</code> folder of your GitHub repository include, modify, add and push a <strong>fully reproducible</strong> version of this <a href="https://canvas.auckland.ac.nz/files/17283305/download?download_frd=1">Rmarkdown (<code>.Rmd</code>) file</a> that compares at least two of the resampling procedures discussed this week (e.g., permutation vs bootstrapping). <a href="https://rmarkdown.rstudio.com/lesson-2.html">LEARN about Rmarkdown files here</a>. Remember to update your <code>README.md</code> accordingly!</p>
 </div>
 </div>
-<!--{{< include runsheets/runsheet_05.qmd >}}
-
-{{< include runsheets/runsheet_06.qmd >}}-->
+</section>
+</section>
+</section>
+<section id="week-04---lecture-01" class="level1">
+<h1>Week 04 - Lecture 01</h1>
+<section id="rough-agenda-4" class="level2">
+<h2 class="anchored" data-anchor-id="rough-agenda-4">Rough Agenda</h2>
+<section id="pm---555-pm-2" class="level3">
+<h3 class="anchored" data-anchor-id="pm---555-pm-2"><strong>4:05 pm - 5:55 pm</strong></h3>
+<ul>
+<li>Linear model diagnostics
+<ul>
+<li>Recap residual plots (<a href="#sec-qq" class="quarto-xref">Section&nbsp;7.2.1</a>)</li>
+</ul></li>
+<li>Polynomial regression (<a href="#sec-poly" class="quarto-xref">Section&nbsp;7.3</a>)</li>
+</ul>
+</section>
+<section id="before-we-begin-sort-yourselves-into-groups-following-sec-groups-3" class="level3">
+<h3 class="anchored" data-anchor-id="before-we-begin-sort-yourselves-into-groups-following-sec-groups-3">Before we begin <strong>sort yourselves into groups</strong> following <a href="#sec-groups" class="quarto-xref">Section&nbsp;3.2</a></h3>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Straight(ish) lines
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li>Critically evaluate linear model fit</li>
+<li>Include polynomial terms in a linear model</li>
+<li>Fit, draw inference from and critique polynomial regression models</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section id="linear-model-diagnostics" class="level2">
+<h2 class="anchored" data-anchor-id="linear-model-diagnostics">Linear model diagnostics</h2>
+<center>
+<img src="https://github.com/statbiscuit/swots/blob/master/figs_n_gifs/lm.gif?raw=true" alt="GIF of linear model residuals">
+</center>
+<p>Otherwise known as <em>least squares</em> regression, by default <code>lm()</code> seeks to minimize the squared Euclidean distance between the observations and the fitted line.</p>
+<section id="sec-qq" class="level3">
+<h3 class="anchored" data-anchor-id="sec-qq">Residual plots (<em>a recap</em>)</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-32-contents" aria-controls="callout-32" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Blank Residual Plots
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-32" class="callout-32-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<center>
+<img src="runsheets/img/blank_diagnostic.png" height="700px" alt="blank lm diagnostic plots">
+</center>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-33-contents" aria-controls="callout-33" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>QQ plot cheatsheet <code>lm()</code>
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-33" class="callout-33-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<center>
+<img src="runsheets/img/qq_residuals.png" height="700px" alt="blank lm diagnostic plots">
+</center>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-34-contents" aria-controls="callout-34" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Outliers… (<em>Charlotte’s bugbear</em>)
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-34" class="callout-34-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<center>
+<img src="runsheets/img/outlawing_outliers.png" height="700px" alt="blank lm diagnostic plots">
+</center>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-light" class="level3">
+<h3 class="anchored" data-anchor-id="sec-light">Light response</h3>
+<p>Below, we investigate the relationship between the photosynthetic rate (µmol CO2 <span class="math inline">\(m^-2 s^-1\)</span>) of sunflower leaves and light intensity (<code>PAR</code>, µmol <span class="math inline">\(m^-2 s^-1\)</span>) (the plot below shows a subset of the data detailed in <span class="citation" data-cites="lightresponse">Davis, Mason, and Goolsby (<a href="#ref-lightresponse" role="doc-biblioref">2026</a>)</span>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>What does a linear model look like for these data?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>And the residual plots?</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>OK, so not a great fit. Could we perhaps improve our fit using other variables? Note, these data are contained in the <code>R</code> package <code>photosynthesisLRC</code> (<span class="citation" data-cites="photosynthesisLRC">Davis and Goolsby (<a href="#ref-photosynthesisLRC" role="doc-biblioref">2025</a>)</span>) as the object <code>sunflowers</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(photosynthesisLRC)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> sunflowers[sunflowers<span class="sc">$</span>Replicate <span class="sc">==</span> <span class="dv">1</span>,]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In your groups, fit, interpret, and critique the models below? Which is the “best” fitting model (out of the three fitted below)? Create a plot of this model and be prepared to share it as I wander around the class.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">## MODEL 1</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>fit_01 <span class="ot">&lt;-</span> <span class="fu">lm</span>(A <span class="sc">~</span> PARi, <span class="at">data =</span> data) </span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_01)</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_01)</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="do">## MODEL 2</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>fit_02 <span class="ot">&lt;-</span> <span class="fu">lm</span>(A <span class="sc">~</span> PARi <span class="sc">+</span> Species, <span class="at">data =</span> data)</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_02)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_02)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="do">## MODEL 3</span></span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>fit_03 <span class="ot">&lt;-</span> <span class="fu">lm</span>(A <span class="sc">~</span> PARi <span class="sc">*</span> Species, <span class="at">data =</span> data)</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit_03)</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_03)</span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a><span class="do">## model fit</span></span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a><span class="fu">AIC</span>(fit_01, fit_02, fit_03)</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(fit_01,fit_02, fit_03)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-35-contents" aria-controls="callout-35" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Model comparison quiz
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-35" class="callout-35-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<style>
+.quiz-option {
+  padding: 6px;
+  border: 1px solid #ccc;
+  margin: 4px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.correct { background-color: #c8f7c5; }
+.incorrect { background-color: #f7c5c5; }
+</style>
+<script>
+function checkAnswer(el, correct) {
+  const options = el.parentElement.querySelectorAll('.quiz-option');
+  options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+  el.classList.add(correct ? 'correct' : 'incorrect');
+}
+</script>
+<hr>
+<p><strong>Q1. Which model is preferred based on AIC?</strong></p>
+<div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Model 1
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Model 2
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,true)">
+Model 3
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+All models are equivalent
+</div>
+</div>
+<hr>
+<p><strong>Q2. What does the ANOVA comparison between Model 1 and Model 2 indicate?</strong></p>
+<div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+PARi is not important
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,true)">
+Adding Species improves model fit
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Model 1 is better
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+There is no difference between models
+</div>
+</div>
+<hr>
+<p><strong>Q3. What does the ANOVA comparison between Model 2 and Model 3 indicate?</strong></p>
+<div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+The interaction is not needed
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,true)">
+The interaction between PARi and Species improves model fit
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Model 2 is preferred
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Species has no effect
+</div>
+</div>
+<hr>
+<p><strong>Q4. Which statement best describes Model 3 biologically?</strong></p>
+<div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+All species have the same relationship with light
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Species only differ in intercepts
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,true)">
+Species differ in both baseline photosynthesis and response to light
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Light has no effect
+</div>
+</div>
+<hr>
+<p><strong>Q5. Why is Model 3 preferred despite having more parameters?</strong></p>
+<div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+More parameters always make a model better
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,true)">
+It sufficiently improves fit to justify the added complexity
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Because it has the largest R-squared
+</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">
+Because ANOVA always selects more complex models
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-poly" class="level2">
+<h2 class="anchored" data-anchor-id="sec-poly">Polynomial regression</h2>
+<p>Now, <span class="citation" data-cites="photosynthesisLRC">Davis and Goolsby (<a href="#ref-photosynthesisLRC" role="doc-biblioref">2025</a>)</span> is an <code>R</code> package that</p>
+<blockquote class="blockquote">
+<p>Provides functions for modeling, comparing, and visualizing photosynthetic light response curves using established mechanistic and empirical models like the rectangular hyperbola Michaelis-Menton based models…</p>
+</blockquote>
+<p>For example, one such function is Equation 1 of <span class="citation" data-cites="lobo2013lightresponse">Lobo et al. (<a href="#ref-lobo2013lightresponse" role="doc-biblioref">2013</a>)</span>:</p>
+<p><span class="math display">\[A = \frac{\alpha \, I \, A_{\max}}{\alpha \, I + A_{\max}} - R_d\]</span></p>
+<p>where, <span class="math inline">\(A\)</span> = net photosynthesis, <span class="math inline">\(I\)</span> = irradiance (light intensity), <span class="math inline">\(\alpha\)</span> = apparent quantum efficiency (initial slope), <span class="math inline">\(A_{\max}\)</span> = maximum gross photosynthesis, and <span class="math inline">\(R_d\)</span> = dark respiration.</p>
+<p>Below we plot this mechanistic non-linear model for our data in <code>R</code>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting a mechanistic (non-linear) model to our data</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>photosyn_fun <span class="ot">&lt;-</span> <span class="cf">function</span>(PARi, <span class="at">alpha =</span> <span class="fl">5.4e-02</span>, <span class="at">Amax =</span> <span class="fl">27.5</span>, <span class="at">Rd =</span> <span class="fl">1.94</span>) {</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  (alpha <span class="sc">*</span> PARi <span class="sc">*</span> Amax) <span class="sc">/</span> (alpha <span class="sc">*</span> PARi <span class="sc">+</span> Amax) <span class="sc">-</span> Rd</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>pari <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="fu">min</span>(data<span class="sc">$</span>PARi), <span class="fu">max</span>(data<span class="sc">$</span>PARi), <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>preds <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( <span class="at">A_expected =</span> <span class="fu">photosyn_fun</span>(pari), <span class="at">PARi =</span> pari)</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> PARi, <span class="at">y =</span> A)) <span class="sc">+</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col =</span> <span class="st">"grey"</span>) <span class="sc">+</span> <span class="fu">theme_light</span>() <span class="sc">+</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> preds, <span class="fu">aes</span>(<span class="at">y =</span> A_expected), <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"PAR (µmol m^-2 s^-1)"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Photosynthetic rate (µmol CO2 m^-2 s^-1)"</span>) <span class="sc">+</span></span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Mechanistic model for the photosynthetic rate"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="can-we-use-lm-for-this" class="level3">
+<h3 class="anchored" data-anchor-id="can-we-use-lm-for-this">Can we use <code>lm()</code> for this?</h3>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Note: Statistical modelling and mechanical modelling are typically used for different purposes…
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>… but the aim of today is to show you how a polynomial regression model fitted using <code>lm()</code> can recreate the <em>shape</em> of a non-linear model</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-37-contents" aria-controls="callout-37" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Polynomial regression
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-37" class="callout-37-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><img src="runsheets/img/poly_vs_I.png" class="img-fluid"></p>
+</div>
+</div>
+</div>
+<div class="cell" data-messgae="false">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-27-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Above show <em>my</em> best <code>lm()</code> model to ‘recreate’ the mechanistic curve above. Note</p>
+<ol type="1">
+<li>I have used polynomial terms (e.g., terms like <code>I(x^a)</code> or <code>ploy(x, a)</code>, I’m not telling you which ones!)</li>
+<li>I have not included <code>Species</code> information, but from above it seems like this would be important information to include in a model…</li>
+</ol>
+<p><strong>In your groups discuss what may be an appropriate model for these data. This will be an iterative process. Fit &amp; interpret your “best” model, Discuss, how you decided on your “best” model.</strong></p>
+<p>You may find the function <code>dredge</code> from the <code>R</code> package <code>MuMIn</code> useful for model selection. <code>dredge()</code> generates a model selection table of models with combinations of fixed effect terms in the given global (full) model. By default <code>dredge()</code> uses AICc as its model comparison metric. (p.s. you may need to set <code>na.action = na.fail</code> in your <code>lm()</code> call for <code>dregde()</code> to work)</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Warning</span><i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> What’s your best polynomial?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Once you’ve decided on your ‘best fitting’ model open <a href="https://canvas.auckland.ac.nz/courses/141056/external_tools/38296">StatChat</a> and <strong>individually</strong> write out your model formula. We’ll then compare the class’ models!</p>
+</div>
+</div>
+<!--{{< include runsheets/runsheet_06.qmd >}}-->
 </section>
 </section>
 </section>
@@ -1815,154 +2191,154 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <section id="suggested-solution-to-sec-gorilla" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-gorilla">Suggested solution to <a href="#sec-gorilla" class="quarto-xref">Section&nbsp;3.3</a></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>data</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="do">## read in data</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/BMI.csv"</span>)</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>data</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean BMI</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="fu">mean</span>(bmi)) <span class="sc">%&gt;%</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">round</span>()</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Max BMI males</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(gender <span class="sc">==</span> <span class="st">"male"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(bmi <span class="sc">==</span> <span class="fu">max</span>(bmi))</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test BMI males vs females</span></span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data)</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(bmi <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a><span class="do">## t-test steps males vs females</span></span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) </span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(steps <span class="sc">~</span> gender, <span class="at">data =</span> data) <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="do">## plotting. ALWAYS PLOT YOUR DATA!</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(data, <span class="fu">aes</span>(<span class="at">x =</span> steps, <span class="at">y =</span> bmi, <span class="at">col =</span> gender)) <span class="sc">+</span></span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="suggested-solution-to-sec-draw" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-solution-to-sec-draw">Suggested solution to <a href="#sec-draw" class="quarto-xref">Section&nbsp;4.3</a></h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
-<span id="cb38-24"><a href="#cb38-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb38-25"><a href="#cb38-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
-<span id="cb38-26"><a href="#cb38-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb38-27"><a href="#cb38-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb38-28"><a href="#cb38-28" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb38-29"><a href="#cb38-29" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
-<span id="cb38-32"><a href="#cb38-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb38-33"><a href="#cb38-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-34"><a href="#cb38-34" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-35"><a href="#cb38-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
-<span id="cb38-36"><a href="#cb38-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-37"><a href="#cb38-37" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb38-38"><a href="#cb38-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
-<span id="cb38-39"><a href="#cb38-39" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb38-40"><a href="#cb38-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb38-41"><a href="#cb38-41" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
-<span id="cb38-42"><a href="#cb38-42" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb38-43"><a href="#cb38-43" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb38-44"><a href="#cb38-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
-<span id="cb38-45"><a href="#cb38-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
-<span id="cb38-46"><a href="#cb38-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-47"><a href="#cb38-47" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-48"><a href="#cb38-48" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
-<span id="cb38-49"><a href="#cb38-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-50"><a href="#cb38-50" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb38-51"><a href="#cb38-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
-<span id="cb38-52"><a href="#cb38-52" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
-<span id="cb38-53"><a href="#cb38-53" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
-<span id="cb38-54"><a href="#cb38-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
-<span id="cb38-55"><a href="#cb38-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb38-56"><a href="#cb38-56" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb38-57"><a href="#cb38-57" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
-<span id="cb38-58"><a href="#cb38-58" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb38-59"><a href="#cb38-59" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
-<span id="cb38-60"><a href="#cb38-60" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-61"><a href="#cb38-61" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
-<span id="cb38-62"><a href="#cb38-62" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
-<span id="cb38-63"><a href="#cb38-63" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
-<span id="cb38-64"><a href="#cb38-64" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
-<span id="cb38-65"><a href="#cb38-65" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
-<span id="cb38-66"><a href="#cb38-66" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
-<span id="cb38-67"><a href="#cb38-67" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
-<span id="cb38-68"><a href="#cb38-68" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="do">## data source: https://docs.google.com/spreadsheets/d/1YSJ4ypkYLq6j1mIBJCgUHhHjJZQ0Rkfe1qW2WC5HLiw/edit#gid=748627588</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/marvel_movies.csv"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">critics_score =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">critics % score</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">budget_recovered =</span> <span class="fu">as.numeric</span>(<span class="fu">str_replace_all</span>(<span class="st">`</span><span class="at">% budget recovered</span><span class="st">`</span>, <span class="st">"%"</span>, <span class="st">""</span>)))</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 1 #######</span></span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score, <span class="at">data =</span> .) <span class="sc">|&gt;</span></span>
+<span id="cb41-11"><a href="#cb41-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summary</span>()</span>
+<span id="cb41-12"><a href="#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb41-13"><a href="#cb41-13" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb41-14"><a href="#cb41-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb41-15"><a href="#cb41-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a><span class="do">## w. data</span></span>
+<span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb41-18"><a href="#cb41-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(., <span class="fu">aes</span>(<span class="at">y =</span> budget_recovered, <span class="at">x =</span> critics_score)) <span class="sc">+</span></span>
+<span id="cb41-19"><a href="#cb41-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb41-20"><a href="#cb41-20" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-21"><a href="#cb41-21" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 2 #######</span></span>
+<span id="cb41-22"><a href="#cb41-22" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-23"><a href="#cb41-23" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">table</span>(data<span class="sc">$</span>category))</span>
+<span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span>  category, <span class="at">data =</span> .) </span>
+<span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb41-31"><a href="#cb41-31" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> category)) <span class="sc">+</span></span>
+<span id="cb41-32"><a href="#cb41-32" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">15</span>, <span class="at">pch =</span> <span class="st">"-"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb41-33"><a href="#cb41-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-34"><a href="#cb41-34" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-35"><a href="#cb41-35" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 3 #######</span></span>
+<span id="cb41-36"><a href="#cb41-36" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-37"><a href="#cb41-37" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb41-38"><a href="#cb41-38" aria-hidden="true" tabindex="-1"></a>    <span class="fu">lm</span>(budget_recovered <span class="sc">~</span> critics_score <span class="sc">+</span> category, <span class="at">data =</span> .) </span>
+<span id="cb41-39"><a href="#cb41-39" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb41-40"><a href="#cb41-40" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb41-41"><a href="#cb41-41" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>pred_vals <span class="ot">&lt;-</span> <span class="fu">predict</span>(mod)</span>
+<span id="cb41-42"><a href="#cb41-42" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb41-43"><a href="#cb41-43" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
+<span id="cb41-44"><a href="#cb41-44" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">y =</span> pred_vals, <span class="at">x =</span> critics_score, <span class="at">color =</span> category)) <span class="sc">+</span></span>
+<span id="cb41-45"><a href="#cb41-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">" Estimated budget_recovered"</span>)</span>
+<span id="cb41-46"><a href="#cb41-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-47"><a href="#cb41-47" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-48"><a href="#cb41-48" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 4 #######</span></span>
+<span id="cb41-49"><a href="#cb41-49" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-50"><a href="#cb41-50" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb41-51"><a href="#cb41-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">rename</span>(., <span class="st">"worldwide"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">worldwide gross ($m)</span><span class="st">`</span>, <span class="st">"domestic"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">domestic gross ($m)</span><span class="st">`</span>,</span>
+<span id="cb41-52"><a href="#cb41-52" aria-hidden="true" tabindex="-1"></a>                 <span class="st">"international"</span> <span class="ot">=</span> <span class="st">`</span><span class="at">international gross ($m)</span><span class="st">`</span>)</span>
+<span id="cb41-53"><a href="#cb41-53" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international, <span class="at">data =</span> data) </span>
+<span id="cb41-54"><a href="#cb41-54" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span> <span class="fu">summary</span>()</span>
+<span id="cb41-55"><a href="#cb41-55" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb41-56"><a href="#cb41-56" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb41-57"><a href="#cb41-57" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(rsm) <span class="do">## install if not available</span></span>
+<span id="cb41-58"><a href="#cb41-58" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb41-59"><a href="#cb41-59" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> <span class="dv">0</span> <span class="sc">+</span> domestic <span class="sc">+</span> international)</span>
+<span id="cb41-60"><a href="#cb41-60" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-61"><a href="#cb41-61" aria-hidden="true" tabindex="-1"></a><span class="do">##### Model 5 #######</span></span>
+<span id="cb41-62"><a href="#cb41-62" aria-hidden="true" tabindex="-1"></a><span class="do">##### ##### ##### </span><span class="al">###</span></span>
+<span id="cb41-63"><a href="#cb41-63" aria-hidden="true" tabindex="-1"></a>mod <span class="ot">&lt;-</span> <span class="fu">lm</span>(worldwide <span class="sc">~</span> budget<span class="sc">*</span>critics_score, <span class="at">data =</span> data) </span>
+<span id="cb41-64"><a href="#cb41-64" aria-hidden="true" tabindex="-1"></a>mod <span class="sc">|&gt;</span>  <span class="fu">summary</span>()</span>
+<span id="cb41-65"><a href="#cb41-65" aria-hidden="true" tabindex="-1"></a><span class="do">## Ans</span></span>
+<span id="cb41-66"><a href="#cb41-66" aria-hidden="true" tabindex="-1"></a><span class="do">## plot</span></span>
+<span id="cb41-67"><a href="#cb41-67" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span>
+<span id="cb41-68"><a href="#cb41-68" aria-hidden="true" tabindex="-1"></a><span class="fu">image</span>(mod, <span class="at">form =</span>  <span class="sc">~</span> budget<span class="sc">*</span>critics_score)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="some-suggested-in-class-metrics-for-sec-taylor" class="level2">
 <h2 class="anchored" data-anchor-id="some-suggested-in-class-metrics-for-sec-taylor">Some suggested in-class metrics for <a href="#sec-taylor" class="quarto-xref">Section&nbsp;5.3.3</a></h2>
 <p><strong>Number of time until the first repeat</strong> (in this case <em>Blurple</em>)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>final_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cotton candy"</span>, <span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, </span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Blurple"</span>, </span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>)</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="do">## times until first repeat</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">## in this case Blurple, with 5 outfits before repeat</span></span>
-<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">duplicated</span>(final_leg_outfits))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
-<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
-<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
-<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
-<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> (<span class="fu">which</span>(<span class="fu">duplicated</span>(<span class="fu">sample</span>(data)))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>)</span>
-<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
-<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(final_leg_outfits)</span>
-<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
-<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>final_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Cotton candy"</span>, <span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Popsicle"</span>, </span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Grapefruit"</span>, <span class="st">"Cotton candy"</span>, <span class="st">"Popsicle"</span>, <span class="st">"Blurple"</span>, </span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>, <span class="st">"Blurple"</span>)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="do">## times until first repeat</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="do">## in this case Blurple, with 5 outfits before repeat</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">which</span>(<span class="fu">duplicated</span>(final_leg_outfits))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> (<span class="fu">which</span>(<span class="fu">duplicated</span>(<span class="fu">sample</span>(data)))[<span class="dv">1</span>] <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(final_leg_outfits)</span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><strong>Number of times we have <em>Sunset Orange</em> thrice in a row</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>europe_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, </span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>)</span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Sunset orange only appears exactly thrice in a row once</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>run_lengths <span class="ot">&lt;-</span> <span class="fu">rle</span>(europe_leg_outfits) <span class="do">## inbuilt R function for run lengths</span></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">sum</span>(run_lengths<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> run_lengths<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">sample</span>(data) <span class="sc">|&gt;</span> <span class="fu">rle</span>()</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> x<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
-<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(europe_leg_outfits)</span>
-<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
-<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>europe_leg_outfits <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, </span>
+<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="st">"Sunset orange"</span>, <span class="st">"Ocean blue"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, </span>
+<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="st">"Ocean blue"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Ocean blue"</span>, </span>
+<span id="cb43-12"><a href="#cb43-12" aria-hidden="true" tabindex="-1"></a><span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>, <span class="st">"Flamingo pink"</span>, <span class="st">"Sunset orange"</span>)</span>
+<span id="cb43-13"><a href="#cb43-13" aria-hidden="true" tabindex="-1"></a><span class="do">## Sunset orange only appears exactly thrice in a row once</span></span>
+<span id="cb43-14"><a href="#cb43-14" aria-hidden="true" tabindex="-1"></a>run_lengths <span class="ot">&lt;-</span> <span class="fu">rle</span>(europe_leg_outfits) <span class="do">## inbuilt R function for run lengths</span></span>
+<span id="cb43-15"><a href="#cb43-15" aria-hidden="true" tabindex="-1"></a>obvs <span class="ot">&lt;-</span> <span class="fu">sum</span>(run_lengths<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> run_lengths<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb43-16"><a href="#cb43-16" aria-hidden="true" tabindex="-1"></a>randomisation <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">nreps =</span> <span class="dv">1000</span>, <span class="at">seed =</span> <span class="dv">1984</span>){</span>
+<span id="cb43-17"><a href="#cb43-17" aria-hidden="true" tabindex="-1"></a>  sampling_dist <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nreps)</span>
+<span id="cb43-18"><a href="#cb43-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set.seed</span>(seed) </span>
+<span id="cb43-19"><a href="#cb43-19" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nreps) {</span>
+<span id="cb43-20"><a href="#cb43-20" aria-hidden="true" tabindex="-1"></a>    x <span class="ot">&lt;-</span> <span class="fu">sample</span>(data) <span class="sc">|&gt;</span> <span class="fu">rle</span>()</span>
+<span id="cb43-21"><a href="#cb43-21" aria-hidden="true" tabindex="-1"></a>   sampling_dist[i] <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">$</span>values <span class="sc">==</span> <span class="st">"Sunset orange"</span> <span class="sc">&amp;</span> x<span class="sc">$</span>lengths <span class="sc">==</span> <span class="dv">3</span>)</span>
+<span id="cb43-22"><a href="#cb43-22" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb43-23"><a href="#cb43-23" aria-hidden="true" tabindex="-1"></a><span class="fu">return</span>(sampling_dist)</span>
+<span id="cb43-24"><a href="#cb43-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb43-25"><a href="#cb43-25" aria-hidden="true" tabindex="-1"></a>sampling_distribution <span class="ot">&lt;-</span> <span class="fu">randomisation</span>(europe_leg_outfits)</span>
+<span id="cb43-26"><a href="#cb43-26" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sampling_distribution)</span>
+<span id="cb43-27"><a href="#cb43-27" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> obvs, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -1973,6 +2349,12 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <div id="ref-fries" class="csl-entry" role="listitem">
 Abdul Hamid, N., S. Omar, and M. Sanny. 2019. <span>“Effect of Thawing Conditions and Corresponding Frying Temperature Profiles on the Formation of Acrylamide in French Fries.”</span> <em>Journal of the Saudi Society of Agricultural Sciences</em> 18 (4): 396–400. https://doi.org/<a href="https://doi.org/10.1016/j.jssas.2018.01.002">https://doi.org/10.1016/j.jssas.2018.01.002</a>.
 </div>
+<div id="ref-photosynthesisLRC" class="csl-entry" role="listitem">
+Davis, Rebekah, and Eric Goolsby. 2025. <em>photosynthesisLRC: Nonlinear Least Squares Models for Photosynthetic Light Response</em>. <a href="https://doi.org/10.32614/CRAN.package.photosynthesisLRC">https://doi.org/10.32614/CRAN.package.photosynthesisLRC</a>.
+</div>
+<div id="ref-lightresponse" class="csl-entry" role="listitem">
+Davis, Rebekah, Chase Mason, and Eric Goolsby. 2026. <span>“Comparative Evolution of Photosynthetic Light Response Curves: Approaches and Pitfalls in Phylogenetic Modeling of a Function-Valued Trait.”</span> Dataset. Dryad. <a href="https://doi.org/10.5061/dryad.2v6wwq03f">https://doi.org/10.5061/dryad.2v6wwq03f</a>.
+</div>
 <div id="ref-fisher" class="csl-entry" role="listitem">
 Fisher, Ronald Aylmer. 1926. <span>“The Arrangement of Field Experiments.”</span> <em>Journal of the Ministry of Agriculture</em> 33: 505–15. <a href="https://doi.org/doi.org/10.23637/rothamsted.8v61q">https://doi.org/doi.org/10.23637/rothamsted.8v61q</a>.
 </div>
@@ -1981,6 +2363,9 @@ Hicks, M. T., J. Humphries, and J. Slater. 2024. <span>“ChatGPT Is Bullshit.�
 </div>
 <div id="ref-swift" class="csl-entry" role="listitem">
 Klemm, Marina Ferrari de Aquino, and Charlotte M. Jones-Todd. 2026. <span>“We Were in Screaming Colour: Colours of the Taylor Swift Universe: A Statistical Story.”</span> <em>Significance</em> 23 (1): 12–17. <a href="https://doi.org/10.1093/jrssig/qmaf093">https://doi.org/10.1093/jrssig/qmaf093</a>.
+</div>
+<div id="ref-lobo2013lightresponse" class="csl-entry" role="listitem">
+Lobo, F., M. P. de Barros, H. J. Dalmagro, A. C. Dalmolin, W. E. Pereira, E. C. de Souza, G. L. Vourlitis, and C. E. Rodríguez Ortíz. 2013. <span>“Fitting Net Photosynthetic Light-Response Curves with Microsoft Excel — a Critical Look at the Models.”</span> <em>Photosynthetica</em> 51 (4): 445–56. <a href="https://doi.org/10.1007/s11099-013-0045-y">https://doi.org/10.1007/s11099-013-0045-y</a>.
 </div>
 <div id="ref-abalone" class="csl-entry" role="listitem">
 Nash, Warwick J., Tracy L. Sellers, Simon R. Talbot, Andrew J. Cawthorn, and Wes B. Ford. 1994. <span>“The Population Biology of Abalone (Haliotis Species) in Tasmania. 1: Blacklip Abalone (h. Rubra) from the North Coast and the Islands of Bass Strait.”</span> Hobart, Australia: Sea Fisheries Division, Department of Primary Industry; Fisheries, Tasmania. <a href="https://nla.gov.au/nla.cat-vn124287">https://nla.gov.au/nla.cat-vn124287</a>.
