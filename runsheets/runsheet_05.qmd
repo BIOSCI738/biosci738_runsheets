@@ -248,7 +248,7 @@ ggplot(data, aes(x = PARi, y = A)) +
 
 Above show *my* best `lm()` model to 'recreate' the mechanistic curve above. Note
 
- 1. I have used polynomial terms (e.g., terms like `I(x^a)` or `ploy(x, a)`, I'm not telling you which ones!)
+ 1. I have used polynomial terms (e.g., terms like `I(x^a)` or `poly(x, a)`, I'm not telling you which ones!)
  2. I have not included `Species` information, but from above it seems like this would be important information to include in a model...
 
 

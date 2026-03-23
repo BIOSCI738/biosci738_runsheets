@@ -164,3 +164,106 @@ hist(sampling_distribution)
 abline(v = obvs, lwd = 2)
 ```
 
+## Violation of `lm()` assumptions in @sec-qq
+
+
+```{r, eval = FALSE}
+require(ggplot2)
+require(gglm)
+#####################
+### non-linearity ###
+#####################
+n <- 100
+x <- runif(n,0,10)
+resp <- 3 + 0.5*x^2 + rnorm(n)
+df <- data.frame(resp = resp, x = x)
+ggplot(data = df, aes(x = x, y = resp)) +
+    geom_point() +
+    geom_smooth(formula = y ~ x, se = FALSE, method = "lm")
+fit <- lm(resp ~ x, data = df)
+gglm::gglm(fit)
+#############################
+### non-constant variance ###
+#############################
+resp <- 3 + 0.5*x + rnorm(n, 0, x)
+df <- data.frame(resp = resp, x = x)
+ggplot(data = df, aes(x = x, y = resp)) +
+    geom_point() +
+    geom_smooth(formula = y ~ x, se = FALSE, method = "lm")
+fit <- lm(resp ~ x, data = df)
+gglm::gglm(fit)
+####################################
+### non-'normality' of residuals ###
+####################################
+resp <- 3 + 0.5*x + rgamma(n, shape = 2, rate = 0.3)
+df <- data.frame(resp = resp, x = x)
+ggplot(data = df, aes(x = x, y = resp)) +
+    geom_point() +
+    geom_smooth(formula = y ~ x, se = FALSE, method = "lm")
+fit <- lm(resp ~ x, data = df)
+gglm::gglm(fit)
+########################
+### non-independence ###
+########################
+## tends to be more data related
+n_id <- 4
+id <- rep(1:n_id, each = 25)
+offset <- rnorm(n_id, 0, 3)
+resp <- 2 + 0.5*x + offset[id] + rnorm(n)
+df <- data.frame(resp = resp, x = x)
+ggplot(data = df, aes(x = x, y = resp)) +
+    geom_smooth(formula = y ~ x, se = FALSE, method = "lm") +
+    geom_point(aes(col = as.factor(id))) 
+fit <- lm(resp ~ x, data = df)
+plot(residuals(fit), col = as.factor(id), pch = 20)
+abline(h = 0)
+########################
+### 'high' leverage  ###
+########################
+## 'high' x
+x[10] <- 15
+resp <- 3 + 0.5*x + rnorm(n)
+df <- data.frame(resp = resp, x = x)
+ggplot(data = df, aes(x = x, y = resp)) +
+    geom_point() +
+    geom_smooth(formula = y ~ x, se = FALSE, method = "lm")
+fit <- lm(resp ~ x, data = df)
+gglm::gglm(fit)
+plot(fit, which = 5)
+########################
+### 'high' influence  ###
+########################
+## 'high' x
+x <- runif(n,0,10)
+resp <- 3 + 0.5*x + rnorm(n)
+resp[10] <- 15
+df <- data.frame(resp = resp, x = x)
+ggplot(data = df, aes(x = x, y = resp)) +
+    geom_point() +
+    geom_smooth(formula = y ~ x, se = FALSE, method = "lm")
+fit <- lm(resp ~ x, data = df)
+gglm::gglm(fit)
+plot(fit, which = 5)
+
+```
+
+
+## Code for comparison plot in @sec-poly
+
+
+```{r, eval = FALSE}
+require(ggplot2)
+photosyn_fun <- function(PARi, alpha = 5.4e-02, Amax = 27.5, Rd = 1.94) {
+  (alpha * PARi * Amax) / (alpha * PARi + Amax) - Rd
+}
+pari <- seq(min(data$PARi), max(data$PARi), length.out = 1000)
+preds <- data.frame( A_expected = photosyn_fun(pari), PARi = pari)
+poly_lm <- lm(A ~ poly(PARi, 4), data = data, na.action = na.fail)
+ggplot(data, aes(x = PARi, y = A)) +
+  geom_point(col = "grey") + theme_light() +
+  xlab("PAR (µmol m^-2 s^-1)") + ylab("Photosynthetic rate (µmol CO2 m^-2 s^-1)") +
+  geom_smooth(method = "lm", formula = y ~ poly(x, 4), se = FALSE, col = "red", lty = "dashed", size = 2) + 
+  geom_line(data = preds, aes(y = A_expected), col = "black", size = 1.5) +
+  ggtitle("Fitted ploynomial linear model (red) vs Mechanistic model (black)")
+
+```
