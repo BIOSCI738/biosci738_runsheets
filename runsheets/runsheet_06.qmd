@@ -208,9 +208,11 @@ function checkKeyword() {
 </script>
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> New and improved
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> New and improved!
 
-To the `tasks` folder of your GitHub repository include, add and push a **fully reproducible** `R` script named `week_04.r` that creates your new and improved version of the Figure we've been critiquing. You can of course use the code you *unlocked* above as a starting point. Remember to **include any required data** & update your `README.md` accordingly!
+By the end of class add your plot (*irrespective of how far you've gotten*) to this shared [Google Doc](https://docs.google.com/document/d/1trZvluBE-JxnI8_m47x_0_r_tUyjU-VvILjOT-RM3RE/edit?usp=sharing)!
+
+By the end of the week, to the `tasks` folder of your GitHub repository include, add and push a **fully reproducible** `R` script named `week_04.r` that creates your new and improved version of the Figure we've been critiquing. You can of course use the code you *unlocked* above as a starting point. Remember to **include any required data** & update your `README.md` accordingly!
 
 
 :::
