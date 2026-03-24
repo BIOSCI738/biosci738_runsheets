@@ -1,6 +1,8 @@
-# Extra Activities (time dependent) {#sec-extras}
+# Extra Activities {#sec-extras}
 
-## *Reproducible* analysis {#sec-honesty}
+UPDATE: Any activities posted here are for you to complete in your own time. Completing them (either individually or with your peers) will aid your understanding of the content covered in class. 
+
+## *Reproducible* analysis 
 
 ::: {.callout-tip}
 ## Exploring data
@@ -31,10 +33,7 @@ As a group:
  3. There is an additional column of interest `flag`; this is a binary variable that indicates if the observations were considered dodgy (i.e., fraudulent) or not. Create a visualization/carry out some analysis that *could* be used as evidence for/against this belief.
 
 
-## Fry time {#sec-fry}
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> GitHub script upload
+## Fry time 
 
 
 Below is a plot of some data collected as part of a study carried out by @fries.
@@ -45,6 +44,33 @@ Below is a plot of some data collected as part of a study carried out by @fries.
 </center>
 
 
-To the `tasks` folder of your GitHub repository create, add and push a reproducible `R` script named `week_0x.r` (where `x` is the current semester week) that simulates these data as best you can. Remember to update your `README.md` accordingly.
+Write a reproducible `R` script that simulates these data as best you can. 
 
-:::
+
+## Sums of Squares 
+
+
+Work through the code snippets from [this section of the course guide Sums of squares (SS)](https://biosci738.github.io/BIOSCI738/modelling-experimental-data.html#sums-of-squares-ss), you may have to refer to previous sections (e.g., the [One-Way Analysis of Variance (ANOVA) section from Module 2](https://biosci738.github.io/BIOSCI738/parametric-hypothesis-testing.html#one-way-analysis-of-variance-anova)) if you are unfamiliar with some of the terminology, and discuss/answer the following
+
+ + What are sums of squares (SS)?
+ + What role do SS play in statistics?
+ + What is meant by the term sequential Sums of Squares? And what effect, if any, might this have on inference?
+ + Explain the reasoning/answers above for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience.
+
+You may find the pseudo code below useful.
+
+```{r, eval = FALSE}
+## template only, you will have to rename variables accordingly
+## run segments/lines one at a time to see the steps
+data %>% 
+    mutate(grand_mean = mean(response)) %>%
+   mutate(sstotal = (response - grand_mean) ^2 ) %>%
+    group_by(treatment) %>%
+   mutate(treatment_mean = mean(response),
+          sse = (response - treatment_mean)^2,
+          tmp = (treatment_mean - grand_mean)^2) %>%
+   summarise(ss_tot = sum(sstotal), ss_e = sum(sse), ss_treat = sum(tmp)) %>%
+   pull(ss_treat) %>% sum()
+```
+
+

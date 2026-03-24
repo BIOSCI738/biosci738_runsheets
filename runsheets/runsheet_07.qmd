@@ -1,33 +1,24 @@
-# March 31st
+# Week 05 - Lecture 01
+
+## Rough Agenda
+
+### **4:05 pm - 5:55 pm** 
+ 
+ + Modeller vs Designer (@sec-mods)
+ + Multiple comparisons (@sec-multi)
+ + Introducing Random Effects (@sec-randomeff)
+    
+### Before we begin **sort yourselves into groups** following @sec-groups
+
 
 ::: {.callout-tip}
-## By the end of today's seminar, you should be able to
+## It's all about variation
  + Discuss the role of Sums of Squares (SS) in variance decomposition
- + "Manually" calculate within, between, and total SS
  + Discuss the issues associated with multiple comparison techniques and the standard adjustment techniques employed to combat the issues
+ + Apply and compare standard adjustment techniques (e.g., Tukey, Bonferroni and Fisher corrections) employed in multiple testing
+ + Discuss and compare definitions of fixed and random effects
+
 :::
-
-
-## Rough timeline
-
- + **09:05–09:55 am** Modeller vs Designer (@sec-mods)
-   - Group activity (@sec-ss)
-   
- + **09:55–11:05 am** Break
- + **11:00–11:45 am** Multiple comparisons (@sec-multi)
-   - Class discussion 
- 
- + **11.45–11.55 am** Q&A and peer-share (@sec-peershare07)
-
-   
-### Randomly allocated groups
-
-**It's your responsibility to get into these, just look for the cows!**
-
-```{r}
-group_allocation(names, seed = 1631, 10)
-```
-
 
 ## Modeller vs Designer {#sec-mods}
 
@@ -35,73 +26,286 @@ group_allocation(names, seed = 1631, 10)
 <iframe src="slides/05-01_modller-vs-designer.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
 </p>
 <p align="center">
-[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15042516?module_item_id=2582752)
 </p>
 
 
-### Partitioning Variation
+### Degrees of Freedom 
 
-![📷 [source](Adobe Stock)](runsheets/img/well.jpg)
+The **degree of freedom** is
 
-[**Partitioning Variation**](https://canvas.auckland.ac.nz/courses/120054/files/15015121?module_item_id=2581434) some examples.
-
-
-
-
-
-
-### Sums of Squares activity {#sec-ss}
+ + the number of variables that are **free to vary** without breaking a constraint,
+ + the number of **independent** observations or measurements that can be made in order to calculate some statistic.
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Head to this [Google Doc](https://docs.google.com/document/d/1Hby1zVqv39pZSaXwBifZ7W_Mz9fmTWYP8LQ6U8BUQ54/edit?usp=sharing)...
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Degrees of Freedom Quiz
 
-Together, work through the code snippets from [this section of the course guide Sums of squares (SS)](https://biosci738.github.io/BIOSCI738/modelling-experimental-data.html#sums-of-squares-ss), you may have to refer to previous sections (e.g., the [One-Way Analysis of Variance (ANOVA) section from Module 2](https://biosci738.github.io/BIOSCI738/parametric-hypothesis-testing.html#one-way-analysis-of-variance-anova)) if you are unfamiliar with some of the terminology, and discuss/answer the following
+In [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) answer the questions as they are posed. 
+:::
 
- + What are sums of squares (SS)?
- + What role do SS play in statistics?
- + What is meant by the term sequential Sums of Squares? And what effect, if any, might this have on inference?
- + Explain the reasoning/answers above for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience.
 
-You may find the pseudo code below useful.
+### Partitioning of Variation
+
+::: {.callout-note collapse="true"}
+## Variance Partition plot `R` function
 
 ```{r, eval = FALSE}
-## template only, you will have to rename variables accordingly
-## run segments/lines one at a time to see the steps
-data %>% 
-    mutate(grand_mean = mean(response)) %>%
-   mutate(sstotal = (response - grand_mean) ^2 ) %>%
-    group_by(treatment) %>%
-   mutate(treatment_mean = mean(response),
-          sse = (response - treatment_mean)^2,
-          tmp = (treatment_mean - grand_mean)^2) %>%
-   summarise(ss_tot = sum(sstotal), ss_e = sum(sse), ss_treat = sum(tmp)) %>%
-   pull(ss_treat) %>% sum()
+#' A function I wrote to plot the Sums of Squares
+#' from ANOVA output showing the partition
+#' @param x Either an object of class 'aov' or 'anova'
+#' @param upset Logical, if TRUE then an upset plot rather than a
+#' Venn diagram is drawn
+require(venneuler)
+require(stringr)
+require(UpSetR)
+vova <- function(x, upset = FALSE){
+    if("aov" %in% class(x)) {
+        ss = summary(x)[[1]]
+    }else{
+        if("anova" %in% class(x)){
+            ss = x
+        }else{
+            stop("Unknown input: x mush be of class 'aov' or 'anova'.")
+        }}
+    n = nrow(ss)
+    rnms = stringr::str_trim(rownames(ss)[1:(n-1)])
+    nms = paste("SS(", rnms,")", sep = "")
+    res = ss["Residuals", "Sum Sq"]
+    pt = eval(paste(nms, "=", round(ss$"Sum Sq"[1:(n-1)], 2)))
+    if(length( grep(":", rnms)) > 0) rnms =  stringr::str_replace(rnms, ":", "&")
+    expr = setNames(round(ss$"Sum Sq"[1:(n-1)], 4), rnms)
+    if(!upset){
+        v = venneuler::venneuler(expr)
+        plot(v)
+        box()
+        legend("bottomright", bty = "n", legend  = paste("SS(Residuals) =", round(res, 2)))
+        legend("topleft", bty = "n", legend  = pt)
+    }else{
+        if(upset){
+            UpSetR::upset(UpSetR::fromExpression(expr), sets.x.label = "SS(Main effects)",
+                          mainbar.y.label = "SS(Interaction)", nsets = n)
+        }
+    }
+}
 ```
 
 :::
 
-::: {.callout-note}
-## Bonus activity 
-If you have some spare time sketch a concept map or illustration about sequential Sums of Squares.
+**In your groups** run through the `R` code below that fits a range of models to [data from Module 3 the courseguide](https://biosci738.github.io/BIOSCI738/module-3.html) and discuss/answer each question posed in the comments. Work out what each line of code does and replace the comments with your own more informative ones.
+
+Be prepared to discuss your progress/thoughts with me as I wander around the class. NOTE: you will need the `R` function `vova()` from the drop down box above.
+
+
+```{r, eval = FALSE}
+## NOTE you will need the function vova() from the drop down above
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/factorial_expt.csv"
+data <- readr::read_csv(url)
+## example 1
+lm(logAUC ~ Disease*Organ, data = data) |> aov() |> summary()
+lm(logAUC ~ Disease*Organ, data = data) |> aov() |> vova()
+## example 2
+lm(logAUC ~ Organ*Disease, data = data) |> aov() |> summary()
+lm(logAUC ~ Organ*Disease, data = data) |> aov() |> vova()
+## example 3 
+lm(logAUC ~ Organ + Disease, data = data) |> aov() |> summary()
+lm(logAUC ~ Organ + Disease, data = data) |> aov() |> vova()
+################
+## unbalanced ##
+################
+unbal <- data[-c(1, 3),]
+## example 1
+lm(logAUC ~ Disease*Organ, data = unbal) |> aov() |> summary()
+lm(logAUC ~ Disease*Organ, data = unbal) |> aov() |> vova()
+## example 2
+lm(logAUC ~ Organ*Disease, data = unbal) |> aov() |> summary()
+lm(logAUC ~ Organ*Disease, data = unbal) |> aov() |> vova()
+## example 3 
+lm(logAUC ~ Organ + Disease, data = unbal) |> aov() |> summary()
+lm(logAUC ~ Organ + Disease, data = unbal) |> aov() |> vova()
+## type II
+lm(logAUC ~ Organ*Disease, data = unbal) |> car::Anova(type = 2) 
+lm(logAUC ~ Organ*Disease, data = unbal) |> car::Anova(type = 2) |>  vova()
+## Three way ANOVA Example only.
+## example 1
+lm(logAUC ~ Disease*Organ*Animal, data = data) |> aov() |> summary()
+lm(logAUC ~ Disease*Organ*Animal, data = data) |> aov() |> vova()
+## example 2
+lm(logAUC ~ Organ*Animal + Disease, data = data) |> aov() |> summary()
+lm(logAUC ~ Organ*Animal + Disease, data = data) |> aov() |> vova()
+## type II
+lm(logAUC ~ Organ*Disease + Animal, data = unbal) |> car::Anova(type = 2) 
+lm(logAUC ~ Organ*Disease + Animal, data = unbal) |> car::Anova(type = 2) |>  vova()
+```
+
+
+
+
+## Multiple Comparisons {#sec-multi}
+
+
+In your groups discuss and answer the following points/questions, which relate the the snippet of code that follows.
+
+ 1. What is each line doing? 
+ 2. What is the relevance of 0.05  in the final line of the loop?
+ 3. What happens if you change this value?
+ 4. What happens if you change `n`, and why?
+ 5. What is this an example of? Why is this the case? 
+ 
+Now, amend the code to ``test" the same thing using another statistical test of your choice.
+ 
+```{r, eval = FALSE}
+n <- 10000
+t1err <- 0
+for (i in 1:n){
+    set.seed(1432 + i)
+    x <- rnorm(100, 0, 1)
+   if (((t.test(x, mu = 0))$p.value)<=0.05) (t1err = t1err + 1)
+}
+cat("Type I error rate in percentage is", (t1err/n)*100,"%", "\n")
+
+```
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Can you explain the phenomena above for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience?
+
+Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your *[r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742)* (aka as if to a 5 year old child) reasoning for the phenomena illustrated by the code above.
 :::
 
 
-## Multiple comparisons {#sec-multi}
+### Tukey vs. Bonferroni vs. Fisher
 
+**Calculating (95%) Confidence Intervals**
+
+Typically:
+
+$$
+\text{Upper bound} = \text{estimate} + (\text{scale factor} \times SE)
+$$
+
+$$
+\text{Lower bound} = \text{estimate} - (\text{scale factor} \times SE)
+$$
+
+Now, imagine our quantity of interest is the *difference between means* (i.e., $\text{difference}$) :
+
+$$
+\text{Upper bound} = \text{difference} + (\text{scale factor} \times SED)
+$$
+
+$$
+\text{Lower bound} = \text{difference} - (\text{scale factor} \times SED)
+$$
+
+OK, but how do we choose our $\text{scale factor}$? We have three^[actually we have many more but for the purposes of this course we have three] options:
+
+TODO citations
+
+|  | Fisher (LSD) | Bonferroni | Tukey (HSD) |
+|--|-------------|------------|-------------|
+| $\text{scale factor}$ | $t_{\alpha = \frac{\alpha_c}{2}, \, df = N -m}$ | $t_{\alpha = \frac{\alpha_c}{2\cdot k}, \, df= N -m}$ | $q_{\alpha = 1- \alpha_c, \, m, \, df = N -m}$ |
+| Interpretation | Smallest critical value $\rightarrow$ narrowest CI | Inflates $t$ via $\alpha^*$ $\rightarrow$ wider CI | Uses $q$ $\rightarrow$ width group dependent|
+
+where, 
+
+- $N$ the number of observations
+- $m$ the number of *treatment* groups  
+- $SED$ standard error of the difference between means
+
+   - $SED = \sqrt{MSE \left(\frac{1}{n_i} + \frac{1}{n_j}\right)}$, where $n_i, n_j$ are ample sizes of groups $i$ and $j$ respectively
+  - $SED_{\text{equal group sizes}} = \sqrt{\dfrac{MSE}{n}}$
+    
+- $k = {m\choose2} = \frac{m(m-1)}{2}$ the number of pairwise comparisons being made 
+- $\alpha_c$ the per comparison error rate (e.g., 0.05) 
+- $df$ degrees of freedom   
+- $t_{\alpha, df}$: Critical value from the t-distribution  
+- $q_{\alpha, m, df}$: Critical value from the studentized range distribution (Tukey)
+
+
+::: {.callout-note collapse="true"}
+## Comparing critical values
+
+```{r, echo = FALSE, message = FALSE}
+library(ggplot2)
+library(dplyr)
+
+df <- 20
+alpha <- 0.05
+m <- 4
+C <- m * (m - 1) / 2
+
+crit_vals <- data.frame(
+  x = c(qt(1 - alpha/2, df), qt(1 - (alpha/C)/2, df), qtukey(1 - alpha, m, df)/sqrt(2)),
+  label = c("Fisher (t)", "Bonferroni (t)", "Tukey")
+)
+
+dtukey <- function(x, df, nmeans = m) {
+  h <- 1e-4
+  (ptukey(x + h, nmeans, df) - ptukey(x - h, nmeans, df)) / (2 * h)
+}
+x <- seq(0, 6, length.out = 500)
+df_plot <- data.frame(
+  x = rep(x, 2),
+  density = c(abs(dt(x, df)), dtukey(x, df)),
+  Distribution = rep(c("t-distribution", "studentized range distribution (Tukey)"), each = length(x))
+)
+
+ggplot(df_plot, aes(x = x, y = density, linetype = Distribution)) +
+  geom_line() +
+  geom_vline(data = crit_vals, aes(xintercept = x, color = label)) +
+  scale_color_brewer(palette = "Dark2") + 
+  labs(linetype = "", color = "") +
+  xlab("") +
+  theme_minimal()
+
+```
+
+:::
+
+
+#### Group Activity
+
+
+1. Using any suitable data from the lectures or the course guide perform the pairwise comparisons of means using Fisher’s LSD with $\alpha = 0.05$ level of significance. 
+
+2. Summarise and present these results in a table with the following column names **Comparison**, **Calculated difference** (in means), **SED** (standard error of the difference), **LSDs**, **Lower 95\% CI** &  **Upper 95\% CI** (lower & upper 95\% confidence interval), **statistic**, **p-value**.
+
+3. Calculate the scale factor (i.e., critical value of the assumed distribution) using 1) Bonferroni's correction method and 2) Tukey's HSD method for any pairwise comparison 95\% CI from above. Discuss what effect the multipliers might have on inference.
+
+NOTE: you may find [this section of the course guide](https://biosci738.github.io/BIOSCI738/multiple-comparisons.html#adjustments-for-multiple-testing) useful for this activity; in particular [this function I wrote might be of use](https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90), which can be loaded into `R` using `url <- "https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"` and 
+`devtools::source_gist(url, quiet = TRUE)`.
+
+
+## Introducing random effcets {#sec-randomeff}
+
+TODO code-along
 
 **Slides**
 
 <p align="center">
-<iframe src="slides/05-02_multiple-comparisons.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
+<iframe src="slides/05-04_fixed-vs-random.pdf" height="400" width="700" title="Fixed vs Random effects slides"></iframe>
 </p>
 <p align="center">
-[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15042517?module_item_id=2582753)
 </p>
 
+Below is a list collated by @gelman2005analysis (p. 20) who discuss fixed and random effects in the context of ANOVA-type analysis (Note that some use terminology we're yet to cover!).
 
-## Q&A and peer-share {#sec-peershare07}
+> 1. Fixed effects are constant across individuals, and random effects vary. For example, in a growth study, a model with random intercepts $\alpha_i$ and fixed slope $\beta$ corresponds to parallel lines for different individuals $i$, or the model $y_{it} = \alpha_i + \beta t$. Kreft and de Leeuw [(1998), page 12] thus distinguish between fixed and random coefficients.
+2. Effects are fixed if they are interesting in themselves or random if there is interest in the underlying population. Searle, Casella, and McCulloch [(1992), Section 1.4] explore this distinction in depth.
+3. When a sample exhausts the population, the corresponding variable is *fixed*; when the sample is a small (i.e., negligible) part of the population, the corresponding variable is *random* [Green and Tukey (1960)].
+4. If an effect is assumed to be a realized value of a random variable, it is called a random effect" [LaMotte (1983)].
+5. Fixed effects are estimated using least squares (or, more generally, maximum likelihood), and random effects are estimated with shrinkage ["linear unbiased prediction" in the terminology of Robinson (1991)]. This definition is standard in the multilevel modeling literature [see, e.g., Snijders and Bosker (1999), Section 4.2] and in econometrics. In the Bayesian framework, this definition implies that fixed effects $\beta_j^{(m)}$ are estimated conditional on $\sigma_m = \infty$, and random effects $\beta_j^{(m)}$ are estimated conditional on $\sigma_m$ from the posterior distribution.
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
-Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!
-:::
+
+The author of @gelman2005analysis moves on to the following conclusion (see p. 21).
+
+> We prefer to sidestep the overloaded terms "fixed" and "random" with a cleaner distinction by simply renaming the terms in definition 1 above. We define effects (or coefficients) in a multilevel model as **constant** if they are identical for all groups in a population and **varying** if they are allowed to differ from group to group. For example, the model  $y_{ij} = \alpha + \beta x_{ij}$ (of units $i$ in groups $j$) has a constant slope and varying intercepts, and  $y_{ij} = \alpha_{j} + \beta_j x_{ij}$ has varying slopes and intercepts. In this terminology (which we would apply at any level of the hierarchy in a multilevel model), varying effects occur in batches, whether or not the effects are interesting in themselves (definition 2), and whether or not they are a sample from a larger set (definition 3). Definitions 4 and 5 do not arise for us since we estimate all batches of effects hierarchically, with the variance components $\sigma_m$ estimated from data.
+
+
+
+**As a group**
+
+1. Translate each definition in the list above to lay-person language (i.e., non-technical).
+2. Make up a data example and allocate your fixed and random effects according to each definition.
+3. Discuss the similarities and dissimilarities between the definitions.
+4. Conclude with which definition *best* aligns with your current understanding of the distinction between fixed and random effects?
+
+NOTE: You may find [this blog](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/) offers some extra insights here^[Note that I do like the writing style of the blog but don't totally agree with the author's conclusions around repeated measurements; if you want to know why, ask me!]
