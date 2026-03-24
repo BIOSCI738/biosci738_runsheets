@@ -10,6 +10,16 @@
     
 ### Before we begin **sort yourselves into groups** following @sec-groups
 
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Quick [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) Poll!
+
+In [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296), vote whether you think the mock assignment AI-use statement below is **adequate** or **inadequate**.
+
+> I used ChatGPT only to assist with improving the clarity of my writing and to support my understanding of some code. All ideas, analyses, and work submitted are my own, and no AI was used to generate substantive content or complete the assignment.
+
+:::
+
+
 ::: {.callout-tip}
 ## Data Viz is key
  - Interpret, critique and communicate using visualization! 
