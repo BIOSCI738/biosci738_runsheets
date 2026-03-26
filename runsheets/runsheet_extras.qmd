@@ -73,4 +73,177 @@ data %>%
    pull(ss_treat) %>% sum()
 ```
 
+## Case studies for the mid-sem break
 
+Work though each of the case studies given below answering/discussing the prompts as you go. You'll notice a few extra packages and functions getting used :-)
+
+### Case study 01
+
+Revisiting @sec-multi may be useful here.
+
+```{r, eval = FALSE}
+library(tidyverse)
+library(predictmeans) ## install using install.packages("predictmeans")
+rats <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/crd_rats_data.csv")
+rats <- rats %>%
+  mutate(Surgery = as.factor(Surgery))
+## CRD analysis
+rats_lm <- lm(logAUC ~ Surgery, data = rats)
+## Prompt 1:  interpret the output from summary(rats_lm)$coef
+summary(rats_lm)$coef
+## Prompt 2: interpret the output from anova(rats_lm)
+anova(rats_lm)
+## Prompt 3, 4, and 5
+## what do the specified arguments to predictmeans() do? (HINT: use R help)
+## what are the elements returned in the object pm?
+## specify plot = TRUE in the predictmeans() call, how would you interpret the resulting plot?
+pm <- predictmeans::predictmeans(rats_lm , modelterm = "Surgery", 
+                                     pairwise = TRUE, plot = FALSE)
+pm ## a lot of output
+## Prompt 6: what are the three lines of code doing after this prompt?
+url <- "https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"
+devtools::source_gist(url, quiet = TRUE) ## install using install.packages("devtools")
+comparisons(pm)
+## Prompt 7: explain each element of the calculations going into creating the object HSD
+HSD <- (qtukey(p = 1 - 0.05, nmeans = 3, df = 12 - 3)/sqrt(2))*sqrt(2 * anova(rats_lm)[2,3] / 4)
+TukeyHSD(aov(logAUC ~ Surgery, data = rats))
+## Prompt 8: Use all the relevant pieces of the script (hint what is the alpha.adj object below?) to calculate the pairwise comparison between Surgery C and S, using Fisher’s, Bonferonni’s, and Tukey’s correction methods respectively. You should state the difference, and 95% CI in each case. What do you notice about these three intervals? How are they similar/dissimilar? Show your workings.
+alpha.adj <- 0.05/choose(3,2)
+## Prompt 9: Produce a plot that compares the three methods above
+```
+
+
+### Case study 02
+
+Revisiting @sec-mods may be useful here.
+
+```{r, eval = FALSE}
+library(tidyverse)
+data <- readr::read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/factorial_expt.csv")
+## below we change the treatments to factors, simply because later on if we
+## use predictmeans it will have a tantrum if this isn't the case
+data <- data %>%
+    mutate(Disease = as.factor(Disease)) %>%
+    mutate(Organ = as.factor(Organ))
+## Prompt 1: what model has been fitted here and what does the output from the anova() call indicate?
+model <- lm(logAUC ~ Disease*Organ, data = data)
+anova(model)
+## Prompt 2: what model has been fitted here and what does the output from the anova() call indicate?
+model_2 <- lm(logAUC ~ Organ*Disease, data = data)
+anova(model_2)
+#####################################
+##****making the data unbalanced***
+data_sub <- data[-c(1:3, 10),]
+#####################################
+## Prompt 3: what model has been fitted here and what does the output from the anova() call indicate?
+mod <- lm(logAUC ~ Disease*Organ, data = data_sub)
+anova(mod)
+## Prompt 4: what model has been fitted here and what does the output from the anova() call indicate?
+mod_2 <- lm(logAUC ~ Organ*Disease, data = data_sub)
+anova(mod_2)
+## Prompt 5: run and interpret the output from the following code, what do you conclude?
+pm <- predictmeans::predictmeans(model = mod ,modelterm = "Disease:Organ", 
+                                 pairwise = TRUE)
+```
+
+
+### Case study 03
+
+Visiting [this section of the course guide](https://biosci738.github.io/BIOSCI738/linear-mixed-effect-models-lmms.html) may be useful.
+
+```{r, eval = FALSE}
+require(tidyverse)
+require(lme4)
+require(predictmeans)
+rcbd <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/rcbd.csv")
+## turn appropriate variables into factors
+rcbd <- rcbd %>%
+  mutate(Run = as.factor(Run)) %>%
+  mutate(Surgery = as.factor(Surgery))
+## run as a fixed effect
+lm(logAUC8 ~ Run + Surgery, data = rcbd) |> summary()
+## run as a random effect, what's the difference?
+lmm <- lme4::lmer(logAUC8 ~ Surgery + (1|Run), data = rcbd) 
+summary(lmm)
+## diagnostics estimated variance partitioning and more...
+## these are really useful utility functions!
+predictmeans::residplot(lmm)
+predictmeans::R2_glmm(lmm)
+predictmeans::se_ranef(lmm)
+predictmeans::varcomp(lmm)
+predictmeans::permmodels(lmm) ## remember permutation tests, what are we using them for here? Compare to a summary() output
+
+```
+
+### Case study 04
+
+Now, we're going to get a little more advanced and model some data from @monkey (data retrieved from @monkeydata). To do so we're following along (somewhat) with the steps summarised in @danblog. Revisiting @sec-randomeff may, again, be useful here.
+
+```{r, eval = FALSE}
+## wrangle as per Dan's blog
+require(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/monkey.csv")
+data %>%
+    ggplot(., aes(x = age, y = Activity)) +
+    geom_point() 
+## Number of active intervals in the first two minutes (0-8)
+activity_2mins <- data |>
+  filter(obs<9) |> group_by(subj_id, Day) |>
+  summarize(total=sum(Activity), 
+            active_bins = sum(Activity > 0), 
+            age = min(age)) |>
+  rename(monkey = subj_id, day = Day) |>
+ungroup()
+length(table(activity_2mins$monkey))
+activity_2mins %>%
+    ggplot(., aes(x = age, y = total, col = as.factor(monkey))) +
+    facet_wrap(~day) +
+    geom_point() + theme(legend.position = "none")
+## Linear model...
+fit_lm <- lm(active_bins ~ age*factor(day) + factor(monkey), data = activity_2mins)
+fit_lm |>
+summary()
+## ignore monkeys
+fit_lm_pool <- lm(active_bins ~ age*factor(day), data = activity_2mins)
+fit_lm_pool |>
+summary()
+fit_lm_pool |> gglm::gglm() ## and what do we think here?
+## plot
+plot(fit_lm_pool$fitted, fit_lm_pool$residuals)
+## why scale?
+age_centre <- mean(activity_2mins$age)
+age_scale <- diff(range(activity_2mins$age))/2
+active_bins_centre <- 4
+
+activity_2mins_scaled <- activity_2mins |>
+  mutate(monkey = factor(monkey),
+         day = factor(day),
+         age_centred = (age - age_centre)/age_scale,
+         active_bins_scaled = (active_bins - active_bins_centre)/4)
+glimpse(activity_2mins_scaled)
+
+## Monkey as a random effect, why? Is this sensible?
+aov(active_bins_scaled ~ age_centred*day + Error(monkey), data = activity_2mins_scaled) |>
+summary()
+## formula
+formula <- active_bins_scaled ~ age_centred*day + (1 | monkey)
+## lme4
+library(lme4)
+fit_lme4 <- lme4::lmer(formula, activity_2mins_scaled)
+fit_lme4 |>
+summary()
+predictmeans::predictmeans(fit_lme4, "day")
+## lmerTest, is this the same model as above
+library(lmerTest)
+fit_lmerTest <- lmerTest::lmer(formula, activity_2mins_scaled)
+fit_lmerTest |>
+summary()
+predictmeans::predictmeans(fit_lmerTest, "day")
+## glmmTMB, is this the same model as above
+library(glmmTMB)
+fit_glmmtmb <- glmmTMB::glmmTMB(formula, activity_2mins_scaled)
+fit_glmmtmb |> summary()
+## and what does this show?
+emmeans::emmeans(fit_glmmtmb, specs = "day") |>
+ plot(pairwise = TRUE)
+```

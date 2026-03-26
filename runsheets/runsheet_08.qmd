@@ -4,35 +4,349 @@
 
 ### **2:05 pm - 3:55 pm** 
 
++ Interactive Oral assessments (@sec-ioa)
++ Experimental Design (@sec-edterms)
+
  
 ### Before we begin **sort yourselves into groups** following @sec-groups
 
+::: {.callout-tip}
+## Experiments and communication
+ + Communicate data structure and statistical hypotheses
+ + Create an experimental design 'recipe' using `R`
+:::
+
+
+
+## Interactive Oral assessments (IOAs) {#sec-ioa}
+
+*In-class content*
 
 ::: {.callout-note}
-## Remember to sign up for your [Interactive 01](https://canvas.auckland.ac.nz/courses/120054/assignments/436870) time slot! 
-:::
+### What is an IOA
 
-::: {.callout-tip}
-## By the end of today's seminar, you should be able to
- + Apply and compare standard adjustment techniques (e.g., Tukey, Bonferroni and Fisher corrections) employed in multiple testing
- + Discuss and compare definitions of fixed and random effects
+> IOAs are novel, low-stakes authentic assessments, designed to promote academic integrity and prepare students for the workplace. Communication as a key skill in the UoA's graduate profile and is integral for students' skill development and employability. An IOA is authentic because it is based on a real-world scenario and promotes student engagement and facilitates higher-order thinking. It also preserves academic integrity through its unscripted conversation prompts based on student responses.
 
 :::
 
-## Rough timeline
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Grade a mock IOA
 
-### **02:05 pm - 03:55 pm** 
 
- + **02:05–02.40 pm** Multiple Comparisons (@sec-multi02)
-   + Group activities
-   
- + **02.40–02.55 pm** Degrees of Freedom (@sec-df)
- + **02:55–03:05 pm** Break
- + **03.05–03.30 pm** Introducing Random Effects (@sec-randomeff)
-   + Class discussion
-   + Group activity
-   
- + **03.45–03.55 pm** Q&A and Task 05 (@sec-peershare08)
+**Choose one of the mock IOAs on [this CANVAS page](https://canvas.auckland.ac.nz/courses/141056/pages/ioas-in-biosci738)**
+
+ 1. Watch your chosen mock IOA and discuss as a group how you would grade Rishika according to the given rubric, and
+ 2. *Grade* Rishika according to [the rubric for your Interactive Oral Assessment - Project Discussion](https://canvas.auckland.ac.nz/courses/141056/assignments/490477)
+ 3. Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your *grades* for each rubric category.
+ 
+Feel free to ask any IOA related questions to either Adam or I as we wander around the class.
+
+:::
+
+#### Group Activity
+
+**Discuss the [Biota of University of Auckland City Campus iNaturlist data](https://www.inaturalist.org/projects/biota-of-university-of-auckland-city-campus)**
+
+If you've not already Sign Up and download any subset of [these data](ttps://www.inaturalist.org/projects/biota-of-university-of-auckland-city-campus).
+
+
+In pairs within your group, take on the following roles in turn **Consultant** and **Client**.
+
+As the **Client** answer the following questions about the iNaturalist data for you [Significance Article + Code](https://canvas.auckland.ac.nz/courses/141056/assignments/490408).
+
+ + What variables are included in the dataset?
+ + What are the potential issues with these citizen science data?
+ + What questions are you trying to answer with these data? 
+ + What other data could you use to supplement any analysis (e.g., topography, weather)?
+
+As the **Consultant**, your role is to question the **Client** and ask for specific details/clarifications along the way. After the Q&A session, you should be able to surmise your **Client's** project in your own words.
+
+
+
+
+::: {.callout-important}
+## Don't forget to sign up for your [Interactive Oral Assessment - Project Discussion](https://canvas.auckland.ac.nz/courses/141056/assignments/490477) time slot via BIOSCI738's CANVAS calander.
+:::
+
+
+## Experimental Design {#sec-edterms}
+
+### The Grammar of Experimental Designs^[The title stolen shamelessly from [Emi Tanaka's ebook](https://emitanaka.org/edibble-book/)] 
+
+This section briefly quizzes you on the terms and concepts discussed in [this section of the course guide](https://biosci738.github.io/BIOSCI738/introduction-to-the-design-and-analysis-of-experiments.html) and [Emi Tanaka's `edibble` ebook](https://emitanaka.org/edibble-book/). Refer tho these sources for more details definitions. 
+
+
+**Experimental design quiz**
+
+<style>
+.match-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.match-item, .drop-zone {
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.match-item {
+  background: #e8f4f8;
+  border: 1px solid #ccc;
+  cursor: grab;
+}
+
+.drop-zone {
+  border: 2px dashed #bbb;
+  min-height: 40px;
+  background: #fafafa;
+}
+
+.correct {
+  background: #d4edda;
+}
+
+.incorrect {
+  background: #f8d7da;
+}
+</style>
+
+
+<div class="match-container">
+
+<!-- draggable answers -->
+<div>
+<div class="match-item" draggable="true" data-match="obj">Direct the experiment by stating exactly what you aim to measure or test.</div>
+
+<div class="match-item" draggable="true" data-match="resp">The variable you measure to assess the effect of treatments.</div>
+
+<div class="match-item" draggable="true" data-match="factor">A variable you manipulate to see its effect on the response.</div>
+
+<div class="match-item" draggable="true" data-match="list">Helps organize and identify variables you can control.</div>
+
+<div class="match-item" draggable="true" data-match="material">The subjects or units on which treatments are applied.</div>
+
+<div class="match-item" draggable="true" data-match="shared">When subjects/units share conditions, measurements may not be independent</div>
+</div>
+
+<!-- drop zones (questions) -->
+<div>
+
+<p><strong>Why are specific objectives important?</strong></p>
+<div class="drop-zone" data-accept="obj"></div>
+
+<p><strong>What is the response variable?</strong></p>
+<div class="drop-zone" data-accept="resp"></div>
+
+<p><strong>What is an experimental factor?</strong></p>
+<div class="drop-zone" data-accept="factor"></div>
+
+<p><strong>Why list the experimental factors?</strong></p>
+<div class="drop-zone" data-accept="list"></div>
+
+<p><strong>What is the experimental material?</strong></p>
+<div class="drop-zone" data-accept="material"></div>
+
+<p><strong>Why is a 'shared environment' an issue?</strong></p>
+<div class="drop-zone" data-accept="shared"></div>
+
+</div>
+</div>
+
+<button onclick="checkAnswers()">Check Answers</button>
+
+<script>
+const draggables = document.querySelectorAll('.match-item');
+const dropzones = document.querySelectorAll('.drop-zone');
+
+draggables.forEach(item => {
+  item.addEventListener('dragstart', e => {
+    e.dataTransfer.setData('text/plain', item.dataset.match);
+    window.dragged = item;
+  });
+});
+
+dropzones.forEach(zone => {
+  zone.addEventListener('dragover', e => e.preventDefault());
+  zone.addEventListener('drop', e => {
+    e.preventDefault();
+    zone.innerHTML = "";
+    zone.appendChild(window.dragged);
+  });
+});
+
+function checkAnswers() {
+  dropzones.forEach(zone => {
+    const item = zone.querySelector('.match-item');
+    if (!item) return;
+
+    if (item.dataset.match === zone.dataset.accept) {
+      zone.classList.add('correct');
+      zone.classList.remove('incorrect');
+    } else {
+      zone.classList.add('incorrect');
+      zone.classList.remove('correct');
+    }
+  });
+}
+</script>
+
+
+::: {.callout-note}
+## Out of lecture activity!
+Read and critique this blog! [Pseudoreplication: choose your data wisely](https://www.statisticsdonewrong.com/pseudoreplication.html)
+:::
+
+### Design an alien plant experiment
+
+**Scenario**
+
+Imagine that you are a plant biologist testing the effect of four fertilizer types on the growth of an alien plant species. Below are the design features of your setup!
+
+ + **60** seedling alien plants (*the species name is yet to be decided*)
+ + **4** fertilizer types: *martian_soil*, *uranium*, *sulphur*, and *solar_plasma*
+ + **3** different greenhouses (*20* spaces in each): 
+
+
+**In your groups** discuss
+
+   + what you are measuring,
+   + the experimental units, and
+   + the sources of variation.
+
+Then choose one or more of the following `R` packages (`edibble`, `agricolae` or `AlgDesign`) to structure/design the above experimental scenario (i.e., figure out how to allocated treatments to units etc.).
+ 
+NOTE: you may find [this application useful](https://statbiscuit.shinyapps.io/doe_form/) to structure your thoughts.
+
+
+Now, once you've shown your design to Charlotte you'll get a keyword to access some data below!
+
+```{r, echo = FALSE}
+simulate_alien <- function(seed, fertilizer_effects) {
+  
+  set.seed(seed)
+  
+  fertilizers <- c("martian_soil", "uranium", "sulphur", "solar_plasma")
+  n_greenhouses <- 3
+  plants_per_fertilizer <- 5
+  
+  greenhouse_sd <- 0.3   
+  plant_sd <- 0.5        
+  
+  data <- expand.grid(
+    fertilizer = fertilizers,
+    growth_chamber = paste0("growth_chamber_", 1:n_greenhouses),
+    plant_id = 1:plants_per_fertilizer
+  )
+  
+  greenhouse_effect <- rnorm(n_greenhouses, 0, greenhouse_sd)
+  names(greenhouse_effect) <- paste0("growth_chamber_", 1:n_greenhouses)
+  
+  data$height <- mapply(function(fert, gh) {
+    mean_height <- fertilizer_effects[fert]
+    mean_height + greenhouse_effect[gh] + rnorm(1, 0, plant_sd)
+  }, data$fertilizer, data$growth_chamber)
+  
+  data
+}
+
+data_triffids <- simulate_alien(
+  101,
+  c(
+    martian_soil = 9,
+    uranium = 10.3,
+    sulphur = 11.5,
+    solar_plasma = 10.2
+  )
+)
+
+data_nebula <- simulate_alien(
+  202,
+  c(
+    martian_soil = 9.5,
+    uranium = 10.8,
+    sulphur = 10.9,
+    solar_plasma = 9.9
+  )
+)
+
+data_xenophyte <- simulate_alien(
+  303,
+  c(
+    martian_soil = 10.0,
+    uranium = 10.2,
+    sulphur = 10.4,
+    solar_plasma = 10.1
+  )
+)
+
+data_cryomoss <- simulate_alien(
+  404,
+  c(
+    martian_soil = 9.7,
+    uranium = 11.2,
+    sulphur = 10.5,
+    solar_plasma = 10.3
+  )
+)
+
+```
+
+
+<input type="text" id="secretAlien" placeholder="Enter keyword here">
+<button onclick="checkKeywordAlien()">👽🌵 Get the data 🌵👽</button>
+
+<div id="Triffids" style="display:none; margin-top:10px;">
+
+```{r, echo = FALSE}
+datapasta::df_paste(data_triffids)
+```
+</div>
+
+<div id="Nebula" style="display:none; margin-top:10px;">
+```{r, echo = FALSE}
+datapasta::df_paste(data_nebula)
+```
+</div>
+
+<div id="Xenophyte" style="display:none; margin-top:10px;">
+```{r, echo = FALSE}
+datapasta::df_paste(data_xenophyte)
+```
+</div>
+
+<div id="Crymoss" style="display:none; margin-top:10px;">
+```{r, echo = FALSE}
+datapasta::df_paste(data_cryomoss)
+```
+</div>
+
+<script>
+function checkKeywordAlien() {
+  var input = document.getElementById("secretAlien").value;
+  
+  document.getElementById("Triffids").style.display = "none";
+  document.getElementById("Nebula").style.display = "none";
+  document.getElementById("Xenophyte").style.display = "none";
+  document.getElementById("Crymoss").style.display = "none";
+  
+  if(document.getElementById(input)) {
+    document.getElementById(input).style.display = "block";
+  } else {
+    alert("Incorrect keyword!");
+  }
+}
+</script>
+
+**As a group** model the data *unlocked* above and
+
+  + create a plot comparing the treatment effects (*if any*),
+  + create a plot that shows the partitioning of variance for you chosen model.
+  
+Your **reporter** (remember @sec-groups) will then give a presentation to the class talking us through the plots! 
+
 
 
 

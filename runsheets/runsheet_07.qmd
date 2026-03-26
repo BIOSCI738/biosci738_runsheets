@@ -165,7 +165,7 @@ cat("Type I error rate in percentage is", (t1err/n)*100,"%", "\n")
 ```
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Can you explain the phenomena above for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience?
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Explain the phenomena above for an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience
 
 Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your *[r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742)* (aka as if to a 5 year old child) reasoning for the phenomena illustrated by the code above.
 :::
@@ -195,14 +195,13 @@ $$
 \text{Lower bound} = \text{difference} - (\text{scale factor} \times SED)
 $$
 
-OK, but how do we choose our $\text{scale factor}$? We have three^[actually we have many more but for the purposes of this course we have three] options:
+OK, but how do we choose our $\text{scale factor}$? We have three^[actually we have many more but for the purposes of this course we have three, see @multicomp for discussion on some others] options:
 
-TODO citations
 
-|  | Fisher (LSD) | Bonferroni | Tukey (HSD) |
+|  | [Fisher (LSD)](https://en.wikipedia.org/wiki/Fisher%27s_least_significant_difference)^[A bunch of post hoc t-tests] | [Bonferroni Correction](https://en.wikipedia.org/wiki/Bonferroni_correction) | [Tukey (HSD)](https://en.wikipedia.org/wiki/Tukey%27s_range_test) |
 |--|-------------|------------|-------------|
 | $\text{scale factor}$ | $t_{\alpha = \frac{\alpha_c}{2}, \, df = N -m}$ | $t_{\alpha = \frac{\alpha_c}{2\cdot k}, \, df= N -m}$ | $q_{\alpha = 1- \alpha_c, \, m, \, df = N -m}$ |
-| Interpretation | Smallest critical value $\rightarrow$ narrowest CI | Inflates $t$ via $\alpha^*$ $\rightarrow$ wider CI | Uses $q$ $\rightarrow$ width group dependent|
+
 
 where, 
 
@@ -221,64 +220,238 @@ where,
 
 
 ::: {.callout-note collapse="true"}
-## Comparing critical values
+## Comparing critical values and CI coverage
 
 ```{r, echo = FALSE, message = FALSE}
-library(ggplot2)
+
 library(dplyr)
+library(tidyr)
+library(ggplot2)
 
-df <- 20
+df <- 25
 alpha <- 0.05
-m <- 4
-C <- m * (m - 1) / 2
+m_vals <- 2:10
 
-crit_vals <- data.frame(
-  x = c(qt(1 - alpha/2, df), qt(1 - (alpha/C)/2, df), qtukey(1 - alpha, m, df)/sqrt(2)),
-  label = c("Fisher (t)", "Bonferroni (t)", "Tukey")
-)
+results <- lapply(m_vals, function(m) {
+  C <- m * (m - 1) / 2
+  t_fisher <- qt(1 - alpha/2, df)
+  t_bonf   <- qt(1 - (alpha/C)/2, df)
+  t_tukey  <- qtukey(1 - alpha, m, df)/sqrt(2)
+  pecr_fisher <- alpha
+  pecr_bonf   <- alpha / C
+  pecr_tukey  <- 1 - (1 - alpha)^(1/C)
+  cov_fisher <- (1 - alpha)^C
+  cov_bonf   <- 1 - alpha
+  cov_tukey  <- 1 - alpha
+  data.frame(
+    m = m,
+    comparisons = C,
+    method = c("Fisher (t)", "Bonferroni (t)", "Tukey"),
+    crit = c(t_fisher, t_bonf, t_tukey),
+    coverage = c(cov_fisher, cov_bonf, cov_tukey),
+    PECR = c(pecr_fisher, pecr_bonf, pecr_tukey),
+    FWER = 1 - c(cov_fisher, cov_bonf, cov_tukey),
+    power = 1 / c(t_fisher, t_bonf, t_tukey)
+  )
+}) |> bind_rows()
 
-dtukey <- function(x, df, nmeans = m) {
-  h <- 1e-4
-  (ptukey(x + h, nmeans, df) - ptukey(x - h, nmeans, df)) / (2 * h)
-}
-x <- seq(0, 6, length.out = 500)
-df_plot <- data.frame(
-  x = rep(x, 2),
-  density = c(abs(dt(x, df)), dtukey(x, df)),
-  Distribution = rep(c("t-distribution", "studentized range distribution (Tukey)"), each = length(x))
-)
-
-ggplot(df_plot, aes(x = x, y = density, linetype = Distribution)) +
-  geom_line() +
-  geom_vline(data = crit_vals, aes(xintercept = x, color = label)) +
-  scale_color_brewer(palette = "Dark2") + 
-  labs(linetype = "", color = "") +
-  xlab("") +
+p1 <- ggplot(results, aes(m, crit, colour = method)) +
+  geom_line(linewidth = 1.2, lty = "dotdash", alpha = 0.5) +
+  geom_point(size = 2) +
+  scale_colour_brewer(palette = "Set1") +
+  labs( x = "Number of groups",y = "Critical Value",title = "", colour = "Method") +
   theme_minimal()
+p2 <- ggplot(results, aes(m, PECR, colour = method)) +
+  geom_line(linewidth = 1.2, lty = "dotdash", alpha = 0.5) +
+  geom_point(size = 2) +
+  scale_colour_brewer(palette = "Set1") +
+  labs( x = "Number of groups",y = "PECR",
+        title = "Error rate for one comparison", colour = "Method") +
+  theme_minimal()
+p3 <- ggplot(results, aes(m, coverage, colour = method)) +
+  geom_line(linewidth = 1.2, lty = "dotdash", alpha = 0.5) +
+  geom_point(size = 2) +
+  scale_colour_brewer(palette = "Set1") +
+  labs( x = "Number of groups",y = "Coverage",
+        title = "Probability all intervals are correct", colour = "Method") +
+  theme_minimal()
+
+p4 <- ggplot(results, aes(m, FWER, colour = method)) +
+  geom_line(linewidth = 1.2, lty = "dotdash", alpha = 0.5) +
+  geom_point(size = 2) +
+  scale_colour_brewer(palette = "Set1") +
+  labs( x = "Number of groups",y = "FWER",
+        title = "Error rate for any comparison", 
+        colour = "Method") +
+  theme_minimal()
+
+p5 <- ggplot(results, aes(m, power, colour = method)) +
+  geom_line(linewidth = 1.2, lty = "dotdash", alpha = 0.5) +
+  geom_point(size = 2) +
+  scale_colour_brewer(palette = "Set1") +
+  labs( x = "Number of groups",y = "Power ",
+        title = "Probability detect real differences", colour = "Method") +
+  theme_minimal()
+
+library(patchwork)
+
+(p1 / (p2 | p3)) + plot_layout(guides = "collect") &
+theme(legend.position = "bottom")
 
 ```
 
 :::
 
 
+**Code Along**
+
+```{r, eval = FALSE}
+library(tidyr)
+library(ggplot2)
+set.seed(1)
+alpha <- 0.05
+n <- 20 ## number of observations
+nsim <- 500 ## number of simulations
+m_vals <- 2:8 ## number of groups
+## initialise empty vectors
+det_fisher <- det_tukey <- det_bonf <- numeric(length(m_vals))
+err_fisher <- err_tukey <- err_bonf <- numeric(length(m_vals))
+## simulation loop
+for(i in seq_along(m_vals)) {
+  m <- m_vals[i]
+  ## start "detect" counter at 0
+  fisher_detect <- tukey_detect  <- bonf_detect   <- 0
+  fisher_error <- tukey_error  <- bonf_error   <- 0
+  for(sim in 1:nsim) {
+    ## One TRUE difference
+    means <- c(0.5, rep(0, m-1)) ## one 'true' difference
+    y <- rnorm(n*m, mean = rep(means, each = n))
+    ## check boxplot(y~rep(1:length(means), each = n))
+    group <- factor(rep(1:m, each = n))
+    ## Fisher (no correction - t-test)
+    fisher <- pairwise.t.test(y, group, p.adjust.method = "none")
+    if(any(fisher$p.value < alpha, na.rm = TRUE)) {
+      fisher_detect <- fisher_detect + 1
+    }
+    ## Bonferroni
+    bonf <- pairwise.t.test(y, group, p.adjust.method = "bonferroni")
+    if(any(bonf$p.value < alpha, na.rm = TRUE)) {
+      bonf_detect <- bonf_detect + 1
+    }
+    ## Tukey
+    fit <- aov(y ~ group)
+    if(any(TukeyHSD(fit)$group[, "p adj"] < alpha)) {
+      tukey_detect <- tukey_detect + 1
+    }
+    ## No difference
+    y <- rnorm(n*m, mean = 0)
+    fisher <- pairwise.t.test(y, group, p.adjust.method = "none")
+    bonf   <- pairwise.t.test(y, group, p.adjust.method = "bonferroni")
+    tukey  <- TukeyHSD(aov(y ~ group))
+    fisher_error <- fisher_error + any(fisher$p.value < alpha, na.rm = TRUE)
+    bonf_error   <- bonf_error   + any(bonf$p.value   < alpha, na.rm = TRUE)
+    tukey_error  <- tukey_error  + any(tukey$group[, "p adj"] < alpha)
+  }
+  det_fisher[i] <- fisher_detect/nsim
+  det_bonf[i]   <- bonf_detect/nsim
+  det_tukey[i]  <- tukey_detect/nsim
+  err_fisher[i] <- fisher_error/nsim
+  err_bonf[i]   <- bonf_error/nsim
+  err_tukey[i]  <- tukey_error/nsim
+}
+power_df <- data.frame(m = m_vals, Fisher = det_fisher, Bonferroni = det_bonf, Tukey = det_tukey)
+error_df <- data.frame(m = m_vals, Fisher = err_fisher, Bonferroni = err_bonf, Tukey = err_tukey)
+power_df |>
+  pivot_longer(-m, names_to = "method", values_to = "detect") |>
+  ggplot(aes(m, detect, colour = method)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
+  scale_colour_brewer(palette = "Set1") +
+  labs( x = "Number of groups",y = "Proportion of times a difference detected", colour = "Method") +
+  theme_minimal() 
+error_df |>
+  pivot_longer(-m, names_to = "method", values_to = "detect") |>
+  ggplot(aes(m, detect, colour = method)) +
+  geom_line(linewidth = 1.2) +
+  geom_point(size = 2) +
+  scale_colour_brewer(palette = "Set1") +
+  labs( x = "Number of groups",y = "Family-wise error rate", colour = "Method") +
+  geom_hline(yintercept = 0.05, linetype = "dashed") +
+  theme_minimal() 
+```
+
 #### Group Activity
 
+```{r,eval = FALSE}
+data <- data.frame(group = factor(rep(c("A","B","C","D"), each = n)),
+                   y = c(12.7419168942933, 8.87060365720782, 
+10.7262568226747, 11.2657252099221, 10.808536646282, 9.78775096781703, 
+13.0230439948779, 9.8106819231738, 14.0368474277541, 9.87457180189516, 
+12.609739308447, 14.5732907854022, 8.42227859777532, 10.6424224663653, 
+10.9333573272127, 12.4719007961401, 10.6314941571679, 5.88708915819045, 
+6.31906614284896, 13.8402266914604, 10.586722811843, 7.63738313204, 
+10.8561652884808, 13.6293493983452, 16.7903869225299, 12.1390617367876, 
+12.4854612344621, 9.47367382961044, 13.9201947096625, 11.7200102480798, 
+13.9109002464824, 14.4096746744576, 15.0702070439398, 11.7821472491856, 
+14.0099102465959, 9.56598264185332, 8.93108198324101, 8.79818481164696, 
+5.67158470010674, 10.5722452137845, 10.9119972004005, 9.77788540290267, 
+12.016326471399, 9.04659034584685, 7.76343791116141, 11.3656360517774, 
+8.87721364762666, 13.3882025234425))
+```
 
-1. Using any suitable data from the lectures or the course guide perform the pairwise comparisons of means using Fisher’s LSD with $\alpha = 0.05$ level of significance. 
+
+```{r, eval = FALSE, eval = FALSE}
+
+lm <- lm(y ~ group, data = data)
+pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE, level = 0.05/choose(4,2), adj = "bonferroni")
+comparisons(pm)
+```
+
+1. Using the data above perform the pairwise comparisons of means using Fisher’s LSD with $\alpha = 0.05$ level of significance. 
 
 2. Summarise and present these results in a table with the following column names **Comparison**, **Calculated difference** (in means), **SED** (standard error of the difference), **LSDs**, **Lower 95\% CI** &  **Upper 95\% CI** (lower & upper 95\% confidence interval), **statistic**, **p-value**.
 
-3. Calculate the scale factor (i.e., critical value of the assumed distribution) using 1) Bonferroni's correction method and 2) Tukey's HSD method for any pairwise comparison 95\% CI from above. Discuss what effect the multipliers might have on inference.
+3. Calculate the scale factor (i.e., critical value of the assumed distribution) using 1) Bonferroni's correction method and 2) Tukey's HSD method for any pairwise comparison 95\% CI from above. Discuss what effect the multipliers might have on inference by constructing and comparing the respective pairwise comparisons tables (e.g., as in 2).
 
 NOTE: you may find [this section of the course guide](https://biosci738.github.io/BIOSCI738/multiple-comparisons.html#adjustments-for-multiple-testing) useful for this activity; in particular [this function I wrote might be of use](https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90), which can be loaded into `R` using `url <- "https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"` and 
 `devtools::source_gist(url, quiet = TRUE)`.
 
 
+
+```{r, eval = FALSE, echo = FALSE}
+url <- "https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"
+devtools::source_gist(url, quiet = TRUE)
+lm <- lm(y ~ group, data = data)
+pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE)
+comparisons(pm)
+pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE, level = 0.05/choose(4,2), adj = "bonferroni")
+comparisons(pm)
+m <- length(levels(data$group))
+C <- m * (m - 1) / 2
+alpha <- 0.05
+t_fisher <- qt(1 - alpha/2, df)
+t_bonf <- qt(1 - (alpha/C)/2, df)
+t_tukey <- qtukey(1 - alpha, m, df)/sqrt(2)
+```
+
 ## Introducing random effcets {#sec-randomeff}
 
-TODO code-along
+**Slides** - *code along*
 
-**Slides**
+```{r, eval = FALSE}
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+rcbd <- readr::read_csv(paste(base_url, "rcbd.csv", sep = ""))
+rcbd$Run <- as.factor(rcbd$Run)
+lm <- lm(logAUC8 ~ Run + Surgery, data = rcbd)
+lm |> summary()
+anova(lm)
+lmer4_mod <- lme4::lmer(logAUC8 ~ Surgery + (1|Run), data = rcbd)
+coefficients(lmer4_mod)
+lmer4_mod |> summary()
+```
+
+
+
 
 <p align="center">
 <iframe src="slides/05-04_fixed-vs-random.pdf" height="400" width="700" title="Fixed vs Random effects slides"></iframe>
@@ -309,3 +482,9 @@ The author of @gelman2005analysis moves on to the following conclusion (see p. 2
 4. Conclude with which definition *best* aligns with your current understanding of the distinction between fixed and random effects?
 
 NOTE: You may find [this blog](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/) offers some extra insights here^[Note that I do like the writing style of the blog but don't totally agree with the author's conclusions around repeated measurements; if you want to know why, ask me!]
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Explain fixed vs. random effects to an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience
+
+Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your *[r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742)* (aka as if to a 5 year old child) distinction!
+:::
