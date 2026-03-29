@@ -22,13 +22,6 @@
 
 ## Modeller vs Designer {#sec-mods}
 
-<p align="center">
-<iframe src="slides/05-01_modller-vs-designer.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
-</p>
-<p align="center">
-</p>
-
-
 ### Degrees of Freedom 
 
 The **degree of freedom** is
@@ -41,6 +34,15 @@ The **degree of freedom** is
 
 In [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) answer the questions as they are posed. 
 :::
+
+
+<p align="center">
+<iframe src="slides/05-01_modller-vs-designer.pdf" height="400" width="700" title="Modeller-vs-Designer slides"></iframe>
+</p>
+<p align="center">
+</p>
+
+
 
 
 ### Partitioning of Variation

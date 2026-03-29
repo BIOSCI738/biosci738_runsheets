@@ -28,9 +28,9 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_06.qmd >}}
 
-<!--{{< include runsheets/runsheet_07.qmd >}}
+{{< include runsheets/runsheet_07.qmd >}}
 
-{{< include runsheets/runsheet_08.qmd >}}-->
+<!--{{< include runsheets/runsheet_08.qmd >}}-->
 
 {{< include runsheets/runsheet_extras.qmd >}}
 
