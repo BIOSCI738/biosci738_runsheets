@@ -4,16 +4,16 @@
 
 ### **2:05 pm - 3:55 pm** 
 
-+ Interactive Oral assessments (@sec-ioa)
++ Interactive Oral Assessments (@sec-ioa)
 + Experimental Design (@sec-edterms)
 
  
-### Before we begin **sort yourselves into groups** following @sec-groups
 
 ::: {.callout-tip}
 ## Experiments and communication
  + Communicate data structure and statistical hypotheses
- + Create an experimental design 'recipe' using `R`
+ + Create an experimental design *recipe* using `R`
+ + Visualize treatment effects and variance partitioning given a linear model
 :::
 
 
@@ -29,40 +29,45 @@
 
 :::
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Grade a mock IOA
 
 
-**Choose one of the mock IOAs on [this CANVAS page](https://canvas.auckland.ac.nz/courses/141056/pages/ioas-in-biosci738)**
-
- 1. Watch your chosen mock IOA and discuss as a group how you would grade Rishika according to the given rubric, and
- 2. *Grade* Rishika according to [the rubric for your Interactive Oral Assessment - Project Discussion](https://canvas.auckland.ac.nz/courses/141056/assignments/490477)
- 3. Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your *grades* for each rubric category.
- 
-Feel free to ask any IOA related questions to either Adam or I as we wander around the class.
-
-:::
-
-#### Group Activity
+#### Activity
 
 **Discuss the [Biota of University of Auckland City Campus iNaturlist data](https://www.inaturalist.org/projects/biota-of-university-of-auckland-city-campus)**
 
 If you've not already Sign Up and download any subset of [these data](ttps://www.inaturalist.org/projects/biota-of-university-of-auckland-city-campus).
 
 
-In pairs within your group, take on the following roles in turn **Consultant** and **Client**.
+In pairs, take on the following roles in turn **Consultant** and **Client**.
 
 As the **Client** answer the following questions about the iNaturalist data for you [Significance Article + Code](https://canvas.auckland.ac.nz/courses/141056/assignments/490408).
 
- + What variables are included in the dataset?
+ + What data are recorded in the [Biota of University of Auckland City Campus iNaturlist data](https://www.inaturalist.org/projects/biota-of-university-of-auckland-city-campus) project
+ + What variables are included in the data?
  + What are the potential issues with these citizen science data?
  + What questions are you trying to answer with these data? 
  + What other data could you use to supplement any analysis (e.g., topography, weather)?
 
 As the **Consultant**, your role is to question the **Client** and ask for specific details/clarifications along the way. After the Q&A session, you should be able to surmise your **Client's** project in your own words.
 
+*Feel free to ask any IOA related questions to either Adam or I as we wander around the class.*
 
 
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> What do you want from your IOA?
+
+Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and answer the questions below (*all at once*).
+
+ 1. Have you participated in an IOA? If so, what was your experience?
+ 2. What did you find most challenging in your role as a *Client* in the activity above?
+ 3. What did you find most challenging in your role as a *Consultant* in the activity above?
+ 4. From a student's perspective what, in your opinion, makes for a *good* IOA experience?
+ 5. From an instructor's perspective what, in your opinion, makes for a *good* IOA experience?
+ 6. In terms of your the rubric for your [Interactive Oral Assessment - Project Discussion](https://canvas.auckland.ac.nz/courses/141056/assignments/490477), what are you most confident about and what are you most nervous about?
+ 
+Resources you may want to refer to: 1) [this CANVAS page](https://canvas.auckland.ac.nz/courses/141056/pages/ioas-in-biosci738), and 2) [the rubric for your Interactive Oral Assessment - Project Discussion](https://canvas.auckland.ac.nz/courses/141056/assignments/490477).
+
+:::
 
 ::: {.callout-important}
 ## Don't forget to sign up for your [Interactive Oral Assessment - Project Discussion](https://canvas.auckland.ac.nz/courses/141056/assignments/490477) time slot via BIOSCI738's CANVAS calander.
@@ -70,6 +75,8 @@ As the **Consultant**, your role is to question the **Client** and ask for speci
 
 
 ## Experimental Design {#sec-edterms}
+
+#### **Sort yourselves into groups** following @sec-groups
 
 ### The Grammar of Experimental Designs^[The title stolen shamelessly from [Emi Tanaka's ebook](https://emitanaka.org/edibble-book/)] 
 
@@ -345,7 +352,7 @@ function checkKeywordAlien() {
   + create a plot comparing the treatment effects (*if any*),
   + create a plot that shows the partitioning of variance for you chosen model.
   
-Your **reporter** (remember @sec-groups) will then give a presentation to the class talking us through the plots! 
+Your **reporter** (remember @sec-groups) will then give a short presentation to the class talking us through the plots! 
 
 
 

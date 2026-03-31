@@ -1,10 +1,594 @@
-# April 7th
+# Week 06 - Lecture 01
+
+## Rough Agenda
+
+### **4:05 pm - 5:55 pm** 
+
++ Introducing Random Effects (@sec-randomeff)
++ Distributions (@sec-distributions)
++ Introduction to GLMs (@sec-glms)
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
  + Fit and critique linear mixed effects models
- + Create an experimental design 'recipe' using `R`
+ + Discuss, describe & critique different probability distributions 
+ + Appropriately map a random variable to a (likely) distribution
 :::
 
+
+## Introducing random effcets {#sec-randomeff}
+
+**Slides** - *code along*
+
+```{r, eval = FALSE}
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+rcbd <- readr::read_csv(paste(base_url, "rcbd.csv", sep = ""))
+rcbd$Run <- as.factor(rcbd$Run)
+lm <- lm(logAUC8 ~ Run + Surgery, data = rcbd)
+lm |> summary()
+anova(lm)
+lmer4_mod <- lme4::lmer(logAUC8 ~ Surgery + (1|Run), data = rcbd)
+coefficients(lmer4_mod)
+lmer4_mod |> summary()
+```
+
+
+
+
+<p align="center">
+<iframe src="slides/05-04_fixed-vs-random.pdf" height="400" width="700" title="Fixed vs Random effects slides"></iframe>
+</p>
+<p align="center">
+</p>
+
+
+### Case studies 
+
+As a group, work though each of the case studies given below answering/discussing the prompts as you go. You'll notice a few extra packages and functions getting used :-)
+
+
+
+#### Case study 01
+
+Visiting [this section of the course guide](https://biosci738.github.io/BIOSCI738/linear-mixed-effect-models-lmms.html) may be useful.
+
+```{r, eval = FALSE}
+require(tidyverse)
+require(lme4)
+require(predictmeans)
+rcbd <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/rcbd.csv")
+## turn appropriate variables into factors
+rcbd <- rcbd %>%
+  mutate(Run = as.factor(Run)) %>%
+  mutate(Surgery = as.factor(Surgery))
+## run as a fixed effect
+lm(logAUC8 ~ Run + Surgery, data = rcbd) |> summary()
+## run as a random effect, what's the difference?
+lmm <- lme4::lmer(logAUC8 ~ Surgery + (1|Run), data = rcbd) 
+summary(lmm)
+## diagnostics estimated variance partitioning and more...
+## these are really useful utility functions!
+predictmeans::residplot(lmm)
+predictmeans::R2_glmm(lmm)
+predictmeans::se_ranef(lmm)
+predictmeans::varcomp(lmm)
+predictmeans::permmodels(lmm) ## remember permutation tests, what are we using them for here? Compare to a summary() output
+
+```
+
+#### Case study 02
+
+Now, we're going to get a little more advanced and model some data from @monkey (data retrieved from @monkeydata). To do so we're following along (somewhat) with the steps summarised in @danblog. Revisiting @sec-randomeff may, again, be useful here.
+
+```{r, eval = FALSE}
+## wrangle as per Dan's blog
+require(tidyverse)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/monkey.csv")
+data %>%
+    ggplot(., aes(x = age, y = Activity)) +
+    geom_point() 
+## Number of active intervals in the first two minutes (0-8)
+activity_2mins <- data |>
+  filter(obs<9) |> group_by(subj_id, Day) |>
+  summarize(total=sum(Activity), 
+            active_bins = sum(Activity > 0), 
+            age = min(age)) |>
+  rename(monkey = subj_id, day = Day) |>
+ungroup()
+length(table(activity_2mins$monkey))
+activity_2mins %>%
+    ggplot(., aes(x = age, y = total, col = as.factor(monkey))) +
+    facet_wrap(~day) +
+    geom_point() + theme(legend.position = "none")
+## Linear model...
+fit_lm <- lm(active_bins ~ age*factor(day) + factor(monkey), data = activity_2mins)
+fit_lm |>
+summary()
+## ignore monkeys
+fit_lm_pool <- lm(active_bins ~ age*factor(day), data = activity_2mins)
+fit_lm_pool |>
+summary()
+fit_lm_pool |> gglm::gglm() ## and what do we think here?
+## plot
+plot(fit_lm_pool$fitted, fit_lm_pool$residuals)
+## why scale?
+age_centre <- mean(activity_2mins$age)
+age_scale <- diff(range(activity_2mins$age))/2
+active_bins_centre <- 4
+
+activity_2mins_scaled <- activity_2mins |>
+  mutate(monkey = factor(monkey),
+         day = factor(day),
+         age_centred = (age - age_centre)/age_scale,
+         active_bins_scaled = (active_bins - active_bins_centre)/4)
+glimpse(activity_2mins_scaled)
+
+## Monkey as a random effect, why? Is this sensible?
+aov(active_bins_scaled ~ age_centred*day + Error(monkey), data = activity_2mins_scaled) |>
+summary()
+## formula
+formula <- active_bins_scaled ~ age_centred*day + (1 | monkey)
+## lme4
+library(lme4)
+fit_lme4 <- lme4::lmer(formula, activity_2mins_scaled)
+fit_lme4 |>
+summary()
+predictmeans::predictmeans(fit_lme4, "day")
+## lmerTest, is this the same model as above
+library(lmerTest)
+fit_lmerTest <- lmerTest::lmer(formula, activity_2mins_scaled)
+fit_lmerTest |>
+summary()
+predictmeans::predictmeans(fit_lmerTest, "day")
+## glmmTMB, is this the same model as above
+library(glmmTMB)
+fit_glmmtmb <- glmmTMB::glmmTMB(formula, activity_2mins_scaled)
+fit_glmmtmb |> summary()
+## and what does this show?
+emmeans::emmeans(fit_glmmtmb, specs = "day") |>
+ plot(pairwise = TRUE)
+```
+
+::: {.callout-note collapse="true"}
+## Mixed effects model syntax quiz
+
+Select the correct model formula!
+
+<style>
+.quiz-question {
+  margin-bottom: 30px;
+}
+
+.quiz-option {
+  display: block;
+  padding: 8px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.correct {
+  background-color: #c8f7c5;
+}
+
+.incorrect {
+  background-color: #f7c5c5;
+}
+</style>
+
+<script>
+function checkAnswer(el, correct) {
+  let options = el.parentElement.children;
+  for (let opt of options) {
+    opt.classList.remove("correct", "incorrect");
+  }
+  
+  if (correct) {
+    el.classList.add("correct");
+  } else {
+    el.classList.add("incorrect");
+  }
+}
+</script>
+
+
+### Question 1
+
+You measure **logAUC8** for patients.  
+You want to test the effect of **Surgery**.  
+Measurements were taken across different **Runs**.
+
+Treat **Run** as a random effect.
+
+<div class="quiz-question">
+<div class="quiz-option" onclick="checkAnswer(this,true)">logAUC8 ~ Surgery + (1|Run)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">logAUC8 ~ Surgery + Run</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">logAUC8 ~ Surgery + (Run|1)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">logAUC8 ~ Surgery + (1 + Run)</div>
+</div>
+
+
+
+### Question 2
+
+You measure **Yield**.  
+You test **Fertiliser** treatments.  
+Plots are grouped into **Blocks**.
+
+Treat **Block** as a random effect.
+
+<div class="quiz-question">
+<div class="quiz-option" onclick="checkAnswer(this,false)">Yield ~ Fertiliser + Block</div>
+<div class="quiz-option" onclick="checkAnswer(this,true)">Yield ~ Fertiliser + (1|Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Yield ~ Fertiliser + (Block|1)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Yield ~ Fertiliser + (1 + Block)</div>
+</div>
+
+
+
+### Question 3
+
+You measure **Yield**.  
+You test **Fertiliser** treatments.  
+Each **Block** contains multiple **Plots**.
+
+Treat **Plot nested within Block** as random.
+
+<div class="quiz-question">
+<div class="quiz-option" onclick="checkAnswer(this,true)">Yield ~ Fertiliser + (1|Block/Plot)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Yield ~ Fertiliser + (1|Plot/Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Yield ~ Fertiliser + (Plot|Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Yield ~ Fertiliser + Block/Plot</div>
+</div>
+
+
+
+### Question 4
+
+You measure **Growth**.  
+You test **Temperature**.  
+You expect **Temperature effects to vary by Block**.
+
+Fit a **random slope of Temperature within Block**.
+
+<div class="quiz-question">
+<div class="quiz-option" onclick="checkAnswer(this,true)">Growth ~ Temp + (Temp|Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Growth ~ Temp + (1|Temp/Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Growth ~ Temp + (Block|Temp)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Growth ~ Temp + Temp|Block</div>
+</div>
+
+
+
+### Question 5
+
+You measure **Growth**.  
+You test **Temperature**.  
+You want both:
+
+- Random intercepts for Block  
+- Random slopes of Temperature within Block
+
+<div class="quiz-question">
+<div class="quiz-option" onclick="checkAnswer(this,false)">Growth ~ Temp + (Temp|1 + Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Growth ~ Temp + (Temp + Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,true)">Growth ~ Temp + (1 + Temp|Block)</div>
+<div class="quiz-option" onclick="checkAnswer(this,false)">Growth ~ Temp + (1|Temp + Block)</div>
+</div>
+
+:::
+
+## Distributions {#sec-distributions}
+
+::: {.callout-note collapse="true"}
+## Distributions cheatsheet 
+![](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/distributions.png)
+:::
+
+## Activities
+
+### Activity 01
+
+**As a group** *read* the cheatsheet above and summarize the following for each distribution:
+
+ + What is the assumed random variable (i.e., variable being measured/modelled)
+ + What form does this variable take (e.g., positive-only numbers, integer values etc.)
+ + What are the parameters of each distribution and how do they relate to the mean?
+ + Where does the encircled blue cow fall in terms of this herd's estimated population statistics?
+ 
+Be prepared to answer questions as I wander around the class.
+
+### Activity 02
+
+Charlotte will soon allocate each group a distribution.
+
+Using any means you wish read up about that particular distribution and note the following 
+
+  1. Name of the distribution
+  2. Parameter(s) of the distribution
+  3. The mean and variance of the distribution in terms of the parameter(s)
+  4. Support/characteristics of the distribution
+  5. How parameter values change the distribution’s shape (hint use R to simulate the random variable using (a) parameter(s) of your choice and then plot this distribution)
+  6. When might this distribution be used
+  7. Answer the distribution-specific question(s)
+  
+**Your group reporter should make sure to be prepared to report to the class!**
+
+
+::: {.callout-note collapse="true"}
+## Useful extras
+
+Note: When exploring your distribution you may find this [RShiny application useful](https://cmjt.shinyapps.io/probable/) as well as the following cheat sheet
+
+![The `p..()`, `d..()`, `q..()`, `r..()` functions in `R`](runsheets/img/pdqr.png)
+
+
+:::
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Modelling Charlotte's chickens
+
+I have 11 chickens. Here is a nice picture hanging out in an area between their coop and the feeder.
+
+<center><img src="runsheets/img/hens.JPG" height="400px" alt="chickens"></center>
+
+
+Because I love stats (and chickens) I'm interested in modelling the number of chickens visible in this particular area at different times of the day. 
+
+Q: What distribution should I use? **Tell me via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)** including your justification!
+:::
+
+## Introduction to Generalised Linear Models (GLMs) {#sec-glms}
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/06-01-intro_to_glms.pdf" height="400" width="700" title="Introduction to Generalised Linear Models"></iframe>
+</p>
+
+
+::: {.callout-note collapse="true"}
+##  Probability distributions quiz
+
+Drag each distribution into the correct category.
+
+<style>
+.container {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.box {
+  border: 2px dashed #ccc;
+  padding: 15px;
+  width: 220px;
+  min-height: 140px;
+  border-radius: 8px;
+}
+
+.item {
+  padding: 8px;
+  margin: 5px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  cursor: grab;
+}
+
+.correct {
+  background-color: #c8f7c5 !important;
+}
+
+h4 { margin-top: 0; }
+</style>
+
+<div class="container">
+
+<div class="box" data-type="discrete">
+<h4>Discrete</h4>
+</div>
+
+<div class="box" data-type="continuous">
+<h4>Continuous</h4>
+</div>
+
+<div class="box" data-type="positive">
+<h4>Positive Continuous</h4>
+</div>
+
+</div>
+
+<br>
+
+<div id="items">
+<div class="item" draggable="true" data-type="discrete">Binomial</div>
+<div class="item" draggable="true" data-type="discrete">Poisson</div>
+<div class="item" draggable="true" data-type="discrete">Negative Binomial</div>
+<div class="item" draggable="true" data-type="continuous">Normal</div>
+<div class="item" draggable="true" data-type="continuous">Uniform</div>
+<div class="item" draggable="true" data-type="positive">Gamma</div>
+<div class="item" draggable="true" data-type="positive">Exponential</div>
+<div class="item" draggable="true" data-type="positive">Lognormal</div>
+</div>
+
+<script>
+const items = document.querySelectorAll('.item');
+const boxes = document.querySelectorAll('.box');
+
+items.forEach(item => {
+  item.addEventListener('dragstart', dragStart);
+});
+
+boxes.forEach(box => {
+  box.addEventListener('dragover', dragOver);
+  box.addEventListener('drop', drop);
+});
+
+let dragged;
+
+function dragStart() {
+  dragged = this;
+}
+
+function dragOver(e) {
+  e.preventDefault();
+}
+
+function drop() {
+  if (dragged.dataset.type === this.dataset.type) {
+    dragged.classList.add("correct");
+  }
+  this.appendChild(dragged);
+}
+</script>
+
+:::
+
+
+
+::: {.callout-note collapse="true"}
+## Which Distribution Would You Use? 
+
+Drag each *variable* to the most appropriate distribution.
+
+<style>
+.container4 {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.box4 {
+  border: 2px dashed #ccc;
+  padding: 15px;
+  width: 220px;
+  min-height: 170px;
+  border-radius: 8px;
+}
+
+.item4 {
+  padding: 8px;
+  margin: 5px;
+  background: #f0f0f0;
+  border-radius: 5px;
+  cursor: grab;
+}
+
+.correct {
+  background-color: #c8f7c5 !important;
+}
+</style>
+
+<div class="container4">
+
+<div class="box4" data-type="normal">
+<h4>Normal</h4>
+</div>
+
+<div class="box4" data-type="poisson">
+<h4>Poisson</h4>
+</div>
+
+<div class="box4" data-type="negbin">
+<h4>Negative Binomial</h4>
+</div>
+
+<div class="box4" data-type="gamma">
+<h4>Gamma</h4>
+</div>
+
+<div class="box4" data-type="lognormal">
+<h4>Lognormal</h4>
+</div>
+
+<div class="box4" data-type="binomial">
+<h4>Binomial</h4>
+</div>
+
+<div class="box4" data-type="beta">
+<h4>Beta</h4>
+</div>
+
+</div>
+
+<br>
+
+<div>
+
+<div class="item4" draggable="true" data-type="poisson">
+Number of insects per leaf (low counts, roughly equal mean and variance)
+</div>
+
+<div class="item4" draggable="true" data-type="negbin">
+Number of insects per plant (many zeros, high variability)
+</div>
+
+<div class="item4" draggable="true" data-type="normal">
+Measurement error in instrument readings
+</div>
+
+<div class="item4" draggable="true" data-type="gamma">
+Time until equipment failure
+</div>
+
+<div class="item4" draggable="true" data-type="lognormal">
+Body mass measurements (right-skewed)
+</div>
+
+<div class="item4" draggable="true" data-type="binomial">
+Number of infected plants out of 20 tested
+</div>
+
+<div class="item4" draggable="true" data-type="beta">
+Proportion of leaf area damaged
+</div>
+
+<div class="item4" draggable="true" data-type="gamma">
+Waiting time between arrivals
+</div>
+
+<div class="item4" draggable="true" data-type="lognormal">
+Income data (strong right skew)
+</div>
+
+<div class="item4" draggable="true" data-type="beta">
+Survival probability estimates
+</div>
+
+</div>
+
+<script>
+const items4 = document.querySelectorAll('.item4');
+const boxes4 = document.querySelectorAll('.box4');
+
+items4.forEach(item => {
+  item.addEventListener('dragstart', dragStart4);
+});
+
+boxes4.forEach(box => {
+  box.addEventListener('dragover', dragOver4);
+  box.addEventListener('drop', drop4);
+});
+
+let dragged4;
+
+function dragStart4() {
+  dragged4 = this;
+}
+
+function dragOver4(e) {
+  e.preventDefault();
+}
+
+function drop4() {
+  if (dragged4.dataset.type === this.dataset.type) {
+    dragged4.classList.add("correct");
+  }
+  this.appendChild(dragged4);
+}
+</script>
+:::
 
 

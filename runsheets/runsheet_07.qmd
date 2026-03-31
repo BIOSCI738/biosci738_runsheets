@@ -6,7 +6,7 @@
  
  + Modeller vs Designer (@sec-mods)
  + Multiple comparisons (@sec-multi)
- + Introducing Random Effects (@sec-randomeff)
+
     
 ### Before we begin **sort yourselves into groups** following @sec-groups
 
@@ -16,7 +16,6 @@
  + Discuss the role of Sums of Squares (SS) in variance decomposition
  + Discuss the issues associated with multiple comparison techniques and the standard adjustment techniques employed to combat the issues
  + Apply and compare standard adjustment techniques (e.g., Tukey, Bonferroni and Fisher corrections) employed in multiple testing
- + Discuss and compare definitions of fixed and random effects
 
 :::
 
@@ -152,7 +151,7 @@ In your groups discuss and answer the following points/questions, which relate t
  4. What happens if you change `n`, and why?
  5. What is this an example of? Why is this the case? 
  
-Now, amend the code to ``test" the same thing using another statistical test of your choice.
+Now, amend the code to *test* the same thing using another statistical test of your choice.
  
 ```{r, eval = FALSE}
 n <- 10000
@@ -382,9 +381,10 @@ error_df |>
   theme_minimal() 
 ```
 
-#### Group Activity
+#### Group Activity {#sec-multiactivty}
 
 ```{r,eval = FALSE}
+n <- 12
 data <- data.frame(group = factor(rep(c("A","B","C","D"), each = n)),
                    y = c(12.7419168942933, 8.87060365720782, 
 10.7262568226747, 11.2657252099221, 10.808536646282, 9.78775096781703, 
@@ -406,6 +406,8 @@ data <- data.frame(group = factor(rep(c("A","B","C","D"), each = n)),
 
 lm <- lm(y ~ group, data = data)
 pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE, level = 0.05/choose(4,2), adj = "bonferroni")
+url <- "https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"
+devtools::source_gist(url, quiet = TRUE)
 comparisons(pm)
 ```
 
@@ -420,73 +422,5 @@ NOTE: you may find [this section of the course guide](https://biosci738.github.i
 
 
 
-```{r, eval = FALSE, echo = FALSE}
-url <- "https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"
-devtools::source_gist(url, quiet = TRUE)
-lm <- lm(y ~ group, data = data)
-pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE)
-comparisons(pm)
-pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE, level = 0.05/choose(4,2), adj = "bonferroni")
-comparisons(pm)
-m <- length(levels(data$group))
-C <- m * (m - 1) / 2
-alpha <- 0.05
-t_fisher <- qt(1 - alpha/2, df)
-t_bonf <- qt(1 - (alpha/C)/2, df)
-t_tukey <- qtukey(1 - alpha, m, df)/sqrt(2)
-```
-
-## Introducing random effcets {#sec-randomeff}
-
-**Slides** - *code along*
-
-```{r, eval = FALSE}
-base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
-rcbd <- readr::read_csv(paste(base_url, "rcbd.csv", sep = ""))
-rcbd$Run <- as.factor(rcbd$Run)
-lm <- lm(logAUC8 ~ Run + Surgery, data = rcbd)
-lm |> summary()
-anova(lm)
-lmer4_mod <- lme4::lmer(logAUC8 ~ Surgery + (1|Run), data = rcbd)
-coefficients(lmer4_mod)
-lmer4_mod |> summary()
-```
 
 
-
-
-<p align="center">
-<iframe src="slides/05-04_fixed-vs-random.pdf" height="400" width="700" title="Fixed vs Random effects slides"></iframe>
-</p>
-<p align="center">
-</p>
-
-Below is a list collated by @gelman2005analysis (p. 20) who discuss fixed and random effects in the context of ANOVA-type analysis (Note that some use terminology we're yet to cover!).
-
-> 1. Fixed effects are constant across individuals, and random effects vary. For example, in a growth study, a model with random intercepts $\alpha_i$ and fixed slope $\beta$ corresponds to parallel lines for different individuals $i$, or the model $y_{it} = \alpha_i + \beta t$. Kreft and de Leeuw [(1998), page 12] thus distinguish between fixed and random coefficients.
-2. Effects are fixed if they are interesting in themselves or random if there is interest in the underlying population. Searle, Casella, and McCulloch [(1992), Section 1.4] explore this distinction in depth.
-3. When a sample exhausts the population, the corresponding variable is *fixed*; when the sample is a small (i.e., negligible) part of the population, the corresponding variable is *random* [Green and Tukey (1960)].
-4. If an effect is assumed to be a realized value of a random variable, it is called a random effect" [LaMotte (1983)].
-5. Fixed effects are estimated using least squares (or, more generally, maximum likelihood), and random effects are estimated with shrinkage ["linear unbiased prediction" in the terminology of Robinson (1991)]. This definition is standard in the multilevel modeling literature [see, e.g., Snijders and Bosker (1999), Section 4.2] and in econometrics. In the Bayesian framework, this definition implies that fixed effects $\beta_j^{(m)}$ are estimated conditional on $\sigma_m = \infty$, and random effects $\beta_j^{(m)}$ are estimated conditional on $\sigma_m$ from the posterior distribution.
-
-
-The author of @gelman2005analysis moves on to the following conclusion (see p. 21).
-
-> We prefer to sidestep the overloaded terms "fixed" and "random" with a cleaner distinction by simply renaming the terms in definition 1 above. We define effects (or coefficients) in a multilevel model as **constant** if they are identical for all groups in a population and **varying** if they are allowed to differ from group to group. For example, the model  $y_{ij} = \alpha + \beta x_{ij}$ (of units $i$ in groups $j$) has a constant slope and varying intercepts, and  $y_{ij} = \alpha_{j} + \beta_j x_{ij}$ has varying slopes and intercepts. In this terminology (which we would apply at any level of the hierarchy in a multilevel model), varying effects occur in batches, whether or not the effects are interesting in themselves (definition 2), and whether or not they are a sample from a larger set (definition 3). Definitions 4 and 5 do not arise for us since we estimate all batches of effects hierarchically, with the variance components $\sigma_m$ estimated from data.
-
-
-
-**As a group**
-
-1. Translate each definition in the list above to lay-person language (i.e., non-technical).
-2. Make up a data example and allocate your fixed and random effects according to each definition.
-3. Discuss the similarities and dissimilarities between the definitions.
-4. Conclude with which definition *best* aligns with your current understanding of the distinction between fixed and random effects?
-
-NOTE: You may find [this blog](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/) offers some extra insights here^[Note that I do like the writing style of the blog but don't totally agree with the author's conclusions around repeated measurements; if you want to know why, ask me!]
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Explain fixed vs. random effects to an [r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742) audience
-
-Open [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and **individually** write out your *[r/ExplainLikeImFive](https://www.reddit.com/r/explainlikeimfive/?rdt=41742)* (aka as if to a 5 year old child) distinction!
-:::

@@ -267,3 +267,175 @@ ggplot(data, aes(x = PARi, y = A)) +
   ggtitle("Fitted ploynomial linear model (red) vs Mechanistic model (black)")
 
 ```
+
+## [Paul's comments](https://www.stat.auckland.ac.nz/~paul/biosci738/2026/slides.html) for @sec-roast
+
+### Paul's revamped plot for @sec-plot
+
+You will need to download these data [`swift.RData`](https://canvas.auckland.ac.nz/courses/141056/files/17296870/download?download_frd=1) and unzip [these images](https://canvas.auckland.ac.nz/courses/141056/files/17389012/download?download_frd=1) into your working directory.
+
+```{r, eval = FALSE}
+
+library(ggplot2)
+library(ggimage)
+library(gggrid)
+library(png)
+
+load("swift.RData")
+
+
+oneRowPerConcert$DressName <-
+    factor(oneRowPerConcert$DressName,
+           levels=c(rev(c("Blurple",  "Popsicle", "Grapefruit", "Cotton candy")),
+                    rev(c("Sunset orange", "Flamingo pink", "Ocean blue")), 
+                    rev(c("Pink", "Yellow", "Green", "Blue"))))
+
+outfits$localPath <- file.path("Images",
+                               gsub("%20", "", basename(outfits$imagePath)))
+runonce <- function() {
+    for (i in seq_along(outfits$imagePath))
+        download.file(outfits$imagePath[i], outfits$localPath[i])
+}
+outfits$imgPath <- paste0(gsub("[.]png", "", outfits$localPath),
+                          "-small.png")
+
+regions <- data.frame(date=as.Date(c("2024-05-09", "2023-03-17", "2024-10-18",
+                                     "2023-11-09", "2024-02-07")),
+                      name=c("Europe", "United\nStates", "North\nAmerica",
+                             "Latin\nAmerica", "Asia/\nOceania"))
+
+albums <- data.frame(date=as.Date(c("2024-04-16", "2023-07-07", "2023-10-27")),
+                     name=paste0(c("The Tortured\n Poets Department",
+                                   "Speak Now\n (Taylor's Version)",
+                                   "1989\n (Taylor's Version)")))
+albumLabels <- function(data, coords) {
+    grobTree(segmentsGrob(coords$x, unit(-13, "mm"), coords$x, 0,
+                          arrow=arrow(angle=20, length=unit(2, "mm"),
+                                      type="closed")),
+             segmentsGrob(coords$x, unit(-13, "mm"),
+                          unit(coords$x, "npc") + unit(.25, "mm"),
+                          unit(-13, "mm")),
+             textGrob(paste0(" ", data$label), coords$x, unit(-13, "mm"),
+                      just=c("left", "bottom"),
+                      gp=gpar(fontsize=7, lineheight=1)),
+             gp=gpar(col="grey", fill="grey"))
+}
+
+xLabels <- function(data, coords) {
+    grobTree(segmentsGrob(coords$x, unit(-10, "pt"), coords$x, 0),
+             segmentsGrob(coords$x, unit(-10, "pt"),
+                          unit(coords$x, "npc") + unit(.25, "mm"),
+                          unit(-10, "pt")),
+             textGrob(paste0(" ", data$label), coords$x, unit(-10, "pt"),
+                      just=c("left", "bottom"), gp=gpar(fontsize=8)),
+             gp=gpar(col="grey", fill="grey"))
+}
+
+lines <- function(data, coords) {
+    segmentsGrob(coords$x, unit(coords$y, "npc") - unit(2, "mm"),
+                 coords$x, unit(coords$y, "npc") + unit(2, "mm"))
+}
+
+bars <- function(data, coords) {
+    ## Try for sum of 'n' line widths
+    rectGrob(1, coords$y, width=3*unit(data$count/96, "in"),
+             height=unit(4, "mm"), just="left",
+             gp=gpar(fill="black"))
+}
+
+images <- function(data, coords) {
+    rasters <- as.list(1:nrow(data))
+    for (i in 1:nrow(data)) {
+        img <- readPNG(data$image)
+        rasters[[i]] <- rasterGrob(img, 0, coords$y, height=.08)
+    }
+    do.call(grobTree, rasters)
+}
+
+years <- seq(as.Date("2023-01-01"), as.Date("2025-01-01"), by="year")
+yearLabels <- format(years, "%Y")
+geom_vline(aes(xintercept=year), data=data.frame(year=years),
+           colour="grey", linewidth=.1)
+
+gg <- ggplot(oneRowPerConcert) +
+    ## US
+    annotate("rect",
+             xmin=as.Date("2023-03-17"),
+             xmax=max(oneRowPerConcert$Date[oneRowPerConcert$Date <
+                                            as.Date("2023-11-09")]),
+             ymin=-Inf, ymax=Inf,
+             colour=NA, fill="grey95") +
+    ## Latin America
+    annotate("rect",
+             xmin=as.Date("2023-11-09"),
+             xmax=max(oneRowPerConcert$Date[oneRowPerConcert$Date <
+                                            as.Date("2024-02-07")]),
+             ymin=-Inf, ymax=Inf,
+             colour=NA, fill="grey95") +
+    ## Asia
+    annotate("rect",
+             xmin=as.Date("2024-02-07"), 
+             xmax=max(oneRowPerConcert$Date[oneRowPerConcert$Date <
+                                            as.Date("2024-05-09")]),
+             ymin=-Inf, ymax=Inf,
+             colour=NA, fill="grey95") +
+    ## Europe
+    annotate("rect",
+             xmin=as.Date("2024-05-09"), 
+             xmax=max(oneRowPerConcert$Date[oneRowPerConcert$Date <
+                                            as.Date("2024-10-18")]),
+             ymin=-Inf, ymax=Inf,
+             colour=NA, fill="grey95") +    
+    ## North America
+    annotate("rect",
+             xmin=as.Date("2024-10-18"), xmax=max(oneRowPerConcert$Date),
+             ymin=-Inf, ymax=Inf,
+             colour=NA, fill="grey95") +
+    geom_text(aes(x=date, label=name), data=regions, colour="grey",
+              y=Inf, hjust=0, vjust=0, size=8, size.unit="pt", lineheight=.9) +
+    grid_panel(albumLabels, aes(x=date, label=name), data=albums) +
+    grid_panel(xLabels, aes(x=years, label=name),
+               data=data.frame(years=years, name=yearLabels)) +
+    ## Concerts
+    ## geom_point(aes(x = Date, y = DressName), shape=1) +
+    grid_panel(lines, aes(x=Date, y=DressName), data=oneRowPerConcert) +
+    grid_panel(bars, aes(y=DressName, count=n), data=outfits) +
+    ## grid_panel(images, aes(image=imgPath, y=DressName), data=outfits) +
+    geom_image(aes(image=imgPath, y=DressName), x=-Inf, size = 0.04,
+               data=outfits) +
+    scale_colour_identity() +
+    scale_x_date(limits=range(years), expand=expansion(c(.02, .05)),
+                 breaks=years, labels=yearLabels) +
+    scale_y_discrete(labels=function(breaks) paste(breaks, "  ")) +
+    coord_cartesian(clip="off") +
+    ylab(NULL) +
+    xlab(NULL) +
+    theme(plot.margin=margin(20, 80, 30, 10),
+          panel.background=element_blank(),
+          panel.border=element_blank(),
+          panel.grid.major.x=element_blank(),
+          panel.grid.major.y=element_line(colour="grey", linewidth=.1),
+          axis.ticks.x=element_blank(),
+          axis.ticks.y=element_blank(),
+          axis.text.x=element_text(hjust=0, colour=NA))
+
+print(gg)
+```
+
+## Suggested solution @sec-multiactivty
+
+```{r, eval = FALSE}
+url <- "https://gist.github.com/cmjt/72f3941533a6bdad0701928cc2924b90"
+devtools::source_gist(url, quiet = TRUE)
+lm <- lm(y ~ group, data = data)
+pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE)
+comparisons(pm)
+pm <- predictmeans::predictmeans(lm, modelterm = "group", pairwise = TRUE, plot = FALSE, level = 0.05/choose(4,2), adj = "bonferroni")
+comparisons(pm)
+m <- length(levels(data$group))
+C <- m * (m - 1) / 2
+alpha <- 0.05
+t_fisher <- qt(1 - alpha/2, df)
+t_bonf <- qt(1 - (alpha/C)/2, df)
+t_tukey <- qtukey(1 - alpha, m, df)/sqrt(2)
+```
