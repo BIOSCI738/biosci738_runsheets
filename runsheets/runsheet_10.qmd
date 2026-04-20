@@ -3,23 +3,21 @@
 
 ## Rough Agenda
 
- + **2:05–2:30 pm** Guess the distribution (@sec-distribution)
- + **2:30–2:45 pm** Writing out (G)LM(m)s (@sec-writingglm)
- + **2.45–3:45 pm** Assessing model fit (@sec-glmfit)
-   - Class discussion 
-   - Group activities
+### **2:05 pm - 3:55 pm** 
 
- + **3.45–3.55 pm** Q&A (@sec-peershare11)
-
+ + Guess the distribution (@sec-distribution)
+ + Writing out (G)LM(m)s (@sec-writingglm)
+ + Assessing model fit (@sec-glmfit)
 
 
 ## Guess the distribution {#sec-distribution}
 
-<!--Recall the chooks from @sec-distributions? Now, let's play a game.-->
 
-
-::: {.callout-note}
+:::{.callout-warning icon=false}
 ## When prompted name the distribution and answer with [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)
+
+<b> Please only write the name of the distribution, e.g. "Exponential", but be prepared to justify your choice.</b><br>
+<b> You might want to look back at Monday's notes especially the [cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/distributions.png).</b><br>
 
 <ol>
 
@@ -149,10 +147,7 @@ summary(glmmTMB_mod)
 
 **Writing out the fitted model**
 
-
-```{r, echo = FALSE}
-equatiomatic::extract_eq(glmer4_mod, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
-```
+In your groups, work out and write down the model equation for this model. 
 
 
 
@@ -167,9 +162,7 @@ equatiomatic::extract_eq(glmer4_mod, use_coefs = TRUE, wrap = TRUE, terms_per_li
 
 ### Case studies
 
-::: {.callout-note}
-## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/model-diagnostics.html); however, here we go beyond what is covered there!  
-:::
+We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/model-diagnostics.html); however, here we go beyond what is covered there!
 
 **Bat Abundance** (subset of data from @bats)
 
@@ -254,20 +247,13 @@ DHARMa::testDispersion(simulation)
 
 
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below. After each model is fitted assess its fit using the code/functions provided. Discuss each model's suitability. Discuss the similarity and/or differences to previous models.
-:::
+## Activities
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Some homework
-
-By the end of the week, to the `tasks` folder of your GitHub repository add and push a **fully reproducible** `R` script named `week_06.r` that performs the two  *TODO* tasks at the end of the lobster example. Remember to **read in any required data** & update your `README.md` accordingly!
-:::
+In your groups work through the examples below. After each model is fitted assess its fit using the code/functions provided. Discuss each model's suitability. Discuss the similarity and/or differences to previous models.
 
 **Lobster Survival** (data from @lobster)
 
 Before working through the code below recap [this section of the course guide](https://biosci738.github.io/BIOSCI738/logistic-regression.html#an-example-lobsters).
-
 
 
 ```{r, eval = FALSE}
@@ -351,12 +337,7 @@ gglm::gglm(mod)
 mod <- glm(Count ~ Species, data = birds, family = "poisson")
 mod |> summary()
 ## Pearson residuals
-resids_pearson <- residuals(mod, type = "pearson")
-resids <- data.frame(Fitted = mod$fitted.values,
-                     "Pearson_residuals" = resids_pearson)
-ggplot(resids, aes(x = Fitted, y = Pearson_residuals)) +
-    geom_point() + geom_hline(yintercept = 0) + theme_linedraw() + 
-  ylab("Pearson residuals")
+## TODO: Create a plot of the Pearson residuals, save it as plot_poisson
 
 ## Deviance
 D <- mod$deviance
@@ -408,6 +389,8 @@ simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 10000)
 DHARMa::testDispersion(simulation)
 ```
 
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Some homework
 
-
-## Q&A {#sec-peershare11}
+By the end of the week, to the `tasks` folder of your GitHub repository add and push a **fully reproducible** `R` script named `week_06.r` that performs the two  *TODO* tasks at the end of the lobster example and the one task for Model 2 of the birds example. Remember to **read in any required data** & update your `README.md` accordingly!
+:::
