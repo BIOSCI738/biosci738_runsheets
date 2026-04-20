@@ -439,3 +439,7 @@ t_fisher <- qt(1 - alpha/2, df)
 t_bonf <- qt(1 - (alpha/C)/2, df)
 t_tukey <- qtukey(1 - alpha, m, df)/sqrt(2)
 ```
+
+## Suggested reasoning for *Modelling Charlotte’s chickens*
+
+![](runsheets/img/chooks.png)
