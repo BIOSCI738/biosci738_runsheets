@@ -1,429 +1,255 @@
-# April 28th
+# Week 07 - Lecture 01^[Much of the content was taken/modified, with permission, from [Dr Liza Bolton's 2025 materials](https://lizabolton.github.io/2025-biosci738-ethics/#/title-slide)]
+
+## Rough Agenda
+
+### **2:05 pm - 3:45 pm** 
+
+(*We will finish a little early to accommodate those with IOAs, note there will be no office hour after this lecture for the same reason*)
+
+ + Ethical data practices
+   + Your ethical experiences and codes of conduct (@sec-coc2liza)
+ + Case studies (@sec-caseliza)
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
- + Write out GLMMs
- + Assess GLMM fit
+ + Recognise that while individuals (and societies) may have different opinions and approaches to ethics, we can use codes of conduct to support our professional ethical decision making.
+ + Describe some of the values, principles, responsibilities, and standards from the Royal Society Te Apārangi Code of Professional Standards and Ethics in Science, Technology, and the Humanities.
+ + Describe how ethical decisions can appear throughout different stages of study and research in biology.
++ Identify issues and provide advice for ethical decision-making in biology contexts.
 :::
-
-## Rough timeline
-
- + **09:05–09:30 am** Guess the distribution (@sec-distribution)
- + **09:30–09:55 am** Writing out (G)LM(m)s (@sec-writingglm)
- + **09:55–11:05 am** Break
- + **11:00–11:45 am** Assessing model fit (@sec-glmfit)
-   - Class discussion 
-   - Group activities
-
- + **11.45–11.55 am** Q&A and peer-share (@sec-peershare11)
-
-
-
-## Guess the distribution {#sec-distribution}
-
-Recall the chooks from @sec-distributions? Now, let's play a game.
-
-<center><p>SCAN ME or head to <a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
-<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
-
-::: {.callout-note}
-## When prompted *Quick Write* the distribution
-
-<ol>
-    <li><a href="https://en.wikipedia.org/wiki/Fast_%26_Furious" target="_blank">Dominic Toretto</a> counts how many cars pass by on a highway every 10 minutes while scouting for races.</li>
-
-  <li><a href="https://en.wikipedia.org/wiki/Squid_Game" target="_blank">Squid Game contestants</a> roll a die repeatedly, aiming to get a 6 to progress to the next level.</li>
-
-  <li><a href="https://en.wikipedia.org/wiki/Willy_Wonka_%26_the_Chocolate_Factory" target="_blank">Charlie Bucket</a> opens chocolate bars randomly to find golden tickets hidden among them.</li>
-
-   <li><a href="https://en.wikipedia.org/wiki/Stranger_Things" target="_blank">Dr. Owens</a> from Stranger Things tests a portal detection device 10 times on known rift locations.</li>
-
-  <li><a href="https://en.wikipedia.org/wiki/The_Bachelor_(American_TV_series)" target="_blank">The Bachelor contestants</a> have their heights recorded to design custom suits.</li>
-
-   <li><a href="https://en.wikipedia.org/wiki/Moana_(2016_film)" target="_blank">Moana</a> measures the time intervals between large waves hitting a reef to plan canoe launches.</li>
-
-   <li><a href="https://en.wikipedia.org/wiki/The_Witcher_(TV_series)" target="_blank">Geralt of Rivia</a> wants to understand how long his battle potions last under different combat conditions.</li>
-
-  <li><a href="https://en.wikipedia.org/wiki/Toy_Story" target="_blank">Buzz Lightyear</a> needs to estimate the total number of Buzz Lightyear toys manufactured, to do so he uses the serial numbers on a few toys he finds.</li>
-  </ol>
-
-*[NOTE: Scenarios were created with the assistance of ChatGPT (OpenAI, 2025).]*
-
-:::
-
-
-## Writing out (G)LM(m)s {#sec-writingglm}
-
-### Linear Models (LMs)
-
-Using the the well modelled [course guide rats](https://biosci738.github.io/BIOSCI738/module-3.html) as an example!
-
-**`R` code**
-
-```{r, message = FALSE, warning = FALSE}
-base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
-rats <- readr::read_csv(paste(base_url, "crd_rats_data.csv", sep = ""))
-rats$Surgery <- as.factor(rats$Surgery)
-rats_lm <- lm(logAUC ~ Surgery, data = rats)
-summary(rats_lm)$coef
-```
-
-**Writing out the fitted model**
-
-```{r, echo = FALSE}
-equatiomatic::extract_eq(rats_lm, use_coefs = TRUE, wrap = TRUE)
-```
-
-
-### Linear Mixed Models (LMMs)
-
-Again, using the the well modelled [course guide rats](https://biosci738.github.io/BIOSCI738/module-3.html) as an example!
-
-**`R` code**
-
-```{r, message = FALSE, warning = FALSE}
-rcbd <- readr::read_csv(paste(base_url, "rcbd.csv", sep = ""))
-rcbd$Run <- as.factor(rcbd$Run); rcbd$Surgery = as.factor(rcbd$Surgery)
-lmer4_mod <- lme4::lmer(logAUC8 ~ Surgery + (1|Run), data = rcbd)
-## fixed effect coefficients
-summary(lmer4_mod)$coef
-## random effect standard deviation
-summary(lmer4_mod)$varcor
-```
-
-**Writing out the fitted model**
-
-```{r, echo = FALSE}
-equatiomatic::extract_eq(lmer4_mod, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
-```
-
-### Generalised Linear Models (GLMs)
-
-Now using the [course guide mice](https://biosci738.github.io/BIOSCI738/module-4.html) as an example!
-
-**`R` code**
-
-```{r, message = FALSE, warning = FALSE}
-require(tidyverse)
-mice <- readr::read_csv(paste(base_url, "autism.csv", sep = ""))
-mice <- mice %>%
-  separate(., col = Treatment, into = c("Diagnosis", "Sex"))
-```
-
-*Additive model*
-
-```{r}
-glm_mod_add <- glm(MB_buried ~ Sex + Diagnosis , data = mice, family = poisson(link = "log"))
-summary(glm_mod_add)$coef
-```
-
-*Interaction model*
-
-```{r}
-glm_mod_int <- glm(MB_buried ~ Sex * Diagnosis , data = mice, family = poisson(link = "log"))
-summary(glm_mod_int)$coef
-```
-
-**Writing out the fitted model**
-
-*Additive model*
-
-```{r, echo = FALSE}
-equatiomatic::extract_eq(glm_mod_add, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
-```
-
-*Interaction model*
-
-```{r, echo = FALSE}
-equatiomatic::extract_eq(glm_mod_int, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
-```
-
-### Generalised Linear Mixed Models (GLMMs)
-
-Again, using the [course guide mice](https://biosci738.github.io/BIOSCI738/module-4.html) as an example!
-
-**`R` code**
-
-```{r, message = FALSE, warning = FALSE}
-glmer4_mod <- lme4::glmer(MB_buried ~ Sex * Diagnosis + (1|Donor), data = mice, family = poisson(link = "log"))
-## fixed effect coefficients
-summary(glmer4_mod)$coef
-## random effect standard deviation
-summary(glmer4_mod)$varcor
-## Same model using glmmTMB
-glmmTMB_mod <- glmmTMB::glmmTMB(MB_buried ~ Sex * Diagnosis + (1|Donor), data = mice, family = poisson(link = "log"))
-summary(glmmTMB_mod)
-```
-
-**Writing out the fitted model**
-
-
-```{r, echo = FALSE}
-equatiomatic::extract_eq(glmer4_mod, use_coefs = TRUE, wrap = TRUE, terms_per_line = 3)
-```
-
-
-
-## Assessing model fit {#sec-glmfit}
-
-
-**Slides**
-
-<p align="center">
-<iframe src="slides/07-01_glm-model-diagnostics.pdf" height="400" width="700" title="Generalised Linear Model Diagnostics"></iframe>
-</p>
-<p align="center">
-[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15191581?module_item_id=2596043)
-</p>
-
-### Case studies
-
-::: {.callout-note}
-## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/model-diagnostics.html); however, here we go beyond what is covered there!  
-:::
-
-**Bat Abundance** (subset of data from @bats)
-
-```{r, eval = FALSE}
-library(tidyverse)
-bats <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
-## Plot
-ggplot(bats, aes(x = TotalCount, fill = SpeciesID)) + geom_histogram(alpha = 0.4, position = "identity")
-## summarise
-bats %>%
-    group_by(SpeciesID) %>%
-    summarise(mean_roosts = mean(TotalCount))
-## question, difference between number of roosts for each species?
-## So let's fit a Linear Model
-mod <- lm(TotalCount ~ SpeciesID, data = bats)
-mod |> summary()
-## Distribution of residuals
-hist(residuals(mod), xlab = "Model residuals")
-abline(v = 0, lwd = 4, lty = 2)
-## Other residual plots
-gglm::gglm(mod)
-## Poisson model
-gmod <- glm(TotalCount ~ SpeciesID, data = bats, family = "poisson")
-gmod |> summary()
-## quantile residual Q-Q plot
-quantile_residuals <- statmod::qresiduals(gmod)
-qqnorm(!is.infinite(quantile_residuals))
-abline(0,1)
-## Pearson residuals, recall that under a poisson model the variance increases with
-## the mean, so the raw resids should have a spread that increases with fitted vals
-## but a Pearson's residual are resids/sqrt(var) so if model is "correct"
-## then the Peasron residuals should have constant spread...
-resids_pearson <- residuals(gmod, type = "pearson")
-resids <- data.frame(Fitted = gmod$fitted.values,
-                     "Pearson_residuals" = resids_pearson)
-ggplot(resids, aes(x = Fitted, y = Pearson_residuals)) +
-    geom_point() + geom_hline(yintercept = 0) + theme_linedraw() + ylab("Pearson residuals")
-## Deviance
-D <- gmod$deviance
-D
-## extract the residual degrees of freedom (n-k)
-df <- gmod$df.residual
-df
-1 - pchisq(D, df)
-## but are the chi-squared assumptions met?
-## dispersion plot (by simulation!!)
-## dispersion = residual deviance / degrees of freedom
-## expected value is 1, when larger than 1 Neg binomial more appropriate
-observed_dispersion <-  gmod$deviance/df
-nreps <- 1000
-dispersion <- numeric(nreps)
-for(i in 1:nreps){
-    ## gererate nobvs poisson rvs using fitted mean
-    tmp <- rpois(nrow(bats), lambda = fitted(gmod))
-    tmp_mod <- glm(tmp ~ bats$SpeciesID, family = "poisson")
-    df_tmp <- tmp_mod$df.residual
-    dispersion[i] <- tmp_mod$deviance/df_tmp
-}
-ggplot(data.frame(dispersion = dispersion), aes(x = dispersion)) +
-    geom_histogram()
-
-## dispersion plot (by simulation)
-## from the DHARMa package
-simulation <- DHARMa::simulateResiduals(fittedModel = gmod, n = nreps, refit = TRUE)
-DHARMa::testDispersion(simulation)
-####################
-## negative binomial
-nbmod <- MASS::glm.nb(TotalCount ~ SpeciesID, data = bats)
-nbmod |> summary()
-## slopes not very different from the Poisson model
-## quantile residual Q-Q plot
-quantile_residuals <- statmod::qresiduals(nbmod)
-qqnorm(quantile_residuals)
-abline(0,1) ## PHEW
-## dispersion plot (by simulation)
-## from the DHARMa package
-simulation <- DHARMa::simulateResiduals(fittedModel = nbmod, n = nreps, refit = TRUE)
-DHARMa::testDispersion(simulation)
-
-```
 
 
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below. After each model is fitted assess its fit using the code/functions provided. Discuss each model's suitability. Discuss the similarity and/or differences to previous models.
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> You hate your friend’s new haircut...
+
+![*Google (2025) Gemini AI generated image from prompt: Create a lifelike image of 21-year-old person with a really terrible broccoli haircut. Truly disastrous, please. The hair should be green.*](runsheets/img/haircut.jpeg)
+
+If they ask you what you think, what do you say? **Tell us via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)**
+
 :::
 
-**Lobster Survival** (data from @lobster)
+## Ethical data practicies
 
-Before working through the code below recap [this section of the course guide](https://biosci738.github.io/BIOSCI738/logistic-regression.html#an-example-lobsters).
+**Why be ethical?**
 
-```{r, eval = FALSE}
-library(tidyverse)
-data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/lobster.csv")
-#############
-## Model 1 ##
-#############
-glm_mod_bern <- glm(survived ~ size, family = "binomial", data = data)
-summary(glm_mod_bern)
-qresids <- statmod::qresiduals(glm_mod_bern)
-qqnorm(qresids)
-abline(0, 1)
-ggplot(data, aes(x = size, y = survived)) + 
-  geom_point(alpha = .5) +
-  stat_smooth(method="glm", se = FALSE, method.args = list(family=binomial), col = "#782c26") + 
-  xlab("Carapace length (mm)") +
-  ylab("Juvenile lobster survival") + ggtitle("Fitted logistic regression model") +
-    theme_classic()
-## Deviance
-D <- glm_mod_bern$deviance
-D
-## extract the residual degrees of freedom (n-k)
-df <- glm_mod_bern$df.residual
-df
-1 - pchisq(D, df)
-### BUT are my Chi squared assumptions met?
+ > You want to do the ‘right’ thing
+ 
+ > You / your organisation want to avoid negative professional consequences and reputational risks (have positive ones)
+ 
+ > You / your organisation wants to avoid legal risks and comply with regulation
+ 
+### Codes of conduct {#sec-coc2liza}
 
-#############
-## Model 2 ##
-#############
-grouped <- data %>%
-  group_by(size) %>%
-  summarise(y = sum(survived), n = length(survived), p = mean(survived))
-grouped
-grouped %>%
-  ggplot(., aes(x = size, y = p)) +
-  geom_point() + xlab("Carapace length (mm)") +
-  ylab("Proportion survived") + ggtitle("Survival rates of juvenile lobsters") +
-    theme_classic()
-glm_mod_binom <- glm(cbind(y, n - y) ~ size, family = "binomial", data = grouped)
-summary(glm_mod_binom)
-ggplot(grouped, aes(x = size, y = p)) + 
-  geom_point(alpha = .5) +
-  stat_smooth(method = "glm", se = FALSE,
-              method.args = list(family=binomial), 
-              col = "#782c26") + 
-  xlab("Carapace length (mm)") +
-  ylab("Proportion survived") + ggtitle("Fitted logistic regression model") +
-  theme_classic()
-## Deviance
-D <- glm_mod_binom$deviance
-D
-## extract the residual degrees of freedom (n-k)
-df <- glm_mod_binom$df.residual
-df
-1 - pchisq(D, df)
-```
+Recall, when you developed a Code of Conduct for this course (i.e., @sec-coc)? You should have also seen the [Waipapa Taumata Rau | University of Auckland Code of Conduct](https://www.auckland.ac.nz/en/about-us/about-the-university/statements-codes/code-of-conduct.html) that applies to you as a student here.
 
-**Bird Abundance** (data from @birds)
+> The purpose of this Code is to develop and maintain a standard of behaviour that supports and enables the University’s commitment to being a safe, inclusive, equitable and respectful community; both in-person and online.
+
+::: {.callout-note }
+## The Royal Society Te Apārangi
+For people working in research and academia there are usually professional societies that have developed codes of conduct and ethical standards. [The Royal Society Te Apārangi](https://www.royalsociety.org.nz/) is a long established and well respected not-for-profit organisation in Aotearoa New Zealand and their Code of Conduct.
+:::
+
+**Activity: Group discussion, codes of conduct**
+
+In your groups discuss the following.
+
+1. What experiences have you had with ethical decisions as a student and/or early career researcher and/or employee? 
+
+2. Read over the [Royal Society Te Apārangi](https://www.royalsociety.org.nz/assets/Uploads/Code-Overview-A3-web.pdf) Code of Professional Standards and Ethics in Science, Technology, and the Humanities. Describe a possible workflow for biological research. Come up with possible ethical decisions for each stage.
 
 
-> We investigated taxonomic and functional beta diversity of bird communities inhabiting Mediterranean olive groves subject to either intensive or low-intensity management of the ground cover and located in landscapes with different degrees of complexity.
+### Ethical (statistical) data practices
+
+(Remember @sec-prog_practice)
+
+**Reproducibility, transparency, open data**
+
+ 1. Making data and code available (freely online, or *upon application to the author*)
+    +  Tools like GitHub or platforms like the [Open Science Framework (OSF)](https://www.cos.io/products/osf) are popular
+ 2. Approaching you code writing in reproducible ways
+ 3. Making it possible for others to replicate your methods and analyses
+ 
+**Indigenous data sovereignty** 
+
+[Module 1](https://biosci738.github.io/BIOSCI738/module-1.html) in your coursebook includes notes about data sovereignty, especially principles around Indigenous Data Sovereignty. However, some advice and concepts that are commonly promoted in open data and transparency movements are directly counter to sovereignty over data. 
+
+**As a researcher it is your responsibility to consider what the relevance and appropriate balance of these principles is for the given research situation.**
 
 
-```{r, eval = FALSE, message = FALSE}
-require(tidyverse)
-require(glmmTMB)
-url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bird_abundance.csv"
-birds <- read_delim(url) %>%
-  pivot_longer(., c(-OliveFarm, -Management, -Complexity), names_to = "Species", values_to = "Count")
-## subset for simplicity
-birds <- subset(birds, birds$Species %in% c("Anthus_pratensis", "Corvus_corax", "Passer_montanus"))
-#############
-## Model 1 ##
-#############
-mod <- lm(Count ~ Species, data = birds)
-mod |> summary()
-## Residual plots
-gglm::gglm(mod)
-#############
-## Model 2 ##
-#############
-mod <- glm(Count ~ Species, data = birds, family = "poisson")
-mod |> summary()
-## Pearson's residuls
-resids_pearson <- residuals(mod, type = "pearson")
-resids <- data.frame(Fitted = mod$fitted.values,
-                     "Pearson_residuals" = resids_pearson)
-ggplot(resids, aes(x = Fitted, y = Pearson_residuals)) +
-    geom_point() + geom_hline(yintercept = 0) + theme_linedraw() + 
-  ylab("Pearson residuals")
-## quantile residual Q-Q plot
-quantile_residuals <- statmod::qresiduals(mod)
-qqnorm(!is.infinite(quantile_residuals))
-## Deviance
-D <- mod$deviance
-df <- mod$df.residual
-1 - pchisq(D, df)
-## dispersion plot (by simulation)
-## from the DHARMa package
-simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000, refit = TRUE)
-DHARMa::testDispersion(simulation)
-#############
-## Model 3 ##
-#############
-mod <- glmmTMB(Count ~ Species + Management + Complexity + (1|OliveFarm), data = birds, 
-               family = "poisson")
-mod |> summary()
-## % variation explained
-predictmeans::R2_glmm(mod)
-## deviance ...
-D <- summary(mod)[["AICtab"]][4] |> as.numeric()
-df <- summary(mod)[["AICtab"]][5] |> as.numeric()
-1 - pchisq(D, df)
-## dispersion plot (by simulation)
-## from the DHARMa package
-simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000)
-DHARMa::testDispersion(simulation)
-#############
-## Model 4 ##
-#############
-mod <- glmmTMB(Count ~ Species +  Management + (1|OliveFarm/Complexity) , data = birds,
-               family = "poisson")
-mod |> summary()
-## % variation explained
-predictmeans::R2_glmm(mod)
-## dispersion plot (by simulation)
-## from the DHARMa package
-simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000)
-DHARMa::testDispersion(simulation)
-#############
-## Model 5 ##
-#############
-mod <- glmmTMB(Count ~ Species +  Management + (1|OliveFarm) , data = birds, 
-               family = "nbinom2")
-mod |> summary()
-## % variation explained
-predictmeans::R2_glmm(mod)
-## dispersion plot (by simulation)
-## from the DHARMa package
-simulation <- DHARMa::simulateResiduals(fittedModel = mod, n = 1000)
-DHARMa::testDispersion(simulation)
-```
+Here is a brief article on the subject I recommend reading
+[RNZ. (2024). Māori AI expert Dr Karaitiana Taiuru shares his favourite whakataukī.](https://www.rnz.co.nz/news/national/512062/maori-ai-expert-dr-karaitiana-taiuru-shares-his-favourite-whakatauki). Additionally, a video worth watching: [Data Democratisation Panel from the Science Communicators Association of New Zealand (2023)](https://www.youtube.com/embed/8cBOIyoISbY?si=Jxudp8MRIy60ObBZ)
+
+**Researcher degrees of freedom**
+
+  + Your decisions matter!
+  + You are already familiar with *degrees of freedom* from @sec-mods. This value tells us something about how many independent pieces of information go into our estimation of the parameter we’re interested in.
+ + However, *researcher degrees of freedom* are a way of discussing the flexibility and range of ways we might approach collecting and measuring data.
+
+See @researcherdf for more in-depth discussion.
+
+**Communication** 
+
+Doing the work is not enough — you need to make sure that communication to stakeholders about your work and results is done accurately and honestly.
+
+ + Appropriate data visualisations (we had a [whole lecture on data viz](https://biosci738.github.io/biosci738_runsheets/#week-04---lecture-02-guest-lecturer-paul-murrell)!)
+ + Use clear and plain language descriptions when appropriate
+ + Don’t leave things out
+ + Be honest about limitations of your work
+ + Reference appropriately
 
 
-## Q&A and peer-share {#sec-peershare11}
+**What you might have to do sometimes (the not fun stuff)**
 
-#### VOTE: **R** or **ME**
-<center><p><a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
-<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
+ + Blow the whistle
+     + Well run organisations will have ways to *whistle blow* and make complaints, as will some professional societies. In some (rare) cases, going to law enforcement or the media may be needed.
+  + Refuse funding from sources that could compromise your integrity.
+  + Stand up to people in authority, who you might respect or have looked up to.
+
 
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
-Go over an activity from the class again or discuss task 07...Feel free to ask Charlotte a question or two!
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Data ethics in the real world
+
+As **a group** choose one real-world scenario from [this collated list](https://deon.drivendata.org/examples/), which compiles *examples of times when tradeoffs were handled well, and times when things have gone wrong*.
+
+Discuss how you might employ or avoid the strategy detailed relative to your own work. For example, how might you ensure the your visualizations, summary statistics, and reports are designed to honestly represent the underlying data?
+
+
+In [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) **individually** summarise the conclusions you drew above. 
+:::
+
+
+
+## Case studies {#sec-caseliza}
+
+For each of the following case studies, discuss the situation and identify potential ethical issues. For some, you may need to run the associated code in `R`.
+
+### Case study 01
+
+![](runsheets/img/frog.jpg)
+
+Image attribution: Hochstetter's frog (Waitakere Ranges, Auckland). © Nick Harker (via https://www.reptiles.org.nz/)
+
+A mine has been accused of managing their tailings poorly, causing dangerous chemicals to enter the nearby swamp. Local councillors, S. Hrek and D. Onkey, have complained that it is bad for the Hochstetter's frog | Pangokereia living there. You have been hired by the mine to help them push back on these allegations.
+
+You are contracted to measure the weight of the frogs in the area, with the idea that if the frogs are unhealthy, their weight will be lower than was found in a previous survey of the area. That previous study found that the average weight of the Hochstetter's frogs in this location is 6.2 grams.
+
+While you are catching and measuring the live frogs, you notice that there are not many juvenile frogs ('froglets') despite it being the season when many should be maturing from tadpoles into adult frogs. As Hochstetter's frogs mature their colouring darkens and you notice that most of the frogs have quite dark colouring.
+
+You can run the code below to find the mean weight of the frogs you studied and perform a t-test.
+
+```{r, eval = F}
+## The weights of 30 frogs
+frog_weights <- c(5.6, 8.7, 6.1, 6.2, 5.1, 6.8, 6.8, 6.5, 7.0, 7.5, 6.3, 5.8, 6.3, 7.1, 6.9, 6.4, 8.3, 7.4, 7.6, 6.8, 7.3, 9.1, 8.1, 6.8, 6.1, 6.8, 6.9, 7.2, 7.2, 7.5)
+## Calculate the average weight in this sample
+mean(frog_weights)
+## One sample t-test
+t.test(frog_weights, mu = 6.5)
+```
+
+::: {.callout-note}
+## Look up R documentation
+You can run `?t.test` in your R console to see the documentation for the basic t-test used above.
+:::
+
+
+A mine executive is very relieved by your results and interprets them as indicating that the frogs are doing very well as they are even larger and healthier than they were before.
+
+**As a group**
+   
+   1. Write the null and alternative hypothesis for this test in context.
+   2. Identify some possible issues with this interpretation based on limitations of your data collection. Write a short explanation for the mine executive about how these issues could affect the interpretation of your result.
+
+
+### Case study 02
+
+![](runsheets/img/white-kiwi.png)
+
+Image attribution: Getty images via https://www.theguardian.com/world/2020/dec/28/mankura-the-rare-white-kiwi-dies-after-surgery-in-new-zealand
+
+You have been hired to work with a local iwi to collect data on the locations and habits of a rare white kiwi bird with a distinctive call. Data is collected across an array of microphones and is used to create a location heat map for where this kiwi spends time. 
+
+The iwi are kaitiaki (caretakers) of the area where this kiwi lives. In addition to wanting to learn more about the kiwi, they are worried about increasing attempts from tourists and others to get pictures of this rare bird when people post on social media about locations it has been seen. Lots of people looking for the kiwi and trying to touch it or take photos risks disturbing and distressing the animal, which could severely hurt its health and that of other kiwi in the area.
+
+You finish up the work and your clients are very happy with it, especially complimentary about the data visualisation showing the common locations the kiwi visits by longitude and latitude. 
+
+You are preparing an update to your CV to apply for a job, and you notice that transperancy and open data practices are key values of the research institute you are applying to. You write a blog post for your website outlining your findings from the kiwi research, clearly explaining the data collection processes, analytical choices, and limitations. You create a public GitHub repository that provides all the code and data to create the location heat maps.
+
+You're about to press publish so you can link to it in your application, but a little voice in your head stops you...
+
+**As a group** discuss if it is *right* to publish this? Make some arguments about potential risks and principles to consider.
+
+### Case study 03
+
+![](runsheets/img/tussock.jpg)
+
+Image attribution: Te Ara https://teara.govt.nz/en/grasslands
+
+Concerns have been raised that an off-roading adventure course has caused vegetation loss and increased the risk of wind erosion due to exposed soil. The area where the course has been developed is a large, flat tussock grassland in the South Island. The grassland is fairly similar throughout, and has not been disturbed other than the dirt track for the off-road vehicles to travel on — this track area is not included in the coverage measures, but estimates are taken next to it.
+
+High resolution drone photography of the area has been used to estimate vegetation coverage both close to the course and further away in the undisturbed grassland. To gather the data, 100 meter lines parallel to the course, spaced every 5 meters, are drawn on the aerial imagery. Five one meter square areas are randomly chosen along each line and the vegetation coverage estimated using an appropriate machine learning tool.
+
+**As a group** 
+
+ 1. Run the following code to load the data and view the visualisation provided in a report about the impact of the road on the local vegetation. 
+
+ 2. Write down (bullet points are fine) about some of the specific choices made when presenting this data.
+ 
+ 3. Create your own version of this visualisation. Aim to answer the question about whether the adventure course appears to have had an impact on the vegetation coverage in this grassland area.
+
+
+
+
+```{r, eval=F}
+# You need the library tidyverse installed to run this code
+library(tidyverse)
+
+veg_cov <- tibble(
+  dist_from_track = c(
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
+    10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15,
+    20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25,
+    30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35,
+    40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45,
+    50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 55, 55, 55, 55, 55, 55, 55, 55, 55, 55,
+    60, 60, 60, 60, 60, 60, 60, 60, 60, 60, 65, 65, 65, 65, 65, 65, 65, 65, 65, 65,
+    70, 70, 70, 70, 70, 70, 70, 70, 70, 70, 75, 75, 75, 75, 75, 75, 75, 75, 75, 75,
+    80, 80, 80, 80, 80, 80, 80, 80, 80, 80, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85,
+    90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95,
+    100, 100, 100, 100, 100, 100, 100, 100, 100, 100
+  ),
+  coverage = c(
+    27.9, 22.5, 27, 21.8, 29.6, 29.2, 21, 21.7, 29.9, 28.5, 26.7, 29.4, 20.6, 26.2, 21.7, 20.4, 25.3, 22.8, 25, 26.3,
+    20.1, 26.1, 27.8, 29.2, 22.9, 27.9, 25.7, 27.8, 27.1, 26.7, 29.3, 25.1, 27.5, 28.4, 28.7, 21.9, 22.2, 26.5, 23.4, 25.1,
+    26.5, 29.7, 25.1, 20.6, 21.5, 26.4, 21, 27.7, 24.1, 28.7, 27.7, 26.5, 26.3, 28.3, 21.3, 28.8, 22.4, 26.5, 22.3, 20.7,
+    21.3, 56.9, 33.7, 57.5, 40.4, 25.3, 52.8, 56.9, 58, 42.3, 41, 41.4, 58.7, 41.1, 41.3, 44.8, 56.9, 29.1, 57.1, 57.2,
+    40.9, 59.6, 22.6, 54.5, 39.2, 41.4, 36.6, 29.1, 59.3, 46.2, 43.2, 25.6, 47.9, 49.9, 58.1, 25.2, 46, 48.3, 24, 22.8,
+    31.2, 49.4, 58.5, 52.6, 36.7, 38.2, 34.5, 21.8, 48.8, 55.2, 75.3, 51.7, 64.7, 70.4, 55.5, 59.1, 74.5, 77.4, 76.3, 76.5,
+    59.7, 59.4, 74.7, 50.2, 50.5, 51.1, 51.4, 79.3, 78.8, 71.2, 73.6, 71, 59.4, 66.4, 79.2, 65.9, 60.5, 78.8, 51.7, 57.2,
+    67.5, 55.3, 53.8, 65.1, 70.6, 73.1, 51.2, 75.3, 70.8, 72.3, 66, 56.6, 67.3, 66.3, 73.9, 56.5, 57.5, 75.1, 68.5, 59,
+    76, 60.6, 69.2, 75.8, 61.8, 60.8, 62.7, 66, 65.8, 60.1, 55.8, 74.1, 60.8, 79, 53.8, 73.7, 56.2, 57.3, 77.1, 53.6,
+    61.9, 71.9, 71.8, 51.8, 68.7, 66.4, 65.6, 77.5, 76.1, 66.4, 58.7, 71.2, 78.1, 51.1, 64.3, 51.4, 65.3, 50.5, 50.5, 61.8, 56.3, 64.9, 50, 61.3, 64.8, 57.7, 60.8, 62.6,65.4,69))
+
+plot <- ggplot(veg_cov, aes(x = dist_from_track, y = coverage)) +
+  geom_point() +
+  xlim(0, 25) +
+  ylim(0, 30) +
+  geom_smooth(method = "lm", formula = 'y ~ x', col="darkgreen") +
+  labs(x = "Distance from road (m)", y = "Coverage (%)",
+       title = "Vegetation coverage near to adventure course similar to surrounding area") +
+  theme_minimal()
+
+suppressWarnings(print(plot))
+    
+```
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Ethics Checklist
+
+By the end of the week, to the `tasks` folder of your GitHub repository add and push a `.txt` file named `week_07.txt` that contains a completed [Ethics checklist](https://deon.drivendata.org/#data-science-ethics-checklist) for one of the imagined case studies above. Note that not all points will necessarily apply, however you should be explicit about this and briefly outline why this is the case.
+
+DRIVENDATA do also provide an example of a rendered [![](https://img.shields.io/badge/ethics%20checklist-deon-brightgreen.svg?style=popout-square)](http://deon.drivendata.org/) in a `.txt` format
+[here](https://github.com/drivendataorg/deon/blob/main/examples/ethics.txt).
 :::
