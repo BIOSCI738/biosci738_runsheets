@@ -14,7 +14,7 @@
 
 
 :::{.callout-warning icon=false}
-## When prompted name the distribution and answer with [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> When prompted name the distribution and answer with [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)
 
 <b> Please only write the name of the distribution, e.g. "Exponential", but be prepared to justify your choice.</b><br>
 <b> You might want to look back at Monday's notes especially the [cheatsheet](https://raw.githubusercontent.com/BIOSCI738/cowstats/main/img/distributions.png).</b><br>
