@@ -372,6 +372,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#suggested-solution-sec-multiactivty" id="toc-suggested-solution-sec-multiactivty" class="nav-link" data-scroll-target="#suggested-solution-sec-multiactivty">Suggested solution Section&nbsp;9.3.1.1</a></li>
   <li><a href="#suggested-reasoning-for-modelling-charlottes-chickens" id="toc-suggested-reasoning-for-modelling-charlottes-chickens" class="nav-link" data-scroll-target="#suggested-reasoning-for-modelling-charlottes-chickens">Suggested reasoning for <em>Modelling Charlotte’s chickens</em></a></li>
+  <li><a href="#suggested-solution-for-sec-distribution" id="toc-suggested-solution-for-sec-distribution" class="nav-link" data-scroll-target="#suggested-solution-for-sec-distribution">Suggested solution for Section&nbsp;12.2</a></li>
+  <li><a href="#suggested-solution-for-sec-writingglm" id="toc-suggested-solution-for-sec-writingglm" class="nav-link" data-scroll-target="#suggested-solution-for-sec-writingglm">Suggested solution for Section&nbsp;12.3</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -5189,6 +5191,34 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <section id="suggested-reasoning-for-modelling-charlottes-chickens" class="level2">
 <h2 class="anchored" data-anchor-id="suggested-reasoning-for-modelling-charlottes-chickens">Suggested reasoning for <em>Modelling Charlotte’s chickens</em></h2>
 <p><img src="runsheets/img/chooks.png" class="img-fluid"></p>
+</section>
+<section id="suggested-solution-for-sec-distribution" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-solution-for-sec-distribution">Suggested solution for <a href="#sec-distribution" class="quarto-xref">Section&nbsp;12.2</a></h2>
+<ol type="1">
+<li><p>A count with no fixed upper limit. You’d first try a <strong>Poisson</strong> distribution, and if there’s too much variance then a Negative Binomial.</p></li>
+<li><p>Here we have a fixed number of trials (enrolled students) and each student either does or does not attend, therefore <strong>Binomial</strong>.</p></li>
+<li><p>A continuous variable. If the distribution is symmetric we’d use a <strong>Normal</strong> distribution. Log-Normal is better if the distributed is skewed, and Gamma if it is strictly positive.</p></li>
+<li><p>This is a strictly positive duration of an event. The <strong>Gamma</strong> distribution is most commonly used in this context, but a Log-Normal could be appropriate.</p></li>
+<li><p>A count with no fixed upper limit- see Question 1</p></li>
+<li><p>There’s a fixed number of eggs laid and thus a upper limit. Therefore <strong>Binomial</strong>.</p></li>
+<li><p>This is a simple yes/no variable. Only a <strong>Bernoulli</strong> distribution is appropriate.</p></li>
+<li><p>A strictly positive duration- see Question 4</p></li>
+</ol>
+</section>
+<section id="suggested-solution-for-sec-writingglm" class="level2">
+<h2 class="anchored" data-anchor-id="suggested-solution-for-sec-writingglm">Suggested solution for <a href="#sec-writingglm" class="quarto-xref">Section&nbsp;12.3</a></h2>
+<p>The equation for the GLMM can be written as:</p>
+<p><span class="math display">\[ \text{MB}_i \sim \text{Poisson}(\lambda_i)\]</span> <span class="math display">\[log(\lambda_i) = I_j -0.04 \text{SexMale}_i - 0.18 \text{DiagnosisNT}_i - 0.39 \text{SexMale}_i \text{DiagnosisNT}_i\]</span></p>
+<p><span class="math display">\[I_j \sim N(2.17, 0.12^2)\]</span> Alternatively the second and third lines can be written as:<br>
+</p>
+<p><span class="math display">\[log(\lambda_i) = 2.17 -0.04 \text{SexMale}_i - 0.18 \text{DiagnosisNT}_i - 0.39 \text{SexMale}_i \text{DiagnosisNT}_i + \epsilon_j\]</span> <span class="math display">\[\epsilon_j \sim N(0,0.12^2)\]</span></p>
+<p>In both sets of equations <span class="math inline">\(j\)</span> refers to a donor and <span class="math inline">\(i\)</span> an individual mouse. <span class="math inline">\(I_j\)</span> is the intercept for donor <span class="math inline">\(j\)</span>.<br>
+</p>
+<p><span class="math inline">\(\text{MB}_i\)</span> is the number of marbles buried by mouse <span class="math inline">\(i\)</span>, which is the response variable.<br>
+</p>
+<p><span class="math inline">\(\text{SexMale}_i\)</span> is 1 when mouse <span class="math inline">\(i\)</span> is Male and 0 otherwise.<br>
+</p>
+<p><span class="math inline">\(\text{DiagnosisNT}_i\)</span> is 1 when the donor for mouse <span class="math inline">\(i\)</span> has diagnosis NT (Neurotypical) and 0 otherwise.</p>
 
 </section>
 </section>

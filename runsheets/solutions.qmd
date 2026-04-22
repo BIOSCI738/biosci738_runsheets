@@ -443,6 +443,7 @@ t_tukey <- qtukey(1 - alpha, m, df)/sqrt(2)
 ## Suggested reasoning for *Modelling Charlotte’s chickens*
 
 ![](runsheets/img/chooks.png)
+
 ## Suggested solution for @sec-distribution
 
 1. A count with no fixed upper limit. You'd first try a **Poisson** distribution, and if there's too much variance then a Negative Binomial.
