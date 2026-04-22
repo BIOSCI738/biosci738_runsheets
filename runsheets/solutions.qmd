@@ -443,3 +443,42 @@ t_tukey <- qtukey(1 - alpha, m, df)/sqrt(2)
 ## Suggested reasoning for *Modelling Charlotte’s chickens*
 
 ![](runsheets/img/chooks.png)
+## Suggested solution for @sec-distribution
+
+1. A count with no fixed upper limit. You'd first try a **Poisson** distribution, and if there's too much variance then a Negative Binomial.
+
+2. Here we have a fixed number of trials (enrolled students) and each student either does or does not attend, therefore **Binomial**.
+
+3. A continuous variable. If the distribution is symmetric we'd use a **Normal** distribution. Log-Normal is better if the distributed is skewed, and Gamma if it is strictly positive. 
+
+4. This is a strictly positive duration of an event. The **Gamma** distribution is most commonly used in this context, but a Log-Normal could be appropriate. 
+
+5. A count with no fixed upper limit- see Question 1
+
+6. There's a fixed number of eggs laid and thus a upper limit. Therefore **Binomial**. 
+
+7. This is a simple yes/no variable. Only a **Bernoulli** distribution is appropriate. 
+
+8. A strictly positive duration- see Question 4
+
+## Suggested solution for @sec-writingglm
+
+The equation for the GLMM can be written as:
+
+$$ \text{MB}_i \sim \text{Poisson}(\lambda_i)$$
+$$log(\lambda_i) = I_j -0.04 \text{SexMale}_i - 0.18 \text{DiagnosisNT}_i - 0.39 \text{SexMale}_i \text{DiagnosisNT}_i$$
+
+$$I_j \sim N(2.17, 0.12^2)$$
+Alternatively the second and third lines can be written as:\
+
+$$log(\lambda_i) = 2.17 -0.04 \text{SexMale}_i - 0.18 \text{DiagnosisNT}_i - 0.39 \text{SexMale}_i \text{DiagnosisNT}_i + \epsilon_j$$
+$$\epsilon_j \sim N(0,0.12^2)$$
+
+
+In both sets of equations $j$ refers to a donor and $i$ an individual mouse. $I_j$ is the intercept for donor $j$.\
+
+$\text{MB}_i$ is the number of marbles buried by mouse $i$, which is the response variable.\
+
+$\text{SexMale}_i$ is 1 when mouse $i$ is Male and 0 otherwise.\
+
+$\text{DiagnosisNT}_i$ is 1 when the donor for mouse $i$ has diagnosis NT (Neurotypical) and 0 otherwise.
