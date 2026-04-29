@@ -151,7 +151,7 @@ In your groups, work out and write down the model equation for this model.
 
 
 
-## Assessing model fit {#sec-glmfit}
+## Assessing model fit 
 
 
 **Slides**
@@ -247,7 +247,7 @@ DHARMa::testDispersion(simulation)
 
 
 
-## Activities
+## Activities {#sec-glmfit}
 
 In your groups work through the examples below. After each model is fitted assess its fit using the code/functions provided. Discuss each model's suitability. Discuss the similarity and/or differences to previous models.
 

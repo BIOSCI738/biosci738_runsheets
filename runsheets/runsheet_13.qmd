@@ -1,4 +1,12 @@
-# May 5th
+# Week 08 - Lecture 02
+
+
+## Rough Agenda
+
+### **2:05 pm - 3:55 pm** 
+
+  + Introduction to Bayesian Statistics (@sec-bayes)
+  + Casestudies from a Bayesian viewpoint (@sec-bayesestudies)
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
@@ -7,25 +15,13 @@
 
 :::
 
-## Rough timeline
-
- + **09:05–09:35 am** Introduction to Bayesian Statistics (@sec-bayes)
-   - Class discussion
-   - Class activities
-   
- + **09:55–11:05 am** Break
- + **11:05–11:30 am** Casestudies from a Bayesian viewpoint (@sec-bayesestudies)
- + **11.30–11.55 am** Recap (@sec-recap03)
-
 NOTE: here we only briefly discuss Bayesian approaches using examples, for more details see [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html) and for a much more rounded discussion I strongly recommend at least Chapter 1 of @bayesrules. This runsheet only skims the basics!
 
 ## Introduction to Bayesian Statistics {#sec-bayes}
 
-<center><p>SCAN ME or head to <a href="https://dub.sh/biosci738" target="_blank">dub.sh/biosci738</a></p>
-<img src="runsheets/img/qr_biosci738.svg" alt="dub.sh.biosci738"></center>
 
-:::{.callout-note}
-## When prompted *Quick Write*...
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> When prompted answer via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)...
 
 ...**a**, **b**, or **c** in answer to the following^[questions taken verbatim from @bayesrules] (*record your answers*)
 
@@ -62,9 +58,9 @@ NOTE: here we only briefly discuss Bayesian approaches using examples, for more 
 
 ### A Bayesian Beta-Binomial model
 
-::: {.callout-note}
-## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html); however, here we go beyond what is covered there!  
-:::
+
+We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html); however, here we go beyond what is covered there!  
+
 
 Let's take a look again at the **Lobster Survival** data from @lobster. The NULL model equivalent to the ungrouped model we considered in @sec-glmfit was
 
@@ -81,8 +77,14 @@ Here,  $y \sim \text{Binomial}(n = 1, p)$ is the **likelihood** (see @sec-mle) a
 
 **So, what do we know about $p$?** It is a probability and therefore bounded between 0 and 1. At this stage we have no further information (i.e., nothing about what value this probability might be).
 
+
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups suggest a candidate distribution for $p$.
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Suggest...
+
+...a candidate distribution for $p$  via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)
+
+This distribution is your **prior** distribution and reflect your beliefs about $p$.
+
 :::
 
 This distribution is your **prior** distribution and reflect your beliefs about $p$.
@@ -141,11 +143,9 @@ Assuming these prior distributions and the extra information
 
 ### Casestudy
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the section below (previously seen example from @sec-glmfit) and discuss the prompts and plots etc. 
+In your groups work through the section below (previously seen example from @sec-glmfit) and discuss the prompts and plots etc. 
 
 *NOTE that this is quite advanced and touches on the boundary of what is beyond the scope of this course, but you're all up to it!*
-:::
 
 #### A Gamma-Poisson Model (i.e., Negative Binomial)
 
@@ -253,21 +253,11 @@ pp_check(fit_species)
 ## Bonus activity (Advanced)
 Revisit one of the following case studies and fit an appropriate model in a Bayesian framework
 
- 1. **Fry Time** @sec-fry (data from @fries)
- 2. **Monkeys** case study 04 from @sec-casestudies (data from @monkey)
- 3. **Bird Abundance** third case study from @sec-glmfit (data from @birds)
+ 1. The **Monkeys** case study from @sec-casemonkey (data from @monkey)
+ 2. The **Bird Abundance** case study from @sec-glmfit (data from @birds)
+ 
 
 :::
 
-## Recap {#sec-recap03}
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i>
-1. Choose a topic from the content covered so far that you wish to revisit.
-2. Revisit the associated materials (e.g., code/courseguide section/cheatsheets/runsheets etc.).
-3. As a group design an activity/materials that explain/illustrate the topic/concept.
-
-**Be prepared to present your activity to me/the class** (all group members should expect to contribute).
-
-:::
 

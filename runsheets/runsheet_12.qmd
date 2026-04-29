@@ -1,65 +1,64 @@
-# May 2nd
+# Week 08 - Lecture 01
 
-## Rough timeline
+## Rough Agenda
 
-### **02:05 pm - 03:55 pm** 
+### **04:05 pm - 05:55 pm** 
 
- + **02:05–02.50 pm** Recap (@sec-recap02)
- + **02:50–03:00 pm** Break
- + **03:00–03:55 pm** Introduction to MLE (@sec-mle)
+ + Recap *model fit* (@sec-recap02)
+ + Introduction to MLE (@sec-mle)
     - Class discussion
     - Group activity
-
-## Recap {#sec-recap02}
-
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Revisit...
-
-...the following case studies. In each case, write out your chosen model and create a plot/calculate a measure that demonstrates the "fit" of that model.
-
- 1. **Fry Time** @sec-fry (data from @fries)
- 2. **Monkeys** case study 04 from @sec-casestudies (data from @monkey)
- 3. **Bird Abundance** third case study from @sec-glmfit (data from @birds)
- 
-**Be prepared to present your activity to me/the class** (all group members should expect to contribute).
+    
+    
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + Explain the role of maximum likelihood estimation
+ + Define a (log) likelihood function for a Poisson and Binomial model
+ + Write out an appropriate (log) likelihood function in `R` and optimise 
 
 :::
+
+## Recap *model fit* {#sec-recap02}
+
+
+ Revisit the following case studies. In each case, write out your chosen model and create a plot/calculate a measure that demonstrates the "fit" of that model.
+
+ 1. The **Monkeys** case study from @sec-casemonkey (data from @monkey)
+ 2. The **Bird Abundance** case study from @sec-glmfit (data from @birds)
+ 
+**Be prepared to present your activity to me/the class**!
+
 
 
 ## Maximum Likelihood Estimation (MLE) {#sec-mle}
 
 
 <p align="center">
-<iframe src="slides/mle_summary.html" height="600" width="800" title="Maximum Likelihood Estimation"></iframe>
+<iframe src="slides/mle_summary.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
 </p>
-
 
 
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups...
-"Read" and summarise the following cheatsheets.
+"Read" the following cheatsheets:
 
  1. [MLE (p)](https://github.com/BIOSCI738/cowstats/blob/main/img/mle_p.png?raw=true)
  2. [MLE ($\mu$ & $\sigma$)](https://github.com/BIOSCI738/cowstats/blob/main/img/mle_mu_sigma.png?raw=true)
 
+**Summarise each  via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)** 
+
 :::
 
-**Slides**
 
 <p align="center">
 <iframe src="slides/07-02_maximum-likelihood.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
 </p>
-<p align="center">
-[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15211515?module_item_id=2598102)
-</p>
+
 
 
 ### Case studies
 
-::: {.callout-note}
-## We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/maximum-likelihood-estimation.html).  
-:::
+We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/maximum-likelihood-estimation.html).  
 
 ```{r, eval =FALSE}
 require(tidyverse)
@@ -117,10 +116,9 @@ p2 <- data.frame(lam = lam, loglikelihood =  dpois(x = 54, lam, log = TRUE)) %>%
 patchwork::wrap_plots(p1, p2)
 ```
 
+### Activities
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups work through the examples below (both from @sec-glmfit) and discuss the prompts and plots etc.
-:::
+In your groups work through the examples below (both from @sec-glmfit) and discuss the prompts and plots etc. Be prepared to answer questions as I wander around the class.
 
 
 **Bat Abundance** (subset of data from @bats)

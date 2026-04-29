@@ -38,6 +38,18 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_11.qmd >}}
 
+<!--{{< include runsheets/runsheet_12.qmd >}}
+
+{{< include runsheets/runsheet_13.qmd >}}
+
+{{< include runsheets/runsheet_15.qmd >}}
+
+{{< include runsheets/runsheet_16.qmd >}}
+
+{{< include runsheets/runsheet_17.qmd >}}
+
+{{< include runsheets/runsheet_18.qmd >}}-->
+
 {{< include runsheets/runsheet_extras.qmd >}}
 
 {{< include runsheets/solutions.qmd >}}

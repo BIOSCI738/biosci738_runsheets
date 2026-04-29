@@ -76,7 +76,7 @@ predictmeans::permmodels(lmm) ## remember permutation tests, what are we using t
 
 ```
 
-#### Case study 02
+#### Case study 02 {#sec-casemonkey}
 
 Now, we're going to get a little more advanced and model some data from @monkey (data retrieved from @monkeydata). To do so we're following along (somewhat) with the steps summarised in @danblog. Revisiting @sec-randomeff may, again, be useful here.
 

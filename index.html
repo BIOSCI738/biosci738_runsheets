@@ -341,11 +341,11 @@ window.Quarto = {
   <li><a href="#generalised-linear-models-glms" id="toc-generalised-linear-models-glms" class="nav-link" data-scroll-target="#generalised-linear-models-glms">Generalised Linear Models (GLMs)</a></li>
   <li><a href="#generalised-linear-mixed-models-glmms" id="toc-generalised-linear-mixed-models-glmms" class="nav-link" data-scroll-target="#generalised-linear-mixed-models-glmms">Generalised Linear Mixed Models (GLMMs)</a></li>
   </ul></li>
-  <li><a href="#sec-glmfit" id="toc-sec-glmfit" class="nav-link" data-scroll-target="#sec-glmfit">Assessing model fit</a>
+  <li><a href="#assessing-model-fit" id="toc-assessing-model-fit" class="nav-link" data-scroll-target="#assessing-model-fit">Assessing model fit</a>
   <ul class="collapse">
   <li><a href="#case-studies-1" id="toc-case-studies-1" class="nav-link" data-scroll-target="#case-studies-1">Case studies</a></li>
   </ul></li>
-  <li><a href="#activities-1" id="toc-activities-1" class="nav-link" data-scroll-target="#activities-1">Activities</a></li>
+  <li><a href="#sec-glmfit" id="toc-sec-glmfit" class="nav-link" data-scroll-target="#sec-glmfit">Activities</a></li>
   </ul></li>
   <li><a href="#week-07---lecture-01" id="toc-week-07---lecture-01" class="nav-link" data-scroll-target="#week-07---lecture-01">Week 07 - Lecture 01</a>
   <ul class="collapse">
@@ -361,7 +361,7 @@ window.Quarto = {
   <li><a href="#sec-caseliza" id="toc-sec-caseliza" class="nav-link" data-scroll-target="#sec-caseliza">Case studies</a>
   <ul class="collapse">
   <li><a href="#case-study-01-1" id="toc-case-study-01-1" class="nav-link" data-scroll-target="#case-study-01-1">Case study 01</a></li>
-  <li><a href="#case-study-02-1" id="toc-case-study-02-1" class="nav-link" data-scroll-target="#case-study-02-1">Case study 02</a></li>
+  <li><a href="#case-study-02" id="toc-case-study-02" class="nav-link" data-scroll-target="#case-study-02">Case study 02</a></li>
   <li><a href="#case-study-03" id="toc-case-study-03" class="nav-link" data-scroll-target="#case-study-03">Case study 03</a></li>
   </ul></li>
   </ul></li>
@@ -373,7 +373,7 @@ window.Quarto = {
   <li><a href="#activities-for-mid-sem-break" id="toc-activities-for-mid-sem-break" class="nav-link" data-scroll-target="#activities-for-mid-sem-break">Activities for mid-sem break</a>
   <ul class="collapse">
   <li><a href="#case-study-01-2" id="toc-case-study-01-2" class="nav-link" data-scroll-target="#case-study-01-2">Case study 01</a></li>
-  <li><a href="#case-study-02-2" id="toc-case-study-02-2" class="nav-link" data-scroll-target="#case-study-02-2">Case study 02</a></li>
+  <li><a href="#case-study-02-1" id="toc-case-study-02-1" class="nav-link" data-scroll-target="#case-study-02-1">Case study 02</a></li>
   <li><a href="#discussion-activity" id="toc-discussion-activity" class="nav-link" data-scroll-target="#discussion-activity">Discussion Activity</a></li>
   </ul></li>
   </ul></li>
@@ -3533,7 +3533,7 @@ function checkKeywordAlien() {
 <span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>predictmeans<span class="sc">::</span><span class="fu">permmodels</span>(lmm) <span class="do">## remember permutation tests, what are we using them for here? Compare to a summary() output</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="case-study-02" class="level4">
+<section id="sec-casemonkey" class="level4">
 <h4 class="anchored">Case study 02</h4>
 <p>Now, we’re going to get a little more advanced and model some data from <span class="citation" data-cites="monkey">Bliss-Moreau and Baxter (<a href="#ref-monkey" role="doc-biblioref">2019</a>)</span> (data retrieved from <span class="citation" data-cites="monkeydata">Bliss-Moreau and Baxter (<a href="#ref-monkeydata" role="doc-biblioref">2020</a>)</span>). To do so we’re following along (somewhat) with the steps summarised in <span class="citation" data-cites="danblog">Dan (<a href="#ref-danblog" role="doc-biblioref">2022</a>)</span>. Revisiting <a href="#sec-randomeff" class="quarto-xref">Section&nbsp;11.2</a> may, again, be useful here.</p>
 <div class="cell">
@@ -4136,7 +4136,7 @@ function drop4() {
 <ul>
 <li>Guess the distribution (<a href="#sec-distribution" class="quarto-xref">Section&nbsp;12.2</a>)</li>
 <li>Writing out (G)LM(m)s (<a href="#sec-writingglm" class="quarto-xref">Section&nbsp;12.3</a>)</li>
-<li>Assessing model fit (<a href="#sec-glmfit" class="quarto-xref">Section&nbsp;12.4</a>)</li>
+<li>Assessing model fit (<a href="#sec-glmfit" class="quarto-xref">Section&nbsp;12.5</a>)</li>
 </ul>
 </section>
 </section>
@@ -4358,8 +4358,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>In your groups, work out and write down the model equation for this model.</p>
 </section>
 </section>
-<section id="sec-glmfit" class="level2">
-<h2 class="anchored" data-anchor-id="sec-glmfit">Assessing model fit</h2>
+<section id="assessing-model-fit" class="level2">
+<h2 class="anchored" data-anchor-id="assessing-model-fit">Assessing model fit</h2>
 <p><strong>Slides</strong></p>
 <p align="center">
 <iframe src="slides/GLM_Diagnostics.pdf" height="400" width="700" title="Generalised Linear Model Diagnostics">
@@ -4449,8 +4449,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </section>
 </section>
-<section id="activities-1" class="level2">
-<h2 class="anchored" data-anchor-id="activities-1">Activities</h2>
+<section id="sec-glmfit" class="level2">
+<h2 class="anchored" data-anchor-id="sec-glmfit">Activities</h2>
 <p>In your groups work through the examples below. After each model is fitted assess its fit using the code/functions provided. Discuss each model’s suitability. Discuss the similarity and/or differences to previous models.</p>
 <p><strong>Lobster Survival</strong> (data from <span class="citation" data-cites="lobster">Wilkinson et al. (<a href="#ref-lobster" role="doc-biblioref">2015</a>)</span>)</p>
 <p>Before working through the code below recap <a href="https://biosci738.github.io/BIOSCI738/logistic-regression.html#an-example-lobsters">this section of the course guide</a>.</p>
@@ -4679,7 +4679,7 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>For people working in research and academia there are usually professional societies that have developed codes of conduct and ethical standards. <a href="https://www.royalsociety.org.nz/">The Royal Society Te Apārangi</a> is a long established and well respected not-for-profit organisation in Aotearoa New Zealand and their Code of Conduct.</p>
+<p>For people working in research and academia there are usually professional societies that have developed codes of conduct and ethical standards (e.g., <a href="https://www.royalsociety.org.nz/">The Royal Society Te Apārangi</a>).</p>
 </div>
 </div>
 <p><strong>Activity: Group discussion, codes of conduct</strong></p>
@@ -4786,8 +4786,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <li>Identify some possible issues with this interpretation based on limitations of your data collection. Write a short explanation for the mine executive about how these issues could affect the interpretation of your result.</li>
 </ol>
 </section>
-<section id="case-study-02-1" class="level3">
-<h3 class="anchored" data-anchor-id="case-study-02-1">Case study 02</h3>
+<section id="case-study-02" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-02">Case study 02</h3>
 <p><img src="runsheets/img/white-kiwi.png" class="img-fluid"></p>
 <p>Image attribution: Getty images via https://www.theguardian.com/world/2020/dec/28/mankura-the-rare-white-kiwi-dies-after-surgery-in-new-zealand</p>
 <p>You have been hired to work with a local iwi to collect data on the locations and habits of a rare white kiwi bird with a distinctive call. Data is collected across an array of microphones and is used to create a location heat map for where this kiwi spends time.</p>
@@ -4864,6 +4864,1052 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>DRIVENDATA do also provide an example of a rendered <a href="http://deon.drivendata.org/"><img src="https://img.shields.io/badge/ethics%20checklist-deon-brightgreen.svg?style=popout-square" class="img-fluid"></a> in a <code>.txt</code> format <a href="https://github.com/drivendataorg/deon/blob/main/examples/ethics.txt">here</a>.</p>
 </div>
 </div>
+<!--{{< include runsheets/runsheet_12.qmd >}}
+
+# Week 08 - Lecture 02
+
+
+## Rough Agenda
+
+### **2:05 pm - 3:55 pm** 
+
+  + Introduction to Bayesian Statistics (@sec-bayes)
+  + Casestudies from a Bayesian viewpoint (@sec-bayesestudies)
+
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + Distinguish frequentist and Bayesian approaches to data analysis
+ + Choose appropriate prior distributions for a Bayesian model
+
+:::
+
+NOTE: here we only briefly discuss Bayesian approaches using examples, for more details see [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html) and for a much more rounded discussion I strongly recommend at least Chapter 1 of @bayesrules. This runsheet only skims the basics!
+
+## Introduction to Bayesian Statistics {#sec-bayes}
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> When prompted answer via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)...
+
+...**a**, **b**, or **c** in answer to the following^[questions taken verbatim from @bayesrules] (*record your answers*)
+
+1. When flipping a fair coin, we say that “the probability of flipping Heads is 0.5.” How do you interpret this probability?
+    - a. If I flip this coin over and over, roughly 50% will be Heads.  
+    - b. Heads and Tails are equally plausible.  
+    - c. Both a and b make sense.  
+
+2. An election is coming up and a pollster claims that candidate A has a 0.9 probability of winning. How do you interpret this probability?
+    - a. If we observe the election over and over, candidate A will win roughly 90% of the time.  
+    - b. Candidate A is much more likely to win than to lose.  
+    - c. The pollster’s calculation is wrong. Candidate A will either win or lose, thus their probability of winning can only be 0 or 1.  
+
+3. Consider two claims.  
+    (1) Zuofu claims that he can predict the outcome of a coin flip. To test his claim, you flip a fair coin 10 times and he correctly predicts all 10.  
+    (2) Kavya claims that she can distinguish natural and artificial sweeteners. To test her claim, you give her 10 sweetener samples and she correctly identifies each.  
+    In light of these experiments, what do you conclude?  
+    - a. You’re more confident in Kavya’s claim than Zuofu’s claim.  
+    - b. The evidence supporting Zuofu’s claim is just as strong as the evidence supporting Kavya’s claim.  
+
+4. Suppose that during a recent doctor’s visit, you tested positive for a very rare disease. If you only get to ask the doctor one question, which would it be?  
+    - a. What’s the chance that I actually have the disease?  
+    - b. If in fact I don’t have the disease, what’s the chance that I would’ve gotten this positive test result?
+
+
+:::
+
+::: {.callout-tip}
+## The simplified distinction
+
+**Frequentist**: The parameter **is not** a random variable (i.e., is fixed and has one *true* value).
+**Bayesian**: The parameter **is** a random variable (i.e., comes from some probability distribution).
+:::
+
+### A Bayesian Beta-Binomial model
+
+
+We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html); however, here we go beyond what is covered there!  
+
+
+Let's take a look again at the **Lobster Survival** data from @lobster. The NULL model equivalent to the ungrouped model we considered in @sec-glmfit was
+
+
+::: {.cell}
+::: {.cell-output-display}
+$$
+\log\left[ \frac { P( \operatorname{survived} = \operatorname{1} ) }{ 1 - P( \operatorname{survived} = \operatorname{1} ) } \right] = \alpha
+$$
+
+:::
+:::
+
+
+In other words, let $y$ be either 1 or 0 depending on survival then $y \sim \text{Binomial}(n = 1, p)$ (i.e., $y \sim \text{Bernoulli}(p)$) where $p$ is the probability of survival.
+
+Here,  $y \sim \text{Binomial}(n = 1, p)$ is the **likelihood** (see @sec-mle) and $p$ is an **unknown parameter** we wish to estimate. Under a Bayesian framework we assume that $p$ is a random variable, with it's own distribution!
+
+**So, what do we know about $p$?** It is a probability and therefore bounded between 0 and 1. At this stage we have no further information (i.e., nothing about what value this probability might be).
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Suggest...
+
+...a candidate distribution for $p$  via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)
+
+This distribution is your **prior** distribution and reflect your beliefs about $p$.
+
+:::
+
+This distribution is your **prior** distribution and reflect your beliefs about $p$.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(bayesrules)
+## The data (i.e., likelihood)
+plot_binomial_likelihood(y = 79, n = 159)
+## What about a Beta prior on p
+plot_beta(10,3) ##??
+plot_beta(0.5,0.5) ## favours extremes (actually called a Jeffreys prior)
+plot_beta(1,1) ##?? (all equally likely)
+## The posterior with an uninformative prior
+plot_beta_binomial(alpha = 1, beta = 1, y = 79, n = 159)
+## What about an "extreme favouring" prior
+plot_beta_binomial(alpha = 0.5, beta = 0.5, y = 79, n = 159)
+## The data usurps the prior!! As it should
+## Inference
+summarize_beta_binomial(alpha = 1, beta = 1, y = 79, n = 159)
+## The estimate we're interested in is the posterior mean
+## How does this compare to our MLE approach?
+log_likelihood <- function(theta) dbinom(x = 79, size = 159, prob = theta, log = TRUE)
+optimise(log_likelihood, c(0,1), maximum = TRUE)
+```
+:::
+
+
+Read more about prior sensitivity (i.e., your choice of prior affecting results) in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html#prior-sensitivity). 
+
+What about frequentist approach vs Bayesian? 
+
+> Typically, Bayesian and frequentist estimates will always agree if there is sufficient data, so long as the likelihood is not explicitly ruled out by the prior.— Olivier Gimenez (@olivier)
+
+## Casestudies from a Bayesian viewpoint {#sec-bayesestudies}
+
+### Choosing a prior distribution
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups discuss/answer the sceanrios below.
+
+
+ 1. **Test Scores Under a New Teaching Method** A school is testing a new math teaching method. A sample of students is taught using the new method, and their standardized test scores are recorded. Assume test scores are normally distributed with known variance $\sigma^2 = 100$ (i.e., standard deviation = 10). We're interested in the average score $\mu$ under the new method as follows $y_i \sim \mathcal{N}(\mu, \sigma^2)$. What might be a suitable distribution to reflect the prior belief about the average score $\mu$.
+ 2. **Kiwi Call Monitoring** Wildlife biologists are studying nocturnal kiwi activity in a forest reserve. On several nights, researchers record the number of kiwi calls heard per hour from a fixed listening post. Let $y_i$ be the number of kiwi calls heard during hour $i$, modeled as $y_i \sim \text{Poisson}(\lambda)$. What might be a suitable distribution to reflect the prior belief about the average call rate $\lambda$. 
+
+Now, a statistician has come along and said that things will be a lot easier (ask Charlotte why if you're interested) and said that an appropriate prior for the average score (scenario 1) is $\mu \sim \mathcal{N}(\mu_0, \tau^2)$ and for the average call rate (scenario 2) is $\lambda \sim \text{Gamma}(\alpha, \beta)$. In addition, the principal of the school in scenario 1 believes students taught with the new method will average around 75 points, but the level of certainty varies depending on context. And Ecologists familiar with the region in scenario 2 suggest that the rate of kiwi calls typically ranges from 2 to 4 calls per hour. 
+
+Assuming these prior distributions and the extra information 
+  
+  a.Based on the prior knowledge, how might you choose values for the parameters of each prior distribution?
+  b. What prior reflects strong certainty about random variable?
+  c. What prior reflects strong uncertainty about random variable?
+
+
+*[NOTE: Scenarios were created with the assistance of ChatGPT (OpenAI, 2025).]*
+
+:::
+
+
+### Casestudy
+
+In your groups work through the section below (previously seen example from @sec-glmfit) and discuss the prompts and plots etc. 
+
+*NOTE that this is quite advanced and touches on the boundary of what is beyond the scope of this course, but you're all up to it!*
+
+#### A Gamma-Poisson Model (i.e., Negative Binomial)
+
+**Bat Abundance** (subset of data from @bats)
+
+In @sec-glmfit we fitted the following model in a frequentist framework
+
+$$
+\log ({ E( \operatorname{TotalCount} ) })  = \alpha + \beta_{1}(\operatorname{SpeciesID}_{\operatorname{Rhinolophus\ hipposideros}})
+$$
+
+where $Y = y$ was the nest count and $y \sim \text{NegBin}(\mu, \phi)$, with $\mu$ the expected count ($E( \operatorname{TotalCount} )$) and $\phi$ the dispersion parameter (i.e., how much variance exceeds the mean).
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(tidyverse)
+bats <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bats.csv")
+## frequentist approach
+nbmod <- MASS::glm.nb(TotalCount ~ SpeciesID, data = bats)
+nbmod |> summary() |> coef()
+```
+:::
+
+
+Just a recap, why did we choose a Negative Binomial model? Because the was a lot more variation than we'd expect under a Poisson model. We saw this in @sec-glmfit, but let's use simulation to *show* this again.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+## observed mean
+mean(bats$TotalCount) ## ~174
+## observed variance
+var(bats$TotalCount) ## a LOT higher
+## simulate from a Poisson with lambda = observed mean
+sim <- replicate(100, rpois(100, mean(bats$TotalCount))) ## quicker than a 'for loop'
+## wrangle and plot
+sim |> as.data.frame() %>% 
+  pivot_longer(., everything(), names_to = "column", values_to = "value") %>%
+  ggplot(aes(x = value, group = column)) +
+  geom_density(linewidth = 0.2, alpha = 0.1) +
+  geom_density(data = bats, aes(x = TotalCount), color = "purple", 
+               linewidth = 1, inherit.aes = FALSE) 
+  theme_minimal()
+## Clearly the observed (purple) doesn't match the assumed Poisson (all the black lines)
+```
+:::
+
+
+OK, back to Bayesian modelling. We have $y \sim \text{NegBin}(\mu, \phi)$. We have two unknown parameters $\mu$ and $\phi$. Let's first consider a NULL (i.e., intercept only) model $\log (\mu)  = \alpha$.
+
+We use the following priors
+
+   1. $\alpha \sim \text{N}(0,5)$ and
+   2. $\phi \sim \text{Exp}(1)$.
+   
+Do these seem appropriate?
+
+
+::: {.cell}
+
+```{.r .cell-code}
+plot_normal(0, 5)
+plot_gamma(1, 1) ## recall that exponential is a special case of Gamma with shape = 1 
+```
+:::
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(rstanarm)
+fit_null <- stan_glm(
+  TotalCount ~ 1,
+  family = neg_binomial_2(), ## Likelihood
+  data = bats,
+  prior = normal(0, 5),             ## Prior on log(mu) (i.e., alpha)
+  prior_aux = exponential(1),       ## Prior on phi (overdispersion)
+  chains = 4, iter = 2000, seed = 123
+)
+## coefficients
+print(fit_null, digits = 2)
+```
+:::
+
+
+
+Now, let's consider a model with the factor explanatory variable `SpeciesID`. Here $\log(\mu)  = \alpha + \beta_{1}(\operatorname{SpeciesID}_{\operatorname{Rhinolophus\ hipposideros}})$. So now we have three unknown parameters $\alpha$, $\beta_1$ and $\phi$.
+
+We use the following priors
+
+   1. $\alpha \sim \text{N}(0, 2.5)$, 
+   2. $\beta_1 \sim  \text{N}(0, 5)$, and
+   3. $\phi \sim \text{Exp}(1)$.
+   
+Fitting the model:
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+fit_species <- stan_glm(
+  TotalCount ~ SpeciesID,
+  family = neg_binomial_2(),
+  data = bats,
+  prior = normal(0, 2.5),           # Prior on coefficients (log scale)
+  prior_intercept = normal(0, 5),   # Prior on intercept
+  prior_aux = exponential(1),       # Prior on phi (overdispersion)
+  chains = 4, iter = 2000, seed = 123
+)
+## coefficients
+print(fit_species, digits = 2)
+## compare to
+nbmod |> summary() |> coef()
+```
+:::
+
+
+**Assessing model fit** the full details of this are beyond the scope of this course, but let's use a common sense check of *does our data look similar to the model*. Special Bayesian terminology for this might be a *posterior predictive check*, we can do this in one step using `pp_check()`:
+
+
+::: {.cell}
+
+```{.r .cell-code}
+pp_check(fit_species)
+```
+:::
+
+
+::: {.callout-note}
+## Bonus activity (Advanced)
+Revisit one of the following case studies and fit an appropriate model in a Bayesian framework
+
+ 1. The **Monkeys** case study from @sec-casemonkey (data from @monkey)
+ 2. The **Bird Abundance** case study from @sec-glmfit (data from @birds)
+ 
+
+:::
+
+
+
+
+
+# May 12th
+
+## Rough timeline
+
+ + **09:05–09:25 am** Multivariate Data Analysis (@sec-multivariate)
+   - Class discussion
+   - Class activities
+ + **09:25–09:55 am** PCA (@sec-pca) 
+ + **09:55–11:05 am** Break
+ + **11:05–11:50 am** Eigenfaces  (@sec-eigenfaces)  
+   
+
+
+## Introduction to Multivariate Data Analysis {#sec-multivariate}
+
+> An assignment was given to BIOSCI220 students in 2022 that asked them to create an `R` script that produced a plot. This was marked using a rubric-based marking scheme that had 5 sections I1, I2, I3, I4, and I5. Submissions were graded by three peers (prefix P) and three tutors (prefix T), the average across the three grades was taken to be the scores (T and P) summarised in the following table and plot. **What inference can you draw?**
+
+![](runsheets/img/table.png)
+
+## Principal Component Analysis (PCA) {#sec-pca}
+
+Compare the following two GIFs; **what is the main difference?**
+
+::: {layout-ncol=2}
+![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/lm.gif)
+
+![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/perp.gif)
+:::
+
+
+**Principal Component Analysis (PCA)** is a dimension reduction technique! In summary, we want to
+
+ 1. find important features in a dataset, and
+ 2. find the best low-dimensional representation of the variation in the multivariate dataset.
+ 
+The new variables we create with PCA are called Principal components (PCs)
+
+*Note that one problem with PCA is that the components are not scale invariant. So, we standardise (scale) by centering and convert variables into standard deviation units. See [this section of the course guide for more details](https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html).*
+
+Two things we're interested in:
+
+ + the **direction** of these PCs (otherwise called eigenvectors), which reflect the weight that each variable has on a particular PC.
+ + the **magnitude** of theses PCs (otherwise called eigenvalues), which represent the variance explained by each PC.
+
+
+We'll work through the code below together, it is that from [this section of the course guide for more details](https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html).
+
+
+::: {.cell}
+
+```{.r .cell-code}
+require(tidyverse)
+require(palmerpenguins)
+require(GGally)
+penguins %>%
+  dplyr::select(species, where(is.numeric)) %>% 
+  ggpairs(aes(color = species),
+        columns = c("flipper_length_mm", "body_mass_g", 
+                     "bill_length_mm", "bill_depth_mm")) 
+pca <- penguins %>% 
+  dplyr::select(where(is.numeric), -year) %>% ## year makes no sense here so we remove it and keep the other numeric variables
+  drop_na() %>% ## can't have NA values in any numeric
+  scale() %>% ## scale the variables
+  prcomp()
+## print out a summary
+summary(pca)
+## loadings 
+pca$rotation
+## PC1 vs PC2
+require(factoextra) ## install this package first
+fviz_pca_biplot(pca, geom = "point") +
+      geom_point (alpha = 0.2)
+## PC2 vs PC3
+fviz_pca_biplot(pca, axes = c(2,3),geom = "point") +
+      geom_point (alpha = 0.2)
+## how many are informative enough
+fviz_screeplot(pca)
+```
+:::
+
+
+Now, think back to @sec-multivariate and the BIOSCI220 data. What conclusions might you draw from the following plot of the loadings?
+
+![](runsheets/img/pca_loadings.png)
+
+## Eigenfaces {#sec-eigenfaces}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three..
+
+... work through the code below and discuss what each step is achieving, what do you conclude?
+
+:::
+
+
+::: {.cell}
+
+```{.r .cell-code}
+data_url <- "https://github.com/cmjt/statbiscuits/raw/master/swots/data/faces.RData"
+load(url(data_url))
+library(pixmap)
+names(faces)
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(faces)){
+    plot(faces[[i]])
+    legend("bottom", bty = "n", names(faces[i]))
+}
+## collapse the grey matrix
+face_data <- lapply(faces, function(x) c(x@grey))
+## each column is a face
+face_data <- do.call('cbind',face_data)
+colnames(face_data) <- names(faces)
+## have a look at the data matrix
+head(face_data)
+## center around mean
+mean <- apply(face_data, 1, mean)
+mean_face <- pixmapGrey(mean, 64, 64, bbox = c(0, 0, 64, 64))
+plot(mean_face)
+centered <- apply(face_data, 2, function(x) x - mean)
+## centered images
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(faces)){
+    plot(pixmapGrey(centered[,i], 64, 64, bbox = c(0, 0, 64, 64)))
+    legend("bottom", bty = "n", paste(names(faces[i]), "centered", sep = " "))
+}
+pca <- prcomp(centered)
+summary(pca)
+## for a nice biplot
+library(ggfortify)
+library(ggplot2)
+## using autoplot
+## PC1 vs PC2 by default
+autoplot(pca,loadings = TRUE,loadings.label = TRUE,alpha = 0.1)
+## play around with the arguments to see what they control
+autoplot(pca,x = 3, y = 4,loadings = TRUE,loadings.label = TRUE,alpha = 0.1)
+## eigen faces
+pcs <- pca$x
+eigenfaces <- apply(pcs,2, function(x)  pixmapGrey(x, 64, 64, bbox = c(0, 0, 64, 64)))
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(eigenfaces)){
+    plot(eigenfaces[[i]])
+    legend("bottom", bty = "n", paste("PC", i, sep = " "))
+}
+## Each face is a weighted (loadings) combintation of the eigen faces (PCs) above, 
+## but how many PCs (eigenfaces) do we keep?
+## screeplot
+screeplot(pca,type = "lines", pch = 20)
+## 2 PCs ?
+n_pc <- 2
+recon <- pixm <- list()
+for (i in 1:length(faces)){
+    recon[[i]] <- rowSums(pca$x[,1:n_pc]%*%pca$rotation[i,1:n_pc])
+    pixm[[i]] <- pixmapGrey(recon[[i]], 64, 64, bbox = c(0, 0, 64, 64))
+}
+
+## 2PC to reconstruct centered images
+par(mfrow = c(4,4), mar = c(0,0,0,0), oma = c(0,0,0,0))
+for(i in 1:length(pixm)){
+    plot(pixm[[i]])
+    legend("bottom", bty = "n", paste(names(faces[i]), "2 PC", sep = " "))
+}
+## Now add on the "mean face"
+## Is 2 enough? Try 5... Or 10 PCs
+```
+:::
+
+
+
+
+
+# May 16th
+
+## Rough timeline
+
+### **02:05 pm - 03:55 pm** 
+
+ + **02:05–02.30 pm** Miscellaneous activities (@sec-misc)
+ + **02:30–02.50 pm** Multidimensional Scaling (@sec-mds)
+ + **02:50–03:00 pm** Break
+ + **03:00–03:55 pm** Casestudies (@sec-mdscasestudies)
+   
+
+## Miscellaneous activities {#sec-misc}
+
+
+::: {.callout-note}
+## ICA
+
+Recall @sec-ica? Listen to hear the upshot. Any questions?
+
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Soon...
+
+Charlotte will soon share some PCA analysis carried out using the grades of this class to date! Obviously, I can't give you the data; however, based on the outputs shown let's discuss what inference PCA offers you!
+
+:::
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Fill out [THIS QUIZ](https://docs.google.com/forms/d/e/1FAIpQLSc2Lxlr4IwrooEoQ6SgWSdFuv_ULVL-XL0GBt6q3TO98FWyOQ/viewform?usp=sf_link)
+
+**Note I will be using this data live in class, you do not have to answer honestly if you are uncomfortable doing so, but please be consistent! Perhaps answer as if you were your favourite gaming character. I will be sharing the responses with the class.**
+
+*Questions stolen from [this page](https://community.typeform.com/build-your-typeform-7/using-opinion-scales-for-personality-quizzes-1929)*
+
+:::
+
+
+Using [these data (i.e., that collected above)](https://docs.google.com/spreadsheets/d/1Oiyz5WgMKCKpNw7zkHN8Vw0-zMx-5tU9yUOwtWUhUMs/edit?usp=sharing) we'll now work through the code below together.
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+data <- read.csv("person_quiz.csv") ## or equivalent
+require(tidyverse)
+## set up names and correlations
+names(data)[3:12] <- stringr::str_match(names(data)[3:12], "as.\\s*(.*?)\\s*..Do")[,2]
+## variables
+data %>% select(where(is.numeric)) |> cor() |> corrplot::corrplot(addrect = 2, order = 'hclust')
+## people
+people <- t(data[,3:12])
+colnames(people) <- data[,2]
+people |> scale() |> cor() |> corrplot::corrplot()
+## PCA
+pca <- data %>%
+    select(where(is.numeric)) |> scale() |> prcomp()
+factoextra::fviz_pca_biplot(pca, geom = "point")
+factoextra::fviz_screeplot(pca)
+pca$rotation %>%
+  as.data.frame() %>%
+  mutate(variables = rownames(.)) %>%
+  gather(PC,loading,PC1:PC3) %>%
+  ggplot(aes(abs(loading), variables, fill = loading > 0)) +
+  geom_col() +
+  facet_wrap(~PC, scales = "free_y") +
+    labs(x = "Absolute value of loading",y = NULL, fill = "Positive?")
+
+## Euclidean distance matrix using scaled data
+dists <- data %>%
+    select(where(is.numeric)) |> scale() |> dist(upper = TRUE, diag = TRUE)
+mds <- cmdscale(dists, eig = TRUE)
+mds
+plot(mds$points, cex = 0)
+text(mds$points, label = data[,2])
+library(ggfortify)
+autoplot(mds, label = TRUE, shape = FALSE,
+         label.size = 3)
+## Manhattan distance matrix using scaled data (typically used treating ordinal as interval)
+dists <- data %>%
+    select(where(is.numeric)) |> scale() |> dist(method = "manhattan", upper = TRUE, diag = TRUE)
+mds <- cmdscale(dists, eig = TRUE)
+mds
+plot(mds$points, cex = 0)
+text(mds$points, label = data[,2])
+## Minkowski distance matrix using scaled data (typically used)
+dists <- data %>%
+    select(where(is.numeric)) |> scale() |> dist(method = "minkowski", upper = TRUE, diag = TRUE)
+mds <- cmdscale(dists, eig = TRUE)
+mds
+data.frame(x = mds$points[,1], y = mds$points[,2]) %>%
+    ggplot(., aes(x = x, y = y, label = data[,2])) +
+    geom_point(size = 0.9) + coord_fixed()  +
+    ggtitle("BIOSCI738 Personality Map...") + theme_void() +
+   geom_segment(aes(x = -1, y = -4, xend = -1, yend = 4.5),
+                arrow = arrow(length = unit(0.5, "cm")), col = "grey") +
+    geom_segment(aes(x = -4, y = 0, xend = 2.5, yend = 0),
+                 arrow = arrow(length = unit(0.5, "cm")), col = "grey") +
+    geom_text(size = 3.5, vjust = -0.8)
+```
+:::
+
+
+## Multidimensional Scaling {#sec-mds}
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/08-01_mds.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15372455?module_item_id=2614789)
+</p>
+
+**Examples** from [this section of the courseguide](https://biosci738.github.io/BIOSCI738/multidimensional-scaling-mds.html)
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(tidyverse)
+library(factoextra) 
+library(vegan)
+library(ade4)
+library(ggfortify) 
+library(pheatmap)
+library(corrplot)
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+north_island <- read_csv(paste(base_url, "north_islands_distances.csv", sep = "")) %>% 
+  column_to_rownames(var = "...1")
+data("HairEyeColor", package = "datasets")
+ekman <- read_csv(paste(base_url, "ekman.csv", sep = ""))
+
+## North Island cities
+## Principal Coordinate Analysis (PCO): 
+## also known as classical multidimensional scaling (classical MDS). 
+head(north_island)
+pheatmap(north_island, cluster_rows = TRUE,
+         treeheight_row = 2, treeheight_col = 2,
+         fontsize_row = 12, fontsize_col = 12,
+         cellwidth = 26, cellheight = 26)
+mds <- cmdscale(north_island, eig = TRUE)
+
+## GOF based on eigenvalues (scree plot)
+plot(mds$eig, type="b",  ylab="Eigenvalue", xlab="Index", lwd=3)
+## GOF (proportion explained by first two PC)
+mds$GOF
+## plot
+autoplot(mds, label = TRUE, shape = FALSE) ## does this look right?
+## switch direction as distances are only relative
+## Note however that axes (principal coordinates) are rarely interpretable in
+## PCO
+data.frame(x = -mds$points[,2], y = mds$points[,1]) %>%
+   ggplot(., aes(x = x, y = y, label = rownames(mds$points))) +
+    geom_text() +coord_fixed()
+
+## HairEyeColor
+## Correspondence Analysis (CA) is a special case of metric 
+## MDS where the distance measure is the chi-square distance 
+## (again conceptually similar to PCA).
+HC.df <- as.data.frame.matrix(HairEyeColor[ , , 2])
+HC.df
+chisq.test(HC.df)
+coaHC <- dudi.coa(HC.df, scannf = FALSE, nf = 2)
+plot(coaHC$eig, type="b",  ylab="Eigenvalue", xlab="Index", lwd=3)
+fviz_ca_row(coaHC)
+fviz_ca_col(coaHC)
+fviz_ca_biplot(coaHC, repel = TRUE, col.col = "brown", col.row = "purple",
+               labelsize = 5, pointsize = 5) + ggtitle("") +
+  theme(legend.text = element_text(size = 25),
+        axis.title.x.bottom = element_text(size = 15),
+        axis.title.y.left = element_text(size = 15),
+        axis.text = element_text(size = 15)) +
+  ylim(c(-0.5,0.5))
+## Colour perception
+### Metric
+str(ekman)
+names(ekman) ## nanometer wavelengths
+mds <- cmdscale(ekman, eig = TRUE)
+## GOF based on eigenvalues (scree plot)
+plot(mds$eig, type="b",  ylab="Eigenvalue", xlab="Index", lwd=3)
+## GOF (proportion explained by first two PC)
+mds$GOF
+## Non-metric
+## 2 d
+mmds2d <- metaMDS(ekman, k = 2, autotransform = FALSE, trace = FALSE)
+stressplot(mmds2d, pch = 20, cex = 2)
+mmds2d$stress
+## 3 d
+mmds3d <- metaMDS(ekman, k = 3, autotransform = FALSE, trace = FALSE)
+stressplot(mmds3d, pch = 20, cex = 2)
+mmds3d$stress
+mmds2d$points %>% as.data.frame() %>%
+ggplot(., aes(x = MDS1, y = MDS2, label = colnames(ekman))) +
+geom_text()
+## rough wavelength conversion to hex code  based on
+## https://www.johndcook.com/wavelength_to_RGB.html
+## ekman wavelengths based from data(ekman,package = "smacof") attributes
+wavelengths <- c(434, 445, 465, 472, 490, 504, 537, 555, 584, 600, 610, 628, 651, 674)
+hex <- c("#2800ff", "#0028ff", "#0092ff", "#00b2ff", "#00ffff", "#00ff61", "#77ff00", "#b3ff00", "#fff200", "#ffbe00", "#ff9b00", "#ff5700", "#ff0000", "#ff0000")
+## 2D points
+mmds2d$points %>% as.data.frame() %>%
+ggplot(., aes(x = MDS1, y = MDS2, label = hex, col = hex)) +
+  scale_color_manual(values = hex) +
+geom_text()
+
+## BONUS TASK create a 3D plot (e.g., using plotly) showing the results from mmds3d
+```
+:::
+
+
+
+## Casestudies {#sec-mdscasestudies}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
+
+... work through each case study below discuss what each step is achieving, what do you conclude?
+
+:::
+
+
+**Bird Abundance** (recall the example from @sec-glmfit; data from @birds)
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+require(tidyverse)
+library(ggfortify)
+library(factoextra)
+require(vegan)
+birds <- read_delim("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/bird_abundance.csv")
+birds %>%
+    select(-c("OliveFarm", "Management", "Complexity")) %>%
+    cor() |>
+corrplot::corrplot(method = "ellipse", type = "lower")
+### PCA
+pca <-birds %>%
+    select(-c("OliveFarm", "Management", "Complexity")) %>%
+    scale() %>%
+    prcomp()
+summary(pca)
+fviz_screeplot(pca)
+fviz_pca_biplot(pca, geom = "point") +
+    geom_point (alpha = 0.2)
+pca$rotation
+pca$rotation %>%
+  as.data.frame() %>%
+  mutate(variables = rownames(.)) %>%
+  gather(PC,loading,PC1:PC4) %>%
+  ggplot(aes(abs(loading), variables, fill = loading > 0)) +
+  geom_col() +
+  facet_wrap(~PC, scales = "free_y") +
+    labs(x = "Absolute value of loading",y = NULL, fill = "Positive?")
+mmds <- birds %>%
+  select(-c("OliveFarm", "Management", "Complexity")) |> 
+  metaMDS( distance = "bray", trace = FALSE, autotransform = FALSE)
+## 'badness-of-fit indicator'
+## stress provides a measure of the degree to which the distance between 
+## samples in reduced (2) dimensional space matches the actual multivariate distance between 
+## the samples. rule of thumb that stress < 0.2 is ok
+mmds$stress
+## 'Shepard' plot (i.e., scatter plot of the  of the interpoint distances
+## vs. the original dissimilarities)
+## In brief, a narrow scatter around the fitted line indicates a good fit of the distances to the
+## dissimilarities
+stressplot(mmds, pch = 20, cex = 2)
+## do you think there's a  difference in species composition by farm/management
+mmds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = MDS1, y = MDS2, label = birds$OliveFarm)) +
+  geom_text()
+
+mmds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = MDS1, y = MDS2, label = birds$Management, col = birds$Management)) +
+  geom_text()
+```
+:::
+
+
+
+**DNA** data from @dna
+
+
+::: {.cell}
+
+```{.r .cell-code}
+require(tidyverse)
+library(ggfortify)
+library(factoextra)
+dna <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dna_forensic.csv")
+dna %>% group_by(Group) %>%
+    summarise(mean = mean(Age), sem = sd(Age)/sqrt(n()), mad = sum(abs((Age - mean(Age))))/n())
+dna %>%
+   select(-c("Group", "Sex", "NO")) %>%
+   cor() |>
+   corrplot::corrplot(method = "ellipse", type = "lower")
+
+## Replicating model as in the paper
+data <- dna
+names(data)
+names(data)[5] <- "x1"
+names(data)[8] <- "x2"
+names(data)[15] <- "x3"
+
+model <- lm(Age ~ x1 + x2 + x3, data = data)
+summary(model)
+gglm::gglm(model)
+
+### PCA
+pca <- dna %>%
+    select(-c("Group", "Sex", "NO", "Age")) %>%
+    prcomp()
+summary(pca)
+fviz_screeplot(pca)
+fviz_pca_biplot(pca, geom = "point") +
+    geom_point (alpha = 0.2)
+pca$rotation
+pca$rotation %>%
+  as.data.frame() %>%
+  mutate(variables = rownames(.)) %>%
+  gather(PC,loading,PC1:PC4) %>%
+  ggplot(aes(abs(loading), variables, fill = loading > 0)) +
+  geom_col() +
+  facet_wrap(~PC, scales = "free_y") +
+  labs(x = "Absolute value of loading",y = NULL, fill = "Positive?") 
+## MDS
+dna <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/dna_forensic.csv")
+mds <- dna %>%
+  select(-c("Group", "Sex", "NO", "Age")) |> scale() |>
+  dist(upper = TRUE, diag = TRUE, method = "manhattan") |> cmdscale( eig = TRUE)
+
+## GOF gives us the proportion of variance explained by the first 2 dimensions
+## think of PCA
+mds$GOF
+autoplot(mds, label = TRUE, shape = FALSE,
+         label.size = 3)
+## Age
+mds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = V1, y = V2, label = dna$Age, col = dna$Age)) +
+  geom_text()
+## Sex
+mds$points %>% as.data.frame() %>%
+  ggplot(., aes(x = V1, y = V2, label = dna$Sex, col = dna$Sex)) +
+  geom_text()
+```
+:::
+
+
+
+
+# May 19th
+
+## Rough timeline
+
+ + **09:05–09:25 am** *Grouping* multivariate data (@sec-clustering)
+ + **09:25–09:55 am** Divisive vs. Hierarchical (@sec-div) 
+ + **09:55–11:05 am** Break
+ + **11:05–11:45 am** Clusterducks  (@sec-clusterducks) 
+ + **11.45–11.55 pm** Q&A and Task 09 (@sec-peershare17)
+   
+
+
+## *Grouping* multivariate data {#sec-clustering}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Here are some celebrity stats.
+
+![](runsheets/img/celebs.png)
+
+In your groups sort the celebrities into clusters; outline your reasoning.
+
+
+:::
+
+We'll now work through the code below together.
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(tidyverse)
+library(GGally)
+library(factoextra)
+data <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/celebs.csv")
+data <- column_to_rownames(data, "name")
+data %>% ggpairs()
+## k-means clustering
+set.seed(4321)
+## two clusters
+k2 <- kmeans(data, centers = 2, nstart = 25)
+fviz_cluster(k2, data = data)
+## three clusters
+k3 <- kmeans(data, centers = 3, nstart = 25)
+fviz_cluster(k3, data = data)
+## choose clusters?
+fviz_nbclust(data, kmeans, method = "wss") +
+    labs(subtitle = "Elbow method")
+## dimensions?
+## What about PCA
+pca <- data %>% scale() %>% prcomp()
+summary(pca)
+fviz_pca_biplot(pca, geom = c("point", "text")) 
+```
+:::
+
+
+## Divisive vs. Hierarchical {#sec-div} 
+
+**Slides**
+
+<p align="center">
+<iframe src="slides/10-01_clustering.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
+</p>
+<p align="center">
+[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15377008?module_item_id=2615037)
+</p>
+
+**Ant example** from [this section of the courseguide](https://biosci738.github.io/BIOSCI738/clustering.html#ants)
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(tidyverse)
+library(factoextra)
+library(vegan)
+library(ape)
+base_url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/"
+ants <- read_csv(paste(base_url, "pitfalls.csv", sep = ""))
+pitfall.dist <- vegan::vegdist(ants[,5:8], method = "bray", binary = FALSE)
+factoextra::fviz_dist(pitfall.dist)
+## single (nearest neighbour) linkage
+single <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "single")
+plot(single, labels = ants$Site)
+## complete (maximium neighbour) linkage
+complete <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "complete")
+plot(complete, labels = ants$Site)
+## average linkage
+average <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "average")
+plot(average, labels = ants$Site)
+## ward's method
+ward <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) %>%
+  hclust(method = "ward.D")
+plot(ward, labels = ants$Site)
+## split clusters on based on your choice of position
+ants$clust4 <- cutree(ward, k = 4)
+pitfall.phylo <- as.phylo(ward)
+pitfall.phylo$tip.label <- ants$Site
+## Set colours 
+colours  <-  c("red","blue","green","black")
+plot(pitfall.phylo, cex = 0.6, tip.color = colours[ants$clust4], label.offset = 0.05)
+## Now there are other variables in the dataset, discuss what, if any,
+## might lead to the suggested "clusters" of sites.
+```
+:::
+
+
+## Clusterducks {#sec-clusterducks}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three..
+
+... work through the code below and discuss what each step is achieving, what do you conclude?
+
+*NOTE* [this worksheet may help you a little](https://statbiscuit.github.io/swots/clusterducks.html)
+
+:::
+
+
+
+::: {.cell}
+
+```{.r .cell-code}
+library(plotly)
+library(factoextra)
+data_url <- "https://github.com/cmjt/statbiscuits/raw/master/swots/data/duck_rgbs.RData"
+load(url(data_url))
+cluster_ducks <- data.frame(attire  = stringr::str_match(names(duck_rgbs),"(.*?)-")[,2],
+                            av_red = sapply(duck_rgbs, function(x) mean(c(x[,,1]))),
+                            av_green = sapply(duck_rgbs, function(x) mean(c(x[,,2]))),
+                            av_blue = sapply(duck_rgbs, function(x) mean(c(x[,,3]))))
+head(cluster_ducks)
+plot_ly(x = cluster_ducks$av_red, y = cluster_ducks$av_green, 
+        z = cluster_ducks$av_blue,
+        type = "scatter3d", mode = "markers", 
+        color = cluster_ducks$attire)
+prop.max <- function(x){
+    ## matrix of index of max RGB values of x
+    mat_max <- apply(x,c(1,2),which.max)
+    ## table of collapsed values
+    tab <- table(c(mat_max))
+    ## proportion of red
+    prop_red <- tab[1]/sum(tab)
+    prop_green <- tab[2]/sum(tab)
+    prop_blue <- tab[3]/sum(tab)
+    return(c(prop_red,prop_green,prop_blue))
+}
+## proportion of r, g, b in each image
+prop <- do.call('rbind',lapply(duck_rgbs,prop.max))
+cluster_ducks$prop_red <- prop[,1]
+cluster_ducks$prop_green <- prop[,2]
+cluster_ducks$prop_blue <- prop[,3]
+plot_ly(x = cluster_ducks$prop_red, y = cluster_ducks$prop_green, 
+        z = cluster_ducks$prop_blue,
+        type = "scatter3d", mode = "markers", 
+        color = cluster_ducks$attire)
+## K-means clustering
+## re format data. We deal only with the numerics info
+df <- cluster_ducks[,2:7]
+## specify rownames as image names
+rownames(df) <- names(duck_rgbs)
+distance <- get_dist(df)
+fviz_dist(distance, gradient = list(low = "#00AFBB", mid = "white", high = "#FC4E07"))
+## from two clusters to 6 (can we separate out the images?)
+set.seed(4321)
+k2 <- kmeans(df, centers = 2, nstart = 25)
+k3 <- kmeans(df, centers = 3, nstart = 25)
+k4 <- kmeans(df, centers = 4, nstart = 25)
+k5 <- kmeans(df, centers = 5, nstart = 25)
+k6 <- kmeans(df, centers = 6, nstart = 25)
+## total tithin-cluster SS
+barplot(c(k2$tot.withinss,k3$tot.withinss,k4$tot.withinss,
+          k5$tot.withinss,k6$tot.withinss),
+        names = paste(2:6," clusters"))
+## eyeballing it
+p2 <- fviz_cluster(k2, data = df)
+p3 <- fviz_cluster(k3, data = df)
+p4 <- fviz_cluster(k4, data = df)
+p5 <- fviz_cluster(k5, data = df)
+p6 <- fviz_cluster(k6, data = df)
+## for arranging plots
+library(patchwork) 
+p2/ p3/ p4/ p5/ p6
+# Elbow method
+fviz_nbclust(df, kmeans, method = "wss") +
+    labs(subtitle = "Elbow method")
+
+# Silhouette method
+fviz_nbclust(df, kmeans, method = "silhouette")+
+    labs(subtitle = "Silhouette method")
+# Gap statistic
+# recommended value: nboot= 500 for your analysis.
+set.seed(123)
+fviz_nbclust(df, kmeans, nstart = 25,  method = "gap_stat", nboot = 50)+
+  labs(subtitle = "Gap statistic method")
+```
+:::
+
+
+## Q&A and peer-share {#sec-peershare17}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
+Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!
+:::
+
+
+{{< include runsheets/runsheet_18.qmd >}}-->
 </section>
 </section>
 </section>
@@ -4978,8 +6024,8 @@ Figure 1 from <span class="citation" data-cites="fries">Abdul Hamid, Omar, and S
 <span id="cb77-28"><a href="#cb77-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Prompt 9: Produce a plot that compares the three methods above</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="case-study-02-2" class="level3">
-<h3 class="anchored" data-anchor-id="case-study-02-2">Case study 02</h3>
+<section id="case-study-02-1" class="level3">
+<h3 class="anchored" data-anchor-id="case-study-02-1">Case study 02</h3>
 <p>Revisiting <a href="#sec-mods" class="quarto-xref">Section&nbsp;9.2</a> may be useful here.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>

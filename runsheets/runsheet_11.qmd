@@ -47,7 +47,7 @@ Recall, when you developed a Code of Conduct for this course (i.e., @sec-coc)? Y
 
 ::: {.callout-note }
 ## The Royal Society Te Apārangi
-For people working in research and academia there are usually professional societies that have developed codes of conduct and ethical standards. [The Royal Society Te Apārangi](https://www.royalsociety.org.nz/) is a long established and well respected not-for-profit organisation in Aotearoa New Zealand and their Code of Conduct.
+For people working in research and academia there are usually professional societies that have developed codes of conduct and ethical standards (e.g., [The Royal Society Te Apārangi](https://www.royalsociety.org.nz/)).
 :::
 
 **Activity: Group discussion, codes of conduct**
