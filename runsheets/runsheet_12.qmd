@@ -55,14 +55,16 @@ and summarise each in your own words. **Be prepared to share your thoughts as I 
 
 - We assume a distribution for the data (e.g., Binomial with unknown parameter $p$, or Normal with unknown parameters $\mu$ & $\sigma$).  
 
-- The **likelihood** is the probability of the observed data given the parameters:
+- The **likelihood** is the  measures the *plausibility* of parameter values  given observed data
+
 $$
-L(\theta) = \prod_{i=1}^n f(y_i \mid \theta)
+L(\theta; y) = \prod_{i=1}^n f(\theta, y_i  )
 $$
 
-- Products of many probabilities get **very small** and are hard to work with, so we take logs:
+- Products are hard to work with, so we take logs
+
 $$
-\ell(\theta) = \log L(\theta) = \sum_{i=1}^n \log f(y_i \mid \theta)
+\ell(\theta; y) = \log L(\theta;y) = \sum_{i=1}^n \log f(\theta, y_i )
 $$
 
 - This turns a **product into a sum**, which is:
@@ -71,23 +73,20 @@ $$
 
 - Maximising likelihood is the same as maximising log-likelihood.
 
-- In practice, we often **minimise the negative log-likelihood**:
+- In practice, we often **minimise the negative log-likelihood** ($-\ell(\theta; y)$)
 
-$$
-\text{NLL}(\theta) = -\ell(\theta)
-$$
 
 - So the workflow is:
   1. Write down likelihood (product)  
   2. Take logs $\rightarrow$ sum  
   3. Multiply by $-1$  
-  4. Use `optim()` to **minimise NLL**
+  4. Use `optim()` to **minimise the negative log-likelihood**
 
 ---
 
 **Key idea:**
 $$
-\text{maximise } L(\theta) \;\equiv\; \text{maximise } \ell(\theta) \;\equiv\; \text{minimise } -\ell(\theta)
+\text{maximise } L(\theta;y) \;\equiv\; \text{maximise } \ell(\theta;y) \;\equiv\; \text{minimise } -\ell(\theta;y)
 $$
 :::
 

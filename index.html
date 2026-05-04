@@ -4950,12 +4950,18 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="callout-body-container callout-body">
 <ul>
 <li><p>We assume a distribution for the data (e.g., Binomial with unknown parameter <span class="math inline">\(p\)</span>, or Normal with unknown parameters <span class="math inline">\(\mu\)</span> &amp; <span class="math inline">\(\sigma\)</span>).</p></li>
-<li><p>The <strong>likelihood</strong> is the probability of the observed data given the parameters: <span class="math display">\[
-L(\theta) = \prod_{i=1}^n f(y_i \mid \theta)
-\]</span></p></li>
-<li><p>Products of many probabilities get <strong>very small</strong> and are hard to work with, so we take logs: <span class="math display">\[
-\ell(\theta) = \log L(\theta) = \sum_{i=1}^n \log f(y_i \mid \theta)
-\]</span></p></li>
+<li><p>The <strong>likelihood</strong> is the measures the <em>plausibility</em> of parameter values given observed data</p></li>
+</ul>
+<p><span class="math display">\[
+L(\theta; y) = \prod_{i=1}^n f(\theta, y_i  )
+\]</span></p>
+<ul>
+<li>Products are hard to work with, so we take logs</li>
+</ul>
+<p><span class="math display">\[
+\ell(\theta; y) = \log L(\theta;y) = \sum_{i=1}^n \log f(\theta, y_i )
+\]</span></p>
+<ul>
 <li><p>This turns a <strong>product into a sum</strong>, which is:</p>
 <ul>
 <li>numerically stable<br>
@@ -4963,13 +4969,8 @@ L(\theta) = \prod_{i=1}^n f(y_i \mid \theta)
 <li>easier to compute and optimise</li>
 </ul></li>
 <li><p>Maximising likelihood is the same as maximising log-likelihood.</p></li>
-<li><p>In practice, we often <strong>minimise the negative log-likelihood</strong>:</p></li>
-</ul>
-<p><span class="math display">\[
-\text{NLL}(\theta) = -\ell(\theta)
-\]</span></p>
-<ul>
-<li>So the workflow is:
+<li><p>In practice, we often <strong>minimise the negative log-likelihood</strong> (<span class="math inline">\(-\ell(\theta; y)\)</span>)</p></li>
+<li><p>So the workflow is:</p>
 <ol type="1">
 <li>Write down likelihood (product)<br>
 </li>
@@ -4977,12 +4978,12 @@ L(\theta) = \prod_{i=1}^n f(y_i \mid \theta)
 </li>
 <li>Multiply by <span class="math inline">\(-1\)</span><br>
 </li>
-<li>Use <code>optim()</code> to <strong>minimise NLL</strong></li>
+<li>Use <code>optim()</code> to <strong>minimise the negative log-likelihood</strong></li>
 </ol></li>
 </ul>
 <hr>
 <p><strong>Key idea:</strong> <span class="math display">\[
-\text{maximise } L(\theta) \;\equiv\; \text{maximise } \ell(\theta) \;\equiv\; \text{minimise } -\ell(\theta)
+\text{maximise } L(\theta;y) \;\equiv\; \text{maximise } \ell(\theta;y) \;\equiv\; \text{minimise } -\ell(\theta;y)
 \]</span></p>
 </div>
 </div>
