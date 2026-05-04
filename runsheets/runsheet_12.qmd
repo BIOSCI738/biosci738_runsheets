@@ -14,7 +14,7 @@
 ## By the end of today's seminar, you should be able to
  + Explain the role of maximum likelihood estimation
  + Define a (log) likelihood function for a Poisson and Binomial model
- + Write out an appropriate (log) likelihood function in `R` and optimise 
+ + Write out an appropriate (log) likelihood function in `R` for a Poisson and Binomial model and optimise accordingly
 
 :::
 
@@ -26,34 +26,99 @@
  1. The **Monkeys** case study from @sec-casemonkey (data from @monkey)
  2. The **Bird Abundance** case study from @sec-glmfit (data from @birds)
  
-**Be prepared to present your activity to me/the class**!
+**Be prepared to present your model & plots to me as I wander around class**!
 
 
 
 ## Maximum Likelihood Estimation (MLE) {#sec-mle}
 
 
-<p align="center">
-<iframe src="slides/mle_summary.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
-</p>
-
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups...
-"Read" the following cheatsheets:
+**Group Activity** "Read" the following cheatsheets
 
  1. [MLE (p)](https://github.com/BIOSCI738/cowstats/blob/main/img/mle_p.png?raw=true)
  2. [MLE ($\mu$ & $\sigma$)](https://github.com/BIOSCI738/cowstats/blob/main/img/mle_mu_sigma.png?raw=true)
 
-**Summarise each  via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)** 
+and summarise each in your own words. **Be prepared to share your thoughts as I wander around class**!
 
-:::
-
+<p align="center">
+<iframe src="slides/mle_summary.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
+</p>
 
 <p align="center">
 <iframe src="slides/07-02_maximum-likelihood.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
 </p>
 
+
+
+::: {.callout-note }
+## Maximum Likelihood Estimation (MLE) 
+
+- We assume a distribution for the data (e.g., Binomial with unknown parameter $p$, or Normal with unknown parameters $\mu$ & $\sigma$).  
+
+- The **likelihood** is the probability of the observed data given the parameters:
+$$
+L(\theta) = \prod_{i=1}^n f(y_i \mid \theta)
+$$
+
+- Products of many probabilities get **very small** and are hard to work with, so we take logs:
+$$
+\ell(\theta) = \log L(\theta) = \sum_{i=1}^n \log f(y_i \mid \theta)
+$$
+
+- This turns a **product into a sum**, which is:
+  - numerically stable  
+  - easier to compute and optimise  
+
+- Maximising likelihood is the same as maximising log-likelihood.
+
+- In practice, we often **minimise the negative log-likelihood**:
+
+$$
+\text{NLL}(\theta) = -\ell(\theta)
+$$
+
+- So the workflow is:
+  1. Write down likelihood (product)  
+  2. Take logs $\rightarrow$ sum  
+  3. Multiply by $-1$  
+  4. Use `optim()` to **minimise NLL**
+
+---
+
+**Key idea:**
+$$
+\text{maximise } L(\theta) \;\equiv\; \text{maximise } \ell(\theta) \;\equiv\; \text{minimise } -\ell(\theta)
+$$
+:::
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Quiz
+
+Given values `y <- c(5.2, 4.8, 6.1, 5.5, 5.9)` and assuming a Normal distribution function, what is the
+
+ a. value of the likelihood for parameter values `mu = 5.5` and `sd = 0.5`,
+ b. value of the log-likelihood for parameter values `mu = 5.5` and `sd = 0.5`,
+ c. value of the negative log-likelihood for parameter values `mu = 5.5` and `sd = 0.5`,
+ d. the estimated parameter values of $\hat{\mu}$ and $\hat{\sigma}$ (i.e., mean and standard deviation) obtained via `optim()`
+ e. maximum likelihood value (i.e., the value of the objective function from d.)
+ 
+Here are some `R` functions you might find useful: `dnorm()`, `prod()`, `sum()`!
+
+```{r, eval = FALSE, echo = FALSE}
+dnorm(y, mean = 5.5, sd = 0.5) |> prod()
+dnorm(y, mean = 5.5, sd = 0.5, log = TRUE) |> sum()
+nll <- function(mu, sigma) {
+  -sum(dnorm(y, mean = mu, sd = sigma, log = TRUE))
+}
+nll(5.5, 0.5)
+optim(c(5, 1), function(par) nll(par[1], par[2]))
+
+```
+
+
+When prompted answer via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) 
+:::
 
 
 ### Case studies
@@ -73,6 +138,23 @@ optimise(likelihood, c(0,1), maximum = TRUE)
 log_likelihood <- function(theta) dbinom(x = 79, size = 159, prob = theta, log = TRUE)
 optimise(log_likelihood, c(0,1), maximum = TRUE)
 
+###########
+## plot ###
+###########
+p <- seq(0, 1, length.out = 500)
+data.frame(p = p, Likelihood =  dbinom(x = 79, size = 159, p)) %>%
+  ggplot() +
+  geom_line(aes(x = p, y = Likelihood)) +
+  theme_linedraw() + xlab(expression(theta)) +
+  ylab(expression(paste("L(", ~theta, ";s)", sep = " "))) +
+  geom_vline(xintercept = 79/159,  col = "#782c26", size = 1.5) +
+  ggtitle("Likelihood for X ~ Binomial(59, 179)") +
+  annotate(geom = "text", x = 0.75, y = 0.045, label = "Maximum likelihood estimate", col = "#782c26") +
+  geom_hline(yintercept = dbinom(x = 79, size = 159, 0.49),
+             lty = 2, col = "#26733a", linewidth = 1.5 ) +
+  annotate(geom = "text", x = 0.1, y = 0.05, 
+           label = expression(paste(frac("d L","dx"), " = 0")), col = "#26733a")
+
 
 #############
 ## Poisson ##
@@ -83,6 +165,7 @@ optimise(likelihood, c(0,100), maximum = TRUE)
 
 log_likelihood <- function(lambda) dpois(x = 54, lambda, log = TRUE)
 optimise(log_likelihood, c(0,100), maximum = TRUE)
+
 
 ################################
 ## plots for Poisson example ###
