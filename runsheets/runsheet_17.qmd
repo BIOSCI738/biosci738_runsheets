@@ -1,12 +1,13 @@
-# May 19th
+# Week 10 - Lecture 01
 
-## Rough timeline
+## Rough Agenda
 
- + **09:05–09:25 am** *Grouping* multivariate data (@sec-clustering)
- + **09:25–09:55 am** Divisive vs. Hierarchical (@sec-div) 
- + **09:55–11:05 am** Break
- + **11:05–11:45 am** Clusterducks  (@sec-clusterducks) 
- + **11.45–11.55 pm** Q&A and Task 09 (@sec-peershare17)
+### **04:05 pm - 05:55 pm** 
+
+
+ + *Grouping* multivariate data (@sec-clustering)
+ + Divisive vs. Hierarchical (@sec-div) 
+ + Clusterducks  (@sec-clusterducks) 
    
 
 

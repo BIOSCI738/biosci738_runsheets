@@ -1,27 +1,46 @@
-# May 12th
+# Week 09 - Lecture 01
 
-## Rough timeline
+## Rough Agenda
 
- + **09:05–09:25 am** Multivariate Data Analysis (@sec-multivariate)
-   - Class discussion
-   - Class activities
- + **09:25–09:55 am** PCA (@sec-pca) 
- + **09:55–11:05 am** Break
- + **11:05–11:50 am** Eigenfaces  (@sec-eigenfaces)  
+### **04:05 pm - 05:55 pm** 
+
+ + Multivariate Data Analysis (@sec-multivariate)
+ + PCA (@sec-pca) 
+ + Eigenfaces  (@sec-eigenfaces)  
    
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + Perform principal component analysis in `R` 
+ + Interpret PCA outputs by examining loadings, variance explained, and correlation structures etc
+ + Draw and communicate inferences from PCA visualisations including identifying patterns, clusters, and variable contributions etc.
 
+:::
 
 ## Introduction to Multivariate Data Analysis {#sec-multivariate}
 
-> An assignment was given to BIOSCI220 students in 2022 that asked them to create an `R` script that produced a plot. This was marked using a rubric-based marking scheme that had 5 sections I1, I2, I3, I4, and I5. Submissions were graded by three peers (prefix P) and three tutors (prefix T), the average across the three grades was taken to be the scores (T and P) summarised in the following table and plot. **What inference can you draw?**
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Multivariate data!
+
+**Peer grading**: An assignment was given students that asked them to create an `R` script that produced a plot. This was marked using a rubric-based marking scheme that had 5 sections I1, I2, I3, I4, and I5. Submissions were graded by three peers (prefix P) and three tutors (prefix T), the average across the three grades was taken to be the scores (T and P) summarised in the following table and plot (taken from @peergrading). 
 
 ![](runsheets/img/table.png)
 
+
+In your groups discuss what inferences can be drawn from the table and the plot, then individually answer via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)
+
+
+:::
+
+
 ## Principal Component Analysis (PCA) {#sec-pca}
+
+
+
+::: {.callout-note collapse=true}
+## It's still about measuring distance!
 
 Compare the following two GIFs; **what is the main difference?**
 
-::: {layout-ncol=2}
 ![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/lm.gif)
 
 ![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/perp.gif)
@@ -75,18 +94,30 @@ fviz_screeplot(pca)
 
 ```
 
-Now, think back to @sec-multivariate and the BIOSCI220 data. What conclusions might you draw from the following plot of the loadings?
+**Discuss**: Now, think back to @sec-multivariate and the peer-grading data. What conclusions might you draw from the following plot of the loadings?
 
 ![](runsheets/img/pca_loadings.png)
 
-## Eigenfaces {#sec-eigenfaces}
+
+
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three..
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Your grades!
 
-... work through the code below and discuss what each step is achieving, what do you conclude?
+Charlotte will soon share some PCA analysis carried out using the grades of this class to date! Obviously, I can't give you the data; however, based on the outputs shown and your own knowledge about the assignments as a group discuss what inference PCA offers you and then individually let the class know via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296).
+
 
 :::
+
+
+
+
+## Eigenfaces {#sec-eigenfaces}
+
+In your groups work through the code below and discuss what each step is achieving, what do you conclude? Be prepared to answer questions as I wander around the class and **make sure your nominated reporter is ready to report to the class when called upon!**
+
+
+
 
 ```{r, eval = FALSE}
 data_url <- "https://github.com/cmjt/statbiscuits/raw/master/swots/data/faces.RData"

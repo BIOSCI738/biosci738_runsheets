@@ -1,44 +1,32 @@
-# May 16th
+# Week 09 - Lecture 02
 
-## Rough timeline
+## Rough Agenda
 
-### **02:05 pm - 03:55 pm** 
+### **2:05 pm - 3:55 pm** 
 
- + **02:05–02.30 pm** Miscellaneous activities (@sec-misc)
- + **02:30–02.50 pm** Multidimensional Scaling (@sec-mds)
- + **02:50–03:00 pm** Break
- + **03:00–03:55 pm** Casestudies (@sec-mdscasestudies)
+ + Multidimensional Scaling (@sec-mds)
+ + Casestudies (@sec-mdscasestudies)
    
-
-## Miscellaneous activities {#sec-misc}
-
-
-::: {.callout-note}
-## ICA
-
-Recall @sec-ica? Listen to hear the upshot. Any questions?
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+ + Perform multidimensional scaling in `R`
+ + Interpret MDS outputs by examining configuration plots, stress (or goodness-of-fit), and distances, and relating the low-dimensional representation to the original dissimilarities 
+ + Draw and communicate inferences from MDS visualisations, including identifying patterns, clusters, and relative similarities among observations etc.
 
 :::
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Soon...
+## Introduction to multidimensional scaling {#sec-mds}
 
-Charlotte will soon share some PCA analysis carried out using the grades of this class to date! Obviously, I can't give you the data; however, based on the outputs shown let's discuss what inference PCA offers you!
+### Personality activity...
 
-:::
-
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Fill out [THIS QUIZ](https://docs.google.com/forms/d/e/1FAIpQLSc2Lxlr4IwrooEoQ6SgWSdFuv_ULVL-XL0GBt6q3TO98FWyOQ/viewform?usp=sf_link)
+Fill out [THIS QUIZ](https://docs.google.com/forms/d/e/1FAIpQLSc2Lxlr4IwrooEoQ6SgWSdFuv_ULVL-XL0GBt6q3TO98FWyOQ/viewform?usp=sf_link)
 
 **Note I will be using this data live in class, you do not have to answer honestly if you are uncomfortable doing so, but please be consistent! Perhaps answer as if you were your favourite gaming character. I will be sharing the responses with the class.**
 
 *Questions stolen from [this page](https://community.typeform.com/build-your-typeform-7/using-opinion-scales-for-personality-quizzes-1929)*
 
-:::
 
-
-Using [these data (i.e., that collected above)](https://docs.google.com/spreadsheets/d/1Oiyz5WgMKCKpNw7zkHN8Vw0-zMx-5tU9yUOwtWUhUMs/edit?usp=sharing) we'll now work through the code below together.
+Using [these data (i.e., those collected above)](https://docs.google.com/spreadsheets/d/1Oiyz5WgMKCKpNw7zkHN8Vw0-zMx-5tU9yUOwtWUhUMs/edit?usp=sharing) we'll now work through the code below together.
 
 
 ```{r, eval = FALSE}
@@ -99,16 +87,25 @@ data.frame(x = mds$points[,1], y = mds$points[,2]) %>%
     geom_text(size = 3.5, vjust = -0.8)
 ```
 
-## Multidimensional Scaling {#sec-mds}
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> 
+
+1. Via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) write a one sentence summary of the inference you draw from the analysis above.
+
+2. By the end of the week, to the tasks folder of your GitHub repository include, add and push a fully reproducible `R` script named `week_09.r` that creates an informative vizualisation of the *personality" quiz data above. Remember to include any required data & update your README.md accordingly!
+
+
+:::
+
+### Multidimensional Scaling
 
 **Slides**
 
 <p align="center">
-<iframe src="slides/08-01_mds.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
+<iframe src="slides/08-01_mds.pdf" height="400" width="700" title="MDS"></iframe>
 </p>
-<p align="center">
-[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15372455?module_item_id=2614789)
-</p>
+
 
 **Examples** from [this section of the courseguide](https://biosci738.github.io/BIOSCI738/multidimensional-scaling-mds.html)
 
@@ -205,12 +202,8 @@ geom_text()
 
 ## Casestudies {#sec-mdscasestudies}
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
+In your groups work through each case study below discuss what each step is achieving, what do you conclude? Be prepared to answer questions as I wander around the class and **make sure your nominated reporter is ready to report to the class when called upon!**
 
-... work through each case study below discuss what each step is achieving, what do you conclude?
-
-:::
 
 
 **Bird Abundance** (recall the example from @sec-glmfit; data from @birds)

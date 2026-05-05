@@ -1,6 +1,5 @@
 # Week 08 - Lecture 02
 
-
 ## Rough Agenda
 
 ### **2:05 pm - 3:55 pm** 
@@ -10,8 +9,9 @@
 
 ::: {.callout-tip}
 ## By the end of today's seminar, you should be able to
- + Distinguish frequentist and Bayesian approaches to data analysis
- + Choose appropriate prior distributions for a Bayesian model
+ + Distinguish frequentist and Bayesian inference in practice by fitting equivalent regression models in `R` 
+ + Specify and justify prior distributions for model parameters
+ + Fit, diagnose, and interpret Bayesian regression models using `rstanarm`
 
 :::
 
@@ -21,9 +21,9 @@ NOTE: here we only briefly discuss Bayesian approaches using examples, for more 
 
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> When prompted answer via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)...
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Are you a secret Bayesian?
 
-...**a**, **b**, or **c** in answer to the following^[questions taken verbatim from @bayesrules] (*record your answers*)
+When prompted via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) answer either **a**, **b**, or **c** to the following questions^[taken verbatim from @bayesrules] (*record your answers*)
 
 1. When flipping a fair coin, we say that “the probability of flipping Heads is 0.5.” How do you interpret this probability?
     - a. If I flip this coin over and over, roughly 50% will be Heads.  
@@ -49,17 +49,101 @@ NOTE: here we only briefly discuss Bayesian approaches using examples, for more 
 
 :::
 
-::: {.callout-tip}
+::: {.callout-note}
 ## The simplified distinction
 
-**Frequentist**: The parameter **is not** a random variable (i.e., is fixed and has one *true* value).
-**Bayesian**: The parameter **is** a random variable (i.e., comes from some probability distribution).
+ + **Frequentist**: Parameter(s) is/are **fixed** but unknown (i.e., there is one *true* value of each parameter). Inference is based on the likelihood function. Estimation (e.g., MLE) chooses the value of the parameter(s) that maximises this likelihood (recall @sec-mle). 
+
+ + **Bayesian**: Parameter(s) is/are treated as a random variable with a probability distribution. Inference combines the likelihood with a prior distribution via [Bayes’ theorem](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html#bayes-rule). The likelihood plays the same role as in the frequentist setting (i.e., it reflects information from the data) but is now updated with prior beliefs about the parameter(s) to produce the posterior distribution (which we use for inference).
+
+
+**Both approaches are built on the same likelihood function!**
+
+:::
+
+
+:::{.callout-note collapse=true}
+## Quick Check: Frequentist vs Bayesian Thinking
+<div id="bayes-freq-quiz">
+
+
+
+<form>
+
+<p><strong>1. In a frequentist approach, how is a parameter treated?</strong></p>
+<label><input type="radio" name="q1" value="a"> It is a random variable with a distribution</label><br>
+<label><input type="radio" name="q1" value="b"> It is fixed but unknown</label><br>
+<label><input type="radio" name="q1" value="c"> It changes every time we collect data</label>
+
+<p><strong>2. In a Bayesian approach, how is a parameter treated?</strong></p>
+<label><input type="radio" name="q2" value="a"> It is fixed and cannot be described with probabilities</label><br>
+<label><input type="radio" name="q2" value="b"> It is only estimated using maximum likelihood</label><br>
+<label><input type="radio" name="q2" value="c"> It is a random variable with a probability distribution</label>
+
+<p><strong>3. What role does the likelihood play?</strong></p>
+<label><input type="radio" name="q3" value="a"> It is only used in Bayesian methods</label><br>
+<label><input type="radio" name="q3" value="b"> It is only used in frequentist methods</label><br>
+<label><input type="radio" name="q3" value="c"> It is used in both approaches</label>
+
+<p><strong>4. What is a key feature of Bayesian analysis?</strong></p>
+<label><input type="radio" name="q4" value="a"> It ignores the data</label><br>
+<label><input type="radio" name="q4" value="b"> It combines prior information with data</label><br>
+<label><input type="radio" name="q4" value="c"> It assumes parameters are always zero</label>
+
+
+<br><br>
+<button type="button" onclick="checkAnswers()">Check Answers</button>
+
+</form>
+
+<script>
+function checkAnswers() {
+  const answers = {
+    q1: "b",
+    q2: "c",
+    q3: "c",
+    q4: "b"
+  };
+
+  // Reset styles
+  document.querySelectorAll("label").forEach(l => {
+    l.style.color = "black";
+    l.style.fontWeight = "normal";
+  });
+
+  for (let i = 1; i <= 6; i++) {
+    const selected = document.querySelector('input[name="q' + i + '"]:checked');
+    const options = document.querySelectorAll('input[name="q' + i + '"]');
+
+    options.forEach(opt => {
+      const label = opt.parentElement;
+
+      // highlight correct answer
+      if (opt.value === answers["q" + i]) {
+        label.style.fontWeight = "bold";
+      }
+
+      // colour selected answer
+      if (selected && opt === selected) {
+        if (opt.value === answers["q" + i]) {
+          label.style.color = "green";
+        } else {
+          label.style.color = "red";
+        }
+      }
+    });
+  }
+}
+</script>
+
+</div>
+
 :::
 
 ### A Bayesian Beta-Binomial model
 
 
-We'll work through this example together! Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html); however, here we go beyond what is covered there!  
+We'll work through this example together. Note that this aligns with the content in [this section of the courseguide](https://biosci738.github.io/BIOSCI738/introduction-to-bayesian-statistics.html); however, here we go beyond what is covered there!  
 
 
 Let's take a look again at the **Lobster Survival** data from @lobster. The NULL model equivalent to the ungrouped model we considered in @sec-glmfit was
@@ -81,13 +165,13 @@ Here,  $y \sim \text{Binomial}(n = 1, p)$ is the **likelihood** (see @sec-mle) a
 :::{.callout-warning icon=false}
 ## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Suggest...
 
-...a candidate distribution for $p$  via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296)
+...a candidate distribution for $p$  via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) and give your reasoning.
 
 This distribution is your **prior** distribution and reflect your beliefs about $p$.
 
 :::
 
-This distribution is your **prior** distribution and reflect your beliefs about $p$.
+Recall, your **prior** distribution reflects your beliefs about $p$.
 
 ```{r, eval = FALSE}
 library(bayesrules)
@@ -118,40 +202,40 @@ What about frequentist approach vs Bayesian?
 
 ## Casestudies from a Bayesian viewpoint {#sec-bayesestudies}
 
-### Choosing a prior distribution
+### Activity: Choosing a prior distribution
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In your groups discuss/answer the sceanrios below.
+In your groups discuss/answer the scenarios below. Be prepared to answer questions as I wander around the class and **make sure your nominated reporter is ready to report to the class when called upon!**
 
 
  1. **Test Scores Under a New Teaching Method** A school is testing a new math teaching method. A sample of students is taught using the new method, and their standardized test scores are recorded. Assume test scores are normally distributed with known variance $\sigma^2 = 100$ (i.e., standard deviation = 10). We're interested in the average score $\mu$ under the new method as follows $y_i \sim \mathcal{N}(\mu, \sigma^2)$. What might be a suitable distribution to reflect the prior belief about the average score $\mu$.
+ 
  2. **Kiwi Call Monitoring** Wildlife biologists are studying nocturnal kiwi activity in a forest reserve. On several nights, researchers record the number of kiwi calls heard per hour from a fixed listening post. Let $y_i$ be the number of kiwi calls heard during hour $i$, modeled as $y_i \sim \text{Poisson}(\lambda)$. What might be a suitable distribution to reflect the prior belief about the average call rate $\lambda$. 
 
 Now, a statistician has come along and said that things will be a lot easier (ask Charlotte why if you're interested) and said that an appropriate prior for the average score (scenario 1) is $\mu \sim \mathcal{N}(\mu_0, \tau^2)$ and for the average call rate (scenario 2) is $\lambda \sim \text{Gamma}(\alpha, \beta)$. In addition, the principal of the school in scenario 1 believes students taught with the new method will average around 75 points, but the level of certainty varies depending on context. And Ecologists familiar with the region in scenario 2 suggest that the rate of kiwi calls typically ranges from 2 to 4 calls per hour. 
 
 Assuming these prior distributions and the extra information 
   
-  a.Based on the prior knowledge, how might you choose values for the parameters of each prior distribution?
+  a .Based on the prior knowledge, how might you choose values for the parameters of each prior distribution?
   b. What prior reflects strong certainty about random variable?
   c. What prior reflects strong uncertainty about random variable?
 
 
 *[NOTE: Scenarios were created with the assistance of ChatGPT (OpenAI, 2025).]*
 
-:::
+
 
 
 ### Casestudy
 
-In your groups work through the section below (previously seen example from @sec-glmfit) and discuss the prompts and plots etc. 
+Together we'll work through the section below (previously seen example from @sec-glmfit) and discuss the prompts and plots etc. 
 
-*NOTE that this is quite advanced and touches on the boundary of what is beyond the scope of this course, but you're all up to it!*
+*NOTE that this is quite advanced and touches on the boundary of what is beyond the scope of this course, but you're up to it!*
 
 #### A Gamma-Poisson Model (i.e., Negative Binomial)
 
 **Bat Abundance** (subset of data from @bats)
 
-In @sec-glmfit we fitted the following model in a frequentist framework
+Recall the following model from @sec-activbats, which we fitted in a frequentist framework
 
 $$
 \log ({ E( \operatorname{TotalCount} ) })  = \alpha + \beta_{1}(\operatorname{SpeciesID}_{\operatorname{Rhinolophus\ hipposideros}})
@@ -167,7 +251,7 @@ nbmod <- MASS::glm.nb(TotalCount ~ SpeciesID, data = bats)
 nbmod |> summary() |> coef()
 ```
 
-Just a recap, why did we choose a Negative Binomial model? Because the was a lot more variation than we'd expect under a Poisson model. We saw this in @sec-glmfit, but let's use simulation to *show* this again.
+Just a recap, why did we choose a Negative Binomial model? Because the was a lot more variation than we'd expect under a Poisson model. We saw this in @sec-activbats, but let's use simulation to *show* this again.
 
 ```{r, eval = FALSE}
 ## observed mean
@@ -250,12 +334,14 @@ pp_check(fit_species)
 ```
 
 ::: {.callout-note}
-## Bonus activity (Advanced)
+## Bonus activities
 Revisit one of the following case studies and fit an appropriate model in a Bayesian framework
 
  1. The **Monkeys** case study from @sec-casemonkey (data from @monkey)
  2. The **Bird Abundance** case study from @sec-glmfit (data from @birds)
  
+ 
+Fit an appropriate model to your [Significance Article](https://canvas.auckland.ac.nz/courses/141056/assignments/490408) data in a Bayesian framework! Remember, your project could just as easily be focused on communicating statistical methodology to a general audience as it could be based on some analyses ;)
 
 :::
 

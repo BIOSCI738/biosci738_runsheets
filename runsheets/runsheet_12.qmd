@@ -198,9 +198,9 @@ p2 <- data.frame(lam = lam, loglikelihood =  dpois(x = 54, lam, log = TRUE)) %>%
 patchwork::wrap_plots(p1, p2)
 ```
 
-### Activities
+### Activities {#sec-activbats}
 
-In your groups work through the examples below (both from @sec-glmfit) and discuss the prompts and plots etc. Be prepared to answer questions as I wander around the class.
+In your groups work through the examples below and discuss the prompts and plots etc. Be prepared to answer questions as I wander around the class.
 
 
 **Bat Abundance** (subset of data from @bats)
