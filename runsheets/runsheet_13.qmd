@@ -213,11 +213,13 @@ In your groups discuss/answer the scenarios below. Be prepared to answer questio
 
 Now, a statistician has come along and said that things will be a lot easier (ask Charlotte why if you're interested) and said that an appropriate prior for the average score (scenario 1) is $\mu \sim \mathcal{N}(\mu_0, \tau^2)$ and for the average call rate (scenario 2) is $\lambda \sim \text{Gamma}(\alpha, \beta)$. In addition, the principal of the school in scenario 1 believes students taught with the new method will average around 75 points, but the level of certainty varies depending on context. And Ecologists familiar with the region in scenario 2 suggest that the rate of kiwi calls typically ranges from 2 to 4 calls per hour. 
 
-Assuming these prior distributions and the extra information 
+Assuming these prior distributions and the extra information above discuss/answer the following
   
-  a .Based on the prior knowledge, how might you choose values for the parameters of each prior distribution?
-  b. What prior reflects strong certainty about random variable?
-  c. What prior reflects strong uncertainty about random variable?
+  a. Based on the prior knowledge, how might you choose values for the parameters of each prior distribution?
+  
+  b. What prior reflects strong certainty?
+  
+  c. What prior reflects strong uncertainty?
 
 
 *[NOTE: Scenarios were created with the assistance of ChatGPT (OpenAI, 2025).]*
