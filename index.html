@@ -401,7 +401,10 @@ window.Quarto = {
   <li><a href="#pm---0555-pm-1" id="toc-pm---0555-pm-1" class="nav-link" data-scroll-target="#pm---0555-pm-1"><strong>04:05 pm - 05:55 pm</strong></a></li>
   </ul></li>
   <li><a href="#sec-multivariate" id="toc-sec-multivariate" class="nav-link" data-scroll-target="#sec-multivariate">Introduction to Multivariate Data Analysis</a></li>
-  <li><a href="#sec-pca" id="toc-sec-pca" class="nav-link" data-scroll-target="#sec-pca">Principal Component Analysis (PCA)</a></li>
+  <li><a href="#sec-pca" id="toc-sec-pca" class="nav-link" data-scroll-target="#sec-pca">Principal Component Analysis (PCA)</a>
+  <ul class="collapse">
+  <li><a href="#activity-1" id="toc-activity-1" class="nav-link" data-scroll-target="#activity-1">Activity</a></li>
+  </ul></li>
   <li><a href="#sec-eigenfaces" id="toc-sec-eigenfaces" class="nav-link" data-scroll-target="#sec-eigenfaces">Eigenfaces</a></li>
   </ul></li>
   <li><a href="#sec-extras" id="toc-sec-extras" class="nav-link" data-scroll-target="#sec-extras">Extra Activities</a>
@@ -5663,7 +5666,7 @@ function checkAnswers() {
 <li>the <strong>direction</strong> of these PCs (otherwise called eigenvectors), which reflect the weight that each variable has on a particular PC.</li>
 <li>the <strong>magnitude</strong> of theses PCs (otherwise called eigenvalues), which represent the variance explained by each PC.</li>
 </ul>
-<p>We’ll work through the code below together, it is that from <a href="https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html">this section of the course guide for more details</a>.</p>
+<p>We’ll work through the code below together giving an introductory example of PCA, it is that from <a href="https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html">this section of the course guide for more details</a>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb86"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(tidyverse)</span>
 <span id="cb86-2"><a href="#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="fu">require</span>(palmerpenguins)</span>
@@ -5692,7 +5695,11 @@ function checkAnswers() {
 <span id="cb86-25"><a href="#cb86-25" aria-hidden="true" tabindex="-1"></a><span class="do">## how many are informative enough</span></span>
 <span id="cb86-26"><a href="#cb86-26" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_screeplot</span>(pca)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><strong>Discuss</strong>: Now, think back to <a href="#sec-multivariate" class="quarto-xref">Section&nbsp;16.2</a> and the peer-grading data. What conclusions might you draw from the following plot of the loadings?</p>
+<section id="activity-1" class="level3">
+<h3 class="anchored" data-anchor-id="activity-1">Activity</h3>
+<p>Now, for (perhaps) a more complex example!</p>
+<p>I’ll go through some of the analysis using the data we discussed in <a href="#sec-multivariate" class="quarto-xref">Section&nbsp;16.2</a>. If you are keen to carry this out for yourself after class then head to the <strong>Data Availability</strong> section of <span class="citation" data-cites="peergrading">Jones-Todd and Renelle (<a href="#ref-peergrading" role="doc-biblioref">2025</a>)</span>, for all the code and associated data.</p>
+<p><strong>Discuss</strong>: What conclusions might you draw from the following plot of the loadings?</p>
 <p><img src="runsheets/img/pca_loadings.png" class="img-fluid"></p>
 <div class="callout callout-style-default callout-warning no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -5707,6 +5714,7 @@ function checkAnswers() {
 <p>Charlotte will soon share some PCA analysis carried out using the grades of this class to date! Obviously, I can’t give you the data; however, based on the outputs shown and your own knowledge about the assignments as a group discuss what inference PCA offers you and then individually let the class know via <a href="https://canvas.auckland.ac.nz/courses/141056/external_tools/38296">StatChat</a>.</p>
 </div>
 </div>
+</section>
 </section>
 <section id="sec-eigenfaces" class="level2">
 <h2 class="anchored" data-anchor-id="sec-eigenfaces">Eigenfaces</h2>

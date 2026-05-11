@@ -62,7 +62,7 @@ Two things we're interested in:
  + the **magnitude** of theses PCs (otherwise called eigenvalues), which represent the variance explained by each PC.
 
 
-We'll work through the code below together, it is that from [this section of the course guide for more details](https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html).
+We'll work through the code below together giving an introductory example of PCA, it is that from [this section of the course guide for more details](https://biosci738.github.io/BIOSCI738/principal-component-analysis-pca.html).
 
 ```{r, eval = FALSE}
 require(tidyverse)
@@ -94,7 +94,13 @@ fviz_screeplot(pca)
 
 ```
 
-**Discuss**: Now, think back to @sec-multivariate and the peer-grading data. What conclusions might you draw from the following plot of the loadings?
+### Activity
+
+Now, for (perhaps) a more complex example!
+
+I'll go through some of the analysis using the data we discussed in @sec-multivariate. If you are keen to carry this out for yourself after class then head to the **Data Availability** section of @peergrading, for all the code and associated data.
+
+**Discuss**: What conclusions might you draw from the following plot of the loadings?
 
 ![](runsheets/img/pca_loadings.png)
 
