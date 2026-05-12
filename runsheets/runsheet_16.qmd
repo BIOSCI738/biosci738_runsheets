@@ -4,6 +4,8 @@
 
 ### **2:05 pm - 3:55 pm** 
 
+(*There will be no office hour after this lecture as I'm giving a guest lecture for another course*)
+
  + Multidimensional Scaling (@sec-mds)
  + Casestudies (@sec-mdscasestudies)
    
