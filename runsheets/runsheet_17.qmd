@@ -4,12 +4,22 @@
 
 ### **04:05 pm - 05:55 pm** 
 
-
  + *Grouping* multivariate data (@sec-clustering)
  + Divisive vs. Hierarchical (@sec-div) 
  + Clusterducks  (@sec-clusterducks) 
-   
+ 
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
 
+Using `R`
+
+ + Perform k-means clustering and interpret clusters.
+ + Perform hierarchical clustering and interpret dendrograms.
+ + Compare clustering methods and evaluate cluster solutions.
+
+:::
+   
+### Before we begin **sort yourselves into groups** following @sec-groups
 
 ## *Grouping* multivariate data {#sec-clustering}
 
@@ -18,7 +28,9 @@
 
 ![](runsheets/img/celebs.png)
 
-In your groups sort the celebrities into clusters; outline your reasoning.
+**In your groups, based on the information given in the image, sort the celebrities into clusters** 
+
+Then, via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) **individually** outline your reasoning/clustering process.
 
 
 :::
@@ -50,15 +62,20 @@ summary(pca)
 fviz_pca_biplot(pca, geom = c("point", "text")) 
 ```
 
+
+::: {.callout-note collapse=true}
+## K-means clustering cheatsheets
+
+[K-Means Clustering Series by Allison Horst](https://allisonhorst.com/k-means-clustering)
+
+:::
+
 ## Divisive vs. Hierarchical {#sec-div} 
 
 **Slides**
 
 <p align="center">
-<iframe src="slides/10-01_clustering.pdf" height="400" width="700" title="Maximum Likelihood Estimation"></iframe>
-</p>
-<p align="center">
-[**CANVAS slides**](https://canvas.auckland.ac.nz/courses/120054/files/15377008?module_item_id=2615037)
+<iframe src="slides/10-01_clustering.pdf" height="400" width="700"></iframe>
 </p>
 
 **Ant example** from [this section of the courseguide](https://biosci738.github.io/BIOSCI738/clustering.html#ants)
@@ -99,21 +116,146 @@ pitfall.phylo$tip.label <- ants$Site
 ## Set colours 
 colours  <-  c("red","blue","green","black")
 plot(pitfall.phylo, cex = 0.6, tip.color = colours[ants$clust4], label.offset = 0.05)
-## Now there are other variables in the dataset, discuss what, if any,
+## Alternative
+args(hcut)
+res <- ants[,5:8] %>%
+  vegan::vegdist(., method = "bray", binary = FALSE) |>
+  hcut(k = 4)
+res$size
+fviz_dend(res, rect = TRUE)
+## silhouette
+fviz_silhouette(res)
+## what about k = 5?
+## Now there are other variables in the data set, discuss what, if any,
 ## might lead to the suggested "clusters" of sites.
 
 ```
 
+
+
+::: {.callout-note collapse=true}
+## Quick quiz
+
+## Clustering methods quiz
+
+<style>
+.quiz-option {
+  padding: 6px;
+  border: 1px solid #ccc;
+  margin: 4px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.correct { background-color: #c8f7c5; }
+.incorrect { background-color: #f7c5c5; }
+</style>
+
+<script>
+function checkAnswer(el, correct) {
+  const options = el.parentElement.querySelectorAll('.quiz-option');
+  options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+  el.classList.add(correct ? 'correct' : 'incorrect');
+}
+</script>
+
+---
+
+**Q1. Which method requires you to choose the number of clusters in advance?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">K-means</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Hierarchical clustering</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Both methods</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Neither method</div>
+</div>
+
+---
+
+**Q2. Which method produces a dendrogram?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">K-means</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Hierarchical clustering</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Both methods</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Neither method</div>
+</div>
+
+---
+
+**Q3. Which method can give different results each time it is run?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">K-means</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Hierarchical clustering</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Both methods always give the same result</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Neither method</div>
+</div>
+
+---
+
+**Q4. Which method builds clusters by merging observations step-by-step?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">K-means</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Hierarchical clustering</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Both methods</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Neither method</div>
+</div>
+
+---
+
+**Q5. Which distance measure is most commonly used in k-means clustering?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Euclidean distance</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Manhattan distance</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Jaccard distance</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Cosine distance only</div>
+</div>
+
+---
+
+**Q6. Which linkage method tends to produce compact, spherical clusters?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Single linkage</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Complete linkage</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Ward’s method</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Average linkage only</div>
+</div>
+
+---
+
+**Q7. What is a common problem with single linkage clustering?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Chaining (long thin clusters)</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">It cannot form clusters</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">It always overestimates k</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">It requires labels</div>
+</div>
+
+---
+
+**Q8. What does a high silhouette width suggest?**
+
+<div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Poor clustering</div>
+  <div class="quiz-option" onclick="checkAnswer(this,true)">Well-separated clusters</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Too many variables</div>
+  <div class="quiz-option" onclick="checkAnswer(this,false)">Random assignment</div>
+</div>
+
+:::
+
 ## Clusterducks {#sec-clusterducks}
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three..
+In your groups work through the code below and discuss what each step is achieving. Create an informative visualization showcasing your results from either the kmeans or hierarchical clustering processes.
 
-... work through the code below and discuss what each step is achieving, what do you conclude?
+Your **reporter**  will then give a short presentation to the class talking us through you concluded.
 
 *NOTE* [this worksheet may help you a little](https://statbiscuit.github.io/swots/clusterducks.html)
 
-:::
 
 
 ```{r, eval = FALSE}
@@ -190,10 +332,3 @@ set.seed(123)
 fviz_nbclust(df, kmeans, nstart = 25,  method = "gap_stat", nboot = 50)+
   labs(subtitle = "Gap statistic method")
 ```
-
-## Q&A and peer-share {#sec-peershare17}
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
-Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!
-:::
