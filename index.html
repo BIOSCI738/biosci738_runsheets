@@ -428,7 +428,11 @@ window.Quarto = {
   <li><a href="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-6" id="toc-before-we-begin-sort-yourselves-into-groups-following-sec-groups-6" class="nav-link" data-scroll-target="#before-we-begin-sort-yourselves-into-groups-following-sec-groups-6">Before we begin <strong>sort yourselves into groups</strong> following Section&nbsp;3.2</a></li>
   </ul></li>
   <li><a href="#sec-clustering" id="toc-sec-clustering" class="nav-link" data-scroll-target="#sec-clustering"><em>Grouping</em> multivariate data</a></li>
-  <li><a href="#sec-div" id="toc-sec-div" class="nav-link" data-scroll-target="#sec-div">Divisive vs.&nbsp;Hierarchical</a></li>
+  <li><a href="#sec-div" id="toc-sec-div" class="nav-link" data-scroll-target="#sec-div">Divisive vs.&nbsp;Hierarchical</a>
+  <ul class="collapse">
+  <li><a href="#hierarchical-clustering-methods" id="toc-hierarchical-clustering-methods" class="nav-link" data-scroll-target="#hierarchical-clustering-methods">Hierarchical clustering methods</a></li>
+  <li><a href="#casestudy-1" id="toc-casestudy-1" class="nav-link" data-scroll-target="#casestudy-1">Casestudy</a></li>
+  </ul></li>
   <li><a href="#sec-clusterducks" id="toc-sec-clusterducks" class="nav-link" data-scroll-target="#sec-clusterducks">Clusterducks</a></li>
   </ul></li>
   <li><a href="#sec-extras" id="toc-sec-extras" class="nav-link" data-scroll-target="#sec-extras">Extra Activities</a>
@@ -6240,6 +6244,40 @@ function checkAnswers() {
 <iframe src="slides/10-01_clustering.pdf" height="400" width="700">
 </iframe>
 </p>
+<section id="hierarchical-clustering-methods" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-clustering-methods">Hierarchical clustering methods</h3>
+<p>Essentially, how <em>distance</em> between clusters is measured…</p>
+<p><strong>Single linkage</strong> - Clusters are merged based on the closest pair of points between groups.</p>
+<ul>
+<li>Tends to create long <em>chains</em> of observations.</li>
+<li>Can join clusters together through a series of nearby points.</li>
+<li>Sensitive to overlapping groups.</li>
+</ul>
+<p>Think <em>If any two points are close, join the groups.</em></p>
+<p><strong>Complete linkage</strong> - Clusters are merged based on the furthest pair of points between groups.</p>
+<ul>
+<li>Produces tighter, more compact clusters.</li>
+<li>Avoids long chains.</li>
+<li>More sensitive to outliers.</li>
+</ul>
+<p>Think <em>Only merge groups if all points are reasonably close.</em></p>
+<p><strong>Average (group) linkage</strong> - Uses the average distance between all pairs of observations across two groups.</p>
+<ul>
+<li>A compromise between single and complete linkage.</li>
+<li>Produces moderately compact clusters.</li>
+<li>Often more stable in practice.</li>
+</ul>
+<p>Think <em>Merge groups with small average separation.</em></p>
+<p><strong>Ward’s method</strong> - Merges clusters that produce the smallest increase in within-cluster variance.</p>
+<ul>
+<li>Creates compact, spherical clusters.</li>
+<li>Often produces clusters of similar size.</li>
+<li>Probably ther most commonly used in your field!.</li>
+</ul>
+<p>Think <em>Merge groups that keep clusters as internally similar as possible.</em></p>
+</section>
+<section id="casestudy-1" class="level3">
+<h3 class="anchored">Casestudy</h3>
 <p><strong>Ant example</strong> from <a href="https://biosci738.github.io/BIOSCI738/clustering.html#ants">this section of the courseguide</a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb93"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -6452,6 +6490,7 @@ Random assignment
 </section>
 </div>
 </div>
+</section>
 </section>
 <section id="sec-clusterducks" class="level2">
 <h2 class="anchored" data-anchor-id="sec-clusterducks">Clusterducks</h2>

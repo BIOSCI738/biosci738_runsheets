@@ -78,6 +78,45 @@ fviz_pca_biplot(pca, geom = c("point", "text"))
 <iframe src="slides/10-01_clustering.pdf" height="400" width="700"></iframe>
 </p>
 
+
+### Hierarchical clustering methods
+
+Essentially, how *distance* between clusters is measured...
+
+**Single linkage** - Clusters are merged based on the closest pair of points between groups.
+
+ + Tends to create long *chains* of observations.
+ + Can join clusters together through a series of nearby points.
+ + Sensitive to overlapping groups.
+
+Think *If any two points are close, join the groups.*
+
+**Complete linkage** - Clusters are merged based on the furthest pair of points between groups.
+
+  + Produces tighter, more compact clusters.
+  + Avoids long chains. 
+  + More sensitive to outliers.
+
+Think *Only merge groups if all points are reasonably close.*
+
+**Average (group) linkage** - Uses the average distance between all pairs of observations across two groups.
+
+   + A compromise between single and complete linkage.
+   + Produces moderately compact clusters.
+   + Often more stable in practice.
+
+Think *Merge groups with small average separation.*
+
+**Ward’s method** - Merges clusters that produce the smallest increase in within-cluster variance.
+
+ + Creates compact, spherical clusters.
+ + Often produces clusters of similar size.
+ + Probably ther most commonly used in your field!.
+
+Think *Merge groups that keep clusters as internally similar as possible.*
+
+### Casestudy
+
 **Ant example** from [this section of the courseguide](https://biosci738.github.io/BIOSCI738/clustering.html#ants)
 
 ```{r, eval = FALSE}
