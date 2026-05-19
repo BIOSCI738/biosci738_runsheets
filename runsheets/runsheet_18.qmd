@@ -1,14 +1,566 @@
-# May 23rd
+# Week 10 - Lecture 02
 
-## Rough timeline
+## Rough Agenda
+
+::: {.callout-note collapse=true}
+## Relative file paths activity!
+
+### 01 -  Where should `data.csv` go?
+
+```{=html}
+<style>
+.folder-tree {
+  font-family: monospace;
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  white-space: pre;
+}
+
+#file-options {
+  margin-bottom: 25px;
+}
+
+.draggable-file {
+  padding: 8px 12px;
+  margin: 6px;
+  background: #e3e3e3;
+  border: 1px solid #999;
+  border-radius: 6px;
+  cursor: grab;
+  display: inline-block;
+}
+
+.activity-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.activity-box {
+  width: 320px;
+}
+
+.drop-zone {
+  border: 2px dashed #888;
+  border-radius: 8px;
+  min-height: 55px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.correct {
+  background-color: #d4edda !important;
+  border-color: #28a745 !important;
+}
+
+.incorrect {
+  background-color: #f8d7da !important;
+  border-color: #dc3545 !important;
+}
+</style>
+
+
+<p>
+<strong>Task:</strong> Given each depicted folder structure below drag the correct folder location for 
+<code>data.csv</code> so that the relative path used in each script (e.g., <code>task_01.R</code>) would work.
+</p>
+
+<div id="file-options">
+  <div class="draggable-file" draggable="true">main_folder/data/</div>
+  <div class="draggable-file" draggable="true">main_folder/tasks/</div>
+  <div class="draggable-file" draggable="true">main_folder/tasks/subtask/</div>
+  <div class="draggable-file" draggable="true">main_folder/assignments/</div>
+</div>
+
+<div class="activity-grid">
+
+  <div class="activity-box">
+
+<div class="folder-tree">
+main_folder/
+├── tasks/
+│   └── task_01.R
+</div>
+
+<p>
+Script uses:
+<code>read.csv("../data/data.csv")</code>
+</p>
+
+<div class="drop-zone" data-answer="main_folder/data/"></div>
+
+  </div>
+
+  <div class="activity-box">
+
+<div class="folder-tree">
+main_folder/
+├── tasks/
+│   └── subtask/
+│       └── task_02.R
+</div>
+
+<p>
+Script uses:
+<code>read.csv("../../data/data.csv")</code>
+</p>
+
+<div class="drop-zone" data-answer="main_folder/data/"></div>
+
+  </div>
+
+  <div class="activity-box">
+
+<div class="folder-tree">
+main_folder/
+├── assignments/
+│   └── assignment_01.R
+</div>
+
+<p>
+Script uses:
+<code>read.csv("data.csv")</code>
+</p>
+
+<div class="drop-zone" data-answer="main_folder/assignments/"></div>
+
+  </div>
+
+</div>
+
+<script>
+(function() {
+
+  const draggables = document.querySelectorAll('.draggable-file');
+  const dropZones = document.querySelectorAll('.drop-zone');
+
+  draggables.forEach(draggable => {
+
+    draggable.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('text/plain', this.textContent.trim());
+    });
+
+  });
+
+  dropZones.forEach(zone => {
+
+    zone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+    });
+
+    zone.addEventListener('drop', function(e) {
+
+      e.preventDefault();
+
+      const droppedText = e.dataTransfer.getData('text/plain');
+
+      this.textContent = droppedText;
+
+      this.classList.remove('correct');
+      this.classList.remove('incorrect');
+
+      if (droppedText === this.dataset.answer) {
+        this.classList.add('correct');
+      } else {
+        this.classList.add('incorrect');
+      }
+
+    });
+
+  });
+
+})();
+</script>
+```
+
+### 02 - Which is the correct relative path?
+
+```{=html}
+<style>
+.folder-tree {
+  font-family: monospace;
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  white-space: pre;
+}
+
+#options {
+  margin-bottom: 25px;
+}
+
+.draggable {
+  padding: 8px 12px;
+  margin: 6px;
+  background: #e3e3e3;
+  border: 1px solid #999;
+  border-radius: 6px;
+  cursor: grab;
+  display: inline-block;
+}
+
+.path-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.activity-box {
+  width: 300px;
+}
+
+.drop-zone {
+  border: 2px dashed #888;
+  border-radius: 8px;
+  min-height: 50px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.correct {
+  background-color: #d4edda !important;
+  border-color: #28a745 !important;
+}
+
+.incorrect {
+  background-color: #f8d7da !important;
+  border-color: #dc3545 !important;
+}
+</style>
+
+<div class="folder-tree">
+main_folder/
+├── data/
+│   └── data.csv
+├── tasks/
+│   ├── task_01.R
+│   └── subtask/
+│       └── task_02.R
+└── assignments/
+    └── assignment_01.R
+</div>
+
+<p><strong>Task:</strong> Drag the correct relative path to the file <code>data.csv</code> into each box when called ...</p>
+
+<div id="options">
+  <div class="draggable" draggable="true">../data/data.csv</div>
+  <div class="draggable" draggable="true">../../data/data.csv</div>
+  <div class="draggable" draggable="true">data/data.csv</div>
+  <div class="draggable" draggable="true">../../../data/data.csv</div>
+</div>
+
+<div class="path-container">
+
+  <div class="activity-box">
+    <p><strong>... from <code>task_01.R</code></strong></p>
+    <div class="drop-zone" data-answer="../data/data.csv"></div>
+  </div>
+
+  <div class="activity-box">
+    <p><strong>... from <code>task_02.R</code></strong></p>
+    <div class="drop-zone" data-answer="../../data/data.csv"></div>
+  </div>
+
+  <div class="activity-box">
+    <p><strong>...from <code>assignment_01.R</code></strong></p>
+    <div class="drop-zone" data-answer="../data/data.csv"></div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+
+  const draggables = document.querySelectorAll('.draggable');
+  const dropZones = document.querySelectorAll('.drop-zone');
+
+  draggables.forEach(draggable => {
+
+    draggable.addEventListener('dragstart', function(e) {
+      e.dataTransfer.setData('text/plain', this.textContent.trim());
+    });
+
+  });
+
+  dropZones.forEach(zone => {
+
+    zone.addEventListener('dragover', function(e) {
+      e.preventDefault();
+    });
+
+    zone.addEventListener('drop', function(e) {
+
+      e.preventDefault();
+
+      const droppedText = e.dataTransfer.getData('text/plain');
+
+      this.textContent = droppedText;
+
+      this.classList.remove('correct');
+      this.classList.remove('incorrect');
+
+      if (droppedText === this.dataset.answer) {
+        this.classList.add('correct');
+      } else {
+        this.classList.add('incorrect');
+      }
+
+    });
+
+  });
+
+})();
+</script>
+```
+
+
+### 03 - Type the correct relative path
+
+```{=html}
+<style>
+.folder-tree {
+  font-family: monospace;
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  white-space: pre;
+  margin-bottom: 10px;
+}
+
+input.path {
+  padding: 6px;
+  width: 250px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.correct {
+  background-color: #d4edda;
+}
+
+.incorrect {
+  background-color: #f8d7da;
+}
+</style>
+
+<p>
+<strong>Task:</strong> Given each depicted folder structure below type the correct relative path to read in 
+<code>data.csv</code> into each script (e.g., <code>task_01.R</code>).
+</p>
+
+<div>
+<p><strong>Project 1</strong></p>
+
+<div class="folder-tree">
+main_folder/
+├── data/
+│   └── data.csv
+├── tasks/
+│   └── task_01.R
+</div>
+
+<pre><code>read.csv("???")</code></pre>
+
+<input class="path" data-answer="../data/data.csv" placeholder="Type relative path...">
+</div>
+
+<hr>
+
+<div>
+<p><strong>Project 2</strong></p>
+
+<div class="folder-tree">
+main_folder/
+├── tasks/
+│   └── subtask/
+│       └── task_02.R
+├── data/
+│   └── data.csv
+</div>
+
+<pre><code>read.csv("???")</code></pre>
+
+<input class="path" data-answer="../../data/data.csv" placeholder="Type relative path...">
+</div>
+
+<script>
+(function() {
+
+  const inputs = document.querySelectorAll('.path');
+
+  inputs.forEach(input => {
+
+    input.addEventListener('input', function() {
+
+      if (this.value.trim() === this.dataset.answer) {
+        this.classList.add('correct');
+        this.classList.remove('incorrect');
+      } else {
+        this.classList.add('incorrect');
+        this.classList.remove('correct');
+      }
+
+    });
+
+  });
+
+})();
+</script>
+```
+
+### 04 - Type the correct relative path
+
+```{=html}
+<style>
+.folder-tree {
+  font-family: monospace;
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  white-space: pre;
+  margin-bottom: 10px;
+}
+
+input.path {
+  padding: 6px;
+  width: 280px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  margin-top: 5px;
+}
+
+.correct {
+  background-color: #d4edda;
+}
+
+.incorrect {
+  background-color: #f8d7da;
+}
+
+.block {
+  margin-bottom: 25px;
+}
+</style>
+
+<p>
+<strong>Task:</strong> Given each depicted folder structure below type the correct relative path to read in 
+<code>data.csv</code> into the script indicated.
+</p>
+
+
+<div class="block">
+<p><strong>Project 1</strong></p>
+
+<div class="folder-tree">
+main_folder/
+├── data/
+│   └── data.csv
+├── tasks/
+│   └── analysis.R
+├── run_analysis.R 
+</div>
+
+<p>
+Inside <code>run_analysis.R</code>:
+</p>
+
+<pre><code>read.csv("???")</code></pre>
+
+<input class="path" data-answer="data/data.csv" placeholder="type relative path...">
+</div>
+
+<hr>
+
+<div class="block">
+<p><strong>Project 2</strong></p>
+
+<div class="folder-tree">
+main_folder/
+├── data/
+│   └── data.csv
+├── tasks/
+│   └── analysis.R 
+</div>
+
+<p>
+Inside <code>tasks/analysis.R</code>:
+</p>
+
+<pre><code>read.csv("???")</code></pre>
+
+<input class="path" data-answer="../data/data.csv" placeholder="type relative path...">
+</div>
+
+<hr>
+
+<div class="block">
+<p><strong>Project 3</strong></p>
+
+<div class="folder-tree">
+main_folder/
+├── tasks/
+│   ├── analysis.R 
+│   └── data.csv
+</div>
+
+<p>
+Inside <code>analysis.R</code>:
+</p>
+
+<pre><code>read.csv("???")</code></pre>
+
+<input class="path" data-answer="data.csv" placeholder="type relative path...">
+</div>
+
+<script>
+(function() {
+
+  const inputs = document.querySelectorAll('.path');
+
+  inputs.forEach(input => {
+
+    input.addEventListener('input', function() {
+
+      const val = this.value.trim();
+
+      if (val === this.dataset.answer) {
+        this.classList.add('correct');
+        this.classList.remove('incorrect');
+      } else {
+        this.classList.add('incorrect');
+        this.classList.remove('correct');
+      }
+
+    });
+
+  });
+
+})();
+</script>
+```
+
+:::
 
 ### **02:05 pm - 03:55 pm** 
 
- + **02:05–02.40 pm** Multivariate data (@sec-vizmult)
-  + What we're interested in
-  + Visualizing it
- + **02:40–03:30 pm** Casestudies [*including a break*] (@sec-mdscasestudies02)
- + **03:30–03:55 pm** Model based multivariate analysis (@sec-modelbasedmult)
+
+ + Multivariate data (@sec-vizmult)
+ + *Discriminating* multivariate data (@sec-discrim)
+ + Model based multivariate analysis (@sec-modelbasedmult)
+ 
+::: {.callout-tip}
+## By the end of today's seminar, you should be able to
+
+Using `R`
+
+ + Perform linear discriminant analysis.
+ + Perform model based multivariate analysis.
+ + Compare and contrast and interpret different multivariate data analysis techniques.
+
+:::
    
 
 ## Multivariate data {#sec-vizmult}
@@ -17,7 +569,7 @@
 
 A typical sequence of inference for multivariate data would be **Raw Data** $^?\rightarrow$ **Scale/Standardize Raw Data** $^?\rightarrow$ **Create a Similarity/Dissimilarity Matrix**. From the created matrix you might consider **Cluster Analysis** and/or **Ordination** (a fancy word for summarizing/visualizing/reducing multiple variables in/to a lower-dimensional space).
 
-::: {layout-ncol=2}
+::: {}
 
 ```{mermaid}
 flowchart TD
@@ -48,74 +600,154 @@ flowchart TD
 :::
 
 :::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> In groups of two or three...
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Discuss
 
-The sequences and flow charts above have the occasional $?$ visible in the interim steps. Discuss the decisions & justifications required/made to traverse along each arrow (i.e., pass the $?$).  Elaborate on the what each stage achieves giving specific examples from the courseguide. D
+The sequences and flow charts above have the occasional $?$ visible in the interim steps. Discuss the decisions & justifications required/made to traverse along each arrow (i.e., pass the $?$).  Via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) **individually** outline what each stage achieves and what choices you make.
 :::
 
-### Visualizing multivariate data
 
-We'll work through the code below together; the data refer to different Pokémon (seen in case study 3 of @sec-model). How useful do you find each plot?
+
+## Linear Discriminant Analysis (LDA) {#sec-discrim}
+
+::: {.callout-note collapse=true}
+## Spot the difference!
+
+![](https://raw.githubusercontent.com/statbiscuit/swots/refs/heads/master/figs_n_gifs/lm.gif)
+
+![](runsheets/img/fac_lm.gif)
+
+:::
+
+**Linear discriminant analysis (LDA)** is all about $y = mx + c …$
+
+<p align="center">
+![](runsheets/img/lda.gif)
+</p>
+
+
+**Slides**
+
+
+<iframe src="slides/11-01_lda.pdf" height="400" width="700" title="LDA"></iframe>
+</p>
+<p align="center">
+</p>
+
+
+### Casestudies {#sec-caselda}
+
+**Glass Identification** (dataset from UCI, accessed [here](https://www.kaggle.com/datasets/uciml/glass))
 
 ```{r, eval = FALSE}
-require(tidyverse)
-require(GGally)
-url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pokemon.csv"
-data <- read_csv(url)
-## pairs plots for continuous variables
-data %>%
-  select(where(is.numeric)) |> pairs()
-data %>%
-  select(where(is.numeric)) |> ggpairs()
-## but what if you had a categorical variable
-data %>%
-  select(legendary, where(is.numeric)) |> ggpairs(aes(color = legendary))
-## two (or more) categorical variables
-with(data, table(legendary,
-    type2)) |> barplot(legend = TRUE)
-## conditional
-with(data, prop.table(table(legendary,
-    type2), margin = 2)) |> barplot(legend = TRUE)
-## alluvial plots
-require(alluvial)
-data$Freq <- 1
-mult <- aggregate(Freq ~ type2 + legendary,
-    data = data, FUN = sum)
-alluvial(mult, freq = mult$Freq, border = NA, col = ifelse(mult$legendary, "red", "blue"))
-## What are some potential interpretation pitfalls
-## heatmaps
-library(pheatmap)
-data %>%
-  select(where(is.numeric), -Freq, - generation, -number) |> cor() |>
-  pheatmap( cluster_rows = TRUE, cluster_cols = TRUE,
-    treeheight_row = 0, treeheight_col = 0)
-data %>% select(where(is.numeric), -Freq, -generation, -number) |>
-  pheatmap( , cluster_rows = TRUE,
-    cluster_cols = TRUE, labels_row = data$name, cex = 0.7)
-## look at ?pheatmap
-library(corrplot)
-data %>% select(where(is.numeric), -Freq, - generation, -number) |> cor() |> 
-  corrplot(addrect = 3, order = 'hclust')
+glass <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/glass.csv") %>%
+    mutate(Type = as.factor(Type))
+ggplot(reshape2::melt(glass, id.vars = c("Type")),
+       aes(x = value, colour = Type)) +
+       geom_density() + facet_wrap( ~variable, ncol = 1, scales = "free") +
+    theme(legend.position = "bottom")
+##Possible classification rules? RI & Al??
+ggplot(glass, mapping = aes(x = RI, y = Al)) +
+    theme_bw() +
+    geom_point(aes(colour = Type), size = 3)
+## LDA
+library(MASS)
+lda  <-  lda(Type ~ RI + Al, data = glass)
+## Proportion of Trace gives the percentage separation achieved by each discriminant function
+lda
+## predict
+ghat <- predict(lda)$class
+table(prediced = ghat, observed = glass$Type)
+## missclassification rate?
+mean(ghat != glass$Type)
+## group means
+centers  <-  lda$means
+### plot the discriminant surface
+## Set up grid for prediction, 100 x 100 that covers the data range of the two variables
 
+grid.df <-  with(glass,
+                 expand.grid(RI = make1Dgrid(RI),
+                             Al = make1Dgrid(Al)))
+ghat <- predict(lda, newdata = grid.df)
+str(ghat)
+## plot
+ggplot(glass, mapping = aes(x = RI, y = Al))+
+    theme_bw() +
+    geom_point(aes(colour = Type), size = 3) +
+    geom_raster(aes(fill = ghat$class),
+                data = grid.df, alpha = 0.25, interpolate = TRUE) +
+    geom_point(data = as_tibble(centers), pch = "+", size = 8)
+### So, not doing great! Can you improve?
 ```
 
 
 
-## Casestudies {#sec-mdscasestudies02}
+**THC levels in cannabis** (data from @cannabis)
 
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Revisit...
+```{r, eval = FALSE}
+library(tidyverse)
+thc <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/thc.csv")
+thc <- thc %>%
+    rowwise() %>%
+    mutate(reported = mean(c(low, high, mid), na.rm = TRUE))
 
-...one of the following case studies. Create an informative visualization that appropriately demonstrates the structure of these multivariate data. You may find some useful examples [here](https://epurdom.github.io/Stat131A/book/visualizing-multivariate-data.html#relationships-between-continous-variables).
+ggplot(thc, aes(x = "Lab tested", y = total)) +
+    geom_boxplot() +
+    geom_boxplot(aes(x = "Reported by dispensary", y = reported)) +
+    xlab("") + ylab("THC") +
+    theme_bw()
 
- 1. **Eigenfaces** from @sec-eigenfaces
- 2. **Clusterducks** from @sec-clusterducks
- 3. **Bird Abundance** first case study from revisited in @sec-mdscasestudies (data from @birds)
- 4. **DNA** second case study from @sec-mdscasestudies (data from @dna)
- 
-**Be prepared to present your activity to me as I'll be prepared to critique!**
+data <- thc %>%
+    filter(strain %in% c("Dankey Kong", "OG Kush", "Blue Dream"))
 
-:::
+ggplot(data, aes(y = total, x = strain, col = strain)) +
+    geom_boxplot() +
+    geom_jitter() +
+    theme_bw()
+### Kind of like regression!
+library(MASS)
+lda  <-  lda(strain ~ total, data = data)
+lda
+
+means <-  data.frame(total = lda$means[,1],
+                        strain = row.names(lda$means))
+                        
+ggplot(data, aes(y = total, x = strain, col = strain)) +
+    geom_boxplot() +
+    geom_jitter() +
+    theme_bw() +
+    geom_point(data = means, pch = 18, size = 5)
+
+
+### The LDA  score, which along with the prior is used to compute the
+## posterior probability of group membership (there are a number of different formulas for this).
+lda$scaling
+
+pred <- predict(lda)
+pred
+
+## plot prediction
+make1Dgrid <- function(x) {
+    rg <- grDevices::extendrange(x)
+    seq(from = rg[1], to = rg[2], length.out = 100)
+}
+                                        
+grid.df <- with(data, expand.grid(total = make1Dgrid(total)))
+# Do the predictions
+grid.df$ghat <- predict(lda, newdata = grid.df)$class
+##plot prediction surface
+ggplot(data, aes(y = total, x = strain, col = strain)) +
+    geom_boxplot() +
+    geom_jitter() +
+    theme_bw() +
+    geom_point(data = means, pch = 18, size = 5) +
+    geom_raster(aes(fill = ghat, x = ghat, y = total), data = grid.df, alpha = 0.25, interpolate = TRUE, inherit.aes = FALSE)
+```
+
+
+
+
+
+
 
 ## Model based multivariate analysis {#sec-modelbasedmult}
 
@@ -182,3 +814,11 @@ model.list <- list(cg.null = clustglm.null,
                    cg.3clust = cg.3clust)
 comparison(model.list)
 ```
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> [Via FbF under the week 10 task](https://canvas.auckland.ac.nz/courses/141056/assignments/505390)
+
+Upload a **brief summary** of your Significance article project along with an **informative visualization** of your data that you plan to use to motivate your analysis/hypothesis etc. These will be reviewed during one of next week's classes.
+:::
+

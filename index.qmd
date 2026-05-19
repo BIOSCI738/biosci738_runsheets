@@ -48,7 +48,7 @@ bibliography: runsheets/references.bib
 
 {{< include runsheets/runsheet_17.qmd >}}
 
-<!--{{< include runsheets/runsheet_18.qmd >}}-->
+{{< include runsheets/runsheet_18.qmd >}}
 
 {{< include runsheets/runsheet_extras.qmd >}}
 
