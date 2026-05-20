@@ -635,61 +635,7 @@ The sequences and flow charts above have the occasional $?$ visible in the inter
 </p>
 
 
-**Slides**
-
-
-<iframe src="slides/11-01_lda.pdf" height="400" width="700" title="LDA"></iframe>
-</p>
-<p align="center">
-</p>
-
-
-### Casestudies {#sec-caselda}
-
-**Glass Identification** (dataset from UCI, accessed [here](https://www.kaggle.com/datasets/uciml/glass))
-
-```{r, eval = FALSE}
-glass <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/glass.csv") %>%
-    mutate(Type = as.factor(Type))
-ggplot(reshape2::melt(glass, id.vars = c("Type")),
-       aes(x = value, colour = Type)) +
-       geom_density() + facet_wrap( ~variable, ncol = 1, scales = "free") +
-    theme(legend.position = "bottom")
-##Possible classification rules? RI & Al??
-ggplot(glass, mapping = aes(x = RI, y = Al)) +
-    theme_bw() +
-    geom_point(aes(colour = Type), size = 3)
-## LDA
-library(MASS)
-lda  <-  lda(Type ~ RI + Al, data = glass)
-## Proportion of Trace gives the percentage separation achieved by each discriminant function
-lda
-## predict
-ghat <- predict(lda)$class
-table(prediced = ghat, observed = glass$Type)
-## missclassification rate?
-mean(ghat != glass$Type)
-## group means
-centers  <-  lda$means
-### plot the discriminant surface
-## Set up grid for prediction, 100 x 100 that covers the data range of the two variables
-
-grid.df <-  with(glass,
-                 expand.grid(RI = make1Dgrid(RI),
-                             Al = make1Dgrid(Al)))
-ghat <- predict(lda, newdata = grid.df)
-str(ghat)
-## plot
-ggplot(glass, mapping = aes(x = RI, y = Al))+
-    theme_bw() +
-    geom_point(aes(colour = Type), size = 3) +
-    geom_raster(aes(fill = ghat$class),
-                data = grid.df, alpha = 0.25, interpolate = TRUE) +
-    geom_point(data = as_tibble(centers), pch = "+", size = 8)
-### So, not doing great! Can you improve?
-```
-
-
+### Example 01
 
 **THC levels in cannabis** (data from @cannabis)
 
@@ -753,8 +699,58 @@ ggplot(data, aes(y = total, x = strain, col = strain)) +
     geom_raster(aes(fill = ghat, x = ghat, y = total), data = grid.df, alpha = 0.25, interpolate = TRUE, inherit.aes = FALSE)
 ```
 
+**Slides**
 
 
+<iframe src="slides/11-01_lda.pdf" height="400" width="700" title="LDA"></iframe>
+</p>
+<p align="center">
+</p>
+
+### Example 02
+
+**Glass Identification** (dataset from UCI, accessed [here](https://www.kaggle.com/datasets/uciml/glass))
+
+```{r, eval = FALSE}
+glass <- read_csv("https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/glass.csv") %>%
+    mutate(Type = as.factor(Type))
+ggplot(reshape2::melt(glass, id.vars = c("Type")),
+       aes(x = value, colour = Type)) +
+       geom_density() + facet_wrap( ~variable, ncol = 1, scales = "free") +
+    theme(legend.position = "bottom")
+##Possible classification rules? RI & Al??
+ggplot(glass, mapping = aes(x = RI, y = Al)) +
+    theme_bw() +
+    geom_point(aes(colour = Type), size = 3)
+## LDA
+library(MASS)
+lda  <-  lda(Type ~ RI + Al, data = glass)
+## Proportion of Trace gives the percentage separation achieved by each discriminant function
+lda
+## predict
+ghat <- predict(lda)$class
+table(prediced = ghat, observed = glass$Type)
+## missclassification rate?
+mean(ghat != glass$Type)
+## group means
+centers  <-  lda$means
+### plot the discriminant surface
+## Set up grid for prediction, 100 x 100 that covers the data range of the two variables
+
+grid.df <-  with(glass,
+                 expand.grid(RI = make1Dgrid(RI),
+                             Al = make1Dgrid(Al)))
+ghat <- predict(lda, newdata = grid.df)
+str(ghat)
+## plot
+ggplot(glass, mapping = aes(x = RI, y = Al))+
+    theme_bw() +
+    geom_point(aes(colour = Type), size = 3) +
+    geom_raster(aes(fill = ghat$class),
+                data = grid.df, alpha = 0.25, interpolate = TRUE) +
+    geom_point(data = as_tibble(centers), pch = "+", size = 8)
+### So, not doing great! Can you improve?
+```
 
 
 
