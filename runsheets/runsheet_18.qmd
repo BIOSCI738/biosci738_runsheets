@@ -1,6 +1,13 @@
 # Week 10 - Lecture 02
 
-## Rough Agenda
+
+::: {.callout-note }
+## [Interactive Oral Assessment - Assignment Discussion](https://canvas.auckland.ac.nz/courses/141056/assignments/490478)
+
+By the end of the week sign up for **one** slot via the CANVAS calendar. If you don't, I will not be able to let you know in advance which assignment we will be discussing.
+
+:::
+
 
 ::: {.callout-note collapse=true}
 ## Relative file paths activity!
@@ -543,6 +550,9 @@ Inside <code>analysis.R</code>:
 ```
 
 :::
+
+
+## Rough Agenda
 
 ### **02:05 pm - 03:55 pm** 
 
