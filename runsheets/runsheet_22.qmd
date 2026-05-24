@@ -1,0 +1,23 @@
+# Week 11 - Lecture 01
+
+## Rough Agenda
+
+### **04:05 pm - 05:55 pm** 
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Device-free activity!
+
+Await further instructions...
+
+:::
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-review 
+
+Last week, via CANVAS, you were asked to upload a brief summary of your Significance article project along with an informative visualization of your data that you plan to use to motivate your analysis/hypothesis etc.
+
+In **pairs** complete the review aspect of [the activity](https://canvas.auckland.ac.nz/courses/141056/assignments/505390?module_item_id=2954897); you will be presented with four of your peers' work; in your pair discuss the submission and offer some informative feedback based on the previous activity and the given rubric. You may well be presented with your counterpart's work (anonymously), so take extra care to be mindful!
+
+
+*In accordance with the University of Auckland’s academic integrity policies, please note that you are reviewing a peer’s work. You are not permitted to upload or submit this material to any AI, translation, or external assistance service. Doing so would constitute a breach of University policy, as well as a violation of this course’s Code of Conduct.*
+:::
