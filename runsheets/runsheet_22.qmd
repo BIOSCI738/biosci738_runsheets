@@ -1,6 +1,5 @@
 # Week 11 - Lecture 01
 
-## Rough Agenda
 
 ### **04:05 pm - 05:55 pm** 
 
@@ -18,19 +17,11 @@ Last week, via CANVAS, you were asked to upload a brief summary of your *Signifi
 
 
 
- 1. In **pairs** complete the review aspect of [the activity](https://canvas.auckland.ac.nz/courses/141056/assignments/505390?module_item_id=2954897); you will be presented with four of your peers' work; in your pair discuss the submission and offer some informative feedback based on the previous activity and the given rubric. You may well be presented with your counterpart's work (anonymously), so take extra care to be mindful!
+In **pairs** complete the review aspect of [the activity](https://canvas.auckland.ac.nz/courses/141056/assignments/505390?module_item_id=2954897); you will be presented with four of your peers' work; in your pair discuss the submission and offer some informative feedback based on the previous activity and the given rubric. You may well be presented with your counterpart's work (anonymously), so take extra care to be mindful!
 
 
 *In accordance with the University of Auckland’s academic integrity policies, please note that you are reviewing a peer’s work. You are not permitted to upload or submit this material to any AI, translation, or external assistance service. Doing so would constitute a breach of University policy, as well as a violation of this course’s Code of Conduct.*
 
- 2. After completing the feedback process, review the current [rubric](https://canvas.auckland.ac.nz/courses/141056/assignments/490408) for the related course assessment and via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) **individually** suggest what additions you would like to see to better reflect what you would expect to see for each  criteria etc: 
-    
-    + What might be a clear distinction between an A-grade and C-grade submission for example? 
-    + How should statistical sophistication of the approach/submission be rewarded?
-    + What other things do you think should be considered when I am grading each component?
-    + Are the weightings fair in your opinion?
-    
-  
-*Within reason, I will amend the rubric based on the class-wide sentiment!*
+**Read your received feedback once it's released!**
 
 :::

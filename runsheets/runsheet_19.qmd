@@ -1,69 +1,126 @@
-# Additional
+# Week 11 - Lecture 02
+
+### **02:05 pm - 03:55 pm** 
 
 
-### Visualizing multivariate data
+## Significane Article and Code Repository
 
-In your groups work through the code below that visualizes different Pokémon stats. Discuss, how useful do you find each plot and be prepared to answer questions as I wander around the class!
+**In summary, what I am not looking for**
+
+ + A literature review
+ + A blow-by-blow account of all your work
+ + A regurgitation of statistical methodology
+ + Surface-level statistics without meaningful insights
+ + A dry text book chapter
+
+  
+**In summary, what I am expecting** 
+
+
+ + A coherent and insightful fun article that would appeal to your peers/the public!
+ + Think about the key components of the Significance articles you read! The layout, the use of pictures, figures and they writing style. 
+ + Use this as an opportunity to showcase your understanding and communication skills, let me hear your voice, demonstrate your critical thinking! Tell a *story* of your work: remember a not finding an effect is still interesting!
+ 
+    + What to think of
+    
+         + Is the writing appropriate for the target audience? 
+         + Are your explanations easy to follow?
+         + Does your work skillfully interpret the results?
+         + Are your tables/figures clear, effective, and informative?
+         + Are your findings clear
+         
+ + A fully reproducible code repository
+
+    + Imagine that someone with no knowledge of this stumbles across your repo and wishes to find out about what it contains and wants to reproduce your work
+
+
+:::{.callout-warning icon=false}
+## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Rubric review
+
+
+Thinking back to Monday's lecture where you read through some published Significance articles and reviewed your peers' summaries, review the current [rubric](https://canvas.auckland.ac.nz/courses/141056/assignments/490408) for the related course assessment and via [StatChat](https://canvas.auckland.ac.nz/courses/141056/external_tools/38296) **individually** suggest what additions you would like to see to better reflect what you would expect to see for each  criteria etc: 
+    
+  + What might be a clear distinction between an A-grade and C-grade submission for example? 
+  + How should statistical sophistication of the approach/submission be rewarded?
+  + What other things do you think should be considered when I am grading each component?
+  + Are the weightings fair in your opinion?
+    
+  
+*Within reason, I will amend the rubric based on the class-wide sentiment!*
+
+:::
+
+## Casestudies
+
+ 1. In your group order yourselves $1, 2 ..., n$ by first name alphabetically; each odd number then takes a sticker (from Charlotte)!  
+ 2. Every person with a sticker then swaps places with the other sticker carrying people from another table!
+ 3. New groups break off into sets of ~3!
+ 4. In your set of three use the `sample()` function in `R` to assign each member one of the case studies below.
+ 5. You have half an hour to carry out some analysis you deem fit (in line with the content covered in this course!)
+ 6. Then, each person has ten minutes to take the others through their analysis!
+ 
+ 
+**Things to may want to think about/do during your case study analysis**: 
+
+  1. what questions you might be interested in answering with these data,
+  2. how you might analyse these data so that you could answer those questions, and
+  3. carry out any analysis you deem appropriate. 
+
+
+**Questions you may want to prompt the presenter/interviewee with during their analysis walk through**:
+
+ 1. What are the data?
+ 2. What was the main purpose of your analysis?
+ 3. Why did you take this particular approach?
+ 4. Can you expand on what this code achieves?
+ 5. What was your main finding?
+ 6. If you had more time what might you want to try?
+
+
+### Case study 01
+
+For this case study you will be considering data from a paper investigating the recovery of biological evidence from common drink containers (@james).
+
+The object `data` below contains 96 observations and 17 different variables. The `amylase` column gives the relative amount of $\alpha$ amylase activity extracted from the swabs, the `dna` column gives the DNA yield (as a proportion), and the `failed.profile` column are logical values indicating if obtaining a usable DNA profile was a failure or a success. Other variables are as discussed in the paper.
+
+
+```{r, echo = TRUE, eval = FALSE}
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/amylase.csv"
+data <- readr::read_csv(url)
+```
+  
+The profile intensity variable mentioned in the paper is a linear combination of the peak height measurements for each of the STR loci. The peak heights of `D3S1358`, `HUMvWF31/A`, `D16S539`, `D2S1338`, `Amelogenin`, `D8S1179`, `D21S11`, `D18S51`, `D19S433`, `HUMTH01` and `HUMFIBRA` in RFU quantify, to some extent, the amount of DNA present. Can you recreate this variable?
+
+**NOTE: You will be expected to give a brief presentation about your approach and analysis.**
+
+### Case study 02
+
+In this case study you are going to be be dealing with a subset of data from a project called ACCURATE: ACoustic CUe RATEs for Passive Acoustics Density Estimation (@tiago). (If you are interested the full data were modelled by my PhD student in @alec.) 
+
+The ACCURATE project aims to estimate marine mammal using passive acoustics (i.e., using passive tools to listen to the sounds the animals make rather than having to rely on sighting them). One such method relies on the estimation of an appropriate cue rate (number of cues per unit time). Attaching a Digital Acoustic Recording Tag (DTAG) to marine mammals is a non-invasive method by which we can monitor the behaviour of these animals continuously throughout the dive cycle. 
+
+The object `data` is an aggregated version of the full ACCURATE data:
 
 ```{r, eval = FALSE}
-require(tidyverse)
-require(GGally)
-url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pokemon.csv"
-data <- read_csv(url)
-## pairs plots for continuous variables
-data %>%
-  select(where(is.numeric)) |> pairs()
-data %>%
-  select(where(is.numeric)) |> ggpairs()
-## but what if you had a categorical variable
-data %>%
-  select(legendary, where(is.numeric)) |> ggpairs(aes(color = legendary))
-## two (or more) categorical variables
-with(data, table(legendary,
-    type2)) |> barplot(legend = TRUE)
-## conditional
-with(data, prop.table(table(legendary,
-    type2), margin = 2)) |> barplot(legend = TRUE)
-## alluvial plots
-require(alluvial)
-data$Freq <- 1
-mult <- aggregate(Freq ~ type2 + legendary,
-    data = data, FUN = sum)
-alluvial(mult, freq = mult$Freq, border = NA, col = ifelse(mult$legendary, "red", "blue"))
-## What are some potential interpretation pitfalls
-## heatmaps
-library(pheatmap)
-data %>%
-  select(where(is.numeric), -Freq, - generation, -number) |> cor() |>
-  pheatmap( cluster_rows = TRUE, cluster_cols = TRUE,
-    treeheight_row = 0, treeheight_col = 0)
-data %>% select(where(is.numeric), -Freq, -generation, -number) |>
-  pheatmap( , cluster_rows = TRUE,
-    cluster_cols = TRUE, labels_row = data$name, cex = 0.7)
-## look at ?pheatmap
-library(corrplot)
-data %>% select(where(is.numeric), -Freq, - generation, -number) |> cor() |> 
-  corrplot(addrect = 3, order = 'hclust')
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/whale_clicks.csv"
+data <- readr::read_csv(url)
+```
 
+These data contain 843 observations and three variables:
+ 
+   + `minute` the minute index over the time period the DTAG was active
+   + `mean_depth` the average depth in meters (below the surface) for each minute
+   + `n_click` the number of clicks recorded in each minute
+
+### Case study 03
+
+In this case study you are going to be dealing with data that refer to 346 Pokémon (fictional creatures that feature is certain games, each with associated measures of their ability). The data includes individual Pokémon stats including their number, name, first and second type, the stat total and basic stats: HP (`hp`), Attack (`attack`), Defense (`defense`), Special Attack (`sp_attack`), Special Defense (`sp_defense`), and Speed (`speed`), generation, and legendary status.
+
+```{r, eval = FALSE}
+url <- "https://raw.githubusercontent.com/STATS-UOA/databunker/master/data/pokemon.csv"
+data <- readr::read_csv(url)
 ```
 
 
-## Casestudies {#sec-mdscasestudies02}
-
- Revisit one of the following case studies. Create an informative visualization that appropriately demonstrates the structure of these multivariate data. You may find some useful examples [here](https://epurdom.github.io/Stat131A/book/visualizing-multivariate-data.html#relationships-between-continous-variables).
-
- 1. **Eigenfaces** from @sec-eigenfaces
- 2. **Clusterducks** from @sec-clusterducks
- 3. **Bird Abundance** first case study from revisited in @sec-mdscasestudies (data from @birds)
- 4. **DNA** second case study from @sec-mdscasestudies (data from @dna)
- 
-**Be prepared to present your activity to me as I'll be prepared to critique!**
 
 
-
-## Q&A and peer-share {#sec-peershare19}
-
-:::{.callout-warning icon=false}
-## <i class="fa fa-question-circle" aria-hidden="true"></i> <i class="fa fa-users" aria-hidden="true"></i> <i class="fa fa-pencil-square" aria-hidden="true"></i> Peer-Share
-Go over an activity from the class again. Feel free to ask Charlotte a question or two about it!
-:::
